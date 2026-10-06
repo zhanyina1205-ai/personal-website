@@ -295,3 +295,28 @@ section[id] { scroll-margin-top:24px; }
   .lightbox-controls { flex-wrap:wrap; }
   .lightbox-controls p { order:-1; width:100%; }
 }
+
+/* A gently curved filmstrip follows the horizontal mouse position. */
+.gallery-film { --film-card-width:260px; position:relative; height:405px; margin:28px -28px 0; overflow:hidden; perspective:1100px; touch-action:pan-y pinch-zoom; isolation:isolate; }
+.gallery-film::before, .gallery-film::after { content:""; position:absolute; top:0; bottom:0; width:22px; z-index:30; pointer-events:none; }
+.gallery-film::before { left:0; background:linear-gradient(90deg,#e5edef,transparent); }
+.gallery-film::after { right:0; background:linear-gradient(-90deg,#e5edef,transparent); }
+.life-travel .gallery-film::before { background:linear-gradient(90deg,#f8e1e9,transparent); }
+.life-travel .gallery-film::after { background:linear-gradient(-90deg,#f8e1e9,transparent); }
+.life-creative .gallery-film::before { background:linear-gradient(90deg,var(--cream),transparent); }
+.life-creative .gallery-film::after { background:linear-gradient(-90deg,var(--cream),transparent); }
+.album .film-card { position:absolute; left:50%; top:30px; width:var(--film-card-width); padding:10px 10px 16px; animation:none; transform-origin:center center; transition:transform .32s cubic-bezier(.2,.65,.25,1),box-shadow .2s; will-change:transform; }
+.album .film-card img { height:260px; width:100%; object-fit:contain; pointer-events:none; }
+.film-card .photo-caption { margin-top:13px; font-size:.875rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.film-card .photo-caption small { font-size:.875rem; }
+.film-card .tape { top:-10px; height:25px; }
+.film-progress { position:relative; height:2px; background:#80504725; width:min(280px,70%); margin:7px auto 0; }
+.film-progress span { display:block; position:absolute; width:32px; height:4px; top:-1px; background:var(--ink); border-radius:4px; transform:translateX(-50%); transition:left .25s ease; }
+@media(max-width:900px) { .gallery-film { --film-card-width:225px; height:385px; margin-inline:-15px; } .album .film-card img { height:240px; } }
+@media(max-width:680px) {
+ .gallery-film { --film-card-width:232px; height:405px; margin-inline:-24px; perspective:800px; }
+ .album .film-card { top:26px; }
+ .album .film-card img { height:270px; }
+ .album .film-card .photo-caption { font-size:.8125rem; }
+ .gallery-film::before,.gallery-film::after { width:12px; }
+}

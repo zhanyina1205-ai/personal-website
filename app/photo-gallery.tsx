@@ -1,31 +1,28 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
-import type { KeyboardEvent, TouchEvent } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { KeyboardEvent, PointerEvent, TouchEvent } from "react";
 import { assetPath } from "./asset-path";
 import { dogPhotos } from "./photo-data";
 import type { Photo } from "./photo-data";
 
 export function PhotoGallery({ photos = dogPhotos, label = "小狗生活相册" }: { photos?: Photo[]; label?: string }) {
-  const [cursor, setCursor] = useState(0);
-  const [pageSize, setPageSize] = useState(3);
+  const [position, setPosition] = useState(Math.floor((photos.length - 1) / 2));
+  const [touchMode, setTouchMode] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const openerRef = useRef<HTMLButtonElement | null>(null);
   const touchRef = useRef<{ x: number; y: number } | null>(null);
-  const galleryId = useId();
   const isOpen = active !== null;
-  const page = Math.floor(cursor / pageSize);
-  const pageCount = Math.ceil(photos.length / pageSize);
-  const first = page * pageSize;
-  const last = Math.min(first + pageSize, photos.length);
+  const current = Math.round(position);
+  const clamp = (value: number) => Math.max(0, Math.min(value, photos.length - 1));
 
   useEffect(() => {
-    const narrow = window.matchMedia("(max-width:680px)");
-    const update = () => setPageSize(narrow.matches ? 1 : 3);
+    const coarse = window.matchMedia("(hover: none), (pointer: coarse)");
+    const update = () => setTouchMode(coarse.matches);
     update();
-    narrow.addEventListener("change", update);
-    return () => narrow.removeEventListener("change", update);
+    coarse.addEventListener("change", update);
+    return () => coarse.removeEventListener("change", update);
   }, []);
 
   useEffect(() => {
@@ -37,8 +34,14 @@ export function PhotoGallery({ photos = dogPhotos, label = "小狗生活相册" 
     return () => { document.body.style.overflow = previousOverflow; dialog.close(); };
   }, [isOpen]);
 
-  function turnPage(next: number) {
-    setCursor(Math.max(0, Math.min(next, pageCount - 1)) * pageSize);
+  function followMouse(event: PointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== "mouse" || isOpen) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const progress = Math.max(0, Math.min(1, (event.clientX - bounds.left - 24) / (bounds.width - 48)));
+    setPosition(progress * (photos.length - 1));
+  }
+  function focusPhoto(index: number) {
+    setPosition(clamp(index));
   }
   function open(index: number, button: HTMLButtonElement) {
     openerRef.current = button;
@@ -59,11 +62,11 @@ export function PhotoGallery({ photos = dogPhotos, label = "小狗生活相册" 
       event.stopPropagation();
       const direction = event.key === "ArrowRight" ? 1 : -1;
       if (modal) turnPhoto(direction);
-      else turnPage(page + direction);
+      else focusPhoto(current + direction);
     }
     if (!modal && (event.key === "Home" || event.key === "End")) {
       event.preventDefault();
-      turnPage(event.key === "Home" ? 0 : pageCount - 1);
+      focusPhoto(event.key === "Home" ? 0 : photos.length - 1);
     }
   }
   function startSwipe(event: TouchEvent<HTMLElement>) {
@@ -80,36 +83,36 @@ export function PhotoGallery({ photos = dogPhotos, label = "小狗生活相册" 
     if (Math.abs(dx) < 55 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
     const direction = dx < 0 ? 1 : -1;
     if (modal) turnPhoto(direction);
-    else turnPage(page + direction);
+    else focusPhoto(current + direction);
   }
 
   return <>
-    <div className="album" role="region" aria-label={`${label}翻页浏览`} aria-roledescription="分页相册" tabIndex={0} onKeyDown={event => keyboard(event, false)}>
+    <div className="album" role="region" aria-label={`${label}翻页浏览`} aria-roledescription="横向照片带" tabIndex={0} onKeyDown={event => keyboard(event, false)}>
       <div className="album-heading"><span>{label}</span><span>{photos.length} 张照片</span></div>
-      <div className="photo-gallery" id={galleryId} onTouchStart={startSwipe} onTouchEnd={event => finishSwipe(event, false)}>
-        {photos.map((photo, index) => <button type="button" className={`photo-card photo-${index % 3}`} key={photo.src}
-          hidden={index < first || index >= last} onClick={event => open(index, event.currentTarget)} aria-label={`放大照片：${photo.caption}`}>
-          <span className="tape" aria-hidden="true" />
-          <img src={assetPath(photo.src)} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" />
-          <span className="photo-caption">{photo.caption}<small>{photo.note}</small></span>
-          <span className="photo-expand" aria-hidden="true">＋</span>
-        </button>)}
+      <div className="gallery-film" onPointerMove={followMouse} onTouchStart={startSwipe} onTouchEnd={event => finishSwipe(event, false)}>
+        {photos.map((photo, index) => {
+          const offset = index - position;
+          const depth = Math.min(Math.abs(offset), 3);
+          return <button type="button" className="photo-card film-card" key={photo.src}
+            style={{ transform: `translateX(calc(-50% + ${offset.toFixed(4)} * (var(--film-card-width) + 18px))) rotateY(${Math.max(-30, Math.min(30, -offset * 10))}deg) scale(${1 + depth * 0.026})`, zIndex: 20 - Math.round(depth * 3) }}
+            tabIndex={Math.abs(offset) > 2 ? -1 : 0}
+            onFocus={() => focusPhoto(index)} onClick={event => open(index, event.currentTarget)} aria-label={`放大照片：${photo.caption}`}>
+            <span className="tape" aria-hidden="true" />
+            <img src={assetPath(photo.src)} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" draggable={false} />
+            <span className="photo-caption">{photo.caption}<small>{photo.note}</small></span>
+            <span className="photo-expand" aria-hidden="true">＋</span>
+          </button>;
+        })}
       </div>
-      <div className="album-controls">
-        <button type="button" className="album-turn" onClick={() => turnPage(page - 1)} disabled={page === 0} aria-label={`${label}上一页`} aria-controls={galleryId}>上一页</button>
-        <div className="album-pages" role="group" aria-label={`${label}页码`}>
-          {Array.from({ length: pageCount }, (_, index) => <button type="button" key={index} onClick={() => turnPage(index)} aria-label={`${label}第 ${index + 1} 页`} aria-current={index === page ? "page" : undefined} aria-controls={galleryId}>{index + 1}</button>)}
-        </div>
-        <button type="button" className="album-turn" onClick={() => turnPage(page + 1)} disabled={page === pageCount - 1} aria-label={`${label}下一页`} aria-controls={galleryId}>下一页</button>
-      </div>
-      <p className="album-status" role="status">第 {page + 1} / {pageCount} 页 · 照片 {first + 1}–{last} / {photos.length}</p>
+      <div className="film-progress" aria-hidden="true"><span style={{ left: `${photos.length > 1 ? position / (photos.length - 1) * 100 : 0}%` }} /></div>
+      <p className="album-status" role="status">正在看第 {current + 1} 张 · 共 {photos.length} 张</p>
       <div className="album-thumbnails" role="group" aria-label={`${label}全部照片`}>
-        {photos.map((photo, index) => <button type="button" key={photo.src} onClick={event => open(index, event.currentTarget)} aria-label={`查看第 ${index + 1} 张：${photo.caption}`} className={index >= first && index < last ? "thumbnail-visible" : undefined}>
+        {photos.map((photo, index) => <button type="button" key={photo.src} onClick={() => focusPhoto(index)} aria-label={`查看第 ${index + 1} 张：${photo.caption}`} aria-pressed={index === current} className={index === current ? "thumbnail-visible" : undefined}>
           <img src={assetPath(photo.src)} alt="" width={photo.width} height={photo.height} loading="lazy" />
           <span>{index + 1}</span>
         </button>)}
       </div>
-      <p className="album-instructions">点开照片看大图 · 左右方向键翻页 · 手机左右滑动</p>
+      <p className="album-instructions">{touchMode ? "左右滑动，翻看相册" : "左右移动鼠标，翻看相册"} · 点开照片看大图</p>
     </div>
     {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- Native modal dialog handles keyboard navigation and backdrop dismissal. */}
     <dialog ref={dialogRef} className="photo-dialog" aria-label={label}
