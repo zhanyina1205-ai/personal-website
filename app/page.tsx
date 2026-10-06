@@ -59,7 +59,7 @@ export default function Home() {
           <div className="section-intro"><p className="eyebrow">LITTLE THINGS I MAKE</p><h2 id="creative-title">动动手，<span className="pink-underline">让喜欢有了形状。</span></h2><p>画画、唱歌、做手工，都是我给日常加一点快乐的方式。</p></div>
           <PhotoGallery photos={creativePhotos} label="绘画与手工相册" />
         </section>
-        <section className="hello section-cream" id="hello" aria-labelledby="hello-title"><div className="hello-art" aria-hidden="true"><Doodle kind="coconut" /><span>let&apos;s say hello!</span></div><div className="hello-copy"><p className="eyebrow">GOOD THINGS START WITH A HELLO</p><h2 id="hello-title">很高兴，<br />在这里<span className="pink-underline">遇见你。</span></h2><p>如果你也喜欢设计、穿搭、手作，或者小狗，<br />那我们已经有了一个很好的聊天开场。</p><a className="pill-button" href={feishuUrl} target="_blank" rel="noopener noreferrer">更多关于椰奶</a></div><span className="hello-heart" aria-hidden="true">♡</span></section>
+        <section className="hello section-cream" id="hello" aria-labelledby="hello-title"><div className="hello-art"><Doodle kind="coconut" /><span>let&apos;s say hello!</span></div><div className="hello-copy"><p className="eyebrow">GOOD THINGS START WITH A HELLO</p><h2 id="hello-title">很高兴，<br />在这里<span className="pink-underline">遇见你。</span></h2><p>如果你也喜欢设计、穿搭、手作，或者小狗，<br />那我们已经有了一个很好的聊天开场。</p><a className="pill-button" href={feishuUrl} target="_blank" rel="noopener noreferrer">更多关于椰奶</a></div><span className="hello-heart" aria-hidden="true">♡</span></section>
       </main>
       <footer className="site-footer"><a className="footer-brand" href="#top">椰奶<span>YINA&apos;S LITTLE WORLD</span></a><p>保持柔软，保持好奇。<br /><span>© 2026 詹依娜 · Made with a little love ♡</span></p><a className="back-to-top" href="#top">回到顶部</a></footer>
     </div>

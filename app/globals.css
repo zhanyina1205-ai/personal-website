@@ -320,3 +320,57 @@ section[id] { scroll-margin-top:24px; }
  .album .film-card .photo-caption { font-size:.8125rem; }
  .gallery-film::before,.gallery-film::after { width:12px; }
 }
+
+/* Small, playful motions stay inside the original sticker layout. */
+.doodle-control { position:relative; display:block; width:100%; padding:0; border:0; border-radius:28%; background:transparent; line-height:0; touch-action:manipulation; }
+.doodle-control:focus-visible { outline:2px dashed #9a4b6b; outline-offset:4px; }
+.doodle-control .doodle-motion { display:block; width:100%; margin:0; font:inherit; line-height:0; transform-origin:50% 65%; animation:doodle-float 5.8s ease-in-out infinite; }
+.doodle-control-flower .doodle-motion { animation:doodle-sway 7s ease-in-out infinite; }
+.doodle-control-camera .doodle-motion { animation-delay:-1.9s; }
+.doodle-control-dogs .doodle-motion { animation-delay:-3.6s; }
+.doodle-control-jewel .doodle-motion { animation:doodle-sway 6s ease-in-out -2s infinite; }
+.doodle-control-shirt .doodle-motion { animation-delay:-4.2s; }
+.card-art .doodle-control { width:175px; margin:3px 0 12px; }
+.card-art .doodle-control .doodle { width:100%; margin:0; }
+.hello-art > .doodle-control { z-index:1; }
+.hello-art .doodle-control .doodle-motion { font:inherit; margin:0; }
+.doodle-control .doodle { transition:scale .25s ease,filter .25s ease; }
+@media(hover:hover) { .doodle-control:hover .doodle { scale:1.07; filter:drop-shadow(0 6px 3px #80504714); } }
+.doodle-control:active .doodle { scale:.95; }
+.doodle-control .doodle-playing { animation:doodle-pop .85s ease both; }
+.doodle-control-flower .doodle-playing { animation:doodle-twirl 1s cubic-bezier(.2,.7,.3,1) both; }
+.doodle-control-dogs .doodle-playing { animation:doodle-hop .85s ease both; }
+.doodle-control-jewel .doodle-playing { animation:doodle-sway-once .9s ease both; }
+.doodle-control-camera .doodle-playing::after { content:""; position:absolute; inset:28% 25%; background:#fffaf1; border-radius:50%; pointer-events:none; animation:camera-flash .5s ease both; }
+.doodle-control .doodle-sparkles { position:absolute; inset:0; display:block; margin:0; pointer-events:none; }
+.doodle-sparkles i { position:absolute; color:#c16e94; font:24px Georgia,serif; animation:sticker-spark .85s ease-out both; }
+.doodle-sparkles i:nth-child(1) { top:8%; left:9%; --spark-x:-12px; --spark-y:-18px; }
+.doodle-sparkles i:nth-child(2) { top:11%; right:10%; --spark-x:14px; --spark-y:-22px; animation-delay:.08s; }
+.doodle-sparkles i:nth-child(3) { bottom:17%; right:5%; --spark-x:18px; --spark-y:6px; animation-delay:.12s; }
+.brand-flower,.hero-bottom-flower,.portrait-flower { display:inline-block; animation:flower-rock 7.5s ease-in-out infinite; transform-origin:center; }
+.portrait-flower { animation-delay:-3s; }
+.hero-bottom-flower { animation-delay:-1.6s; }
+.brand:hover .brand-flower,.brand:focus-visible .brand-flower { animation:flower-spin .8s ease both; }
+.name-spark,.hero-location span,.skill-strip span[aria-hidden] { display:inline-block; animation:star-breathe 4.8s ease-in-out infinite; }
+.skill-strip span[aria-hidden] { animation-delay:-2.4s; }
+.hero-alias span[aria-hidden],.gallery-hint span,.hello-heart { display:inline-block; animation:heart-breathe 4s ease-in-out infinite; }
+.hello-heart { animation-delay:-1.7s; }
+.photo-expand { transition:rotate .3s ease,scale .3s ease,background .3s ease; }
+.photo-card:hover .photo-expand,.photo-card:focus-visible .photo-expand { rotate:90deg; scale:1.12; background:#f7c4d9; }
+.lightbox-close { transition:rotate .25s ease; }
+.lightbox-close:hover { rotate:90deg; }
+@keyframes doodle-float { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-7px) rotate(2deg); } }
+@keyframes doodle-sway { 0%,100% { transform:rotate(-3deg); } 50% { transform:rotate(5deg); } }
+@keyframes doodle-pop { 0%,100% { transform:scale(1) rotate(0); } 25% { transform:scale(.9) rotate(-9deg); } 55% { transform:scale(1.12) rotate(8deg); } 80% { transform:scale(1.02) rotate(-4deg); } }
+@keyframes doodle-twirl { 0% { transform:rotate(0) scale(1); } 45% { transform:rotate(160deg) scale(1.12); } 100% { transform:rotate(360deg) scale(1); } }
+@keyframes doodle-hop { 0%,100% { transform:translateY(0) rotate(0); } 25% { transform:translateY(-16px) rotate(-7deg); } 50% { transform:translateY(0) rotate(5deg); } 75% { transform:translateY(-9px) rotate(-3deg); } }
+@keyframes doodle-sway-once { 0%,100% { transform:rotate(0); } 25% { transform:rotate(-15deg); } 60% { transform:rotate(13deg) scale(1.07); } 85% { transform:rotate(-5deg); } }
+@keyframes camera-flash { 0%,100% { opacity:0; } 25% { opacity:.8; } }
+@keyframes sticker-spark { 0% { opacity:0; transform:translate(0,0) scale(.4); } 30% { opacity:1; } 100% { opacity:0; transform:translate(var(--spark-x),var(--spark-y)) scale(1.2); } }
+@keyframes flower-rock { 0%,100% { rotate:-5deg; } 50% { rotate:8deg; } }
+@keyframes flower-spin { to { rotate:360deg; } }
+@keyframes star-breathe { 0%,100% { scale:1; rotate:0deg; opacity:.7; } 50% { scale:1.15; rotate:22deg; opacity:1; } }
+@keyframes heart-breathe { 0%,100% { scale:1; } 45% { scale:1.12; } 60% { scale:1.03; } 75% { scale:1.09; } }
+@media(max-width:900px) { .card-art .doodle-control { width:142px; } }
+@media(max-width:680px) { .card-art .doodle-control { width:170px; } }
+@media(prefers-reduced-motion:reduce) { .doodle-control .doodle-sparkles { display:none; } }
