@@ -4,9 +4,19 @@ import { assetPath } from "./asset-path";
 
 const feishuUrl = "https://my.feishu.cn/wiki/WfEOwMIK4ilHUQk7PpucZVjRnlc?from=from_copylink";
 const experiences = [
-  { no: "01", kind: "camera" as const, title: "把喜欢，拍成日常", en: "CONTENT & CREATION", role: "小红书穿搭博主", text: "从内容构思到拍摄、剪辑，再到服装商务对接，独立完成账号的每一个环节。", tags: "内容策划 / 图文视频 / 视觉表达" },
-  { no: "02", kind: "jewel" as const, title: "让小小饰品，闪闪发光", en: "MY LITTLE BUSINESS", role: "小红书饰品店铺店主", text: "选品、对接供应链、定价、上架、运营与客服，把一家小店从想法变成日常。", tags: "审美选品 / 电商运营 / 从 0 到 1" },
-  { no: "03", kind: "shirt" as const, title: "找到属于你的风格", en: "STYLE & CONNECTION", role: "穿搭风格定位主播", text: "搭建直播间，帮助粉丝找到适合自己的穿搭风格。在交流里，发现每个人的美。", tags: "穿搭定位 / 直播分享 / 真诚沟通" },
+  { no: "01", kind: "camera" as const, title: "椰奶没喝饱", en: "CONTENT & CREATION", role: "小红书穿搭博主", text: "从大三开始做自己的时尚穿搭账号，独立完成内容构思、拍摄剪辑和服装商务对接。账号总浏览量超过 2,000 万，过千赞笔记超过 20 篇。", stats: [{ value: "5万+", label: "累计粉丝" }, { value: "10万+", label: "最佳单月点赞" }], tags: "内容策划 / 图文视频 / 视觉表达" },
+  { no: "02", kind: "jewel" as const, title: "摇滚椰奶冻", en: "MY LITTLE BUSINESS", role: "小红书饰品店铺店主", text: "粉丝常问我戴的饰品在哪里买，于是有了自己的饰品品牌。从选品、对接供应链、定价，到上架和运营，每个环节都由我独立完成。", stats: [{ value: "5,000+", label: "累计订单" }, { value: "10万+", label: "销售额（元）" }], tags: "审美选品 / 电商运营 / 从 0 到 1" },
+  { no: "03", kind: "shirt" as const, title: "找到属于你的风格", en: "STYLE & CONNECTION", role: "穿搭风格定位主播", text: "搭建直播间，帮助粉丝找到适合自己的穿搭风格。在交流里，发现每个人的美。", stats: [], tags: "穿搭定位 / 直播分享 / 真诚沟通" },
+];
+const travelPhotos = [
+  { src: "/images/travel-01.jpg", alt: "詹依娜穿着旗袍，坐在木窗旁", caption: "换一种风格，走进另一段时光", note: "a different kind of day" },
+  { src: "/images/travel-02.jpg", alt: "詹依娜穿着红白格纹衣服，站在草原上的红色越野车旁", caption: "把晴天和草原装进行囊", note: "somewhere under the blue sky" },
+  { src: "/images/travel-03.jpg", alt: "詹依娜站在山间木栈道上，身后是秋色树林与白塔", caption: "山里的风，和秋天的颜色", note: "little moments, big memories" },
+];
+const creativePhotos = [
+  { src: "/images/creative-01.jpg", alt: "画架上的花卉肌理画与调色盘", caption: "把喜欢的颜色画下来", note: "a little color, a little joy" },
+  { src: "/images/creative-02.jpg", alt: "蓝色和粉色的自制小狗口水巾", caption: "亲手给她们做的小礼物", note: "handmade with love" },
+  { src: "/images/creative-03.jpg", alt: "卡通人物与煎蛋图案的手工簇绒作品", caption: "让可爱，变成摸得到的东西", note: "made by me" },
 ];
 
 export default function Home() {
@@ -38,16 +48,25 @@ export default function Home() {
           <div className="section-intro"><p className="eyebrow">A LITTLE BIT ABOUT ME</p><h2 id="about-title">慢慢认识，也会<span className="pink-underline">很有趣。</span></h2><p>慢热是我的开场，真诚是我的底色。</p></div>
           <div className="about-layout">
             <div className="portrait-wrap"><div className="tape tape-portrait" /><figure className="polaroid"><img src={assetPath("/images/yina-and-dog.jpg")} width="1280" height="960" alt="詹依娜抱着她的小狗" loading="lazy" /><figcaption>me & my little sunshine ♡</figcaption></figure><span className="portrait-label">nice to meet you!</span><span className="portrait-flower" aria-hidden="true">✿</span></div>
-            <div className="about-copy"><p className="handwritten">Hi, I&apos;m Yina!</p><h3>设计出身，<br />生活里的美好收集者。</h3><p>我是来自深圳的詹依娜，毕业于<span className="emphasis">广州美术学院</span>，学习的是<span className="emphasis">产品设计</span>。对我来说，审美不只在作品里，也藏在穿搭、一件小饰品和生活的细节里。</p><p>我有一点慢热、内向，心思细腻，也热心善良。刚认识时可能安静一些，熟悉之后，就会慢慢打开话匣子。</p><div className="personal-tags"><span>INFP · 理想主义</span><span>手工 & 绘画爱好者</span><span>两只小狗的全职铲屎官</span></div><a className="text-link" href={feishuUrl} target="_blank" rel="noopener noreferrer">翻翻我的个人说明书</a></div>
+            <div className="about-copy"><p className="handwritten">Hi, I&apos;m Yina!</p><h3>设计出身，<br />生活里的美好收集者。</h3><p>我是深圳本地的詹依娜，23 岁，毕业于<span className="emphasis">广州美术学院</span>，学习的是<span className="emphasis">产品设计</span>。对我来说，审美不只在作品里，也藏在穿搭、一件小饰品和生活的细节里。</p><p>我有一点慢热、内向，心思细腻，也热心善良。刚认识时可能安静一些，熟悉之后，就会慢慢打开话匣子。</p><div className="personal-tags"><span>INFP</span><span>绘画 / 唱歌 / 手工</span><span>两只小狗的全职铲屎官</span></div><a className="text-link" href={feishuUrl} target="_blank" rel="noopener noreferrer">翻翻我的个人说明书</a></div>
           </div>
         </section>
         <section className="experience checker-pink" id="experience" aria-labelledby="experience-title">
           <div className="section-intro"><p className="eyebrow">THINGS I&apos;VE PUT MY HEART INTO</p><h2 id="experience-title">把喜欢的事，<br />一点点变成<span className="cream-underline">自己的经历。</span></h2><p>从视觉创作到经营小店，每一次尝试都算数。</p></div>
-          <div className="experience-grid">{experiences.map(item => <article className={`experience-card card-${item.kind}`} key={item.no}><div className="tape" /><div className="card-art"><span className="art-number">{item.no}</span><Doodle kind={item.kind} /><span className="art-caption">{item.en}</span></div><div className="card-copy"><p className="card-role">{item.role}</p><h3>{item.title}</h3><p>{item.text}</p><span className="card-tags">{item.tags}</span></div></article>)}</div>
+          <div className="experience-grid">{experiences.map(item => <article className={`experience-card card-${item.kind}`} key={item.no}><div className="tape" /><div className="card-art"><span className="art-number">{item.no}</span><Doodle kind={item.kind} /><span className="art-caption">{item.en}</span></div><div className="card-copy"><p className="card-role">{item.role}</p><h3>{item.title}</h3><p>{item.text}</p>{item.stats.length > 0 && <dl className="card-stats">{item.stats.map(stat => <div key={stat.label}><dt>{stat.label}</dt><dd>{stat.value}</dd></div>)}</dl>}<span className="card-tags">{item.tags}</span></div></article>)}</div>
+          <p className="results-note">成果数据来自我的个人说明书。</p>
           <p className="experience-extra">也曾在潮牌女装店、黄金奢侈品品牌做销售，<br className="mobile-break" />在与人相处的过程中，练习观察、倾听与表达。</p>
           <div className="skill-strip"><span>审美与视觉创作</span><span aria-hidden="true">✳</span><span>新媒体素材拍摄</span><span aria-hidden="true">✳</span><span>把想法认真落地</span></div>
         </section>
         <section className="life" id="life" aria-labelledby="life-title"><div className="section-intro"><p className="eyebrow">LITTLE PAWS, BIG LOVE</p><h2 id="life-title">我的日子，有<span className="pink-underline">两份毛茸茸。</span></h2><p>我非常爱我的小狗，她们让平淡的生活多了许多快乐。</p><span className="life-handwritten">a few of my favorite moments ↓</span></div><PhotoGallery /><p className="gallery-hint">点开照片，看看我的小小快乐 <span aria-hidden="true">♡</span></p></section>
+        <section className="life life-travel" id="travel" aria-labelledby="travel-title">
+          <div className="section-intro"><p className="eyebrow">POSTCARDS FROM MY LIFE</p><h2 id="travel-title">去不同的地方，<span className="pink-underline">收集美好。</span></h2><p>我喜欢感受不同的风土人情，也喜欢把当下的美好记录下来。</p></div>
+          <PhotoGallery photos={travelPhotos} label="旅行相册" />
+        </section>
+        <section className="life life-creative section-cream" id="creative" aria-labelledby="creative-title">
+          <div className="section-intro"><p className="eyebrow">LITTLE THINGS I MAKE</p><h2 id="creative-title">动动手，<span className="pink-underline">让喜欢有了形状。</span></h2><p>画画、唱歌、做手工，都是我给日常加一点快乐的方式。</p></div>
+          <PhotoGallery photos={creativePhotos} label="绘画与手工相册" />
+        </section>
         <section className="hello section-cream" id="hello" aria-labelledby="hello-title"><div className="hello-art" aria-hidden="true"><Doodle kind="coconut" /><span>let&apos;s say hello!</span></div><div className="hello-copy"><p className="eyebrow">GOOD THINGS START WITH A HELLO</p><h2 id="hello-title">很高兴，<br />在这里<span className="pink-underline">遇见你。</span></h2><p>如果你也喜欢设计、穿搭、手作，或者小狗，<br />那我们已经有了一个很好的聊天开场。</p><a className="pill-button" href={feishuUrl} target="_blank" rel="noopener noreferrer">更多关于椰奶</a></div><span className="hello-heart" aria-hidden="true">♡</span></section>
       </main>
       <footer className="site-footer"><a className="footer-brand" href="#top">椰奶<span>YINA&apos;S LITTLE WORLD</span></a><p>保持柔软，保持好奇。<br /><span>© 2026 詹依娜 · Made with a little love ♡</span></p><a className="back-to-top" href="#top">回到顶部</a></footer>

@@ -235,3 +235,16 @@ section[id] { scroll-margin-top:24px; }
   .outside-note { font-size:.75rem; }
   .lightbox-content > img { height:62svh; }
 }
+
+.card-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; border-top:1px solid #d8b5a7; padding-top:16px; margin:20px 0; }
+.card-stats div { display:flex; flex-direction:column-reverse; gap:6px; min-width:0; }
+.card-stats dt { font-size:.75rem; line-height:1.6; }
+.card-stats dd { margin:0; font:600 1.65rem Georgia,serif; letter-spacing:-.04em; }
+.results-note { margin:0; text-align:center; font-size:.75rem; line-height:1.8; }
+.life-travel { background:#f8e1e9; }
+.life-travel::before { background:radial-gradient(ellipse at 50% 100%,#f8e1e9 66%,transparent 68%) 0 0/64px 18px repeat-x; }
+.life-creative { background:var(--cream); }
+.life-creative::before { background:radial-gradient(ellipse at 50% 100%,var(--cream) 66%,transparent 68%) 0 0/64px 18px repeat-x; }
+.life-travel .photo-card img { object-position:50% 40%; }
+.life-creative .photo-card img { object-fit:contain; background:#ece4d8; }
+@media(max-width:680px) { .life-travel h2, .life-creative h2 { font-size:1.5rem; } .card-stats dd { font-size:1.875rem; } }
