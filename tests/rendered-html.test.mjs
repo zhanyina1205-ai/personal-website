@@ -31,6 +31,6 @@ test("internal navigation resolves and published photos exist", async () => {
     assert.ok(ids.has(target), `Missing navigation target: ${target}`);
   }
   const sources = new Set([...html.matchAll(/\bsrc="(\/images\/[^"?]+)"/g)].map(match => match[1]));
-  assert.ok(sources.size >= 4, "The portrait and all three dog photos must render");
+  assert.equal(sources.size, 19, "All 19 photographs from the personal document must render");
   for (const source of sources) await access(new URL(`../public${source}`, import.meta.url));
 });
