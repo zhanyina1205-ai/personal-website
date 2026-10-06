@@ -1,5 +1,6 @@
 import { Doodle } from "./doodles";
 import { PhotoGallery } from "./photo-gallery";
+import { assetPath } from "./asset-path";
 
 const feishuUrl = "https://my.feishu.cn/wiki/WfEOwMIK4ilHUQk7PpucZVjRnlc?from=from_copylink";
 const experiences = [
@@ -14,7 +15,7 @@ export default function Home() {
     <div className="site-shell" id="top">
       <header className="site-header">
         <a className="brand" href="#top" aria-label="椰奶的小站，返回首页"><span className="brand-flower" aria-hidden="true">✿</span><span>椰奶<span className="brand-en">YINA&apos;S LITTLE WORLD</span></span></a>
-        <nav aria-label="主导航"><a href="#about">关于椰奶</a><a href="#experience">我的经历</a><a href="#life">生活碎片</a><a className="nav-contact" href="#hello">打个招呼 <span aria-hidden="true">↗</span></a></nav>
+        <nav aria-label="主导航"><a href="#about">关于椰奶</a><a href="#experience">我的经历</a><a href="#life">生活碎片</a><a className="nav-contact" href="#hello">更多关于我</a></nav>
       </header>
       <main id="main-content">
         <section className="hero checker-blue" aria-labelledby="hero-title">
@@ -28,7 +29,7 @@ export default function Home() {
             <h1 id="hero-title">你好呀，我是<span className="name">詹依娜<span className="name-spark" aria-hidden="true">✳</span></span></h1>
             <p className="hero-alias">也可以叫我 <span>椰奶</span> <span aria-hidden="true">♡</span></p>
             <p className="hero-description">用一点审美、一点好奇心，<br />把平凡日子，过成喜欢的样子。</p>
-            <a className="pill-button" href="#about">来认识一下我 <span aria-hidden="true">↓</span></a>
+            <a className="pill-button" href="#about">来认识一下我</a>
           </div>
           <p className="hero-location"><span aria-hidden="true">✳</span> BASED IN SHENZHEN · MADE WITH LOVE</p>
           <span className="hero-bottom-flower" aria-hidden="true">✿</span>
@@ -36,8 +37,8 @@ export default function Home() {
         <section className="about section-cream" id="about" aria-labelledby="about-title">
           <div className="section-intro"><p className="eyebrow">A LITTLE BIT ABOUT ME</p><h2 id="about-title">慢慢认识，也会<span className="pink-underline">很有趣。</span></h2><p>慢热是我的开场，真诚是我的底色。</p></div>
           <div className="about-layout">
-            <div className="portrait-wrap"><div className="tape tape-portrait" /><figure className="polaroid"><img src="/images/yina-and-dog.jpg" width="1280" height="960" alt="詹依娜抱着她的小狗" loading="lazy" /><figcaption>me & my little sunshine ♡</figcaption></figure><span className="portrait-label">nice to meet you!</span><span className="portrait-flower" aria-hidden="true">✿</span></div>
-            <div className="about-copy"><p className="handwritten">Hi, I&apos;m Yina!</p><h3>设计出身，<br />生活里的美好收集者。</h3><p>我是来自深圳的詹依娜，毕业于<span className="emphasis">广州美术学院</span>，学习的是<span className="emphasis">产品设计</span>。对我来说，审美不只在作品里，也藏在穿搭、一件小饰品和生活的细节里。</p><p>我有一点慢热、内向，心思细腻，也热心善良。刚认识时可能安静一些，熟悉之后，就会慢慢打开话匣子。</p><div className="personal-tags"><span>INFP · 理想主义</span><span>手工 & 绘画爱好者</span><span>两只小狗的全职铲屎官</span></div><a className="text-link" href={feishuUrl} target="_blank" rel="noopener noreferrer">翻翻我的个人说明书 <span aria-hidden="true">↗</span></a></div>
+            <div className="portrait-wrap"><div className="tape tape-portrait" /><figure className="polaroid"><img src={assetPath("/images/yina-and-dog.jpg")} width="1280" height="960" alt="詹依娜抱着她的小狗" loading="lazy" /><figcaption>me & my little sunshine ♡</figcaption></figure><span className="portrait-label">nice to meet you!</span><span className="portrait-flower" aria-hidden="true">✿</span></div>
+            <div className="about-copy"><p className="handwritten">Hi, I&apos;m Yina!</p><h3>设计出身，<br />生活里的美好收集者。</h3><p>我是来自深圳的詹依娜，毕业于<span className="emphasis">广州美术学院</span>，学习的是<span className="emphasis">产品设计</span>。对我来说，审美不只在作品里，也藏在穿搭、一件小饰品和生活的细节里。</p><p>我有一点慢热、内向，心思细腻，也热心善良。刚认识时可能安静一些，熟悉之后，就会慢慢打开话匣子。</p><div className="personal-tags"><span>INFP · 理想主义</span><span>手工 & 绘画爱好者</span><span>两只小狗的全职铲屎官</span></div><a className="text-link" href={feishuUrl} target="_blank" rel="noopener noreferrer">翻翻我的个人说明书</a></div>
           </div>
         </section>
         <section className="experience checker-pink" id="experience" aria-labelledby="experience-title">
@@ -46,10 +47,10 @@ export default function Home() {
           <p className="experience-extra">也曾在潮牌女装店、黄金奢侈品品牌做销售，<br className="mobile-break" />在与人相处的过程中，练习观察、倾听与表达。</p>
           <div className="skill-strip"><span>审美与视觉创作</span><span aria-hidden="true">✳</span><span>新媒体素材拍摄</span><span aria-hidden="true">✳</span><span>把想法认真落地</span></div>
         </section>
-        <section className="life" id="life" aria-labelledby="life-title"><div className="section-intro"><p className="eyebrow">LITTLE PAWS, BIG LOVE</p><h2 id="life-title">我的日子，有<span className="pink-underline">两份毛茸茸。</span></h2><p>“我非常爱我的小狗，她们填满了我平淡的生活。”</p><span className="life-handwritten">a few of my favorite moments ↓</span></div><PhotoGallery /><p className="gallery-hint">点开照片，看看我的小小快乐 <span aria-hidden="true">♡</span></p></section>
-        <section className="hello section-cream" id="hello" aria-labelledby="hello-title"><div className="hello-art" aria-hidden="true"><Doodle kind="coconut" /><span>let&apos;s say hello!</span></div><div className="hello-copy"><p className="eyebrow">GOOD THINGS START WITH A HELLO</p><h2 id="hello-title">很高兴，<br />在这里<span className="pink-underline">遇见你。</span></h2><p>如果你也喜欢设计、穿搭、手作，或者小狗，<br />那我们已经有了一个很好的聊天开场。</p><a className="pill-button" href={feishuUrl} target="_blank" rel="noopener noreferrer">更多关于椰奶 <span aria-hidden="true">↗</span></a></div><span className="hello-heart" aria-hidden="true">♡</span></section>
+        <section className="life" id="life" aria-labelledby="life-title"><div className="section-intro"><p className="eyebrow">LITTLE PAWS, BIG LOVE</p><h2 id="life-title">我的日子，有<span className="pink-underline">两份毛茸茸。</span></h2><p>我非常爱我的小狗，她们让平淡的生活多了许多快乐。</p><span className="life-handwritten">a few of my favorite moments ↓</span></div><PhotoGallery /><p className="gallery-hint">点开照片，看看我的小小快乐 <span aria-hidden="true">♡</span></p></section>
+        <section className="hello section-cream" id="hello" aria-labelledby="hello-title"><div className="hello-art" aria-hidden="true"><Doodle kind="coconut" /><span>let&apos;s say hello!</span></div><div className="hello-copy"><p className="eyebrow">GOOD THINGS START WITH A HELLO</p><h2 id="hello-title">很高兴，<br />在这里<span className="pink-underline">遇见你。</span></h2><p>如果你也喜欢设计、穿搭、手作，或者小狗，<br />那我们已经有了一个很好的聊天开场。</p><a className="pill-button" href={feishuUrl} target="_blank" rel="noopener noreferrer">更多关于椰奶</a></div><span className="hello-heart" aria-hidden="true">♡</span></section>
       </main>
-      <footer className="site-footer"><a className="footer-brand" href="#top">椰奶<span>YINA&apos;S LITTLE WORLD</span></a><p>保持柔软，保持好奇。<br /><span>© 2026 詹依娜 · Made with a little love ♡</span></p><a className="back-to-top" href="#top">回到顶部 <span aria-hidden="true">↑</span></a></footer>
+      <footer className="site-footer"><a className="footer-brand" href="#top">椰奶<span>YINA&apos;S LITTLE WORLD</span></a><p>保持柔软，保持好奇。<br /><span>© 2026 詹依娜 · Made with a little love ♡</span></p><a className="back-to-top" href="#top">回到顶部</a></footer>
     </div>
     <p className="outside-note">a little corner of the internet, all my own.</p>
   </>;

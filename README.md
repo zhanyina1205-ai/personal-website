@@ -23,3 +23,20 @@ pnpm test
 `app/page.tsx` 管理文案和页面结构，`app/globals.css` 管理视觉样式，`app/doodles.tsx` 包含矢量插画，`app/photo-gallery.tsx` 管理相册交互。照片位于 `public/images/`。
 
 `.openai/hosting.json` 保留当前 Sites 项目身份。发布沿用该项目的现有访问权限。
+
+## GitHub Pages
+
+源码仓库：https://github.com/zhanyina1205-ai/personal-website
+
+网站地址：https://zhanyina1205-ai.github.io/personal-website/
+
+仓库 Settings → Pages → Source 选择 **GitHub Actions**。每次推送到 `main`，工作流会检查代码、构建静态网页、校验图片和样式路径，然后自动发布。
+
+本地构建 GitHub 版本：
+
+```sh
+NEXT_PUBLIC_BASE_PATH=/personal-website pnpm build:pages
+NEXT_PUBLIC_BASE_PATH=/personal-website pnpm test:pages
+```
+
+发布目录为 `dist/client`，包含预先生成的 HTML、样式、脚本和照片。GitHub Pages 无需运行服务器。
