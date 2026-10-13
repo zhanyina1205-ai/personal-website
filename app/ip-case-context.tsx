@@ -4,7 +4,7 @@ const accounts = [
   { platform: "抖音 · 美妆主号", name: "是亮亮", followers: "199.4", unit: "万", purpose: "美妆教程、发型、好物与 vlog" },
   { platform: "小红书 · 美妆号", name: "是亮亮", followers: "125.1", unit: "万", purpose: "美妆与好物种草" },
   { platform: "小红书 · 穿搭号", name: "涂芷靓", followers: "11.9", unit: "万", purpose: "服饰搭配与整体造型展示", featured: true },
-  { platform: "抖音 · 日常小号", name: "涂芷靓", followers: "8,879", unit: "", purpose: "生活表达与个人形象" },
+  { platform: "抖音 · 穿搭号", name: "涂芷靓", followers: "12.8", unit: "万", purpose: "生活表达与个人形象" },
 ];
 
 export function IpCaseContext() {
@@ -18,7 +18,7 @@ export function IpCaseContext() {
       <p className="matrix-purpose">{account.purpose}</p>
       {account.featured && <span className="matrix-role">我主要负责的账号 ↗</span>}
     </article>)}</div>
-    <p className="source-note ip-data-note">数据来自项目报告快照，非实时；受众数据为报告截图账号口径。各平台粉丝可能重合，不作加总。账号规模与历史增长属于项目背景，我的实际职责为 PR 商务对接、选品搭配和剪辑。</p>
+    <p className="source-note ip-data-note">数据来自项目报告快照，非实时；抖音穿搭号信息由本人补充修正，受众数据为报告截图账号口径。各平台粉丝可能重合，不作加总。账号规模与历史增长属于项目背景，我的实际职责为 PR 商务对接、选品搭配和剪辑。</p>
 
     <div className="ip-context-heading review-heading"><h4>我做的 IP 调研与复盘</h4><span>从项目观察，到内容判断</span></div>
     <div className="ip-review-grid">
