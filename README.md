@@ -37,3 +37,7 @@ app/page.tsx 管理文案，app/globals.css 管理版式，app/document-media.ts
 源码仓库：https://github.com/zhanyina1205-ai/personal-website
 
 静态导出使用 NEXT_PUBLIC_BASE_PATH=/personal-website pnpm build:pages，再执行同样环境变量下的 pnpm test:pages。当前发布使用 Sites，地址为 https://zhan-yina.zhanyina1205.chatgpt.site。
+
+## 人像照片调整
+
+2026.10.14 按用户要求，将文档中的个人拍立得裁成近景人像，去掉原照片里的边框、字样和桌面背景，采用偏黑白的暖灰复古胶片色调。使用内置 image_gen 编辑，最终素材为 public/new-document/portrait-vintage.png；原图仍保留。首屏与个人介绍中的同一照片同步引用新素材。
