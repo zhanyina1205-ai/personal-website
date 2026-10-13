@@ -27,7 +27,5 @@ export function IpNotebook() {
     <Flourish className="page-flourish"/>
    </div>
   </article>
-  <div className="notebook-gallery-heading"><h4>项目影像</h4><span>文档里的三张照片 · 点击查看完整原图 ↗</span></div>
-  <div className="notebook-gallery"><figure><DocumentMedia src="/new-document/ip-cover.png" alt="是亮亮的户外人像照片"/><figcaption><span>01 / PORTRAIT</span><span>人物表达</span></figcaption></figure><figure><DocumentMedia src="/new-document/ip-series.png" alt="是亮亮手持番石榴的户外三联照片"/><figcaption><span>02 / MOMENTS</span><span>日常镜头</span></figcaption></figure><figure><DocumentMedia src="/new-document/ip-portrait.png" alt="是亮亮手持落叶的户外人物照片"/><figcaption><span>03 / STYLE</span><span>造型与氛围</span></figcaption></figure></div>
  </div>;
 }
