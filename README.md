@@ -2,13 +2,15 @@
 
 黑色背景、浅粉色粗体标题、奶油纸页档案夹和实体回形针的个人作品集。首屏和整体版式依据用户最新提供的两张参考图重做。
 
-## 唯一内容来源
+## 内容来源
 
-本版正文及五张图片均来自新版飞书文档：https://my.feishu.cn/wiki/O6kZwoRPLiphBykwHiKcOgbTnld
+个人资料、实际职责及五张图片来自新版飞书文档：https://my.feishu.cn/wiki/O6kZwoRPLiphBykwHiKcOgbTnld
 
 本次通过文档公开页面完整读取；CLI 读取被平台数据安全策略拦截。采集的正文与图片保存在忽略的 work/new-doc-* 文件中。页面使用的图片位于 public/new-document/。
 
-不引用旧个人说明书、旧生活相册或另外的 IP 调研报告。新版文档中空白的工作经历、个人技能标题不补写虚构信息；能力展示仅从文档明确写出的实际工作与创作流程提炼。
+按用户 2026.10.14 的补充，IP 项目部分还使用其制作的报告：https://zhanyina1205-ai.github.io/liangliang-ip-report/ 。提取账号定位、四个账号的数据快照和用户的调研判断，区分账号背景与个人职责、个人成果，不将历史增长或报价计为个人业绩。
+
+不引用旧个人说明书或旧生活相册。新版文档中空白的工作经历、个人技能标题不补写虚构信息；能力展示仅从文档明确写出的实际工作与创作流程提炼。
 
 ## 页面内容
 
@@ -24,7 +26,7 @@
 
 ## 开发和验证
 
-pnpm dev 启动本地预览。pnpm build 构建 Sites Worker。pnpm test 验证渲染、内部导航、素材完整性及旧内容未被引用。
+pnpm dev 启动本地预览。pnpm build 构建 Sites Worker。pnpm test 验证渲染、内部导航、素材完整性及新增报告口径。
 
 app/page.tsx 管理文案，app/globals.css 管理版式，app/document-media.tsx 提供原图放大、Esc 关闭和焦点恢复。保留 .openai/hosting.json 的 Sites 身份与现有公开权限。
 

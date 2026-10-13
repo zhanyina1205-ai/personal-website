@@ -22,7 +22,11 @@ test("renders Yina's biography and main sections without the starter placeholder
   assert.match(html, /是亮亮/);
   assert.match(html, /椰奶没喝饱/);
   assert.match(html, /PR 商务对接/);
-  assert.doesNotMatch(html, /2,000万|51\.3|liangliang-ip-report|\/images\/feishu-|生活与灵感|潮牌女装/);
+  assert.match(html, /账号定位与矩阵/);
+  assert.match(html, /11\.9/);
+  assert.match(html, /不代表个人增长业绩/);
+  assert.match(html, /https:\/\/zhanyina1205-ai\.github\.io\/liangliang-ip-report\//);
+  assert.doesNotMatch(html, /2,000万|\/images\/feishu-|生活与灵感|潮牌女装/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/);
 });
 
