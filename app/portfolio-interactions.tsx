@@ -55,7 +55,7 @@ export function PortfolioInteractions() {
     updateReading();
 
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(
-      ".section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-review-grid article,.own-project-copy,.phone-display,.lookbook,.notes-heading,.note-links>a,.shop-project,.workflow-list article,.support-intro,.support-cards article,.contact-layout,.footer-line",
+      ".section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.lookbook,.notes-heading,.note-links>a,.shop-project,.workflow-list article,.support-intro,.support-cards article,.contact-layout,.footer-line",
     ));
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
