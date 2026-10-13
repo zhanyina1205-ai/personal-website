@@ -1,50 +1,37 @@
-# 詹依娜 · 内容与 IP 运营作品集
+# 詹依娜 · IP 助理作品集
 
-面向 IP 助理求职的个人作品集，以奶油纸色、粉色大字、黑色分区、手写字体和照片拼贴呈现。视觉依据用户提供的四张参考图制作。
+黑色背景、浅粉色粗体标题、奶油纸页档案夹和实体回形针的个人作品集。首屏和整体版式依据用户最新提供的两张参考图重做。
+
+## 唯一内容来源
+
+本版正文及五张图片均来自新版飞书文档：https://my.feishu.cn/wiki/O6kZwoRPLiphBykwHiKcOgbTnld
+
+本次通过文档公开页面完整读取；CLI 读取被平台数据安全策略拦截。采集的正文与图片保存在忽略的 work/new-doc-* 文件中。页面使用的图片位于 public/new-document/。
+
+不引用旧个人说明书、旧生活相册或另外的 IP 调研报告。新版文档中空白的工作经历、个人技能标题不补写虚构信息；能力展示仅从文档明确写出的实际工作与创作流程提炼。
 
 ## 页面内容
 
-- 个人介绍与 IP 助理求职方向
-- 核心案例：是亮亮 IP 项目复盘、穿搭账号「椰奶没喝饱」
-- 可展开的代表作品、数据判断及饰品品牌「摇滚椰奶冻」经历
-- 工作能力与个人介绍卡片
-- 19 张个人照片，按穿搭旅行、手作和小狗分类；支持大图、左右切换、Esc 关闭及焦点恢复
-- 完整 IP 项目报告和新版飞书个人说明书入口
+- 档案夹首屏与新文档提供的个人拍立得
+- 基本信息、教育背景与个人标签
+- 是亮亮 / 涂芷靓：PR 商务对接、选品搭配与剪辑，附代表作品和原图预览
+- 椰奶没喝饱_：风格变化、主页截图、五条代表内容与账号入口
+- 摇滚椰奶冻：独立经营流程、一年销售五千单以上与销售额十万元以上
+- 从选题到发布的五步创作流程
+- 新文档所附主页截图中提供的联系邮箱
 
-## 内容来源
+个人账号粉丝与获赞收藏数按新文档所附截图呈现，不声称实时数据。
 
-个人信息、穿搭账号及品牌数据沿用 `work/feishu-current.json` 中此前保存的个人说明书。新版飞书链接于本次制作时被接口数据安全策略拦截，未读取其最新内容。页面标明账号数据非实时数据。
+## 开发和验证
 
-IP 案例依据用户指定报告网站的本地源码与素材整理：`/Users/zhanyina/Documents/ChatGPT/自媒体定位/github-sites/liangliang-ip-report/docs/`。仅展示项目背景、作品观察与报告复盘；不把 IP 历史增长、粉丝规模及商业数据归为个人业绩。
+pnpm dev 启动本地预览。pnpm build 构建 Sites Worker。pnpm test 验证渲染、内部导航、素材完整性及旧内容未被引用。
 
-## 本地运行
+app/page.tsx 管理文案，app/globals.css 管理版式，app/document-media.tsx 提供原图放大、Esc 关闭和焦点恢复。保留 .openai/hosting.json 的 Sites 身份与现有公开权限。
 
-需要 Node.js 22.13.0 或更高版本，使用 pnpm 管理依赖。
+旧相册组件与原图保留在历史源码中，本版不引用。
 
-```sh
-pnpm install
-pnpm dev
-pnpm build
-pnpm test
-```
-
-`app/page.tsx` 管理文案和页面结构，`app/globals.css` 管理视觉样式，`app/portfolio-gallery.tsx` 管理分类相册。照片位于 `public/images/`，本地字体位于 `public/fonts/`。旧相册组件仍保留在源码中，当前页面使用新的分类相册。
-
-`.openai/hosting.json` 保留当前 Sites 项目身份。发布沿用该项目的现有访问权限。
-
-## GitHub Pages
+## GitHub Pages 兼容
 
 源码仓库：https://github.com/zhanyina1205-ai/personal-website
 
-网站地址：https://zhanyina1205-ai.github.io/personal-website/
-
-仓库 Settings → Pages → Source 选择 **GitHub Actions**。每次推送到 `main`，工作流会检查代码、构建静态网页、校验图片和样式路径，然后自动发布。
-
-本地构建 GitHub 版本：
-
-```sh
-NEXT_PUBLIC_BASE_PATH=/personal-website pnpm build:pages
-NEXT_PUBLIC_BASE_PATH=/personal-website pnpm test:pages
-```
-
-发布目录为 `dist/client`，包含预先生成的 HTML、样式、脚本和照片。GitHub Pages 无需运行服务器。
+静态导出使用 NEXT_PUBLIC_BASE_PATH=/personal-website pnpm build:pages，再执行同样环境变量下的 pnpm test:pages。当前发布使用 Sites，地址为 https://zhan-yina.zhanyina1205.chatgpt.site。

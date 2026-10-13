@@ -17,10 +17,12 @@ async function render() {
 test("renders Yina's biography and main sections without the starter placeholder", async () => {
   const html = await render();
   assert.match(html, /<html[^>]*lang="zh-CN"/);
-  assert.match(html, /<title>詹依娜 Yina Zhan · 内容与 IP 运营作品集<\/title>/);
+  assert.match(html, /<title>詹依娜 · IP 助理作品集<\/title>/);
   assert.match(html, /广州美术学院/);
   assert.match(html, /是亮亮/);
   assert.match(html, /椰奶没喝饱/);
+  assert.match(html, /PR 商务对接/);
+  assert.doesNotMatch(html, /2,000万|51\.3|liangliang-ip-report|\/images\/feishu-|生活与灵感|潮牌女装/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/);
 });
 
@@ -30,7 +32,7 @@ test("internal navigation resolves and published photos exist", async () => {
   for (const [, target] of html.matchAll(/\bhref="#([^"]+)"/g)) {
     assert.ok(ids.has(target), `Missing navigation target: ${target}`);
   }
-  const sources = new Set([...html.matchAll(/\bsrc="(\/images\/[^"?]+)"/g)].map(match => match[1]));
-  assert.equal([...sources].filter(source => source.includes("/feishu-")).length, 19, "All 19 photographs from the personal document must render");
+  const sources = new Set([...html.matchAll(/\bsrc="(\/new-document\/[^"?]+)"/g)].map(match => match[1]));
+  assert.equal(sources.size, 5, "The portfolio uses the five images from the new document");
   for (const source of sources) await access(new URL(`../public${source}`, import.meta.url));
 });

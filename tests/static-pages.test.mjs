@@ -4,7 +4,7 @@ import test from "node:test";
 
 test("GitHub Pages exports the biography and every referenced local asset", async () => {
   const html = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
-  assert.match(html, /<title>詹依娜 Yina Zhan · 内容与 IP 运营作品集<\/title>/);
+  assert.match(html, /<title>詹依娜 · IP 助理作品集<\/title>/);
   assert.match(html, /广州美术学院/);
   assert.match(html, /是亮亮/);
   const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
