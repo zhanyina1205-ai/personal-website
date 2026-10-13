@@ -17,10 +17,10 @@ async function render() {
 test("renders Yina's biography and main sections without the starter placeholder", async () => {
   const html = await render();
   assert.match(html, /<html[^>]*lang="zh-CN"/);
-  assert.match(html, /<title>椰奶的小站 · 詹依娜 Zhan Yina<\/title>/);
+  assert.match(html, /<title>詹依娜 Yina Zhan · 内容与 IP 运营作品集<\/title>/);
   assert.match(html, /广州美术学院/);
-  assert.match(html, /小红书饰品店铺店主/);
-  assert.match(html, /两只小狗的全职铲屎官/);
+  assert.match(html, /是亮亮/);
+  assert.match(html, /椰奶没喝饱/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/);
 });
 
@@ -31,6 +31,6 @@ test("internal navigation resolves and published photos exist", async () => {
     assert.ok(ids.has(target), `Missing navigation target: ${target}`);
   }
   const sources = new Set([...html.matchAll(/\bsrc="(\/images\/[^"?]+)"/g)].map(match => match[1]));
-  assert.equal(sources.size, 19, "All 19 photographs from the personal document must render");
+  assert.equal([...sources].filter(source => source.includes("/feishu-")).length, 19, "All 19 photographs from the personal document must render");
   for (const source of sources) await access(new URL(`../public${source}`, import.meta.url));
 });
