@@ -17,7 +17,7 @@ async function render() {
 test("renders Yina's biography and main sections without the starter placeholder", async () => {
   const html = await render();
   assert.match(html, /<html[^>]*lang="zh-CN"/);
-  assert.match(html, /<title>詹依娜 · IP 助理作品集<\/title>/);
+  assert.match(html, /<title>詹依娜 · 个人作品集<\/title>/);
   assert.match(html, /广州美术学院/);
   assert.match(html, /是亮亮/);
   assert.match(html, /椰奶没喝饱/);

@@ -18,7 +18,7 @@ export default function Home(){return <>
      <div className="paper-layer paper-back-one" aria-hidden="true"/><div className="paper-layer paper-back-two" aria-hidden="true"/>
      <div className="front-sheet"><div className="paper-holes" aria-hidden="true"><i/><i/><i/></div><span className="sheet-index">YINA / PERSONAL FILE 001</span>
       <figure className="portrait-card"><span className="paperclip" aria-hidden="true"/><img src={assetPath("/new-document/portrait.jpg")} alt="詹依娜在新个人文档中提供的拍立得照片" width={1080} height={1080} fetchPriority="high"/><figcaption>詹依娜 <span>也可以叫我椰奶</span></figcaption></figure>
-      <div className="sheet-copy"><p>Hi～我是椰奶<span aria-hidden="true">🥥</span></p><span>广州美术学院 · 产品设计专业<br/>IP 助理求职作品集</span><div className="sheet-rule"/><small>商务对接 / 选品搭配 / 拍摄剪辑</small></div>
+      <div className="sheet-copy"><p>Hi～我是椰奶<span aria-hidden="true">🥥</span></p><span>广州美术学院 · 产品设计专业<br/>个人作品集</span><div className="sheet-rule"/><small>商务对接 / 选品搭配 / 拍摄剪辑</small></div>
      </div>
     </div>
     <div className="hero-footer"><span>ZHAN YINA<br/><small>广东 · 深圳</small></span><a href="#about" className="scroll-prompt">OPEN MY FILE <span>↓</span></a><span>2026<br/><small>PORTFOLIO</small></span></div>
