@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./ip-notebook.css";
-import "./entry-page-turn.css";
 import "./portfolio-interactions.css";
 import "./lookbook.css";
 import "./account-collage.css";

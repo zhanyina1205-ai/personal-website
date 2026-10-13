@@ -4,7 +4,6 @@ import { Lookbook } from "./lookbook";
 import { AccountCollage } from "./account-collage";
 import { IpCaseContext } from "./ip-case-context";
 import { IpNotebook } from "./ip-notebook";
-import { EntryPageTurn } from "./entry-page-turn";
 import { PortfolioInteractions, CopyEmail } from "./portfolio-interactions";
 
 const documentUrl="https://my.feishu.cn/wiki/O6kZwoRPLiphBykwHiKcOgbTnld?from=from_copylink";
@@ -12,7 +11,6 @@ const noteLinks=["https://xhslink.cn/o/5K2l3IjfczA","https://xhslink.cn/o/304rUV
 const workflow=[{title:"选题",text:"找热门笔记作为参考依据。"},{title:"选品搭配",text:"参考热门单品，搭配成自己的风格。"},{title:"拍摄",text:"对镜拍、支架前置拍、户外拍。"},{title:"修图剪辑",text:"使用剪映、Remotion 完成内容制作。"},{title:"发布",text:"发布到小红书、抖音。"}];
 
 export default function Home(){return <>
- <EntryPageTurn/>
  <PortfolioInteractions/>
  <a className="skip-link" href="#main">跳到主要内容</a>
  <div className="site-canvas" id="top">
@@ -22,7 +20,7 @@ export default function Home(){return <>
     <div className="hero-label"><span>PERSONAL PORTFOLIO</span><span>CONTENT / STYLE / IP</span></div>
     <h1 id="hero-title">Portfolio<span className="sr-only"> · 詹依娜的个人作品集</span></h1>
     <div className="paper-stack">
-     <div className="paper-layer paper-back-one" aria-hidden="true"/><div className="paper-layer paper-back-two" aria-hidden="true"><div className="entry-page-reveal"><span>ABOUT ME / PERSONAL FILE</span><strong>詹依娜</strong><small>翻开下一页，认识我。</small></div></div>
+     <div className="paper-layer paper-back-one" aria-hidden="true"/><div className="paper-layer paper-back-two" aria-hidden="true"/>
      <div className="front-sheet"><div className="paper-holes" aria-hidden="true"><i/><i/><i/></div><span className="sheet-index">YINA / PERSONAL FILE 001</span>
       <figure className="portrait-card"><span className="paperclip" aria-hidden="true"/><img src={assetPath("/new-document/portrait-warm-vintage.png")} alt="詹依娜的复古暖色人像" width={1080} height={1080} fetchPriority="high"/><figcaption>詹依娜 <span>也可以叫我椰奶</span></figcaption></figure>
       <div className="sheet-copy"><p>Zhan YIna</p><span>广州美术学院 · 产品设计专业<br/>个人作品集</span><div className="sheet-rule"/><small>商务对接 / 选品搭配 / 拍摄剪辑</small></div>
