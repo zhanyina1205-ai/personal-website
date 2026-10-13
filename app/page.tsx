@@ -1,6 +1,7 @@
 import { assetPath } from "./asset-path";
 import { DocumentMedia } from "./document-media";
 import { IpCaseContext } from "./ip-case-context";
+import { HeroCollage } from "./hero-collage";
 
 const documentUrl="https://my.feishu.cn/wiki/O6kZwoRPLiphBykwHiKcOgbTnld?from=from_copylink";
 const noteLinks=["https://xhslink.cn/o/5K2l3IjfczA","https://xhslink.cn/o/304rUVT5FUg","https://xhslink.cn/o/AMX4gDLpkzf","https://xhslink.cn/o/2rejZlqDkbz","https://xhslink.cn/o/6ozW7w8dYis"];
@@ -11,18 +12,7 @@ export default function Home(){return <>
  <div className="site-canvas" id="top">
   <header className="site-header"><a href="#top" className="wordmark">詹依娜<span>YINA ZHAN</span></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#projects">我的作品</a><a href="#workflow">创作流程</a><a href="#contact" className="contact-pill">联系我 ↗</a></nav></header>
   <main id="main">
-   <section className="hero" aria-labelledby="hero-title">
-    <div className="hero-label"><span>PERSONAL PORTFOLIO</span><span>CONTENT / STYLE / IP</span></div>
-    <h1 id="hero-title">Portfolio<span className="sr-only"> · 詹依娜的个人作品集</span></h1>
-    <div className="paper-stack">
-     <div className="paper-layer paper-back-one" aria-hidden="true"/><div className="paper-layer paper-back-two" aria-hidden="true"/>
-     <div className="front-sheet"><div className="paper-holes" aria-hidden="true"><i/><i/><i/></div><span className="sheet-index">YINA / PERSONAL FILE 001</span>
-      <figure className="portrait-card"><span className="paperclip" aria-hidden="true"/><img src={assetPath("/new-document/portrait-vintage.png")} alt="詹依娜的复古黑白人像" width={1080} height={1080} fetchPriority="high"/><figcaption>詹依娜 <span>也可以叫我椰奶</span></figcaption></figure>
-      <div className="sheet-copy"><p>Zhan YIna</p><span>广州美术学院 · 产品设计专业<br/>个人作品集</span><div className="sheet-rule"/><small>商务对接 / 选品搭配 / 拍摄剪辑</small></div>
-     </div>
-    </div>
-    <div className="hero-footer"><span>ZHAN YINA<br/><small>广东 · 深圳</small></span><a href="#about" className="scroll-prompt">OPEN MY FILE <span>↓</span></a><span>2026<br/><small>PORTFOLIO</small></span></div>
-   </section>
+   <HeroCollage/>
 
    <section className="about-file" id="about" aria-labelledby="about-title">
     <div className="folder-tabs"><a href="#about" aria-current="location">关于我 <span>01</span></a><a href="#projects">我的作品 <span>02</span></a><a href="#workflow">创作流程 <span>03</span></a></div>

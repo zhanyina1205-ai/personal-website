@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./scrapbook.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <head><style>{`@font-face{font-family:ScrapbookScript;src:url(${assetPath("/fonts/script.woff2")}) format("woff2");font-style:normal;font-weight:400;font-display:swap}`}</style></head>
       <body>{children}</body>
     </html>
   );
