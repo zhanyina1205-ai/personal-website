@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./ip-notebook.css";
+import "./entry-page-turn.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {
