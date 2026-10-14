@@ -8,13 +8,13 @@
 .ip-collage-label{position:absolute;top:48%;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:2px;color:#80645f;opacity:.4}
 .ip-work-hero{position:absolute;left:25%;top:25%;width:50%;height:49%;z-index:2}
 .ip-work-hero>.document-media{height:100%;width:100%;overflow:visible;background:none}
-.ip-work-hero>.document-media>img{height:100%;width:100%;object-fit:contain;filter:none}
+.ip-work-hero>.document-media>img{height:100%;width:100%;object-fit:contain;filter:url(#ip-look-outline)}
 .ip-work-hero .media-enlarge{right:17%;bottom:16%;width:29px;height:29px;font-size:21px;background:var(--cream)}
 
 
 .ip-floating-look{position:absolute;width:25%;height:23.5%;margin:0;padding:0;border:0;background:none;z-index:3;transition:transform .25s}
 .ip-floating-look .document-media{height:calc(100% - 16px);width:100%;overflow:visible;background:none;border:0;box-shadow:none}
-.ip-floating-look .document-media>img{width:100%;height:100%;object-fit:contain;filter:none}
+.ip-floating-look .document-media>img{width:100%;height:100%;object-fit:contain;filter:url(#ip-look-outline)}
 .ip-floating-look .media-enlarge{width:20px;height:20px;font-size:14px;bottom:10%;right:8%;background:var(--pink)}
 .ip-floating-look figcaption{font-size:8px;letter-spacing:1px;text-align:center;color:#785c5e;line-height:16px}
 .ip-floating-look-1{left:7%;top:0;transform:rotate(-5deg)}

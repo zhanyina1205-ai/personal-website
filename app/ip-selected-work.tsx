@@ -18,6 +18,16 @@ const looks = [
 
 export function IpSelectedWork() {
   return <section className="ip-selected-work" id="ip-selected-work" aria-labelledby="ip-work-title">
+    <svg aria-hidden="true" width="0" height="0" focusable="false" style={{position:"absolute"}}>
+      <defs>
+        <filter id="ip-look-outline" x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+          <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="expanded"/>
+          <feFlood floodColor="#fff8ef"/>
+          <feComposite in2="expanded" operator="in" result="outline"/>
+          <feMerge><feMergeNode in="outline"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+    </svg>
     <div className="ip-work-topline"><span>YINA / SELECTED WORK 01</span><span>FOR LIANGLIANG</span></div>
     <header className="ip-work-heading"><div><p>为她做的穿搭内容</p><h4 id="ip-work-title">Style in Focus</h4></div><span>从选品搭配，到内容剪辑。<br/>把每一种风格，放进同一个镜头。</span></header>
 
