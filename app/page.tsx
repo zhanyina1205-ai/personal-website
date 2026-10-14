@@ -1,5 +1,6 @@
 import { assetPath } from "./asset-path";
 import { DocumentMedia } from "./document-media";
+import { NoteCards } from "./note-cards";
 import { Lookbook } from "./lookbook";
 import { AccountCollage } from "./account-collage";
 import { IpCaseContext } from "./ip-case-context";
@@ -7,7 +8,6 @@ import { IpNotebook } from "./ip-notebook";
 import { PortfolioInteractions, CopyEmail } from "./portfolio-interactions";
 
 const documentUrl="https://my.feishu.cn/wiki/O6kZwoRPLiphBykwHiKcOgbTnld?from=from_copylink";
-const noteLinks=["https://xhslink.cn/o/5K2l3IjfczA","https://xhslink.cn/o/304rUVT5FUg","https://xhslink.cn/o/AMX4gDLpkzf","https://xhslink.cn/o/2rejZlqDkbz","https://xhslink.cn/o/6ozW7w8dYis"];
 const workflow=[{title:"选题",text:"找热门笔记作为参考依据。"},{title:"选品搭配",text:"参考热门单品，搭配成自己的风格。"},{title:"拍摄",text:"对镜拍、支架前置拍、户外拍。"},{title:"修图剪辑",text:"使用剪映、Remotion 完成内容制作。"},{title:"发布",text:"发布到小红书、抖音。"}];
 
 export default function Home(){return <>
@@ -42,7 +42,7 @@ export default function Home(){return <>
 
     <article className="own-project"><div className="own-project-copy"><p className="eyebrow">02 / MY OWN ACCOUNT</p><h3>椰奶没喝饱_<span>小红书穿搭账号</span></h3><div className="style-journey"><div><span>学生时期</span><h4>美式甜心辣妹</h4><p>以学生党人设为主。</p></div><span className="journey-arrow" aria-hidden="true">↘</span><div><span>毕业之后</span><h4>姐系通勤感</h4><p>面向刚步入社会的女生，提升穿衣质感。</p></div></div><dl className="account-stats"><div><dt>粉丝</dt><dd>5.2<span>万</span></dd></div><div><dt>获赞与收藏</dt><dd>92.4<span>万</span></dd></div></dl><p className="source-note">以上为新文档所附主页截图中的数据。</p><a className="pink-button" href="https://xhslink.cn/o/ArBwd7GjccM" target="_blank" rel="noopener noreferrer">打开我的穿搭账号 <span>↗</span></a></div><AccountCollage/></article>
     <Lookbook/>
-    <div className="notes-heading"><h4>五条代表内容</h4><span>从原作品，了解我的风格 ↗</span></div><div className="note-links">{noteLinks.map((href,index)=><a href={href} target="_blank" rel="noopener noreferrer" key={href}><span className="note-index">0{index+1}</span><span>穿搭内容<span>小红书笔记</span></span><span className="note-arrow" aria-hidden="true">↗</span></a>)}</div>
+    <NoteCards/>
 
     <article className="shop-project"><div><p className="eyebrow">03 / MY LITTLE BUSINESS</p><h3>摇滚椰奶冻<span>朋克、辣妹风格的平价项链店铺</span></h3><p>从选品、供应链对接、定价、上架和运营，到带货笔记的拍摄剪辑，均由我独立完成。</p><a className="underlined-link" href="https://xhslink.cn/o/7fHIjh5lHki" target="_blank" rel="noopener noreferrer">逛逛我的饰品店铺 ↗</a></div><div className="shop-stats"><div><b>5,000<span>+</span></b><span>一年累计销售 / 单</span></div><div><b>10<span>万+</span></b><span>销售额 / 元</span></div></div></article>
    </section>

@@ -4,6 +4,7 @@ import "./ip-notebook.css";
 import "./portfolio-interactions.css";
 import "./lookbook.css";
 import "./account-collage.css";
+import "./note-cards.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {
