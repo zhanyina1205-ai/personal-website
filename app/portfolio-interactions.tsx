@@ -55,7 +55,7 @@ export function PortfolioInteractions() {
     updateReading();
 
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(
-      ".section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.lookbook,.notes-heading,.note-links>a,.shop-project,.workflow-list article,.support-intro,.support-cards article,.contact-layout,.footer-line",
+      ".section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.lookbook,.notes-heading,.note-card-grid>a,.shop-project,.workflow-list article,.support-intro,.support-cards article,.contact-layout,.footer-line",
     ));
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -64,7 +64,7 @@ export function PortfolioInteractions() {
         if (preference.matches) return;
         const element = entry.target as HTMLElement;
         const siblings = Array.from(element.parentElement?.children || []);
-        const staggered = element.matches(".ip-account-matrix article,.ip-review-grid article,.note-links>a,.workflow-list article,.support-cards article");
+        const staggered = element.matches(".ip-account-matrix article,.ip-review-grid article,.note-card-grid>a,.workflow-list article,.support-cards article");
         const animation = element.animate([
           { opacity: 0, transform: "translateY(18px)" },
           { opacity: 1, transform: "translateY(0)" },
