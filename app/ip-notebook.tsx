@@ -16,7 +16,6 @@ export function IpNotebook() {
    <div className="notebook-cover">
     <DocumentMedia src="/new-document/ip-cover.png" alt="是亮亮的户外人像照片" className="notebook-cover-photo"/>
     <div className="notebook-cover-label"><span>LIANGLIANG / IP PROJECT 01</span><span>BEAUTY · STYLE · LIFE</span></div>
-    <Flourish className="cover-flourish"/>
     <p className="notebook-cover-word" aria-hidden="true">Liangliang</p>
     <div className="notebook-inset"><DocumentMedia src="/new-document/ip-portrait.png" alt="是亮亮手持落叶的户外人物照片"/><span>another side of her.</span></div>
    </div>

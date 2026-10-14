@@ -1,3 +1,5 @@
+import { IpSelectedWork } from "./ip-selected-work";
+
 const reportUrl = "https://zhanyina1205-ai.github.io/liangliang-ip-report/";
 
 const accounts = [
@@ -20,6 +22,7 @@ export function IpCaseContext() {
     </article>)}</div>
     <p className="source-note ip-data-note">数据来自项目报告快照，非实时；抖音穿搭号信息由本人补充修正，受众数据为报告截图账号口径。各平台粉丝可能重合，不作加总。账号规模与历史增长属于项目背景，我的实际职责为 PR 商务对接、选品搭配和剪辑。</p>
 
+    <IpSelectedWork/>
     <div className="ip-context-heading review-heading"><h4>我做的 IP 调研与复盘</h4><span>从项目观察，到内容判断</span></div>
     <div className="ip-review-grid">
       <article><span>01 / 内容定位</span><h5>把选题变成具体需求</h5><p>从眼镜党、新手、特定妆效等人群与场景出发，检查标题承诺是否有画面支撑；穿搭则通过固定视角和整体造型形成辨识度。</p></article>
