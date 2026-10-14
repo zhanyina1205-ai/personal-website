@@ -87,6 +87,7 @@ export function PhotoGallery({ photos = dogPhotos, label = "小狗生活相册" 
   }
 
   return <>
+    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex -- The named gallery region supports arrow, Home and End keyboard navigation. */}
     <div className="album" role="region" aria-label={`${label}翻页浏览`} aria-roledescription="横向照片带" tabIndex={0} onKeyDown={event => keyboard(event, false)}>
       <div className="album-heading"><span>{label}</span><span>{photos.length} 张照片</span></div>
       <div className="gallery-film" onPointerMove={followMouse} onTouchStart={startSwipe} onTouchEnd={event => finishSwipe(event, false)}>

@@ -36,7 +36,9 @@ app/page.tsx 管理文案，app/globals.css 管理版式，app/document-media.ts
 
 源码仓库：https://github.com/zhanyina1205-ai/personal-website
 
-静态导出使用 NEXT_PUBLIC_BASE_PATH=/personal-website pnpm build:pages，再执行同样环境变量下的 pnpm test:pages。当前发布使用 Sites，地址为 https://zhan-yina.zhanyina1205.chatgpt.site。
+静态导出使用 NEXT_PUBLIC_BASE_PATH=/personal-website pnpm build:pages，再执行同样环境变量下的 pnpm test:pages。GitHub Pages 地址：https://zhanyina1205-ai.github.io/personal-website/ 。推送 main 后，GitHub Actions 自动构建、检查并发布。
+
+Sites 版本仍可访问：https://zhan-yina.zhanyina1205.chatgpt.site 。
 
 ## 人像照片调整
 
