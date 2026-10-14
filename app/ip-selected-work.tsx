@@ -16,10 +16,6 @@ const looks = [
   "白色波点衬衫", "蓝色条纹连衣裙", "黑白波点与珍珠配饰",
 ];
 
-function Handles() {
-  return <span className="ip-edit-handles" aria-hidden="true">{Array.from({length:8},(_,i)=><i key={i}/>)}</span>;
-}
-
 export function IpSelectedWork() {
   return <section className="ip-selected-work" id="ip-selected-work" aria-labelledby="ip-work-title">
     <div className="ip-work-topline"><span>YINA / SELECTED WORK 01</span><span>FOR LIANGLIANG</span></div>
@@ -30,7 +26,7 @@ export function IpSelectedWork() {
         <div className="ip-collage-orbit" aria-hidden="true"/>
         <span className="ip-collage-label">ONE ANGLE,<br/>MANY STYLES.</span>
         <div className="ip-work-hero"><DocumentMedia src="/ip-showcase/look-01.jpg" previewSrc="/ip-showcase/hero-cutout.png" alt="是亮亮戴小熊发箍的彩色穿搭"/><span className="ip-hero-caption">是亮亮<span>Her everyday style.</span></span></div>
-        {looks.slice(0,4).map((look,i)=><figure className={`ip-floating-look ip-floating-look-${i+1}`} key={look}><Handles/><DocumentMedia src={`/ip-showcase/look-${String(i+2).padStart(2,"0")}.jpg`} alt={`是亮亮的${look}造型`}/><figcaption>LOOK / {String(i+2).padStart(2,"0")}</figcaption></figure>)}
+        {looks.map((look,i)=><figure className={`ip-floating-look ip-floating-look-${i+1}`} key={look}><DocumentMedia src={`/ip-showcase/look-${String(i+2).padStart(2,"0")}.jpg`} previewSrc={`/ip-showcase/cutouts/look-${String(i+2).padStart(2,"0")}.png`} alt={`是亮亮的${look}造型`}/><figcaption>LOOK / {String(i+2).padStart(2,"0")}</figcaption></figure>)}
         <span className="ip-collage-star" aria-hidden="true">✳</span>
       </div>
 
@@ -46,7 +42,6 @@ export function IpSelectedWork() {
       </aside>
     </div>
 
-    <div className="ip-work-contact-strip" aria-label="更多穿搭照片">{looks.slice(4).map((look,i)=><figure key={look}><DocumentMedia src={`/ip-showcase/look-${String(i+6).padStart(2,"0")}.jpg`} alt={`是亮亮的${look}造型`}/><figcaption>{String(i+6).padStart(2,"0")}</figcaption></figure>)}</div>
     <footer className="ip-work-footer"><span>STYLING · EDITING · CONTENT</span><span>点击照片看原图，点击作品卡片打开笔记 ↗</span></footer>
   </section>;
 }
