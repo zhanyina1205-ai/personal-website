@@ -1,57 +1,55 @@
-import { Doodle } from "./doodles";
-import { PhotoGallery } from "./photo-gallery";
 import { assetPath } from "./asset-path";
+import { DocumentMedia } from "./document-media";
+import { Lookbook } from "./lookbook";
+import { AccountCollage } from "./account-collage";
+import { IpCaseContext } from "./ip-case-context";
+import { IpNotebook } from "./ip-notebook";
+import { PortfolioInteractions, CopyEmail } from "./portfolio-interactions";
 
-const feishuUrl = "https://my.feishu.cn/wiki/WfEOwMIK4ilHUQk7PpucZVjRnlc?from=from_copylink";
-const experiences = [
-  { no: "01", kind: "camera" as const, title: "把喜欢，拍成日常", en: "CONTENT & CREATION", role: "小红书穿搭博主", text: "从内容构思到拍摄、剪辑，再到服装商务对接，独立完成账号的每一个环节。", tags: "内容策划 / 图文视频 / 视觉表达" },
-  { no: "02", kind: "jewel" as const, title: "让小小饰品，闪闪发光", en: "MY LITTLE BUSINESS", role: "小红书饰品店铺店主", text: "选品、对接供应链、定价、上架、运营与客服，把一家小店从想法变成日常。", tags: "审美选品 / 电商运营 / 从 0 到 1" },
-  { no: "03", kind: "shirt" as const, title: "找到属于你的风格", en: "STYLE & CONNECTION", role: "穿搭风格定位主播", text: "搭建直播间，帮助粉丝找到适合自己的穿搭风格。在交流里，发现每个人的美。", tags: "穿搭定位 / 直播分享 / 真诚沟通" },
-];
+const documentUrl="https://my.feishu.cn/wiki/O6kZwoRPLiphBykwHiKcOgbTnld?from=from_copylink";
+const noteLinks=["https://xhslink.cn/o/5K2l3IjfczA","https://xhslink.cn/o/304rUVT5FUg","https://xhslink.cn/o/AMX4gDLpkzf","https://xhslink.cn/o/2rejZlqDkbz","https://xhslink.cn/o/6ozW7w8dYis"];
+const workflow=[{title:"选题",text:"找热门笔记作为参考依据。"},{title:"选品搭配",text:"参考热门单品，搭配成自己的风格。"},{title:"拍摄",text:"对镜拍、支架前置拍、户外拍。"},{title:"修图剪辑",text:"使用剪映、Remotion 完成内容制作。"},{title:"发布",text:"发布到小红书、抖音。"}];
 
-export default function Home() {
-  return <>
-    <a className="skip-link" href="#main-content">跳到主要内容</a>
-    <div className="site-shell" id="top">
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="椰奶的小站，返回首页"><span className="brand-flower" aria-hidden="true">✿</span><span>椰奶<span className="brand-en">YINA&apos;S LITTLE WORLD</span></span></a>
-        <nav aria-label="主导航"><a href="#about">关于椰奶</a><a href="#experience">我的经历</a><a href="#life">生活碎片</a><a className="nav-contact" href="#hello">打个招呼 <span aria-hidden="true">↗</span></a></nav>
-      </header>
-      <main id="main-content">
-        <section className="hero checker-blue" aria-labelledby="hero-title">
-          <div className="hero-note">a little soft, a little curious.</div>
-          <div className="sticker sticker-coconut"><Doodle kind="coconut" /><span>just be me ♡</span></div>
-          <div className="sticker sticker-flower"><Doodle kind="flower" /></div>
-          <div className="sticker sticker-camera"><Doodle kind="camera" /></div>
-          <div className="sticker sticker-dogs"><Doodle kind="dogs" /><span>my happy place</span></div>
-          <div className="hero-copy">
-            <p className="eyebrow">HELLO, WELCOME TO MY LITTLE WORLD</p>
-            <h1 id="hero-title">你好呀，我是<span className="name">詹依娜<span className="name-spark" aria-hidden="true">✳</span></span></h1>
-            <p className="hero-alias">也可以叫我 <span>椰奶</span> <span aria-hidden="true">♡</span></p>
-            <p className="hero-description">用一点审美、一点好奇心，<br />把平凡日子，过成喜欢的样子。</p>
-            <a className="pill-button" href="#about">来认识一下我 <span aria-hidden="true">↓</span></a>
-          </div>
-          <p className="hero-location"><span aria-hidden="true">✳</span> BASED IN SHENZHEN · MADE WITH LOVE</p>
-          <span className="hero-bottom-flower" aria-hidden="true">✿</span>
-        </section>
-        <section className="about section-cream" id="about" aria-labelledby="about-title">
-          <div className="section-intro"><p className="eyebrow">A LITTLE BIT ABOUT ME</p><h2 id="about-title">慢慢认识，也会<span className="pink-underline">很有趣。</span></h2><p>慢热是我的开场，真诚是我的底色。</p></div>
-          <div className="about-layout">
-            <div className="portrait-wrap"><div className="tape tape-portrait" /><figure className="polaroid"><img src={assetPath("/images/yina-and-dog.jpg")} width="1280" height="960" alt="詹依娜抱着她的小狗" loading="lazy" /><figcaption>me & my little sunshine ♡</figcaption></figure><span className="portrait-label">nice to meet you!</span><span className="portrait-flower" aria-hidden="true">✿</span></div>
-            <div className="about-copy"><p className="handwritten">Hi, I&apos;m Yina!</p><h3>设计出身，<br />生活里的美好收集者。</h3><p>我是来自深圳的詹依娜，毕业于<span className="emphasis">广州美术学院</span>，学习的是<span className="emphasis">产品设计</span>。对我来说，审美不只在作品里，也藏在穿搭、一件小饰品和生活的细节里。</p><p>我有一点慢热、内向，心思细腻，也热心善良。刚认识时可能安静一些，熟悉之后，就会慢慢打开话匣子。</p><div className="personal-tags"><span>INFP · 理想主义</span><span>手工 & 绘画爱好者</span><span>两只小狗的全职铲屎官</span></div><a className="text-link" href={feishuUrl} target="_blank" rel="noopener noreferrer">翻翻我的个人说明书 <span aria-hidden="true">↗</span></a></div>
-          </div>
-        </section>
-        <section className="experience checker-pink" id="experience" aria-labelledby="experience-title">
-          <div className="section-intro"><p className="eyebrow">THINGS I&apos;VE PUT MY HEART INTO</p><h2 id="experience-title">把喜欢的事，<br />一点点变成<span className="cream-underline">自己的经历。</span></h2><p>从视觉创作到经营小店，每一次尝试都算数。</p></div>
-          <div className="experience-grid">{experiences.map(item => <article className={`experience-card card-${item.kind}`} key={item.no}><div className="tape" /><div className="card-art"><span className="art-number">{item.no}</span><Doodle kind={item.kind} /><span className="art-caption">{item.en}</span></div><div className="card-copy"><p className="card-role">{item.role}</p><h3>{item.title}</h3><p>{item.text}</p><span className="card-tags">{item.tags}</span></div></article>)}</div>
-          <p className="experience-extra">也曾在潮牌女装店、黄金奢侈品品牌做销售，<br className="mobile-break" />在与人相处的过程中，练习观察、倾听与表达。</p>
-          <div className="skill-strip"><span>审美与视觉创作</span><span aria-hidden="true">✳</span><span>新媒体素材拍摄</span><span aria-hidden="true">✳</span><span>把想法认真落地</span></div>
-        </section>
-        <section className="life" id="life" aria-labelledby="life-title"><div className="section-intro"><p className="eyebrow">LITTLE PAWS, BIG LOVE</p><h2 id="life-title">我的日子，有<span className="pink-underline">两份毛茸茸。</span></h2><p>“我非常爱我的小狗，她们填满了我平淡的生活。”</p><span className="life-handwritten">a few of my favorite moments ↓</span></div><PhotoGallery /><p className="gallery-hint">点开照片，看看我的小小快乐 <span aria-hidden="true">♡</span></p></section>
-        <section className="hello section-cream" id="hello" aria-labelledby="hello-title"><div className="hello-art" aria-hidden="true"><Doodle kind="coconut" /><span>let&apos;s say hello!</span></div><div className="hello-copy"><p className="eyebrow">GOOD THINGS START WITH A HELLO</p><h2 id="hello-title">很高兴，<br />在这里<span className="pink-underline">遇见你。</span></h2><p>如果你也喜欢设计、穿搭、手作，或者小狗，<br />那我们已经有了一个很好的聊天开场。</p><a className="pill-button" href={feishuUrl} target="_blank" rel="noopener noreferrer">更多关于椰奶 <span aria-hidden="true">↗</span></a></div><span className="hello-heart" aria-hidden="true">♡</span></section>
-      </main>
-      <footer className="site-footer"><a className="footer-brand" href="#top">椰奶<span>YINA&apos;S LITTLE WORLD</span></a><p>保持柔软，保持好奇。<br /><span>© 2026 詹依娜 · Made with a little love ♡</span></p><a className="back-to-top" href="#top">回到顶部 <span aria-hidden="true">↑</span></a></footer>
+export default function Home(){return <>
+ <PortfolioInteractions/>
+ <a className="skip-link" href="#main">跳到主要内容</a>
+ <div className="site-canvas" id="top">
+  <header className="site-header"><a href="#top" className="wordmark">詹依娜<span>YINA ZHAN</span></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#projects">我的作品</a><a href="#workflow">创作流程</a><a href="#contact" className="contact-pill">联系我 ↗</a></nav></header>
+  <main id="main">
+   <section className="hero" aria-labelledby="hero-title">
+    <div className="hero-label"><span>PERSONAL PORTFOLIO</span><span>CONTENT / STYLE / IP</span></div>
+    <h1 id="hero-title">Portfolio<span className="sr-only"> · 詹依娜的个人作品集</span></h1>
+    <div className="paper-stack">
+     <div className="paper-layer paper-back-one" aria-hidden="true"/><div className="paper-layer paper-back-two" aria-hidden="true"/>
+     <div className="front-sheet"><div className="paper-holes" aria-hidden="true"><i/><i/><i/></div><span className="sheet-index">YINA / PERSONAL FILE 001</span>
+      <figure className="portrait-card"><span className="paperclip" aria-hidden="true"/><img src={assetPath("/new-document/portrait-warm-vintage.png")} alt="詹依娜的复古暖色人像" width={1080} height={1080} fetchPriority="high"/><figcaption>詹依娜 <span>也可以叫我椰奶</span></figcaption></figure>
+      <div className="sheet-copy"><p>Zhan YIna</p><span>广州美术学院 · 产品设计专业<br/>个人作品集</span><div className="sheet-rule"/><small>商务对接 / 选品搭配 / 拍摄剪辑</small></div>
+     </div>
     </div>
-    <p className="outside-note">a little corner of the internet, all my own.</p>
-  </>;
-}
+    <div className="hero-footer"><span>ZHAN YINA<br/><small>广东 · 深圳</small></span><a href="#about" className="scroll-prompt">OPEN MY FILE <span>↓</span></a><span>2026<br/><small>PORTFOLIO</small></span></div>
+   </section>
+
+   <section className="about-file" id="about" aria-labelledby="about-title">
+    <div className="folder-tabs"><a href="#about" aria-current="location">关于我 <span>01</span></a><a href="#projects">我的作品 <span>02</span></a><a href="#workflow">创作流程 <span>03</span></a></div>
+    <div className="folder-body"><div className="file-heading"><span>ABOUT ME</span><span>个人档案 / 01</span></div><div className="about-grid"><figure className="about-portrait"><span className="binder-clip" aria-hidden="true"/><DocumentMedia src="/new-document/about-portrait-dog.jpg" alt="詹依娜与小狗的复古暖色合照" className="about-photo"/><figcaption>HI, I&apos;M YINA.<span className="about-photo-hint">点开看原图 ↗</span></figcaption></figure><div className="about-copy"><p className="eyebrow">你好，欢迎认识我。</p><h2 id="about-title">詹依娜<span>椰奶 / YINA</span></h2><dl className="personal-facts"><div><dt>年龄</dt><dd>23 岁</dd></div><div><dt>籍贯</dt><dd>广东深圳</dd></div><div><dt>教育背景</dt><dd>广州美术学院<br/><span>产品设计专业</span></dd></div></dl><div className="personal-tags"><span>INFP</span><span>手工绘画爱好者</span><span>两只小狗的全职铲屎官</span></div><p className="about-summary">有 IP 穿搭账号的商务对接、选品搭配与剪辑经历，<br className="desktop-break"/>也独立经营自己的穿搭账号与饰品店铺。</p><a className="underlined-link" href={documentUrl} target="_blank" rel="noopener noreferrer">阅读我的个人文档 ↗</a></div></div></div>
+   </section>
+
+   <section className="projects section-pad" id="projects" aria-labelledby="projects-title">
+    <div className="section-kicker"><span>02 / SELECTED WORK</span><span>IP 项目 · 个人账号</span></div><h2 id="projects-title" className="display-title">我的作品<span>SELECTED WORK</span></h2>
+    <IpNotebook/>
+    <IpCaseContext/>
+
+
+    <article className="own-project"><div className="own-project-copy"><p className="eyebrow">02 / MY OWN ACCOUNT</p><h3>椰奶没喝饱_<span>小红书穿搭账号</span></h3><div className="style-journey"><div><span>学生时期</span><h4>美式甜心辣妹</h4><p>以学生党人设为主。</p></div><span className="journey-arrow" aria-hidden="true">↘</span><div><span>毕业之后</span><h4>姐系通勤感</h4><p>面向刚步入社会的女生，提升穿衣质感。</p></div></div><dl className="account-stats"><div><dt>粉丝</dt><dd>5.2<span>万</span></dd></div><div><dt>获赞与收藏</dt><dd>92.4<span>万</span></dd></div></dl><p className="source-note">以上为新文档所附主页截图中的数据。</p><a className="pink-button" href="https://xhslink.cn/o/ArBwd7GjccM" target="_blank" rel="noopener noreferrer">打开我的穿搭账号 <span>↗</span></a></div><AccountCollage/></article>
+    <Lookbook/>
+    <div className="notes-heading"><h4>五条代表内容</h4><span>从原作品，了解我的风格 ↗</span></div><div className="note-links">{noteLinks.map((href,index)=><a href={href} target="_blank" rel="noopener noreferrer" key={href}><span className="note-index">0{index+1}</span><span>穿搭内容<span>小红书笔记</span></span><span className="note-arrow" aria-hidden="true">↗</span></a>)}</div>
+
+    <article className="shop-project"><div><p className="eyebrow">03 / MY LITTLE BUSINESS</p><h3>摇滚椰奶冻<span>朋克、辣妹风格的平价项链店铺</span></h3><p>从选品、供应链对接、定价、上架和运营，到带货笔记的拍摄剪辑，均由我独立完成。</p><a className="underlined-link" href="https://xhslink.cn/o/7fHIjh5lHki" target="_blank" rel="noopener noreferrer">逛逛我的饰品店铺 ↗</a></div><div className="shop-stats"><div><b>5,000<span>+</span></b><span>一年累计销售 / 单</span></div><div><b>10<span>万+</span></b><span>销售额 / 元</span></div></div></article>
+   </section>
+
+   <section className="workflow-section section-pad" id="workflow" aria-labelledby="workflow-title"><div className="section-kicker"><span>03 / HOW I WORK</span><span>从选题，到发布</span></div><h2 className="display-title" id="workflow-title">我的创作流程<span>THE PROCESS</span></h2><div className="workflow-list">{workflow.map((item,index)=><article key={item.title}><span className="step-number">0{index+1}/</span><h3>{item.title}</h3><p>{item.text}</p>{index<workflow.length-1&&<span className="step-arrow" aria-hidden="true">→</span>}</article>)}</div><div className="support-grid"><div className="support-intro"><p>从品牌合作到个人创作，<br/>这些是我实际做过的工作。</p><a href="#projects">回看我的项目 <span>↗</span></a></div><div className="support-cards"><article><span>1/</span><h3>商务对接</h3><p>IP 穿搭账号<br/>PR 合作沟通</p></article><article><span>2/</span><h3>选品搭配</h3><p>服装与饰品<br/>选品、风格搭配</p></article><article><span>3/</span><h3>拍摄剪辑</h3><p>多种拍摄方式<br/>剪映 / Remotion</p></article><article><span>4/</span><h3>独立经营</h3><p>个人账号与店铺<br/>供应链、定价、上架</p></article></div></div></section>
+
+   <section className="contact section-pad" id="contact" aria-labelledby="contact-title"><div className="section-kicker"><span>04 / SAY HELLO</span><span>期待与你交流</span></div><div className="contact-layout"><div><h2 id="contact-title">下一次，<br/>一起做点好内容。</h2><a className="email-link" href="mailto:1106731983@qq.com">1106731983@qq.com <span>↗</span></a><CopyEmail email="1106731983@qq.com"/></div><div className="contact-mark" aria-hidden="true"><span>Y</span><span>✦</span></div></div><div className="footer-line"><a href="#top">詹依娜 / YINA ZHAN</a><p>© 2026 · 个人作品集</p><a href="#top">回到顶部 ↑</a></div></section>
+  </main>
+ </div>
+</>;}

@@ -4,9 +4,9 @@ import test from "node:test";
 
 test("GitHub Pages exports the biography and every referenced local asset", async () => {
   const html = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
-  assert.match(html, /<title>椰奶的小站 · 詹依娜 Zhan Yina<\/title>/);
+  assert.match(html, /<title>詹依娜 · 个人作品集<\/title>/);
   assert.match(html, /广州美术学院/);
-  assert.match(html, /小红书饰品店铺店主/);
+  assert.match(html, /是亮亮/);
   const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const assets = new Set([...html.matchAll(/(?:src|href)="(\/[^"#]+)"/g)].map(match => match[1]));
   assert.ok(assets.size >= 6, "Photos, styles and hydration scripts must be exported");

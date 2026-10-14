@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./ip-notebook.css";
+import "./portfolio-interactions.css";
+import "./lookbook.css";
+import "./account-collage.css";
+import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {
-  title: "椰奶的小站 · 詹依娜 Zhan Yina",
-  description: "你好，我是詹依娜，也可以叫我椰奶。来自深圳，毕业于广州美术学院产品设计专业。在这里认识我的创作、穿搭、小店经历，还有两份毛茸茸的日常。",
+  icons: { icon: assetPath("/favicon.svg") },
+  title: "詹依娜 · 个人作品集",
+  description: "詹依娜的个人作品集：IP 穿搭账号商务对接、选品搭配和剪辑经历，个人穿搭账号「椰奶没喝饱_」以及饰品店铺「摇滚椰奶冻」。内容来自新版个人文档。",
 };
 
 export default function RootLayout({
@@ -13,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <head><style>{`@font-face{font-family:NotebookScript;src:url(${assetPath("/fonts/script.woff2")}) format("woff2");font-style:normal;font-weight:400;font-display:swap}`}</style></head>
       <body>{children}</body>
     </html>
   );
