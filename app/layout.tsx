@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <head><style>{`@font-face{font-family:NotebookScript;src:url(${assetPath("/fonts/script.woff2")}) format("woff2");font-style:normal;font-weight:400;font-display:swap}`}</style></head>
+      <head><style>{`@font-face{font-family:NotebookScript;src:url(${assetPath("/fonts/script.woff2")}) format("woff2");font-style:normal;font-weight:400;font-display:swap}@font-face{font-family:HuangYou;src:url(${assetPath("/fonts/huangyou.woff2")}) format("woff2");font-style:normal;font-weight:400;font-display:swap}`}</style></head>
       <body>{children}</body>
     </html>
   );
