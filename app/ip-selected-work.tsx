@@ -25,7 +25,7 @@ export function IpSelectedWork() {
       <div className="ip-fashion-collage">
         <div className="ip-collage-orbit" aria-hidden="true"/>
         <span className="ip-collage-label">ONE ANGLE,<br/>MANY STYLES.</span>
-        <div className="ip-work-hero"><DocumentMedia src="/ip-showcase/look-01.jpg" previewSrc="/ip-showcase/hero-cutout.png" alt="是亮亮戴小熊发箍的彩色穿搭"/><span className="ip-hero-caption">是亮亮<span>Her everyday style.</span></span></div>
+        <div className="ip-work-hero"><DocumentMedia src="/ip-showcase/look-01.jpg" previewSrc="/ip-showcase/hero-cutout.png" alt="是亮亮戴小熊发箍的彩色穿搭"/></div>
         {looks.map((look,i)=><figure className={`ip-floating-look ip-floating-look-${i+1}`} key={look}><DocumentMedia src={`/ip-showcase/look-${String(i+2).padStart(2,"0")}.jpg`} previewSrc={`/ip-showcase/cutouts/look-${String(i+2).padStart(2,"0")}.png`} alt={`是亮亮的${look}造型`}/><figcaption>LOOK / {String(i+2).padStart(2,"0")}</figcaption></figure>)}
         <span className="ip-collage-star" aria-hidden="true">✳</span>
       </div>
