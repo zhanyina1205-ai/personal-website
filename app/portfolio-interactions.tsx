@@ -6,6 +6,7 @@ const chapters = [
   { id: "about", label: "关于我" },
   { id: "projects", label: "我的作品" },
   { id: "workflow", label: "创作流程" },
+  { id: "tools", label: "小工具" },
   { id: "contact", label: "联系我" },
 ];
 
