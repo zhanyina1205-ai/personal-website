@@ -1,5 +1,6 @@
 import { assetPath } from "./asset-path";
 import { DocumentMedia } from "./document-media";
+import { Toolbox } from "./toolbox";
 import { NoteCards } from "./note-cards";
 import { Lookbook } from "./lookbook";
 import { AccountCollage } from "./account-collage";
@@ -14,7 +15,7 @@ export default function Home(){return <>
  <PortfolioInteractions/>
  <a className="skip-link" href="#main">跳到主要内容</a>
  <div className="site-canvas" id="top">
-  <header className="site-header"><a href="#top" className="wordmark">詹依娜<span>YINA ZHAN</span></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#projects">我的作品</a><a href="#workflow">创作流程</a><a href="#contact" className="contact-pill">联系我 ↗</a></nav></header>
+  <header className="site-header"><a href="#top" className="wordmark">詹依娜<span>YINA ZHAN</span></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#projects">我的作品</a><a href="#workflow">创作流程</a><a href="#tools">小工具</a><a href="#contact" className="contact-pill">联系我 ↗</a></nav></header>
   <main id="main">
    <section className="hero" aria-labelledby="hero-title">
     <div className="hero-label"><span>PERSONAL PORTFOLIO</span><span>CONTENT / STYLE / IP</span></div>
@@ -49,7 +50,9 @@ export default function Home(){return <>
 
    <section className="workflow-section section-pad" id="workflow" aria-labelledby="workflow-title"><div className="section-kicker"><span>03 / HOW I WORK</span><span>从选题，到发布</span></div><h2 className="display-title" id="workflow-title">我的创作流程<span>THE PROCESS</span></h2><div className="workflow-list">{workflow.map((item,index)=><article key={item.title}><span className="step-number">0{index+1}/</span><h3>{item.title}</h3><p>{item.text}</p>{index<workflow.length-1&&<span className="step-arrow" aria-hidden="true">→</span>}</article>)}</div><div className="support-grid"><div className="support-intro"><p>从品牌合作到个人创作，<br/>这些是我实际做过的工作。</p><a href="#projects">回看我的项目 <span>↗</span></a></div><div className="support-cards"><article><span>1/</span><h3>商务对接</h3><p>IP 穿搭账号<br/>PR 合作沟通</p></article><article><span>2/</span><h3>选品搭配</h3><p>服装与饰品<br/>选品、风格搭配</p></article><article><span>3/</span><h3>拍摄剪辑</h3><p>多种拍摄方式<br/>剪映 / Remotion</p></article><article><span>4/</span><h3>独立经营</h3><p>个人账号与店铺<br/>供应链、定价、上架</p></article></div></div></section>
 
-   <section className="contact section-pad" id="contact" aria-labelledby="contact-title"><div className="section-kicker"><span>04 / SAY HELLO</span><span>期待与你交流</span></div><div className="contact-layout"><div><h2 id="contact-title">下一次，<br/>一起做点好内容。</h2><a className="email-link" href="mailto:1106731983@qq.com">1106731983@qq.com <span>↗</span></a><CopyEmail email="1106731983@qq.com"/></div><div className="contact-mark" aria-hidden="true"><span>Y</span><span>✦</span></div></div><div className="footer-line"><a href="#top">詹依娜 / YINA ZHAN</a><p>© 2026 · 个人作品集</p><a href="#top">回到顶部 ↑</a></div></section>
+   <Toolbox/>
+
+   <section className="contact section-pad" id="contact" aria-labelledby="contact-title"><div className="section-kicker"><span>05 / SAY HELLO</span><span>期待与你交流</span></div><div className="contact-layout"><div><h2 id="contact-title">下一次，<br/>一起做点好内容。</h2><a className="email-link" href="mailto:1106731983@qq.com">1106731983@qq.com <span>↗</span></a><CopyEmail email="1106731983@qq.com"/></div><div className="contact-mark" aria-hidden="true"><span>Y</span><span>✦</span></div></div><div className="footer-line"><a href="#top">詹依娜 / YINA ZHAN</a><p>© 2026 · 个人作品集</p><a href="#top">回到顶部 ↑</a></div></section>
   </main>
  </div>
 </>;}
