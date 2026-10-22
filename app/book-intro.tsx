@@ -4,11 +4,17 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { assetPath } from "./asset-path";
 
 const pages = [
-  { image: "/account-collage/pink-look-original.jpg", title: "A little pink.", caption: "STYLE / 01", note: "Wear it\nyour way." },
-  { image: "/lookbook/look-1.png", title: "Winter notes", caption: "LOOKS / 02", note: "A feeling,\na little detail." },
-  { image: "/lookbook/look-3.png", title: "Soft moments", caption: "EVERYDAY / 03", note: "Small things,\nmy own story." },
-  { image: "/account-collage/black-top-pink-skirt.jpg", title: "My own rhythm", caption: "PERSONAL / 04", note: "Turn the page,\nmeet Yina." },
+  { front: "01-collage-door-right.jpg", back: "02-cake-notebook-left.jpg" },
+  { front: "02-cake-notebook-right.jpg", back: "03-shop-coupe-left.jpg" },
+  { front: "03-shop-coupe-right.jpg", back: "04-ribbon-fabric-left.jpg" },
+  { front: "04-ribbon-fabric-right.jpg", back: "05-menu-tart-left.jpg" },
+  { front: "05-menu-tart-right.jpg", back: "01-collage-door-left.jpg" },
 ];
+
+// Full-page stills cropped from the user's supplied Cake Social reference video.
+function ReferencePage({ file }: { file: string }) {
+  return <img className="intro-full-photo" src={assetPath(`/intro-reference/${file}`)} alt="" width={304} height={412} loading="eager"/>;
+}
 
 export function BookIntro() {
   const [phase, setPhase] = useState<"loading" | "playing" | "ready" | "leaving">("loading");
@@ -93,17 +99,17 @@ export function BookIntro() {
       <div className="intro-book-stage">
         <div className="intro-book">
           <div className="intro-book-cover" aria-hidden="true"/>
-          <div className="intro-fixed-left intro-paper" aria-hidden="true"><span className="intro-page-index">A PERSONAL COLLECTION</span><div className="intro-editorial"><small>COLLECTING MOMENTS</small><p>Life,<br/>in my<br/><em>own style.</em></p><span>穿搭 · 影像 · 日常</span></div><span className="intro-page-bottom">詹依娜 / YINA ZHAN</span></div>
+          <div className="intro-fixed-left intro-paper intro-reference-page" aria-hidden="true"><ReferencePage file="01-collage-door-left.jpg"/></div>
           <button className="intro-final-page intro-paper" type="button" disabled={phase !== "ready"} onClick={enter} aria-label="点击首页照片，进入詹依娜的个人网站">
             <span className="intro-page-index">YINA / PERSONAL FILE 001</span>
             <figure className="intro-portrait"><img src={assetPath("/new-document/portrait-cover-clean.png")} alt="詹依娜的首页人像照片" width={1254} height={1254} fetchPriority="high"/><figcaption>詹依娜 <span>也可以叫我椰奶</span></figcaption></figure>
             <span className="intro-portrait-label">HI, I&apos;M YINA.</span><span className="intro-photo-link">点击照片，认识我 <span aria-hidden="true">↗</span></span>
           </button>
-          {pages.map((page, index) => <div className="intro-leaf" key={page.image} style={{ "--page": index, "--turn-delay": `${0.3 + index * 0.78}s` } as CSSProperties} aria-hidden="true" onAnimationEnd={event => {
+          {pages.map((page, index) => <div className="intro-leaf" key={page.front} style={{ "--page": index, "--turn-delay": `${0.3 + index * 0.78}s` } as CSSProperties} aria-hidden="true" onAnimationEnd={event => {
             if (event.animationName === "intro-page-turn" && index === pages.length - 1 && !leaving.current) setPhase("ready");
           }}>
-            <div className="intro-leaf-front intro-paper"><img className={page.image.endsWith(".png") ? "intro-look-photo" : "intro-full-photo"} src={assetPath(page.image)} alt="" loading="eager"/><span className="intro-photo-number">0{index + 1} / YINA&apos;S JOURNAL</span><span className="intro-photo-caption">{page.title}</span></div>
-            <div className="intro-leaf-back intro-paper"><span className="intro-page-index">{page.caption}</span><div className="intro-back-note"><span className="intro-note-star">✳</span><p>{page.note}</p><span>{index === pages.length - 1 ? "詹依娜 / 个人作品集" : "一些喜欢的事，一些自己的表达。"}</span></div><span className="intro-page-bottom">{index === pages.length - 1 ? "THE NEXT CHAPTER IS YOURS. →" : `PERSONAL COLLECTION / 0${index + 1}`}</span></div>
+            <div className="intro-leaf-front intro-paper"><ReferencePage file={page.front}/></div>
+            <div className="intro-leaf-back intro-paper intro-reference-page"><ReferencePage file={page.back}/></div>
           </div>)}
           <div className="intro-binding" aria-hidden="true">{Array.from({length:14},(_,index)=><i key={index}/>)}</div>
         </div>
