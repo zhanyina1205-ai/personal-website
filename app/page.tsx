@@ -7,11 +7,14 @@ import { AccountCollage } from "./account-collage";
 import { IpCaseContext } from "./ip-case-context";
 import { IpNotebook } from "./ip-notebook";
 import { PortfolioInteractions, CopyEmail } from "./portfolio-interactions";
+import { BookIntro } from "./book-intro";
 
 const documentUrl="https://my.feishu.cn/wiki/O6kZwoRPLiphBykwHiKcOgbTnld?from=from_copylink";
 const workflow=[{title:"选题",text:"找热门笔记作为参考依据。"},{title:"选品搭配",text:"参考热门单品，搭配成自己的风格。"},{title:"拍摄",text:"对镜拍、支架前置拍、户外拍。"},{title:"修图剪辑",text:"使用剪映、Remotion 完成内容制作。"},{title:"发布",text:"发布到小红书、抖音。"}];
 
 export default function Home(){return <>
+ <BookIntro/>
+ <noscript><style>{`.book-intro{display:none}`}</style></noscript>
  <PortfolioInteractions/>
  <a className="skip-link" href="#main">跳到主要内容</a>
  <div className="site-canvas" id="top">
