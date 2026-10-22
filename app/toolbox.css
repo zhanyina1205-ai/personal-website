@@ -23,6 +23,7 @@
 .tool-artwork-1 .tool-mini-window{transform:rotate(4deg)}
 .tool-artwork-2 .tool-mini-window{transform:rotate(-3deg)}
 .tool-artwork-number{position:absolute;right:1px;bottom:-5px;font-family:Georgia,serif;font-size:49px;font-style:italic;line-height:1;color:#b88d9066}
+.tool-card-copy{flex:1}
 .tool-card-copy h3{font-size:23px;font-weight:500;letter-spacing:1px;margin:0 0 9px}
 .tool-card-copy p{font-size:11px;color:#806d63;line-height:1.8}
 .tool-card-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #aa958677;margin-top:23px;padding-top:10px;color:#8b7168;font-size:8px;letter-spacing:1.3px}
