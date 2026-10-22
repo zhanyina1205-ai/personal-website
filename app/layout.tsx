@@ -7,7 +7,6 @@ import "./account-collage.css";
 import "./note-cards.css";
 import "./toolbox.css";
 import "./ip-selected-work.css";
-import "./book-intro.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {
