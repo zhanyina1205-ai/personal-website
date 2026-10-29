@@ -105,7 +105,8 @@ export function YenaiIntro() {
       </svg>
     </div>
     </div>
-    <audio ref={audio} src={assetPath("/intro/yenai-opening-sound.mp3")} preload="auto" onPlaying={() => setSoundOn(true)} onPause={() => setSoundOn(false)}/>
+    {/* eslint-disable-next-line jsx-a11y/media-has-caption -- Decorative non-speech accents mirror the visible letter and scene transitions. */}
+    <audio aria-label="开屏音效（无对白）" ref={audio} src={assetPath("/intro/yenai-opening-sound.mp3")} preload="auto" onPlaying={() => setSoundOn(true)} onPause={() => setSoundOn(false)}/>
     <button className="yenai-intro-sound" type="button" onClick={toggleSound} aria-pressed={soundOn}>{soundOn ? "声音已开 · 静音" : "开启声音 · 重播"}</button>
     <button className="yenai-intro-skip" type="button" onClick={() => setVisible(false)}>跳过 <span aria-hidden="true">↗</span></button>
   </section>;
