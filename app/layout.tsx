@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./yenai-intro.css";
 import "./ip-notebook.css";
 import "./portfolio-interactions.css";
 import "./lookbook.css";
