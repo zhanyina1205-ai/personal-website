@@ -1,5 +1,6 @@
 "use client";
 
+import { assetPath } from "./asset-path";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 export function YenaiIntro() {
@@ -22,7 +23,7 @@ export function YenaiIntro() {
     if (canvas) canvas.inert = true;
     document.documentElement.style.overflow = "hidden";
     panel.current?.focus({ preventScroll: true });
-    const timer = window.setTimeout(() => setVisible(false), 3250);
+    const timer = window.setTimeout(() => setVisible(false), 5850);
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
     const reduce = () => { if (preference.matches) setVisible(false); };
     preference.addEventListener("change", reduce);
@@ -46,8 +47,21 @@ export function YenaiIntro() {
 
   if (!visible) return null;
   return <section ref={panel} className="yenai-intro" role="dialog" aria-modal="true" aria-label="YENAI 个人网站开屏" tabIndex={-1}>
-    <div className="yenai-intro-mark" aria-label="YENAI">
+    <div className="yenai-satin-scene" aria-hidden="true">
+      <img className="yenai-satin-image" src={assetPath("/intro/yenai-satin.png")} alt="" width={1672} height={941} loading="eager"/>
+      <div className="yenai-satin-shade"/>
+      <div className="yenai-film-frame">
+        <span className="yenai-frame-top">YENAI · CONTENT · STYLE · PERSONAL ARCHIVE · YENAI · CONTENT · STYLE · PERSONAL ARCHIVE</span>
+        <span className="yenai-frame-bottom">YENAI · CONTENT · STYLE · PERSONAL ARCHIVE · YENAI · CONTENT · STYLE · PERSONAL ARCHIVE</span>
+        <span className="yenai-frame-left">YENAI · PERSONAL PORTFOLIO · 2026</span>
+        <span className="yenai-frame-right">YENAI · PERSONAL PORTFOLIO · 2026</span>
+      </div>
+    </div>
+    <div className="yenai-intro-word-stage" aria-label="YENAI">
+    <div className="yenai-intro-mark" aria-hidden="true">
       {"YENAI".split("").map((letter, index) => <span key={index} aria-hidden="true" className="yenai-intro-letter" style={{ "--letter-index": index } as CSSProperties}>{letter}</span>)}
+    </div>
+    <div className="yenai-satin-title" aria-hidden="true">YENAI</div>
     </div>
     <button className="yenai-intro-skip" type="button" onClick={() => setVisible(false)}>跳过 <span aria-hidden="true">↗</span></button>
   </section>;

@@ -6,9 +6,12 @@
   place-items: center;
   background: #101111;
   outline: none;
-  animation: yenai-intro-exit .55s 2.65s ease-in-out forwards;
+  overflow: hidden;
+  animation: yenai-intro-exit .75s 5s ease-in-out forwards;
 }
+.yenai-intro-word-stage { position: relative; z-index: 2; display: grid; place-items: center; width: 100%; }
 .yenai-intro-mark {
+  grid-area: 1 / 1;
   display: flex;
   align-items: baseline;
   color: #fff;
@@ -21,7 +24,7 @@
   padding-right: .1em;
   transform: skewX(-9deg);
   text-shadow: 0 0 3px #fff, 0 0 13px #d9f5ff99, 0 0 28px #c9e7f444;
-  animation: yenai-intro-pink .25s 1.85s ease-out forwards;
+  animation: yenai-intro-pink .25s 1.85s ease-out forwards, yenai-script-morph 1.05s 2.25s cubic-bezier(.4,0,.2,1) forwards;
 }
 .yenai-intro-letter {
   display: inline-block;
@@ -37,6 +40,7 @@
 }
 .yenai-intro-skip {
   position: absolute;
+  z-index: 3;
   right: max(28px, env(safe-area-inset-right));
   bottom: max(26px, env(safe-area-inset-bottom));
   padding: 12px 16px;
@@ -65,4 +69,50 @@
 @media (prefers-reduced-motion: reduce) {
   .yenai-intro { display: none; animation: none; }
   .yenai-intro-mark, .yenai-intro-letter { animation: none; }
+}
+
+.yenai-satin-scene { position: absolute; inset: 0; opacity: 0; animation: yenai-satin-appear 1.3s 2.2s ease-in-out forwards; }
+.yenai-satin-image { width: 100%; height: 100%; object-fit: cover; animation: yenai-satin-flow 3.6s 2.2s cubic-bezier(.2,.6,.3,1) both; }
+.yenai-satin-shade { position: absolute; inset: 0; background: linear-gradient(135deg, #2419214a, #16121866); }
+.yenai-satin-title {
+  grid-area: 1 / 1;
+  color: #f3c4cf;
+  font-family: "Arial Rounded MT Bold", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: clamp(72px, 15vw, 260px);
+  line-height: 1;
+  letter-spacing: .025em;
+  opacity: 0;
+  animation: yenai-type-morph 1.25s 2.25s cubic-bezier(.4,0,.2,1) forwards;
+}
+.yenai-film-frame { position: absolute; inset: 22px; color: #fff5eec4; font: 9px/1.4 monospace; letter-spacing: 2px; opacity: 0; animation: yenai-satin-appear .8s 3s ease forwards; }
+.yenai-film-frame span { position: absolute; white-space: nowrap; overflow: hidden; }
+.yenai-frame-top, .yenai-frame-bottom { left: 20px; right: 20px; text-align: center; }
+.yenai-frame-top { top: 0; }
+.yenai-frame-bottom { bottom: 0; transform: rotate(180deg); }
+.yenai-frame-left, .yenai-frame-right { top: 35px; bottom: 60px; writing-mode: vertical-rl; text-align: center; }
+.yenai-frame-left { left: 0; transform: rotate(180deg); }
+.yenai-frame-right { right: 0; }
+@keyframes yenai-script-morph {
+  0% { opacity: 1; transform: skewX(-9deg) scale(1); filter: blur(0); }
+  45% { opacity: .35; filter: blur(5px); }
+  70% { opacity: 0; filter: blur(8px); }
+  100% { opacity: 0; transform: skewX(0) scale(1.62); filter: blur(8px); }
+}
+@keyframes yenai-type-morph {
+  0% { opacity: 0; transform: skewX(-9deg) scale(.56); filter: blur(8px); letter-spacing: -.06em; }
+  40% { opacity: 0; }
+  100% { opacity: 1; transform: skewX(0) scale(1); filter: blur(0); letter-spacing: .025em; }
+}
+@keyframes yenai-satin-appear { to { opacity: 1; } }
+@keyframes yenai-satin-flow {
+  from { transform: scale(1.18) translateY(-2%); }
+  to { transform: scale(1.03) translateY(1%); }
+}
+@media (max-width: 600px) {
+  .yenai-film-frame { inset: 16px; font-size: 7px; letter-spacing: 1.5px; }
+  .yenai-satin-title { font-size: 18vw; letter-spacing: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .yenai-satin-scene, .yenai-satin-image, .yenai-satin-title, .yenai-film-frame { animation: none; }
 }
