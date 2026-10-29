@@ -8,7 +8,10 @@ export function YenaiIntro() {
 
   useEffect(() => {
     // Chapter links open their destination directly; the intro belongs to the homepage.
-    if ((location.hash && location.hash !== "#top") || matchMedia("(prefers-reduced-motion: reduce)").matches) setVisible(false);
+    if ((location.hash && location.hash !== "#top") || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const frame = requestAnimationFrame(() => setVisible(false));
+      return () => cancelAnimationFrame(frame);
+    }
   }, []);
 
   useEffect(() => {
@@ -23,8 +26,17 @@ export function YenaiIntro() {
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
     const reduce = () => { if (preference.matches) setVisible(false); };
     preference.addEventListener("change", reduce);
+    const keydown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setVisible(false);
+      if (event.key === "Tab") {
+        event.preventDefault();
+        panel.current?.querySelector<HTMLButtonElement>("button")?.focus();
+      }
+    };
+    document.addEventListener("keydown", keydown);
     return () => {
       clearTimeout(timer);
+      document.removeEventListener("keydown", keydown);
       preference.removeEventListener("change", reduce);
       if (canvas) canvas.inert = previousInert;
       document.documentElement.style.overflow = previousOverflow;
@@ -33,14 +45,7 @@ export function YenaiIntro() {
   }, [visible]);
 
   if (!visible) return null;
-  return <section ref={panel} className="yenai-intro" role="dialog" aria-modal="true" aria-label="YENAI 个人网站开屏" tabIndex={-1}
-    onKeyDown={event => {
-      if (event.key === "Escape") setVisible(false);
-      if (event.key === "Tab") {
-        event.preventDefault();
-        panel.current?.querySelector<HTMLButtonElement>("button")?.focus();
-      }
-    }}>
+  return <section ref={panel} className="yenai-intro" role="dialog" aria-modal="true" aria-label="YENAI 个人网站开屏" tabIndex={-1}>
     <div className="yenai-intro-mark" aria-label="YENAI">
       {"YENAI".split("").map((letter, index) => <span key={index} aria-hidden="true" className="yenai-intro-letter" style={{ "--letter-index": index } as CSSProperties}>{letter}</span>)}
     </div>
