@@ -55,36 +55,70 @@ export function PortfolioInteractions() {
     window.addEventListener("resize", queueReadingUpdate, { passive: true, signal: listeners.signal });
     updateReading();
 
-    const revealElements = Array.from(document.querySelectorAll<HTMLElement>(
-      ".section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-selected-work,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.lookbook,.notes-heading,.note-card-grid>a,.shop-project,.workflow-list article,.support-intro,.support-cards article,.contact-layout,.footer-line",
-    ));
+    const revealSelector = ".section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-work-heading,.ip-fashion-collage,.ip-work-note-wrap,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.lookbook,.notes-heading,.note-card-grid>a,.shop-project,.workflow-list article,.support-intro,.support-cards article,.toolbox-heading,.toolbox-shelf-label,.tool-card,.toolbox-footnote,.contact-layout,.footer-line";
+    // Reveal independent blocks, never both a block and its descendants.
+    const revealElements = Array.from(document.querySelectorAll<HTMLElement>(revealSelector))
+      .filter(element => !element.parentElement?.closest(revealSelector));
+    const pending = new Map<HTMLElement, Animation>();
+    const running = new Map<HTMLElement, Animation>();
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(entry.target);
-        if (preference.matches) return;
+      const entering = entries.filter(entry => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
+      entering.forEach((entry, index) => {
         const element = entry.target as HTMLElement;
-        const siblings = Array.from(element.parentElement?.children || []);
-        const staggered = element.matches(".ip-account-matrix article,.ip-review-grid article,.note-card-grid>a,.workflow-list article,.support-cards article");
-        const animation = element.animate([
-          { opacity: 0, transform: "translateY(18px)" },
-          { opacity: 1, transform: "translateY(0)" },
-        ], {
-          duration: 620,
-          delay: staggered ? Math.min(siblings.indexOf(element), 4) * 65 : 0,
-          easing: "cubic-bezier(.2,.75,.25,1)",
-          fill: "backwards",
-        });
-        animations.add(animation);
-        animation.finished.then(() => animations.delete(animation)).catch(() => {});
+        const animation = pending.get(element);
+        if (!animation) return;
+        observer.unobserve(element);
+        pending.delete(element);
+        if (preference.matches) { animation.cancel(); animations.delete(animation); return; }
+        // A small stagger within each newly visible group, not a long page-wide queue.
+        animation.effect?.updateTiming({ delay: Math.min(index, 3) * 100 });
+        running.set(element, animation);
+        animation.play();
+        animation.finished.then(() => {
+          animation.cancel();
+          animations.delete(animation);
+          running.delete(element);
+        }).catch(() => {});
       });
-    }, { threshold: 0.08, rootMargin: "0px 0px -5% 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -48px 0px" });
+
     revealElements.forEach(element => {
       const rect = element.getBoundingClientRect();
-      // Deep links remain readable immediately; new sections reveal as they enter.
-      if (rect.bottom > 0 && rect.top < window.innerHeight * 0.95) return;
+      // Leave initial/deep-linked content readable; only prepare blocks below the fold.
+      if (preference.matches || rect.top < window.innerHeight) return;
+      const animation = element.animate([
+        { opacity: 0, translate: "0 28px" },
+        { opacity: 1, translate: "0 0" },
+      ], { duration: 1000, easing: "cubic-bezier(.22,.68,.2,1)", fill: "both" });
+      animation.pause();
+      animation.currentTime = 0;
+      animations.add(animation);
+      pending.set(element, animation);
       observer.observe(element);
     });
+
+    function showImmediately(element: HTMLElement) {
+      const animation = pending.get(element) ?? running.get(element);
+      animation?.cancel();
+      if (animation) animations.delete(animation);
+      pending.delete(element);
+      running.delete(element);
+      observer.unobserve(element);
+    }
+    // Keyboard and anchor navigation must never land on an invisible control.
+    document.addEventListener("focusin", event => {
+      if (!(event.target instanceof Element)) return;
+      revealElements.forEach(element => {
+        if (element.contains(event.target as Node)) showImmediately(element);
+      });
+    }, { signal: listeners.signal });
+    window.addEventListener("hashchange", () => {
+      revealElements.forEach(element => {
+        const rect = element.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < window.innerHeight) showImmediately(element);
+      });
+    }, { signal: listeners.signal });
 
     const tiltElements = Array.from(document.querySelectorAll<HTMLElement>(".about-portrait,.phone-frame,.notebook-inset"));
     tiltElements.forEach(element => {
@@ -104,6 +138,9 @@ export function PortfolioInteractions() {
     preference.addEventListener("change", () => {
       animations.forEach(animation => animation.cancel());
       animations.clear();
+      pending.clear();
+      running.clear();
+      observer.disconnect();
       tiltElements.forEach(element => {
         element.style.removeProperty("--tilt-x");
         element.style.removeProperty("--tilt-y");
