@@ -1,0 +1,48 @@
+.module-deck{padding:66px 6% 60px;background:var(--black);border-top:1px solid #56514e;position:relative;overflow:hidden}
+.module-deck .deck-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px}
+.module-deck .eyebrow{color:var(--pink);margin-bottom:14px}
+.module-deck h2{font-size:clamp(30px,4vw,50px);font-weight:600;line-height:1.18;letter-spacing:-1px;color:var(--cream)}
+.deck-controls{display:flex;gap:10px;flex-shrink:0}
+.deck-controls button{width:46px;height:46px;border-radius:50%;border:1px solid #7a716c;background:transparent;color:var(--cream);font-size:18px;line-height:1;display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s}
+.deck-controls button:hover{background:var(--pink);color:var(--ink);border-color:var(--pink)}
+
+.deck-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 0 20px;margin:0 -6%;padding-left:6%;padding-right:6%;scrollbar-width:none;-ms-overflow-style:none;scroll-padding-left:6%}
+.deck-track::-webkit-scrollbar{display:none}
+
+.deck-card{position:relative;flex:0 0 clamp(236px,26vw,310px);aspect-ratio:3/4;border-radius:22px;overflow:hidden;scroll-snap-align:start;background:#2a2724;border:1px solid #4e4a48;display:block;isolation:isolate;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s;animation:deck-in .7s both}
+.deck-card:nth-child(2){animation-delay:.06s}.deck-card:nth-child(3){animation-delay:.12s}.deck-card:nth-child(4){animation-delay:.18s}.deck-card:nth-child(5){animation-delay:.24s}.deck-card:nth-child(6){animation-delay:.3s}
+@keyframes deck-in{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.deck-card:hover{transform:translateY(-6px);border-color:var(--pink)}
+
+.deck-card-media{position:absolute;inset:0;z-index:-1}
+.deck-card-media img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(.95) contrast(1.02);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.deck-card:hover .deck-card-media img{transform:scale(1.06)}
+.deck-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,#121110 6%,rgba(18,17,16,.55) 42%,rgba(18,17,16,.12) 72%,rgba(18,17,16,.35))}
+
+.deck-card.kind-brand .deck-card-media{background:radial-gradient(120% 90% at 30% 15%,#5a3f46 0,#2b2522 60%,#1b1816 100%)}
+.deck-card.kind-tools .deck-card-media{background:radial-gradient(120% 90% at 70% 18%,#4a4139 0,#2a2724 58%,#1a1816 100%)}
+.deck-mono{position:absolute;top:50%;left:50%;transform:translate(-50%,-58%);font-size:92px;font-weight:600;letter-spacing:2px;color:#f3c4cf26;font-family:'Courier New',serif}
+.deck-card.kind-tools .deck-mono{color:#f3c4cf30;font-size:104px}
+
+.deck-card-top{position:absolute;top:17px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between;font-size:9px;letter-spacing:1.4px;color:#efe6da}
+.deck-card-top b{font-size:13px;font-weight:600;color:var(--pink)}
+.deck-card-top>span{text-align:right;max-width:62%}
+
+.deck-card-foot{position:absolute;left:18px;right:18px;bottom:18px}
+.deck-card-foot h3{font-size:25px;font-weight:600;color:#fff;letter-spacing:.5px;line-height:1.2}
+.deck-card.kind-brand .deck-card-foot h3{letter-spacing:3px}
+.deck-card-foot p{font-size:10.5px;line-height:1.7;color:#e3d8ce;margin:7px 0 13px;max-width:92%}
+.deck-enter{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1px;background:var(--pink);color:var(--ink);padding:7px 14px;border-radius:20px;transition:gap .25s,background .2s}
+.deck-enter i{font-size:14px;line-height:1}
+.deck-card:hover .deck-enter{gap:13px;background:#ffe6ed}
+
+@media(max-width:760px){
+.module-deck{padding:40px 5% 44px}
+.module-deck .deck-head{margin-bottom:24px}
+.module-deck h2{font-size:28px}
+.deck-controls{display:none}
+.deck-track{gap:13px;margin:0 -5%;padding-left:5%;padding-right:5%;scroll-padding-left:5%}
+.deck-card{flex-basis:70vw;max-width:290px}
+.deck-card-foot h3{font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){.deck-card{animation:none}.deck-card-media img,.deck-card{transition:none}}

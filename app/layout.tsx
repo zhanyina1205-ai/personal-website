@@ -10,6 +10,9 @@ import "./toolbox.css";
 import "./ip-selected-work.css";
 import "./ip-case-study.css";
 import "./yenai-account-story.css";
+import "./rock-notes.css";
+import "./montirivers.css";
+import "./module-deck.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {

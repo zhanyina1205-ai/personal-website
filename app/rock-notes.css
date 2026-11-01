@@ -1,0 +1,44 @@
+.rock-notes{margin-top:40px;padding-top:34px;border-top:1px solid #4a433d;scroll-margin-top:30px}
+.rock-notes-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.rock-notes .eyebrow{color:#b0a29a;font-size:10px;letter-spacing:1px;margin:0}
+.rock-notes-head h4{font-size:24px;font-weight:600;margin:12px 0 0;color:var(--cream)}
+.rock-notes-tag{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0 0}
+.rock-notes-tag span{font-size:10px;letter-spacing:.5px;color:var(--pink);border:1px solid #5a4b4f;border-radius:999px;padding:3px 10px;background:#f3c4cf12}
+.rock-agg{display:flex;gap:30px;margin:0}
+.rock-agg div{display:flex;flex-direction:column;text-align:right}
+.rock-agg dt{font-size:9px;color:#b0a29a;letter-spacing:.5px}
+.rock-agg dd{margin:4px 0 0;font-size:34px;font-weight:600;color:var(--pink);letter-spacing:-1px;line-height:1.1}
+.rock-note-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rock-note-card{display:flex;flex-direction:column;background:#201f1d;border:1px solid #423c37;border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s}
+.rock-note-card:hover{border-color:var(--pink);transform:translateY(-3px)}
+.rock-note-cover{position:relative;aspect-ratio:3/4;overflow:hidden;background:#2a2826}
+.rock-note-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 55%,#00000066);opacity:0;transition:opacity .25s;pointer-events:none}
+.rock-note-card:hover .rock-note-cover::after{opacity:1}
+.rock-note-cover img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.rock-note-card:hover .rock-note-cover img{transform:scale(1.05)}
+.rock-note-rank{position:absolute;right:10px;top:10px;font-size:10px;font-weight:600;letter-spacing:.5px;color:var(--ink);background:var(--pink);border-radius:999px;padding:2px 8px;box-shadow:0 1px 4px #0005}
+.rock-note-video{position:absolute;left:11px;top:11px;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;background:#0008;color:#fff;font-size:11px;padding-left:2px}
+.rock-note-open{position:absolute;right:10px;bottom:10px;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--pink);color:var(--ink);font-size:16px;opacity:0;transition:opacity .2s}
+.rock-note-card:hover .rock-note-open{opacity:1}
+.rock-note-body{padding:13px 14px 15px;display:flex;flex-direction:column;gap:11px}
+.rock-note-body h5{font-size:13px;font-weight:500;line-height:1.5;margin:0;color:#e6ddd4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:39px}
+.rock-note-bars{display:flex;flex-direction:column;gap:8px}
+.rock-note-bars div{display:grid;grid-template-columns:1fr;gap:5px}
+.rock-note-bars span{font-size:10px;color:#b0a69d}
+.rock-note-bars b{color:var(--pink);font-weight:600;font-size:12px;margin-left:3px}
+.rock-note-bars i{display:block;height:5px;background:#3a3531;border-radius:4px;overflow:hidden}
+.rock-note-bars i em{display:block;height:100%;background:var(--pink);border-radius:4px}
+.rock-note-bars i.save em{background:#c58c99}
+.rock-note-comments{font-size:9px;color:#8f857d}
+.rock-flow{margin-top:34px;border-top:1px solid #4a433d;padding-top:24px}
+.rock-flow-label{font-size:10px;letter-spacing:1.2px;color:var(--pink)}
+.rock-flow ol{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.rock-flow li{position:relative;padding-right:14px}
+.rock-flow-step{font-size:11px;color:#b0a29a}
+.rock-flow li b{display:block;font-size:14px;font-weight:600;color:var(--cream);margin:8px 0 7px}
+.rock-flow li p{font-size:11px;line-height:1.75;color:#b6ada4;margin:0}
+.rock-flow-arrow{position:absolute;right:-4px;top:0;font-size:18px;color:#8a6d73}
+.rock-note-source{margin-top:22px}
+@media(min-width:1600px){.rock-note-grid{gap:20px}.rock-note-body h5{font-size:14px}.rock-flow li p{font-size:12px}}
+@media(max-width:1050px){.rock-note-grid{grid-template-columns:repeat(2,1fr)}.rock-flow ol{grid-template-columns:repeat(2,1fr);gap:24px 20px}.rock-flow li:nth-child(2n) .rock-flow-arrow{display:none}}
+@media(max-width:620px){.rock-note-grid{grid-template-columns:repeat(2,1fr);gap:12px}.rock-notes-head h4{font-size:20px}.rock-agg{gap:20px}.rock-agg dd{font-size:26px}.rock-flow ol{grid-template-columns:1fr;gap:16px}.rock-flow-arrow{display:none}.rock-note-body h5{font-size:12px;min-height:36px}}
