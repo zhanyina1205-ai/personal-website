@@ -1,3 +1,4 @@
+import { RockAccount, MontiriversCase } from "./brand-and-shop";
 import { YenaiIntro } from "./yenai-intro";
 import { assetPath } from "./asset-path";
 import { DocumentMedia } from "./document-media";
@@ -40,7 +41,7 @@ export default function Home(){return <>
    </section>
 
    <section className="projects section-pad" id="projects" aria-labelledby="projects-title">
-    <div className="section-kicker"><span>02 / SELECTED WORK</span><span>IP 项目 · 个人账号</span></div><h2 id="projects-title" className="display-title">我的作品<span>SELECTED WORK</span></h2>
+    <div className="section-kicker"><span>02 / SELECTED WORK</span><span>IP 项目 · 个人账号 · 品牌账号</span></div><h2 id="projects-title" className="display-title">我的作品<span>SELECTED WORK</span></h2>
     <IpNotebook/>
     <IpCaseContext/>
 
@@ -51,7 +52,8 @@ export default function Home(){return <>
     <Lookbook/>
     <NoteCards/>
 
-    <article className="shop-project"><div><p className="eyebrow">03 / MY LITTLE BUSINESS</p><h3>摇滚椰奶冻<span>朋克、辣妹风格的平价项链店铺</span></h3><p>从选品、供应链对接、定价、上架和运营，到带货笔记的拍摄剪辑，均由我独立完成。</p><a className="underlined-link" href="https://xhslink.cn/o/7fHIjh5lHki" target="_blank" rel="noopener noreferrer">逛逛我的饰品店铺 ↗</a></div><div className="shop-stats"><div><b>5,000<span>+</span></b><span>一年累计销售 / 单</span></div><div><b>10<span>万+</span></b><span>销售额 / 元</span></div></div></article>
+    <RockAccount/>
+    <MontiriversCase/>
    </section>
 
    <section className="workflow-section section-pad" id="workflow" aria-labelledby="workflow-title"><div className="section-kicker"><span>03 / HOW I WORK</span><span>从选题，到发布</span></div><h2 className="display-title" id="workflow-title">我的创作流程<span>THE PROCESS</span></h2><div className="workflow-list">{workflow.map((item,index)=><article key={item.title}><span className="step-number">0{index+1}/</span><h3>{item.title}</h3><p>{item.text}</p>{index<workflow.length-1&&<span className="step-arrow" aria-hidden="true">→</span>}</article>)}</div><div className="support-grid"><div className="support-intro"><p>从品牌合作到个人创作，<br/>这些是我实际做过的工作。</p><a href="#projects">回看我的项目 <span>↗</span></a></div><div className="support-cards"><article><span>1/</span><h3>商务对接</h3><p>IP 穿搭账号<br/>PR 合作沟通</p></article><article><span>2/</span><h3>选品搭配</h3><p>服装与饰品<br/>选品、风格搭配</p></article><article><span>3/</span><h3>拍摄剪辑</h3><p>多种拍摄方式<br/>剪映 / Remotion</p></article><article><span>4/</span><h3>独立经营</h3><p>个人账号与店铺<br/>供应链、定价、上架</p></article></div></div></section>
