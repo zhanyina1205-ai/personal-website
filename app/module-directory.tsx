@@ -8,11 +8,31 @@ export const modules = [
   {slug:'tools',number:'05',title:'我的小工具',en:'Little helpers',description:'把生活里的小需求，做成好用的小东西。',tags:'穿搭手记 / 爪爪日记',className:'directory-tools'},
 ];
 
-function DirectoryArt({slug}:{slug:string}) {
-  if(slug==='about')return <div className="directory-polaroid"><img src={assetPath('/new-document/about-portrait-dog.jpg')} alt="詹依娜与小狗" loading="lazy"/><span>Hi, I’m Yina.</span></div>;
-  if(slug==='liangliang')return <><img className="directory-ip-photo" src={assetPath('/new-document/ip-cover.png')} alt="是亮亮的户外人像" loading="lazy"/><span className="directory-sticker">是亮亮</span></>;
-  if(slug==='accounts')return <><div className="directory-account-photo"><img src={assetPath('/account-collage/black-top-pink-skirt.jpg')} alt="椰奶没喝饱的穿搭" loading="lazy"/><span>椰奶没喝饱_</span></div><div className="directory-account-photo"><img src={assetPath('/rock-account/note-2.jpg')} alt="摇滚椰奶冻的饰品搭配" loading="lazy"/><span>摇滚椰奶冻</span></div></>;
-  if(slug==='montirivers')return <><img className="directory-brand-photo" src={assetPath('/montirivers/brand-1.jpg')} alt="山河集品牌形象" loading="lazy"/><span className="directory-brand-word">MontiRivers<small>山 河 集</small></span></>;
-  return <><div className="directory-tool-illustration"><img src={assetPath('/toolbox-visuals/outfit-cart.png')} alt="粉色购物车与穿搭衣物" loading="lazy"/></div><div className="directory-tool-illustration"><img src={assetPath('/toolbox-visuals/paw-puppy.png')} alt="黑粉条纹毛衣的拼布小狗" loading="lazy"/></div></>;
+const folderLabels = ['个人介绍', '是亮亮', '我的个人账号', '山河集', '我的小工具'];
+
+function FolderImage({slug}:{slug:string}) {
+  if(slug==='tools')return <div className="archive-tools"><img src={assetPath('/toolbox-visuals/outfit-cart.png')} alt="购物车与衣服，穿搭手记" loading="lazy"/><img src={assetPath('/toolbox-visuals/paw-puppy.png')} alt="拼布小狗，爪爪日记" loading="lazy"/></div>;
+  if(slug==='accounts')return <div className="archive-account-pair"><img src={assetPath('/account-collage/black-top-pink-skirt.jpg')} alt="椰奶没喝饱的穿搭" loading="lazy"/><img src={assetPath('/rock-account/note-2.jpg')} alt="摇滚椰奶冻的饰品" loading="lazy"/></div>;
+  const photos: Record<string,[string,string]> = {
+    about: ['/new-document/about-portrait-dog.jpg','詹依娜与小狗'],
+    liangliang: ['/new-document/ip-cover.png','是亮亮的户外人像'],
+    montirivers: ['/montirivers/brand-1.jpg','山河集品牌形象'],
+  };
+  return <img src={assetPath(photos[slug][0])} alt={photos[slug][1]} loading="lazy"/>;
 }
-export function ModuleDirectory(){return <section className="module-directory" id="modules" aria-labelledby="directory-title"><div className="directory-heading"><div><p>THE INDEX / 目录</p><h2 id="directory-title">从这里，认识我的创作。</h2></div><span>Five chapters.<small>点击卡片，打开完整内容 ↗</small></span></div><div className="directory-grid">{modules.map(m=><a href={assetPath(`/${m.slug}/`)} className={`directory-card ${m.className}`} key={m.slug}><div className="directory-card-top"><span>CHAPTER / {m.number}</span><span aria-hidden="true">↗</span></div><div className="directory-art"><DirectoryArt slug={m.slug}/></div><div className="directory-card-copy"><p>{m.en}</p><h3>{m.title}</h3><div className="directory-description">{m.description}</div><div className="directory-card-bottom"><span>{m.tags}</span><span aria-hidden="true">打开这一页 ↗</span></div></div></a>)}</div></section>;}
+
+export function ModuleDirectory(){return (
+  <section className="module-directory archive-directory" id="modules" aria-labelledby="directory-title">
+    <div className="directory-heading"><div><p>THE INDEX / 我的创作档案</p><h2 id="directory-title">从这里，认识我的创作。</h2></div><span>Five chapters.<small>点击档案夹，打开完整内容 ↗</small></span></div>
+    <div className="archive-deck">{modules.map((m,index)=>(
+      <a href={assetPath(`/${m.slug}/`)} className={`directory-card archive-folder archive-${m.slug}`} key={m.slug} aria-label={`${m.title}：${m.description}`}>
+        <div className="archive-number">FILE / {m.number}<span aria-hidden="true">↗</span></div>
+        <div className="archive-photo"><FolderImage slug={m.slug}/></div>
+        <span className="archive-spine" aria-hidden="true">{m.en}</span>
+        <div className="archive-tab"><h3>{folderLabels[index]}</h3><span aria-hidden="true">{m.number}</span></div>
+        <div className="archive-caption"><span>{m.title}</span><small>{m.tags}</small></div>
+      </a>
+    ))}</div>
+    <div className="archive-footer"><span>YINA’S SELECTED WORK / 2026</span><span>每一份档案，都是创作的一部分。</span></div>
+  </section>
+);}
