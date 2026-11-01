@@ -40,3 +40,19 @@ test("internal navigation resolves and published photos exist", async () => {
   assert.equal(sources.size, 6, "The portfolio uses the document images and the supplied About portrait");
   for (const source of sources) await access(new URL(`../public${source}`, import.meta.url));
 });
+
+
+test("IP cases keep three source-linked notes and distinguish comment samples from fans", async () => {
+  const html = await render();
+  for (const link of ["ArOm8KApisP", "96U8Z07PzB6", "2E90B2pkV5X"]) {
+    assert.ok(html.includes(`https://xhslink.cn/o/${link}`));
+  }
+  assert.equal([...html.matchAll(/class="ip-work-note"/g)].length, 3);
+  assert.match(html, /评论用户地域/);
+  assert.match(html, /不代表完整粉丝地域/);
+  assert.match(html, /2026.11.01/);
+  assert.ok(html.indexOf('id="ip-breakdown"') > html.indexOf('id="ip-selected-work"'));
+  const images = new Set([...html.matchAll(/src="(\/ip-case-study\/[^"?]+)"/g)].map(match => match[1]));
+  assert.equal(images.size, 11);
+  for (const source of images) await access(new URL(`../public${source}`, import.meta.url));
+});

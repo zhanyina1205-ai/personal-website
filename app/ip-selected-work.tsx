@@ -1,14 +1,7 @@
 import { assetPath } from "./asset-path";
 import { DocumentMedia } from "./document-media";
 
-const note = {
-  href: "https://www.xiaohongshu.com/discovery/item/684cfb450000000021019e36?source=webshare&xhsshare=pc_web&xsec_token=ABkZUbD98L6DuSyIwJNYpulTm9gqSGUmLQrCiwd-BXUnQ=&xsec_source=pc_share",
-  title: "我是不会放弃这个角度记录穿搭的！！",
-  author: "涂芷靓",
-  likes: "1.47万",
-  saves: "4,283",
-  comments: "174",
-};
+import { ipNotes } from "./ip-case-data";
 
 const looks = [
   "蓝白格纹半裙", "浅蓝印花挂脖裙", "蓝绿条纹露肩上衣", "粉色吊带与工装半裙",
@@ -42,13 +35,13 @@ export function IpSelectedWork() {
 
       <aside className="ip-work-note-wrap" aria-label="为是亮亮制作的代表作品">
         <div className="ip-work-note-label"><span>代表作品</span><span>小红书 ↗</span></div>
-        <a className="ip-work-note" href={note.href} target="_blank" rel="noopener noreferrer" aria-label={`在小红书打开：${note.title}`}>
-          <div className="ip-work-note-cover"><img src={assetPath("/ip-showcase/note-cover.jpg")} alt={note.title} width={1080} height={1440} loading="lazy"/><span className="ip-work-video" aria-label="视频笔记">▶</span></div>
-          <div className="ip-work-note-copy"><h5>{note.title}</h5><div className="ip-work-note-author"><img src={assetPath("/ip-showcase/avatar.jpg")} alt="" width={24} height={24}/><span>{note.author}</span><span className="ip-work-likes"><span aria-hidden="true">♡</span> {note.likes}</span></div><div className="ip-work-note-stats"><span>收藏 <b>{note.saves}</b></span><span>评论 <b>{note.comments}</b></span></div></div>
+        <div className="ip-work-notes">{ipNotes.map(note => <a className="ip-work-note" key={note.id} href={note.href} target="_blank" rel="noopener noreferrer" aria-label={`在小红书打开：${note.title}`}>
+          <div className="ip-work-note-cover"><img src={assetPath(note.cover)} alt={note.title} width={1080} height={1440} loading="lazy"/><span className="ip-work-video" aria-label="视频笔记">▶</span><span className="ip-note-duration">{note.duration}</span></div>
+          <div className="ip-work-note-copy"><span className="ip-note-category">{note.number} / {note.category}</span><h5>{note.title}</h5><div className="ip-work-note-author"><img src={assetPath("/ip-showcase/avatar.jpg")} alt="" width={24} height={24}/><span>{note.author}</span></div><div className="ip-work-note-stats"><span>♡ 点赞 <b>{note.likes}</b></span><span>☆ 收藏 <b>{note.saves}</b></span></div><small>{note.date} 发布</small></div>
           <span className="ip-work-note-open">打开完整笔记 <span aria-hidden="true">↗</span></span>
-        </a>
-        <p className="ip-work-data-note">互动数据采集于 2026.10.14，非实时。</p>
-        <div className="ip-work-role"><span>MY PART / 我的参与</span><p>PR 商务对接<br/>选品与造型搭配<br/>内容剪辑</p></div>
+        </a>)}</div>
+        <p className="ip-work-data-note">两个账号精选 3 条 · 互动数据采集于 2026.11.01，非实时；“万”为平台约数。</p>
+        <div className="ip-work-role"><span>MY PART / 我的参与</span><p>PR 商务对接 · 选品与造型搭配 · 内容剪辑</p></div>
       </aside>
     </div>
 
