@@ -1,3 +1,5 @@
+import { assetPath } from "./asset-path";
+
 type Tool = {
   id: string;
   title: string;
@@ -12,13 +14,23 @@ const tools: Tool[] = [
   { id: "03", title: "小工具 03", description: "更多小帮手，慢慢收集。", href: null },
 ];
 
-function ToolArtwork({ index }: { index: number }) {
+// Die-cut stickers laid on each polaroid; the line sketch stays underneath as a chalk draft.
+const toolStickers = ["st-hanger", "st-paw-diary", "st-starburst"];
+const toolTapes = ["", "tape--cream", "tape--rose"];
+
+function ToolArtwork({ index, soon }: { index: number; soon: boolean }) {
   return <div className={`tool-artwork tool-artwork-${index}`} aria-hidden="true">
-    <div className="tool-mini-window"><div className="tool-window-bar"><i/><i/><i/><span>YINA’S TOOLBOX</span></div>
-      <svg viewBox="0 0 200 120" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        {index === 0 ? <><path d="M92 35a9 9 0 1 1 14 7c-4 2-6 5-6 9v4l49 29a4 4 0 0 1-2 7H53a4 4 0 0 1-2-7l49-29"/><path d="M69 92v11h62V92M40 31h14m-7-7v14M151 45l7-7"/><path d="m145 103 5-5 5 5-5 5Z"/></> : index === 1 ? <><path d="M100 58c-13 0-17 13-26 22-10 10-3 23 9 20 11-4 23-4 34 0 12 3 19-10 9-20-9-9-13-22-26-22Z"/><ellipse cx="75" cy="42" rx="9" ry="13" transform="rotate(-20 75 42)"/><ellipse cx="99" cy="30" rx="9" ry="13"/><ellipse cx="123" cy="42" rx="9" ry="13" transform="rotate(20 123 42)"/><ellipse cx="141" cy="64" rx="8" ry="11" transform="rotate(30 141 64)"/><path d="M44 71c-8-10-18 1 0 13 18-12 8-23 0-13Z"/></> : <><rect x="58" y="32" width="52" height="61" rx="4" transform="rotate(-10 84 62)"/><rect x="91" y="23" width="52" height="61" rx="4" transform="rotate(9 117 53)"/><path d="m110 44 5 6 10-12M108 62l18 3M50 23l-8-7M155 78l9 7M158 47h10"/></>}
-      </svg>
-    </div><span className="tool-artwork-number">0{index + 1}</span>
+    <span className="tool-sketch-tab">SKETCH</span>
+    <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      {index === 0
+        ? <><path d="M86 52c0-9 5-16 14-16s14 6 14 13c0 6-4 10-10 12"/><path d="M100 61 40 103a4 4 0 0 0 2 7h116a4 4 0 0 0 2-7l-60-42Z"/><path d="M63 24c6 6 6 14 0 20M137 22c-6 6-6 14 0 20"/></>
+        : index === 1
+          ? <><ellipse cx="100" cy="98" rx="30" ry="25"/><ellipse cx="60" cy="72" rx="11" ry="15"/><ellipse cx="86" cy="54" rx="11" ry="16"/><ellipse cx="114" cy="54" rx="11" ry="16"/><ellipse cx="140" cy="72" rx="11" ry="15"/></>
+          : <><path d="M100 40c3 14 11 22 26 26-13 4-21 12-25 26-4-14-12-22-26-25 14-5 22-13 25-27Z"/><path d="M46 36l-6-6M160 36l6-6M44 92l-7 5M164 92l7 5"/></>}
+    </svg>
+    <img className="tool-sticker" src={assetPath(`/stickers/${toolStickers[index % toolStickers.length]}.webp`)} alt="" loading="lazy" decoding="async"/>
+    <span className="tool-artwork-number">0{index + 1}</span>
+    {soon && <span className="tool-soon-stamp fx-ink">COMING SOON</span>}
   </div>;
 }
 
@@ -26,12 +38,23 @@ export function Toolbox() {
   return <section className="toolbox-section section-pad" id="tools" aria-labelledby="tools-title">
     <div className="section-kicker"><span>04 / MY LITTLE TOOLBOX</span><span>小工具 · 持续更新中</span></div>
     <div className="toolbox-heading"><div><h2 className="display-title" id="tools-title">我的小工具<span>MAKE ROOM FOR IDEAS</span></h2><p>为创作和生活，做一点好用的小东西。<br/>收好灵感，也记下日常。</p></div><span className="toolbox-script" aria-hidden="true">Little helpers.<span>✳</span></span></div>
-    <div className="toolbox-shelf"><div className="toolbox-shelf-label"><span>收藏一些小小的好用。</span><span>THE USEFUL LITTLE THINGS</span></div>
+    <div className="toolbox-shelf dossier dossier--manila">
+      <span className="dossier-tab" aria-hidden="true"><b>FILE 06</b>小工具</span>
+      <img className="toolbox-bow" src={assetPath("/stickers/st-bow.webp")} alt="" aria-hidden="true" loading="lazy" decoding="async"/>
+      <div className="toolbox-shelf-label"><span>收藏一些小小的好用。</span><span>THE USEFUL LITTLE THINGS</span></div>
       <div className="toolbox-grid">{tools.map((tool, index) => {
-        const contents = <><div className="tool-card-meta"><span>TOOL / {tool.id}</span><span className="tool-status">{tool.href ? "可以使用" : "即将上线"}</span></div><ToolArtwork index={index}/><div className="tool-card-copy"><h3>{tool.title}</h3><p>{tool.description}</p></div><div className="tool-card-bottom"><span>{tool.href ? "打开小工具" : "COMING SOON"}</span><span aria-hidden="true">{tool.href ? "↗" : "✧"}</span></div></>;
-        return tool.href ? <a className="tool-card" key={tool.id} href={tool.href} target="_blank" rel="noopener noreferrer">{contents}</a> : <article className="tool-card" key={tool.id}>{contents}</article>;
+        const contents = <>
+          <span className={`tape ${toolTapes[index % toolTapes.length]}`} aria-hidden="true"/>
+          <div className="tool-card-meta"><span>TOOL / {tool.id}</span><span className={`stamp ${tool.href ? "" : "stamp--ink"}`}>{tool.href ? "在用中" : "筹备中"}</span></div>
+          <ToolArtwork index={index} soon={!tool.href}/>
+          <div className="tool-card-copy"><h3>{tool.title}</h3><p>{tool.description}</p></div>
+          <div className="tool-card-bottom"><span>{tool.href ? "打开小工具" : "COMING SOON"}</span><span aria-hidden="true">{tool.href ? "↗" : "✧"}</span></div>
+        </>;
+        return tool.href
+          ? <a className="tool-card fx-curl" key={tool.id} href={tool.href} target="_blank" rel="noopener noreferrer">{contents}</a>
+          : <article className="tool-card is-soon" key={tool.id}>{contents}</article>;
       })}</div>
-      <div className="toolbox-footnote"><span>留一点好奇，等下一次更新。</span><span aria-hidden="true">with a little help & a lot of ideas.</span></div>
+      <div className="toolbox-footnote"><span>留一点好奇，等下一次更新。</span><span aria-hidden="true">with a little help &amp; a lot of ideas.</span></div>
     </div>
   </section>;
 }

@@ -7,11 +7,12 @@ const regions = [
 ];
 
 export function IpAudience() {
-  return <section className="ip-audience" aria-labelledby="audience-title">
+  return <section className="ip-audience dossier dossier--manila" aria-labelledby="audience-title">
+    <span className="dossier-tab" aria-hidden="true"><b>FILE 02-A</b>受众画像</span>
     <header className="ip-editorial-heading"><div><span>01 / KNOW THE AUDIENCE</span><h4 id="audience-title">看见账号背后的人</h4></div><p>美妆主号建立方法与信任，<br/>穿搭号延伸造型与同款需求。</p></header>
     <div className="ip-audience-grid">
       <article className="ip-gender-panel"><span className="ip-panel-label">是亮亮 · 抖音主号粉丝画像</span><div className="ip-gender-chart" role="img" aria-label="女性粉丝占比83.18%"><div><strong>83.18<small>%</small></strong><span>女性粉丝</span></div></div><h5>年轻女性，是内容的核心受众</h5><p>年龄以 <b>18—30 岁</b>为主</p><span className="ip-age-tag">美妆方法</span><span className="ip-age-tag">造型灵感</span><small className="ip-chart-source">2026.10.12 报告截图 · 仅主号口径</small></article>
-      <article className="ip-region-panel"><div className="ip-region-heading"><div><span className="ip-panel-label">评论用户地域 · 抽样</span><h5>两类内容，都与南方用户更常相遇</h5></div><span>占各账号去重样本</span></div><div className="ip-chart-legend"><span>是亮亮 · 美妆</span><span>涂芷靓 · 穿搭</span></div>
+      <article className="ip-region-panel fx-curl"><span className="ip-paperclip" aria-hidden="true"/><div className="ip-region-heading"><div><span className="ip-panel-label">评论用户地域 · 抽样</span><h5>两类内容，都与南方用户更常相遇</h5></div><span>占各账号去重样本</span></div><div className="ip-chart-legend"><span>是亮亮 · 美妆</span><span>涂芷靓 · 穿搭</span></div>
         <div className="ip-region-bars">{regions.map(region => <div className="ip-region-row" key={region.name}><span>{region.name}</span><div>{(["main", "fashion"] as const).map(key => <div className={`ip-region-track ${key}`} key={key}><i style={{width: `${region[key] / 20 * 100}%`}}/><b>{region[key].toFixed(1)}%</b></div>)}</div></div>)}</div>
         <p className="ip-region-summary">南方评论用户占比 <strong>67.7% <small>/ 主号</small></strong><strong>71.8% <small>/ 穿搭号</small></strong></p>
       </article>

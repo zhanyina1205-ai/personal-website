@@ -1,84 +1,148 @@
-.monti{--m-ink:#2b2622;--m-muted:#796b5f;--m-gold:#9a7540;--m-jade:#4b5a4f;--m-line:#cdbfae;color:var(--m-ink);background:#e9e1d2;border-radius:4px 4px 4px 55px;margin:44px 0;padding:36px 40px;scroll-margin-top:35px}
-.monti-meta{display:flex;justify-content:space-between;gap:16px;font-size:10px;letter-spacing:1.4px;color:var(--m-muted);border-bottom:1px solid var(--m-line);padding-bottom:17px}
-.monti-head{display:grid;grid-template-columns:1.25fr .9fr;gap:40px;align-items:end;padding:30px 0 28px;border-bottom:1px solid var(--m-line)}
-.monti-script{font-family:NotebookScript,cursive;font-size:clamp(40px,4.6vw,64px);color:var(--m-gold);line-height:1.1;margin:0}
-.monti-head-copy h4{font-size:clamp(24px,2.8vw,37px);font-weight:500;letter-spacing:-.6px;line-height:1.3;margin:8px 0 0}
-.monti-head-copy h4 span{display:block;font-size:12px;font-weight:400;letter-spacing:.3px;color:var(--m-muted);margin-top:11px}
-.monti-lede{font-size:14px;line-height:1.95;color:#574c43;margin:18px 0 0;max-width:620px}
-.monti-brandcard{margin:0;display:grid;gap:14px}
-.monti-brandcard div{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:baseline;border-top:1px solid var(--m-line);padding-top:13px}
+/* MontiRivers 山河集 — FILE 05 · jewelry-brand dossier (visual rework 2026-11-01, see dossier.css)
+   Manila folder on the black desk; staff accounts = ID badges, data = hang tag / receipt / ruled card.
+   Palette inside the folder: ink, grey rose, aged gold, pink. No flat white surfaces. */
+.monti{--m-ink:#2b2622;--m-gold:#9a7540;--m-gold-foil:linear-gradient(135deg,#d2b57c,#a8844c 48%,#c4a46a 70%,#8f6b38);--m-rose:#b47d8c;--m-line:#b6a385;--m-hole:#cab89c;--m-note:var(--paper-fibre),linear-gradient(178deg,#f4ede2,#eae0d1);
+  margin:96px 0 44px;padding:40px 46px 34px;scroll-margin-top:90px;color:var(--ink)}
+.monti-tab{left:52px;background:linear-gradient(172deg,#e9dcc4,#e4d5bb)}
+.monti-sticker{position:absolute;top:-46px;right:46px;width:128px;height:auto;z-index:6;transform:rotate(9deg);filter:drop-shadow(0 8px 10px #0006);pointer-events:none}
+
+.monti-meta{display:flex;justify-content:space-between;gap:16px;font:400 9.5px/1.4 var(--font-mono);letter-spacing:1.8px;text-transform:uppercase;color:var(--label);border-bottom:1px dashed var(--m-line);padding-bottom:14px;padding-right:150px}
+
+/* Head: script + heavy ink title, brand facts as a jewellery hang tag */
+.monti-head{display:grid;grid-template-columns:1.3fr .8fr;gap:48px;align-items:center;padding:30px 0 34px;border-bottom:1px dashed var(--m-line)}
+.monti-script{font-family:NotebookScript,cursive;font-size:clamp(44px,4.8vw,68px);color:var(--m-gold);line-height:1.05;margin:0;transform:rotate(-3deg);transform-origin:left center}
+.monti-head-copy h4{font-size:clamp(28px,3.2vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:12px 0 0;color:var(--ink)}
+.monti-head-copy h4 .monti-sub{display:block;font:400 10px/1.6 var(--font-mono);letter-spacing:1.6px;color:var(--ink-soft);margin-top:14px}
+.monti-lede{font-size:14px;line-height:1.9;color:var(--ink-soft);margin:18px 0 0;max-width:600px}
+.monti-brandcard{position:relative;justify-self:end;width:min(100%,340px);margin:26px 14px 0 0;display:grid;gap:0;padding:46px 24px 18px;background:var(--m-note);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid #cdbda6;border-radius:var(--radius-paper);box-shadow:var(--shadow-card);transform:rotate(2deg)}
+.monti-brandcard::before{content:"";position:absolute;top:14px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--m-hole);border:2.5px solid #b08d57;box-shadow:inset 1px 1px 2px #0006,0 1px 0 #fff6}
+.monti-brandcard::after{content:"";position:absolute;bottom:calc(100% - 22px);left:50%;width:46px;height:58px;border:1.5px solid #6f5a44;border-right:0;border-bottom:0;border-radius:40px 0 0 0;transform:translateX(-46px) rotate(8deg);transform-origin:right bottom;pointer-events:none;opacity:.85}
+.monti-brandcard div{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:baseline;border-top:1px dashed #c5b39a;padding:12px 0}
 .monti-brandcard div:first-child{border-top:0;padding-top:0}
-.monti-brandcard dt{font-size:10px;letter-spacing:1px;color:var(--m-muted)}
-.monti-brandcard dd{margin:0;font-size:14px;font-weight:500;line-height:1.5}
-.monti-brandcard dd span{font-size:11px;font-weight:400;color:var(--m-muted)}
-.monti-role{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:24px 0;border-bottom:1px solid var(--m-line)}
-.monti-role-label{font-size:10px;letter-spacing:1.4px;color:var(--m-gold);writing-mode:vertical-rl;text-orientation:mixed}
+.monti-brandcard div:last-child{padding-bottom:0}
+.monti-brandcard dt{font:400 9px/1.4 var(--font-mono);letter-spacing:1.6px;color:var(--label)}
+.monti-brandcard dd{margin:0;font-size:14px;font-weight:700;line-height:1.5;color:var(--ink)}
+.monti-brandcard dd span{font-size:11px;font-weight:400;color:var(--ink-soft)}
+
+/* My role: stamp label + three divider strips */
+.monti-role{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;padding:26px 0;border-bottom:1px dashed var(--m-line)}
+.monti-role-label{font:700 9px/1 var(--font-mono);letter-spacing:1.8px;color:var(--m-rose);writing-mode:vertical-rl;text-orientation:mixed;border:1.5px solid currentColor;border-radius:3px;padding:10px 6px;transform:rotate(-4deg);opacity:.85}
 .monti-role ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.monti-role li{padding-left:15px;border-left:2px solid var(--m-gold)}
-.monti-role b{font-size:14px;font-weight:600}
-.monti-role small{display:block;font-size:11px;line-height:1.7;color:var(--m-muted);margin-top:6px}
-.monti-chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 20px}
-.monti-chart-head h5{font-size:18px;font-weight:600;margin:0}
-.monti-chart-head>span{font-size:10px;color:var(--m-muted)}
-.monti-overview{padding:28px 0}
-.monti-accounts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.monti-accounts li{background:#f3ecdf;border:1px solid #ddd0bd;border-radius:4px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:11px}
-.monti-acc-top{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:3px 11px;align-items:center}
-.monti-acc-mono{grid-row:1/3;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#c7a265,#8f6b38 72%);color:#fdf6e6;font-family:NotebookScript,serif;font-size:21px;line-height:1;box-shadow:inset 0 1px 2px rgba(255,248,230,.4),0 1px 2px rgba(80,58,28,.25)}
+.monti-role li{padding:2px 0 2px 16px;border-left:3px solid var(--ink)}
+.monti-role li:nth-child(2){border-left-color:var(--m-gold)}
+.monti-role li:nth-child(3){border-left-color:var(--m-rose)}
+.monti-role b{font-size:14px;font-weight:800}
+.monti-role small{display:block;font-size:12px;line-height:1.7;color:var(--ink-soft);margin-top:6px}
+
+.monti-chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 22px}
+.monti-chart-head h5{width:fit-content;font-size:20px;font-weight:800;letter-spacing:-.01em;margin:0;color:var(--ink);background:linear-gradient(transparent 58%,#f3c4cfcc 58%,#f3c4cfcc 90%,transparent 90%);padding:0 .14em}
+.monti-chart-head>span{font:400 9px/1.4 var(--font-mono);letter-spacing:1.6px;color:var(--label);text-align:right}
+
+/* Staff accounts = ID badges */
+.monti-overview{padding:30px 0 36px}
+.monti-accounts{list-style:none;margin:0;padding:16px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px 24px}
+.monti-accounts li{--tilt:0deg;position:relative;display:flex;flex-direction:column;gap:13px;padding:0 0 16px;background:var(--m-note);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid #d3c5b1;border-radius:var(--radius-paper);box-shadow:var(--shadow-card);transform:rotate(var(--tilt));transition:transform .35s var(--ease-paper),box-shadow .35s}
+.monti-accounts li:nth-child(3n+1){--tilt:-.9deg}
+.monti-accounts li:nth-child(3n+2){--tilt:.6deg}
+.monti-accounts li:nth-child(3n){--tilt:-.35deg}
+.monti-accounts li>:not(.monti-badge-head):not(.monti-acc-note){margin:0 18px}
+.monti-accounts li::before{content:"";position:absolute;z-index:2;top:-14px;left:50%;width:24px;height:22px;margin-left:-12px;border-radius:3px 3px 2px 2px;background:linear-gradient(180deg,#d9d4cb,#9a958d 60%,#bdb7ad);box-shadow:0 2px 3px #0005,inset 0 1px 0 #fff8}
+.monti-accounts li::after{content:"";position:absolute;z-index:3;top:-6px;left:50%;width:12px;height:6px;margin-left:-6px;border-radius:3px;background:#2b2622;opacity:.75}
+.monti-accounts li:hover{transform:translateY(-5px) rotate(0deg);box-shadow:var(--shadow-card),0 26px 34px -22px #000}
+.monti-badge-head{display:flex;justify-content:space-between;align-items:flex-end;height:40px;padding:0 14px 8px;border-radius:2px 2px 0 0;background:linear-gradient(180deg,#2c2724,#1d1a18);font:700 8.5px/1 var(--font-mono);letter-spacing:1.8px;color:var(--pink)}
+.monti-badge-head>span:last-child{color:#c9b9a6}
+.monti-accounts li.is-lead .monti-badge-head{background:var(--m-gold-foil);color:#2b2216}
+.monti-accounts li.is-lead .monti-badge-head>span:last-child{color:#2b2216}
+.monti-acc-top{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:4px 13px;align-items:center;margin-top:4px!important}
+.monti-acc-mono{grid-row:1/3;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;color:var(--m-rose);border:1.5px solid currentColor;box-shadow:inset 0 0 0 3px #f1e8dc,inset 0 0 0 4px currentColor;font-family:NotebookScript,serif;font-size:24px;line-height:1;transform:rotate(-10deg);opacity:.9;mix-blend-mode:multiply}
+.monti-accounts li.is-lead .monti-acc-mono{color:var(--m-gold)}
 .monti-acc-top a{min-width:0;grid-column:2}
-.monti-acc-top b{font-size:17px;font-weight:600}
-.monti-acc-top a span{display:block;font-size:9px;color:var(--m-muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.monti-acc-pos{grid-column:2;justify-self:start;font-size:9px;color:var(--m-jade);border:1px solid #b9c0b4;border-radius:20px;padding:2px 8px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
-.monti-acc-pos.lead{color:var(--m-gold);border-color:#d3b681;background:#f6ecd7}
-.monti-acc-bar{display:flex;align-items:center;gap:9px;background:#e2d6c4;border-radius:4px;height:20px;overflow:hidden;position:relative}
-.monti-acc-bar i{display:block;height:100%;background:linear-gradient(90deg,#b2905a,#9a7540);border-radius:4px;min-width:3px}
-.monti-acc-bar em{position:absolute;right:9px;font-style:normal;font-size:13px;font-weight:600;color:var(--m-ink)}
-.monti-acc-bar em small{font-size:9px;font-weight:400;color:var(--m-muted);margin-left:3px}
-.monti-acc-metrics{display:flex;flex-direction:column;gap:5px;font-size:10px;color:var(--m-muted)}
-.monti-acc-metrics b{font-size:12px;font-weight:600;color:var(--m-ink);margin-left:4px}
-.monti-acc-note{border-top:1px dashed #cdbfa9;padding-top:10px;display:flex;flex-direction:column;gap:5px;transition:opacity .2s}
-.monti-acc-note:hover{opacity:.7}
-.monti-note-tag{align-self:flex-start;font-size:8px;letter-spacing:.6px;background:var(--m-gold);color:#fff8ec;padding:2px 7px;border-radius:3px}
-.monti-note-tag.latest{background:var(--m-jade)}
-.monti-note-title{font-size:11px;line-height:1.5;color:#4a4039;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-.monti-note-stats{font-size:10px;color:var(--m-muted)}
-.monti-insight{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;padding:6px 0 28px;border-bottom:1px solid var(--m-line)}
-.monti-insight article{background:#f3ecdf;border:1px solid #ddd0bd;border-radius:4px;padding:20px 22px}
-.monti-insight-kicker{font-size:9px;letter-spacing:1.2px;color:var(--m-gold)}
-.monti-insight h5{font-size:19px;font-weight:600;margin:9px 0 16px}
-.monti-stack{display:flex;height:34px;border-radius:4px;overflow:hidden;gap:2px}
+.monti-acc-top b{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.monti-acc-top a span{display:block;font:400 9px/1.5 var(--font-mono);letter-spacing:.6px;color:var(--label);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.monti-acc-top a:hover b{text-decoration:underline;text-decoration-color:var(--m-rose);text-underline-offset:4px}
+.monti-acc-pos{grid-column:2;justify-self:start;font:700 9px/1.2 var(--font-mono);letter-spacing:.8px;color:var(--ink-soft);border:1px solid #bfae95;border-radius:2px;padding:3px 7px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.monti-acc-pos.lead{color:#2b2216;border-color:transparent;background:var(--m-gold-foil)}
+/* followers ruler */
+.monti-acc-bar{position:relative;display:flex;align-items:center;height:32px;padding-right:84px}
+.monti-acc-bar::before{content:"";position:absolute;left:0;right:84px;top:50%;height:12px;margin-top:-6px;border-radius:1px;background:repeating-linear-gradient(90deg,#8d7b6a66 0 1px,transparent 1px 10%) 0 0/100% 5px no-repeat,#e1d4c0;box-shadow:inset 0 1px 1px #3a271f26}
+.monti-acc-bar i{position:relative;z-index:1;display:block;height:12px;min-width:4px;border-radius:1px;background:var(--m-ink)}
+.monti-accounts li.is-lead .monti-acc-bar i{background:var(--m-gold-foil)}
+.monti-acc-bar em{position:absolute;right:0;top:50%;transform:translateY(-50%);font-style:normal;font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.monti-acc-bar em small{font:400 9px/1 var(--font-mono);letter-spacing:1px;color:var(--label);margin-left:3px}
+/* receipt lines with dotted leaders */
+.monti-acc-metrics{display:flex;flex-direction:column;gap:7px;font:400 10px/1.4 var(--font-mono);letter-spacing:.4px;color:var(--ink-soft)}
+.monti-acc-metrics span{display:flex;align-items:baseline;gap:6px}
+.monti-acc-metrics span::after{content:"";order:1;flex:1;min-width:12px;border-bottom:1px dotted #9d8b7a;transform:translateY(-3px)}
+.monti-acc-metrics b{order:2;font:800 13px/1 Arial,"PingFang SC",sans-serif;color:var(--ink);margin:0}
+/* sample note = tear-off stub */
+.monti-acc-note{position:relative;margin-top:3px;padding:14px 18px 0;border-top:1.5px dashed #b9a68c;display:flex;flex-direction:column;gap:6px}
+.monti-acc-note::before,.monti-acc-note::after{content:"";position:absolute;top:-8px;width:14px;height:14px;border-radius:50%;background:var(--m-hole);box-shadow:inset 0 1px 2px #3a271f40}
+.monti-acc-note::before{left:-8px}.monti-acc-note::after{right:-8px}
+.monti-note-tag{align-self:flex-start;font:700 8.5px/1 var(--font-mono);letter-spacing:1.4px;color:var(--m-gold);border:1.5px solid currentColor;padding:3px 6px;border-radius:2px;transform:rotate(-3deg);opacity:.9}
+.monti-note-tag.latest{color:var(--m-rose)}
+.monti-note-title{font-size:12px;line-height:1.5;color:var(--ink);display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.monti-note-stats{font:400 9.5px/1.4 var(--font-mono);letter-spacing:.4px;color:var(--label)}
+.monti-acc-note:hover .monti-note-title{text-decoration:underline;text-decoration-color:var(--m-rose);text-underline-offset:3px}
+
+/* Insight: receipt + ruled index card */
+.monti-insight{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:start;padding:8px 0 44px;border-bottom:1px dashed var(--m-line)}
+.monti-insight article{position:relative;padding:22px 26px 26px;background:var(--m-note);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid #d3c5b1;border-radius:var(--radius-paper);box-shadow:var(--shadow-card)}
+.monti-insight .monti-concentration{transform:rotate(-.6deg);border-bottom:0;border-radius:var(--radius-paper) var(--radius-paper) 0 0}
+.monti-insight .monti-concentration::after{content:"";position:absolute;left:-1px;right:-1px;top:calc(100% - 1px);height:7px;background:var(--paper-fibre),#e9dfd0;background-size:220px 220px,auto;background-blend-mode:multiply,normal;-webkit-mask:conic-gradient(from -45deg at bottom,#000 90deg,#0000 0) 0 0/12px 100% repeat-x;mask:conic-gradient(from -45deg at bottom,#000 90deg,#0000 0) 0 0/12px 100% repeat-x}
+.monti-insight .monti-honest{transform:rotate(.7deg);background:repeating-linear-gradient(180deg,transparent 0 23px,#c58c9926 23px 24px),var(--m-note);background-size:auto,220px 220px,auto;background-blend-mode:normal,multiply,normal}
+.monti-honest::before{content:"";position:absolute;top:-12px;left:50%;width:92px;height:24px;margin-left:-46px;transform:rotate(-3deg);opacity:.85;background:linear-gradient(180deg,#ffffff38,#0000000f),repeating-linear-gradient(135deg,#f4c6d1 0 7px,#ecb4c2 7px 14px);-webkit-mask:linear-gradient(90deg,#0000,#000 5px,#000 calc(100% - 5px),#0000);mask:linear-gradient(90deg,#0000,#000 5px,#000 calc(100% - 5px),#0000);box-shadow:0 3px 7px #0000001f}
+.monti-insight-kicker{font:700 9px/1.4 var(--font-mono);letter-spacing:1.8px;color:var(--m-rose)}
+.monti-insight h5{font-size:20px;font-weight:800;letter-spacing:-.01em;margin:8px 0 18px;color:var(--ink)}
+.monti-stack{display:flex;height:40px;border-radius:2px;overflow:hidden;gap:3px}
 .monti-stack i{display:flex;align-items:center;justify-content:center;font-style:normal;min-width:0}
-.monti-stack i span{font-size:9px;color:#fff8ec;letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
-.seg-carrie{background:#9a7540}.seg-jenny{background:#b2905a}.seg-rest{flex:1;background:#8a8275}.seg-rest span{color:#f3ecdf}
-.monti-concentration p,.monti-honest p{font-size:12px;line-height:1.9;color:var(--m-muted);margin:15px 0 0}
-.monti-concentration b,.monti-honest b{color:var(--m-ink);font-weight:600}
+.monti-stack i span{font:700 9px/1 var(--font-mono);letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+.seg-carrie{background:var(--m-ink)}.seg-carrie span{color:var(--pink)}
+.seg-jenny{background:var(--m-gold-foil)}.seg-jenny span{color:#2b2216}
+.seg-rest{flex:1;background:repeating-linear-gradient(135deg,#c99aa5 0 6px,#bb8996 6px 12px)}.seg-rest span{color:#2b2216}
+.monti-concentration p,.monti-honest p{font-size:13px;line-height:1.85;color:var(--ink-soft);margin:16px 0 0}
+.monti-concentration b,.monti-honest b{color:var(--ink);font-weight:800}
 .monti-gap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;text-align:center}
-.monti-gap div span{font-size:10px;color:var(--m-muted);line-height:1.5;display:block;min-height:28px}
-.monti-gap b{display:block;font-size:40px;font-weight:600;letter-spacing:-1px;line-height:1.1;margin-top:6px}
+.monti-gap div span{font:400 9.5px/1.5 var(--font-mono);letter-spacing:.6px;color:var(--label);display:block;min-height:28px}
+.monti-gap b{display:block;font-size:48px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:6px}
 .monti-gap div:first-child b{color:var(--m-gold)}
-.monti-gap div:last-child b{color:var(--m-jade)}
-.monti-gap b small{font-size:13px;font-weight:400;margin-left:3px;color:var(--m-muted)}
-.monti-gap>i{font-style:normal;font-size:12px;color:var(--m-muted)}
-.monti-signals{padding:28px 0;border-bottom:1px solid var(--m-line)}
-.monti-signal-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.monti-signal-list li{position:relative;background:#f3ecdf;border:1px solid #ddd0bd;border-left:3px solid var(--m-gold);border-radius:3px 4px 4px 3px;padding:14px 15px 13px;display:flex;flex-direction:column;gap:8px}
-.monti-signal-tag{align-self:flex-start;font-size:9px;letter-spacing:.6px;color:var(--m-gold);border:1px solid #d9c199;border-radius:20px;padding:2px 9px}
-.monti-signal-list p{font-size:12px;line-height:1.7;color:#4a4039;margin:0;flex:1}
-.monti-signal-from{font-size:10px;color:var(--m-muted);letter-spacing:.3px}
+.monti-gap div:last-child b{color:var(--ink)}
+.monti-gap b small{font-size:13px;font-weight:400;margin-left:3px;color:var(--label)}
+.monti-gap>i{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--m-rose);color:#a8566b;font:italic 800 14px/1 Georgia,serif;letter-spacing:0;transform:rotate(-10deg)}
+
+/* Signals: comment slips, cream and pink alternate */
+.monti-signals{padding:36px 0 32px;border-bottom:1px dashed var(--m-line)}
+.monti-signal-list{list-style:none;margin:0;padding:8px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.monti-signal-list li{position:relative;padding:22px 16px 14px;display:flex;flex-direction:column;gap:9px;background:var(--m-note);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid #d3c5b1;border-radius:var(--radius-paper);box-shadow:var(--shadow-card);transform:rotate(-.8deg);transition:transform .35s var(--ease-paper)}
+.monti-signal-list li:nth-child(even){transform:rotate(.9deg);background:var(--paper-fibre),linear-gradient(172deg,#f6d3db,var(--pink-paper) 55%,#e8b3c0);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border-color:#e0aab7}
+.monti-signal-list li::before{content:"";position:absolute;top:-10px;left:18px;width:58px;height:20px;transform:rotate(-6deg);opacity:.8;background:linear-gradient(180deg,#ffffff4d,#0000000f),repeating-linear-gradient(135deg,#efe7db 0 7px,#e2d8ca 7px 14px);-webkit-mask:linear-gradient(90deg,#0000,#000 4px,#000 calc(100% - 4px),#0000);mask:linear-gradient(90deg,#0000,#000 4px,#000 calc(100% - 4px),#0000)}
+.monti-signal-list li:nth-child(even)::before{left:auto;right:18px;transform:rotate(5deg)}
+.monti-signal-list li:hover{transform:translateY(-4px) rotate(0deg)}
+.monti-signal-tag{align-self:flex-start;font:700 9px/1 var(--font-mono);letter-spacing:1.4px;color:var(--m-gold);border:1.5px solid currentColor;border-radius:2px;padding:3px 7px;transform:rotate(-4deg)}
+.monti-signal-list li:nth-child(even) .monti-signal-tag{color:#8f5566}
+.monti-signal-list p{font-size:13px;line-height:1.7;color:var(--ink);margin:0;flex:1}
+.monti-signal-from{font:400 9.5px/1 var(--font-mono);letter-spacing:.6px;color:var(--label)}
 .monti-signal-from::before{content:"— "}
-.monti-signal-foot{font-size:11px;line-height:1.9;color:var(--m-muted);margin:16px 0 0;max-width:920px}
-.monti-division{padding:26px 0 8px}
-.monti-division-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 36px}
-.monti-division-list li{display:grid;grid-template-columns:34px 1fr auto;gap:13px;align-items:center;padding:14px 0;border-bottom:1px solid var(--m-line)}
-.monti-div-index{font-size:17px;color:var(--m-gold);font-weight:500}
-.monti-division-list b{font-size:13px;font-weight:600}
-.monti-division-list p{font-size:11px;line-height:1.6;color:var(--m-muted);margin:4px 0 0}
-.monti-div-track{font-size:9px;color:var(--m-jade);text-align:right;max-width:120px;line-height:1.5}
-.monti-source{font-size:11px;line-height:1.85;color:var(--m-muted);margin-top:22px}
-.monti-source summary{width:fit-content;cursor:pointer;color:var(--m-gold)}
-.monti-source p{margin:12px 0;max-width:920px}
-.monti-source a{text-decoration:underline;text-underline-offset:3px;color:var(--m-ink)}
-.monti-source summary:focus-visible,.monti-acc-top a:focus-visible,.monti-acc-note:focus-visible{outline:2px solid var(--m-gold);outline-offset:4px}
-@media(min-width:1600px){.monti{padding:46px 55px}.monti-accounts{gap:20px}.monti-lede{font-size:15px}.monti-division-list p{font-size:12px}.monti-signal-list{gap:18px}}
-@media(max-width:1050px){.monti{padding:30px 26px}.monti-head{grid-template-columns:1fr;gap:26px}.monti-accounts{grid-template-columns:repeat(2,1fr)}.monti-insight{grid-template-columns:1fr;gap:16px}.monti-division-list{grid-template-columns:1fr}.monti-signal-list{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.monti{padding:24px 18px;margin:30px 0;border-radius:4px 4px 4px 32px;scroll-margin-top:20px}.monti-meta{font-size:8px;letter-spacing:.6px}.monti-head{padding:24px 0}.monti-script{font-size:46px}.monti-head-copy h4{font-size:24px}.monti-lede{font-size:13px}.monti-brandcard div{grid-template-columns:48px 1fr}.monti-role{grid-template-columns:1fr;gap:16px}.monti-role-label{writing-mode:horizontal-tb}.monti-role ul{grid-template-columns:1fr;gap:14px}.monti-accounts{grid-template-columns:1fr}.monti-acc-top a span{max-width:none}.monti-acc-mono{width:34px;height:34px;font-size:19px}.monti-gap b{font-size:32px}.monti-div-track{max-width:95px}.monti-signal-list{grid-template-columns:1fr}}
+.monti-signal-foot{font-size:12px;line-height:1.85;color:var(--ink-soft);margin:22px 0 0;max-width:920px}
+
+/* Division plan: numbered file strips */
+.monti-division{padding:34px 0 8px}
+.monti-division-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
+.monti-division-list li{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--m-line)}
+.monti-div-index{display:grid;place-items:center;width:36px;height:24px;border-radius:2px;background:var(--ink);color:var(--pink);font:700 10px/1 var(--font-mono);letter-spacing:1px;transform:rotate(-2deg)}
+.monti-division-list li:nth-child(even) .monti-div-index{transform:rotate(1.5deg)}
+.monti-division-list b{font-size:14px;font-weight:800}
+.monti-division-list p{font-size:12px;line-height:1.6;color:var(--ink-soft);margin:4px 0 0}
+.monti-div-track{font:400 9px/1.5 var(--font-mono);letter-spacing:.6px;color:#8f5566;text-align:right;max-width:170px}
+
+.monti-source{font-size:12px;line-height:1.85;color:var(--ink-soft);margin-top:26px}
+.monti-source summary{width:fit-content;cursor:pointer;font:700 9.5px/1 var(--font-mono);letter-spacing:1.6px;color:var(--ink);border:1px solid var(--m-line);border-radius:2px;padding:8px 12px;transition:background .25s}
+.monti-source summary:hover{background:#d5c3a5}
+.monti-source p{margin:14px 0;max-width:920px}
+.monti-source a{text-decoration:underline;text-decoration-color:var(--m-rose);text-underline-offset:3px;color:var(--ink);font-weight:700}
+.monti-source summary:focus-visible,.monti-acc-top a:focus-visible,.monti-acc-note:focus-visible,.monti-source a:focus-visible{outline:2px solid var(--m-rose);outline-offset:4px}
+
+@media(min-width:1600px){.monti{padding:48px 58px 40px}.monti-accounts{gap:44px 28px}.monti-lede{font-size:15px}.monti-signal-list{gap:26px}}
+@media(max-width:1050px){.monti{padding:34px 30px 30px}.monti-head{grid-template-columns:1.2fr .9fr;gap:30px}.monti-accounts{grid-template-columns:repeat(2,1fr)}.monti-accounts li:nth-child(odd){--tilt:-.7deg}.monti-accounts li:nth-child(even){--tilt:.6deg}.monti-insight{grid-template-columns:1fr;gap:36px}.monti-division-list{grid-template-columns:1fr}.monti-signal-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.monti-head{grid-template-columns:1fr;gap:12px}.monti-brandcard{justify-self:start;margin:30px 0 0 8px}}
+@media(max-width:760px){.monti{margin:84px 0 30px;padding:26px 16px 24px 18px;scroll-margin-top:70px}.monti-tab{left:16px;padding:8px 16px 6px}.monti-sticker{width:86px;top:-34px;right:14px}.monti-meta{flex-direction:column;gap:4px;font-size:8.5px;letter-spacing:1.2px;padding-right:70px}.monti-head{padding:22px 0 28px}.monti-script{font-size:46px}.monti-head-copy h4{font-size:28px}.monti-lede{font-size:13px}.monti-brandcard{width:calc(100% - 16px);transform:rotate(1.2deg);padding:44px 18px 16px}.monti-role{grid-template-columns:1fr;gap:16px}.monti-role-label{writing-mode:horizontal-tb;justify-self:start;padding:6px 9px;transform:rotate(-2deg)}.monti-role ul{grid-template-columns:1fr;gap:14px}.monti-chart-head{flex-direction:column;gap:8px}.monti-chart-head>span{text-align:left}.monti-accounts{grid-template-columns:1fr;gap:36px}.monti-accounts li:nth-child(odd){--tilt:-.6deg}.monti-accounts li:nth-child(even){--tilt:.5deg}.monti-acc-top a span{max-width:none}.monti-insight article{padding:20px 18px 22px}.monti-gap b{font-size:36px}.monti-signal-list{grid-template-columns:1fr;gap:20px}.monti-division-list li{grid-template-columns:40px 1fr;row-gap:6px}.monti-div-track{grid-column:2;text-align:left;max-width:none}}
+@media(prefers-reduced-motion:reduce){.monti-accounts li,.monti-signal-list li,.monti-source summary{transition:none}.monti-accounts li:hover{transform:rotate(var(--tilt))}.monti-signal-list li:hover{transform:rotate(-.8deg)}.monti-signal-list li:nth-child(even):hover{transform:rotate(.9deg)}}

@@ -1,0 +1,106 @@
+/* about-dossier — visual rework 2026-11-01 (see dossier.css)
+   #about = FILE 01: a cream folder lying on the black desk.
+   Tabs = kraft index tabs, body = fibre paper, portrait = polaroid,
+   facts = ruled index card, tags = rubber stamps. */
+
+.about-file{padding-bottom:64px}
+
+/* ---- index tabs ---- */
+.folder-tabs{gap:6px}
+.folder-tabs a{background:var(--paper-fibre),linear-gradient(176deg,#d6c3a6,var(--kraft) 75%);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid #b09a7c;border-bottom:0;border-radius:var(--radius-tab);color:#3b322c;font-weight:800;letter-spacing:-.01em;box-shadow:inset 0 1px 0 #f3ebdf66}
+.folder-tabs a span{font:700 9px/1 var(--font-mono);letter-spacing:1.6px;color:#6e5c4c}
+.folder-tabs a[aria-current]{background:var(--paper-fibre),linear-gradient(180deg,var(--paper-hi),var(--paper-hi));background-size:220px 220px,auto;background-blend-mode:multiply,normal;border-color:var(--paper-edge);color:var(--ink);z-index:2;margin-bottom:-1px;padding-bottom:15px}
+.folder-tabs a[aria-current] span{color:var(--pink-ink)}
+.folder-tabs a:not([aria-current]):hover{background:var(--paper-fibre),linear-gradient(176deg,#f6d3db,var(--pink-paper) 60%,#e8b3c0);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border-color:#d39fad}
+
+/* ---- folder body ---- */
+.folder-body{position:relative;isolation:isolate;background:var(--paper-fibre),linear-gradient(180deg,var(--paper-hi),var(--paper) 42%,var(--paper-lo));background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid var(--paper-edge);border-top:0;border-radius:0 0 var(--radius-folder) var(--radius-folder);box-shadow:0 2px 3px #0000004d,0 34px 60px -30px #000000f2;padding-left:58px}
+.folder-body>.punch-holes{top:80px;bottom:80px;left:19px}
+.file-heading{border-bottom:1px solid var(--paper-edge)}
+.file-heading span{font:400 9px/1.4 var(--font-mono);letter-spacing:1.8px;color:var(--label)}
+.file-heading span:last-child{letter-spacing:1.6px}
+
+/* ---- portrait = polaroid ---- */
+.about-portrait{background:var(--paper-fibre),linear-gradient(178deg,#f1e9de,#e8dfd2);background-size:220px 220px,auto;background-blend-mode:multiply,normal;padding:10px 10px 0;border-radius:2px;box-shadow:var(--shadow-photo)}
+.about-portrait .document-media{border-radius:1px;box-shadow:inset 0 0 0 1px #0000001f}
+.about-portrait figcaption{padding:13px 4px 16px;font:700 11px/1.3 Arial,"PingFang SC",sans-serif;letter-spacing:2.4px;color:var(--ink)}
+.about-photo-hint{font:400 8px/1 var(--font-mono);letter-spacing:.6px;color:var(--label);opacity:1}
+.about-portrait .media-enlarge{background:var(--pink);color:var(--ink)}
+.about-portrait>.tape{top:-12px;left:-18px;width:86px;transform:rotate(-38deg);z-index:3}
+.about-sticker{position:absolute;z-index:4;pointer-events:none;user-select:none;height:auto;filter:drop-shadow(0 6px 8px #3a271f40)}
+.about-sticker--puppy{width:112px;left:-52px;top:-44px;transform:rotate(-14deg)}
+.about-sticker--star{width:64px;right:-24px;top:38%;transform:rotate(12deg)}
+
+/* ---- copy side ---- */
+.about-copy{position:relative}
+.about-copy .eyebrow{font:400 10px/1.6 var(--font-mono);letter-spacing:1.6px;color:var(--label)}
+.about-copy h2{position:relative;isolation:isolate;font-weight:800;letter-spacing:-.02em;color:var(--ink);font-size:44px}
+.about-copy h2:before{content:"";position:absolute;z-index:-1;left:-.12em;top:.66em;width:3.3em;height:.42em;background:#f3c4cfd9;border-radius:2px 6px 3px 7px;transform:rotate(-1.2deg)}
+.about-copy h2>span{font:400 10px/1.4 var(--font-mono);letter-spacing:1.8px;color:var(--label);margin-top:12px}
+.about-stamp{position:absolute;top:-6px;right:4px;width:96px;height:96px;background:url(/decor/stamp-approved.svg) center/contain no-repeat;transform:rotate(-14deg);opacity:.55;pointer-events:none}
+
+/* facts = ruled index card */
+.personal-facts{position:relative;padding:18px 20px 14px;border:1px solid #d8ccbb;border-radius:var(--radius-paper);background:repeating-linear-gradient(180deg,transparent 0 27px,#c58c9921 27px 28px),var(--paper-fibre),linear-gradient(178deg,#f5eee4,#ece3d6);background-size:auto,220px 220px,auto;background-position:0 12px,0 0,0 0;background-blend-mode:normal,multiply,normal;box-shadow:var(--shadow-card);transform:rotate(.5deg)}
+.personal-facts dt{font:400 9px/1.4 var(--font-mono);letter-spacing:1.6px;color:var(--label);margin-bottom:6px}
+.personal-facts dd{font-size:14px;font-weight:700;color:var(--ink)}
+.personal-facts dd span{font-weight:400;color:var(--ink-soft);font-size:12px}
+
+/* tags = rubber stamps */
+.personal-tags{gap:12px 14px;margin:24px 0 22px}
+.personal-tags span{border:1.5px solid currentColor;border-radius:3px;padding:4px 10px;font:700 11px/1.4 Arial,"PingFang SC",sans-serif;letter-spacing:1px;color:var(--pink-ink);background:#b47d8c0f;transform:rotate(-1.6deg);box-shadow:inset 0 0 0 1px #b47d8c1a}
+.personal-tags span:nth-child(2){color:var(--ink-soft);transform:rotate(1.1deg)}
+.personal-tags span:nth-child(3){transform:rotate(-.6deg)}
+
+.about-summary{font-size:14px;line-height:1.9;color:var(--ink)}
+.about-copy .underlined-link{display:inline-block;font:700 12px/1.4 Arial,"PingFang SC",sans-serif;letter-spacing:.5px;border-bottom:2px solid var(--ink);padding:2px 3px 4px;transition:background-color .3s var(--ease-paper),transform .3s var(--ease-paper)}
+.about-copy .underlined-link:hover{opacity:1;background-color:#f3c4cfcc}
+
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .personal-facts{transition:transform .35s var(--ease-paper),box-shadow .35s}
+ .personal-facts:hover{transform:rotate(0) translateY(-3px);box-shadow:0 1px 0 #f3ebdf inset,0 2px 3px #3a271f33,0 20px 28px -16px #3a271f99}
+ .personal-tags span{transition:transform .3s var(--ease-paper)}
+ .personal-tags span:hover{transform:rotate(0) scale(1.04)}
+}
+
+@media(max-width:1100px) and (min-width:761px){
+ .folder-body{padding-left:50px}
+ .folder-body>.punch-holes{left:16px}
+ .about-sticker--puppy{width:92px;left:-40px;top:-36px}
+ .about-copy h2{font-size:38px}
+}
+
+@media(max-width:760px){
+ .about-file{padding-bottom:40px}
+ .folder-tabs a{font-size:13px}
+ .folder-tabs a span{font-size:7px;letter-spacing:1px}
+ .folder-tabs a[aria-current]{padding-bottom:11px}
+ .folder-body{padding-left:30px}
+ .folder-body>.punch-holes{left:8px;top:60px;bottom:60px}
+ .folder-body>.punch-holes i{width:10px;height:10px}
+ .file-heading span{font-size:8px;letter-spacing:1.2px}
+ .about-portrait{padding:7px 7px 0}
+ .about-portrait figcaption{padding:10px 2px 12px;font-size:9px;letter-spacing:1.6px}
+ .about-portrait>.tape{width:64px;left:-14px;top:-8px}
+ .about-sticker--puppy{width:76px;left:-26px;top:-30px}
+ .about-sticker--star{width:44px;right:-16px}
+ .about-copy h2{font-size:34px}
+ .about-stamp{width:70px;height:70px;top:-4px;right:0}
+ .personal-facts{padding:14px 12px 10px;transform:rotate(.4deg)}
+ .personal-facts dt{font-size:8px;letter-spacing:1px}
+ .personal-facts dd{font-size:12px}
+ .personal-facts dd span{font-size:10px}
+ .personal-tags{gap:10px}
+ .personal-tags span{font-size:10px;padding:3px 8px}
+ .about-summary{font-size:13px}
+ .about-copy .underlined-link{font-size:11px}
+}
+
+@media(max-width:380px){
+ .folder-body{padding-left:26px}
+ .personal-facts dd{font-size:11px}
+ .about-summary{font-size:12px}
+}
+
+@media(prefers-reduced-motion:reduce){
+ .about-copy .underlined-link,.personal-facts,.personal-tags span{transition:none}
+}

@@ -10,12 +10,14 @@ const looks = [
 ];
 
 export function IpSelectedWork() {
-  return <section className="ip-selected-work" id="ip-selected-work" aria-labelledby="ip-work-title">
+  return <section className="ip-selected-work dossier" id="ip-selected-work" aria-labelledby="ip-work-title">
+    <span className="dossier-tab" aria-hidden="true"><b>FILE 02-B</b>代表作品</span>
+    <img className="ip-sticker ip-sticker--lips" src={assetPath("/stickers/st-lips.webp")} alt="" aria-hidden="true" loading="lazy"/>
     <svg aria-hidden="true" width="0" height="0" focusable="false" style={{position:"absolute"}}>
       <defs>
         <filter id="ip-look-outline" x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
           <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="expanded"/>
-          <feFlood floodColor="#fff8ef"/>
+          <feFlood floodColor="#f3ebdf"/>
           <feComposite in2="expanded" operator="in" result="outline"/>
           <feMerge><feMergeNode in="outline"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>

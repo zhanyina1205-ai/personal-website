@@ -1,0 +1,108 @@
+/* scrapbook-fx — visual rework 2026-11-01 (see dossier.css)
+   Self-contained "darkroom desk" effects, all prefixed fx-. None of them
+   depend on a module's DOM. Structural defaults sit in :where() so the
+   consuming module can override them without a specificity fight.
+   Motion is opt-in per class and fully disabled under prefers-reduced-motion.
+   One-shot entrance fx (.fx-stamp-in / .fx-scribble / .fx-highlight) are
+   static by default; mount <FxInView/> (or useFxInView(ref)) from
+   app/scrapbook-fx.tsx to make them play when they scroll into view. */
+
+@property --fx-x{syntax:"<length-percentage>";inherits:true;initial-value:78%}
+@property --fx-y{syntax:"<length-percentage>";inherits:true;initial-value:0%}
+
+:root{
+  --fx-ease:cubic-bezier(.2,.7,.2,1);
+  --fx-torn-svg-b:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='12' preserveAspectRatio='none' viewBox='0 0 180 12'%3E%3Cpath d='M0 0H180V7L172 10L165 6L157 11L150 7L141 9L134 4L126 10L118 6L110 11L103 5L95 8L87 4L79 10L70 6L62 11L55 7L47 9L39 5L31 10L23 6L15 11L8 6L0 7Z'/%3E%3C/svg%3E");
+  --fx-torn-svg-t:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='12' preserveAspectRatio='none' viewBox='0 0 180 12'%3E%3Cpath d='M0 12H180V5L172 2L165 6L157 1L150 5L141 3L134 8L126 2L118 6L110 1L103 7L95 4L87 8L79 2L70 6L62 1L55 5L47 3L39 7L31 2L23 6L15 1L8 6L0 5Z'/%3E%3C/svg%3E");
+  --fx-film-svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='16'%3E%3Cpath fill-rule='evenodd' d='M0 0h18v16H0z M5.5 4.5h7a1.5 1.5 0 0 1 1.5 1.5v4a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 4 10V6a1.5 1.5 0 0 1 1.5-1.5z'/%3E%3C/svg%3E");
+  --fx-ink-svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 6.5'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- 1. Darkroom lamp that follows the cursor ----------
+   .fx-spotlight on any box (needs position other than static; :where gives it relative).
+   Call useSpotlight(ref) or wrap with <FxSpotlight> (scrapbook-fx.tsx) to make it follow
+   the pointer; without JS it sits as a still lamp at --fx-x/--fx-y (default 78% 0%).
+   Tune: --fx-spot (colour, default faint pink) / --fx-spot-r (radius). Uses ::before. */
+:where(.fx-spotlight){position:relative;isolation:isolate}
+.fx-spotlight::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;background:radial-gradient(var(--fx-spot-r,460px) circle at var(--fx-x) var(--fx-y),var(--fx-spot,#f3c4cf1a),#f3c4cf08 45%,transparent 72%);transition:--fx-x .5s var(--fx-ease),--fx-y .5s var(--fx-ease)}
+
+/* ---------- 2. Torn paper edge (real transparency via mask) ----------
+   .fx-torn = ragged bottom; add --top for a ragged top (page torn out of a pad),
+   --both for both. Works on any element; mask also clips its box-shadow, so put the
+   shadow on a parent as filter:drop-shadow(...). Depth: --fx-torn-h (default 12px). */
+.fx-torn{-webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - var(--fx-torn-h,12px) + 1px) no-repeat,var(--fx-torn-svg-b) bottom left/180px var(--fx-torn-h,12px) repeat-x;mask:linear-gradient(#000 0 0) top/100% calc(100% - var(--fx-torn-h,12px) + 1px) no-repeat,var(--fx-torn-svg-b) bottom left/180px var(--fx-torn-h,12px) repeat-x}
+.fx-torn--top{-webkit-mask:linear-gradient(#000 0 0) bottom/100% calc(100% - var(--fx-torn-h,12px) + 1px) no-repeat,var(--fx-torn-svg-t) top left/180px var(--fx-torn-h,12px) repeat-x;mask:linear-gradient(#000 0 0) bottom/100% calc(100% - var(--fx-torn-h,12px) + 1px) no-repeat,var(--fx-torn-svg-t) top left/180px var(--fx-torn-h,12px) repeat-x}
+.fx-torn--both{-webkit-mask:linear-gradient(#000 0 0) center/100% calc(100% - 2 * var(--fx-torn-h,12px) + 2px) no-repeat,var(--fx-torn-svg-t) top left/180px var(--fx-torn-h,12px) repeat-x,var(--fx-torn-svg-b) bottom 0 left 37px/180px var(--fx-torn-h,12px) repeat-x;mask:linear-gradient(#000 0 0) center/100% calc(100% - 2 * var(--fx-torn-h,12px) + 2px) no-repeat,var(--fx-torn-svg-t) top left/180px var(--fx-torn-h,12px) repeat-x,var(--fx-torn-svg-b) bottom 0 left 37px/180px var(--fx-torn-h,12px) repeat-x}
+
+/* ---------- 3. Film strip with punched sprocket holes ----------
+   .fx-film on a wrapper around a photo row/strip: dark film base with real holes
+   (the desk shows through) along top and bottom. Content sits in the middle;
+   :where gives 16px top/bottom padding, keep it >=16px. Colour: --fx-film. */
+:where(.fx-film){padding-block:16px;background-color:var(--fx-film,#151312)}
+.fx-film{-webkit-mask:var(--fx-film-svg) top left/18px 16px repeat-x,var(--fx-film-svg) bottom left/18px 16px repeat-x,linear-gradient(#000 0 0) center/100% calc(100% - 30px) no-repeat;mask:var(--fx-film-svg) top left/18px 16px repeat-x,var(--fx-film-svg) bottom left/18px 16px repeat-x,linear-gradient(#000 0 0) center/100% calc(100% - 30px) no-repeat}
+
+/* ---------- 4. Rubber-stamp ink + stamp landing ----------
+   .fx-ink: speckled, uneven ink on anything stamp-like (pairs with .stamp from globals.css).
+   .fx-stamp-in: the stamp thumps down (scale 1.7 -> 1) once it scrolls into view; keeps
+   your own rotate/opacity. Needs <FxInView/> or useFxInView(); otherwise stays static.
+   Stagger with --fx-delay. */
+.fx-ink{-webkit-mask:var(--fx-ink-svg) 0 0/120px 120px;mask:var(--fx-ink-svg) 0 0/120px 120px}
+.fx-stamp-in[data-fx=wait]{opacity:0}
+.fx-stamp-in[data-fx=in]{animation:fx-stamp-in .5s var(--fx-delay,0s) cubic-bezier(.3,.6,.25,1) both}
+@keyframes fx-stamp-in{0%{opacity:0;scale:1.7;filter:blur(1.5px)}55%{opacity:1;scale:.93;filter:blur(0)}78%{scale:1.03}100%{scale:1}}
+
+/* ---------- 5. Highlighter sweep ----------
+   .fx-highlight on an inline <span>/<mark> of text: pink marker band under the lower half.
+   Sweeps in left->right on view with <FxInView/>; static band otherwise. Colour: --fx-hl. */
+.fx-highlight{background:linear-gradient(transparent 56%,var(--fx-hl,#f3c4cfcc) 56% 88%,transparent 88%) no-repeat 0 0/100% 100%;padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;color:inherit}
+.fx-highlight[data-fx=wait]{background-size:0% 100%}
+.fx-highlight[data-fx=in]{animation:fx-highlight .8s var(--fx-delay,.15s) var(--fx-ease) both}
+@keyframes fx-highlight{from{background-size:0% 100%}to{background-size:100% 100%}}
+
+/* ---------- 6. Hand-drawn scribble (SVG stroke draw-on) ----------
+   Render <Scribble variant="underline|circle|strike"/> (scrapbook-fx.tsx) inside a
+   .fx-scribble-host wrapper around the words. Colour = currentColor of the svg
+   (set color on .fx-scribble), width --fx-scribble-w. Draws itself on view with <FxInView/>. */
+:where(.fx-scribble-host){position:relative;display:inline-block}
+.fx-scribble{position:absolute;pointer-events:none;overflow:visible;color:var(--fx-scribble-c,#c58c99)}
+.fx-scribble path{fill:none;stroke:currentColor;stroke-width:var(--fx-scribble-w,3px);stroke-linecap:round;stroke-linejoin:round}
+.fx-scribble--underline{left:-3%;bottom:-.34em;width:106%;height:.42em}
+.fx-scribble--circle{left:-9%;top:-22%;width:118%;height:144%}
+.fx-scribble--strike{left:-3%;top:44%;width:106%;height:.3em}
+.fx-scribble[data-fx=wait] path{stroke-dasharray:1 2;stroke-dashoffset:1}
+.fx-scribble[data-fx=in] path{stroke-dasharray:1 2;animation:fx-draw .9s var(--fx-delay,.2s) cubic-bezier(.5,.1,.3,1) both}
+@keyframes fx-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+
+/* ---------- 7. Pull the file out of its pocket ----------
+   .fx-pull on the hover/focus target (card link), .fx-pull-item on the photo/sheet that sits
+   behind a pocket/front flap. Item slides up by --fx-pull (default -18px) and turns to
+   --fx-pull-rot. No ancestor between them may clip overflow. Uses translate/rotate, so
+   your transform: stays intact. */
+.fx-pull-item{transition:translate .45s var(--fx-ease),rotate .45s var(--fx-ease),filter .45s var(--fx-ease)}
+.fx-pull:hover .fx-pull-item,.fx-pull:focus-visible .fx-pull-item{translate:0 var(--fx-pull,-18px);rotate:var(--fx-pull-rot,-1deg)}
+
+/* ---------- 8. Paper lift ----------
+   .fx-lift on any card: on hover/focus it rises a little, straightens to --fx-lift-rot and
+   casts a longer desk shadow (--fx-lift-shadow). Uses translate/rotate, keeps transform. */
+.fx-lift{transition:translate .4s var(--fx-ease),rotate .4s var(--fx-ease),box-shadow .4s var(--fx-ease)}
+.fx-lift:hover,.fx-lift:focus-visible{translate:0 -5px;rotate:var(--fx-lift-rot,0deg);box-shadow:var(--fx-lift-shadow,0 2px 4px #0003,0 26px 38px -20px #000d)}
+
+/* ---------- 9. Dog-ear corner curl ----------
+   .fx-curl on a paper card (needs position other than static; :where gives relative). On
+   hover/focus the bottom-right corner folds up by --fx-curl-size (default 28px).
+   Set --fx-curl-desk to the colour behind the card (default --black) and --fx-curl-back
+   to the paper's back side. Uses BOTH ::before and ::after of the element. */
+:where(.fx-curl){position:relative}
+.fx-curl::before,.fx-curl::after{content:"";position:absolute;right:0;bottom:0;z-index:4;width:0;height:0;pointer-events:none;transition:width .35s var(--fx-ease),height .35s var(--fx-ease)}
+.fx-curl::before{right:-1px;bottom:-1px;background:linear-gradient(to top left,var(--fx-curl-desk,#181818) 50%,#0000 50.5%)}
+.fx-curl::after{background:linear-gradient(to top left,#0000 50%,color-mix(in srgb,var(--fx-curl-back,#e2d7c6) 82%,#000) 50.5%,var(--fx-curl-back,#e2d7c6) 78%);filter:drop-shadow(-2px -2px 2px #0000002e)}
+.fx-curl:hover::before,.fx-curl:hover::after,.fx-curl:focus-visible::before,.fx-curl:focus-visible::after{width:var(--fx-curl-size,28px);height:var(--fx-curl-size,28px)}
+
+@media (prefers-reduced-motion:reduce){
+  .fx-spotlight::before,.fx-pull-item,.fx-lift,.fx-curl::before,.fx-curl::after{transition:none}
+  /* useFxInView never marks elements under reduce; these only guard a mid-session switch. */
+  .fx-stamp-in[data-fx],.fx-highlight[data-fx],.fx-scribble[data-fx] path{animation:none}
+  .fx-highlight[data-fx=wait]{background-size:100% 100%}
+  .fx-scribble[data-fx=wait] path{stroke-dashoffset:0}
+  .fx-pull:hover .fx-pull-item,.fx-pull:focus-visible .fx-pull-item{translate:none}
+}

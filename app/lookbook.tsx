@@ -28,12 +28,14 @@ export function Lookbook() {
     setAtStart(element.scrollLeft <= 2);
     setAtEnd(element.scrollLeft + element.clientWidth >= element.scrollWidth - 2);
   }
-  return <section className="lookbook" id="lookbook" aria-labelledby="lookbook-title">
+  return <section className="lookbook dossier dossier--manila" id="lookbook" aria-labelledby="lookbook-title">
+    <span className="dossier-tab" aria-hidden="true"><b>FILE 03 · C</b>穿搭选集</span>
+    <span className="lookbook-sticker" aria-hidden="true"/>
     <svg className="lookbook-filter-defs" aria-hidden="true" width="0" height="0" focusable="false">
       <defs>
         <filter id="lookbook-outline" x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
           <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="expanded"/>
-          <feFlood floodColor="#fff8ef"/>
+          <feFlood floodColor="#f3ebdf"/>
           <feComposite in2="expanded" operator="in" result="outline"/>
           <feMerge><feMergeNode in="outline"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>

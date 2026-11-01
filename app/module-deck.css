@@ -1,48 +1,115 @@
-.module-deck{padding:66px 6% 60px;background:var(--black);border-top:1px solid #56514e;position:relative;overflow:hidden}
-.module-deck .deck-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px}
-.module-deck .eyebrow{color:var(--pink);margin-bottom:14px}
-.module-deck h2{font-size:clamp(30px,4vw,50px);font-weight:600;line-height:1.18;letter-spacing:-1px;color:var(--cream)}
-.deck-controls{display:flex;gap:10px;flex-shrink:0}
-.deck-controls button{width:46px;height:46px;border-radius:50%;border:1px solid #7a716c;background:transparent;color:var(--cream);font-size:18px;line-height:1;display:grid;place-items:center;transition:background .2s,color .2s,border-color .2s}
-.deck-controls button:hover{background:var(--pink);color:var(--ink);border-color:var(--pink)}
+/* Module deck — six file folders standing on the black desk (2026-11-01 rework).
+   Each card: staggered folder tab (index + label) / back panel / photo or torn
+   index card clipped with a paperclip / front pocket with thumb notch, ink title
+   and an "进入" file tag / rubber stamp straddling the pocket seam / washi tape.
+   Hover: folder rises, the photo is pulled up out of the pocket (fx-pull). */
 
-.deck-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 0 20px;margin:0 -6%;padding-left:6%;padding-right:6%;scrollbar-width:none;-ms-overflow-style:none;scroll-padding-left:6%}
+/* ---------- desk ---------- */
+.module-deck{--fx-spot:#f3c4cf29;--fx-spot-r:560px;padding:66px 6% 58px;background:radial-gradient(120% 60% at 50% 115%,#0c0b0a,transparent 62%),var(--black);border-top:1px solid #3a3633;position:relative;overflow:hidden}
+.module-deck::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.075;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23g)'/%3E%3C/svg%3E");background-size:150px 150px}
+.module-deck .deck-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:8px}
+.module-deck .eyebrow{color:var(--pink);margin-bottom:14px;font-family:var(--font-mono);letter-spacing:2px}
+.module-deck h2{font-size:clamp(32px,4.2vw,54px);font-weight:800;line-height:1.14;letter-spacing:-.02em;color:var(--pink)}
+.module-deck h2 .fx-scribble{--fx-scribble-c:#c58c99;--fx-scribble-w:3.5px}
+
+.deck-controls{display:flex;gap:8px;flex-shrink:0}
+.deck-controls button{width:50px;height:40px;border-radius:3px;border:1px solid #f3c4cf4d;background:#1f1d1b;color:var(--pink);font:700 16px/1 var(--font-mono);display:grid;place-items:center;box-shadow:0 1px 0 #ffffff10 inset,0 8px 16px -10px #000;transition:background .2s,color .2s,border-color .2s,translate .3s var(--ease-paper)}
+.deck-controls button:hover{background:var(--pink);color:var(--ink);border-color:var(--pink);translate:0 -2px}
+
+/* ---------- track ---------- */
+.deck-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -6%;padding:46px 6% 34px;scroll-padding-left:6%;scrollbar-width:none;-ms-overflow-style:none}
 .deck-track::-webkit-scrollbar{display:none}
 
-.deck-card{position:relative;flex:0 0 clamp(236px,26vw,310px);aspect-ratio:3/4;border-radius:22px;overflow:hidden;scroll-snap-align:start;background:#2a2724;border:1px solid #4e4a48;display:block;isolation:isolate;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s;animation:deck-in .7s both}
+/* ---------- folder palettes ---------- */
+.deck-card{--f-hi:#e9dcc4;--f-mid:#dfcfb5;--f-lo:#d1bd9c;--p-hi:#e7d8bd;--p-lo:#d4c09f;--edge:#bea882;--title:var(--ink);--sub:#5b5049;--stamp-ink:#a8566c;--tag-bg:var(--ink);--tag-fg:var(--pink)}
+.deck-card.paper-pink{--f-hi:#f6d3db;--f-mid:#f0c0cb;--f-lo:#e5adba;--p-hi:#f4cbd4;--p-lo:#e3a9b7;--edge:#cf95a4;--sub:#6a4b53;--stamp-ink:#874257}
+.deck-card.paper-cream{--f-hi:#f3ebdf;--f-mid:#ece3d6;--f-lo:#e0d4c2;--p-hi:#efe6d9;--p-lo:#ddd0bc;--edge:#c9baa6;--stamp-ink:#b06a7e}
+.deck-card.paper-black{--f-hi:#2c2927;--f-mid:#232120;--f-lo:#1c1a19;--p-hi:#302c2a;--p-lo:#1f1d1c;--edge:#4a4440;--title:var(--pink);--sub:#c2b6ab;--stamp-ink:#f3c4cf;--tag-bg:var(--pink);--tag-fg:var(--ink)}
+.deck-card.paper-kraft{--f-hi:#d4c0a0;--f-mid:#c7b193;--f-lo:#b79e7d;--p-hi:#cdb898;--p-lo:#b69c7b;--edge:#9f8667;--sub:#4b3f37;--stamp-ink:#7c3349}
+.deck-card.paper-rose{--f-hi:#e3bac3;--f-mid:#d8a8b3;--f-lo:#c995a2;--p-hi:#ddb1bb;--p-lo:#c690a0;--edge:#b48190;--sub:#4c363d;--stamp-ink:#64263a}
+
+/* ---------- card = one folder ---------- */
+.deck-card{position:relative;flex:0 0 clamp(252px,24vw,300px);display:flex;flex-direction:column;scroll-snap-align:start;rotate:var(--tilt,0deg);transform-origin:50% 100%;transition:rotate .45s var(--ease-paper);animation:deck-in .7s var(--ease-paper) both;color:var(--title)}
 .deck-card:nth-child(2){animation-delay:.06s}.deck-card:nth-child(3){animation-delay:.12s}.deck-card:nth-child(4){animation-delay:.18s}.deck-card:nth-child(5){animation-delay:.24s}.deck-card:nth-child(6){animation-delay:.3s}
-@keyframes deck-in{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-.deck-card:hover{transform:translateY(-6px);border-color:var(--pink)}
+@keyframes deck-in{from{opacity:0;translate:0 26px}to{opacity:1;translate:0 0}}
+.deck-card:hover,.deck-card:focus-visible{rotate:calc(var(--tilt,0deg) * .3)}
+.deck-card:focus-visible{outline:none}
+.deck-card:focus-visible .deck-body{outline:3px solid #d092a1;outline-offset:6px}
 
-.deck-card-media{position:absolute;inset:0;z-index:-1}
-.deck-card-media img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(.95) contrast(1.02);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.deck-card:hover .deck-card-media img{transform:scale(1.06)}
-.deck-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,#121110 6%,rgba(18,17,16,.55) 42%,rgba(18,17,16,.12) 72%,rgba(18,17,16,.35))}
+/* folder tab, staggered like a real filing drawer */
+.deck-tab{position:relative;z-index:1;align-self:flex-start;max-width:calc(100% - 28px);margin:0 14px -1px;display:inline-flex;align-items:center;gap:9px;padding:8px 18px 7px;background:linear-gradient(180deg,var(--f-hi),var(--f-mid));clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 100%,0 100%);font:400 10px/1.2 Arial,"PingFang SC",sans-serif;letter-spacing:.8px;color:var(--sub);white-space:nowrap;transition:translate .45s var(--ease-paper)}
+.deck-card.tab-center .deck-tab{align-self:center}
+.deck-card.tab-end .deck-tab{align-self:flex-end}
+.deck-tab b{font:700 11px/1 var(--font-mono);letter-spacing:1.4px;color:var(--stamp-ink)}
+.deck-tab span{overflow:hidden;text-overflow:ellipsis;font-family:var(--font-mono);font-weight:700;text-transform:uppercase}
 
-.deck-card.kind-brand .deck-card-media{background:radial-gradient(120% 90% at 30% 15%,#5a3f46 0,#2b2522 60%,#1b1816 100%)}
-.deck-card.kind-tools .deck-card-media{background:radial-gradient(120% 90% at 70% 18%,#4a4139 0,#2a2724 58%,#1a1816 100%)}
-.deck-mono{position:absolute;top:50%;left:50%;transform:translate(-50%,-58%);font-size:92px;font-weight:600;letter-spacing:2px;color:#f3c4cf26;font-family:'Courier New',serif}
-.deck-card.kind-tools .deck-mono{color:#f3c4cf30;font-size:104px}
+/* back panel */
+.deck-body{position:relative;display:block;aspect-ratio:30/38;border-radius:4px;border:1px solid var(--edge);background:var(--paper-fibre),linear-gradient(172deg,var(--f-hi),var(--f-mid) 45%,var(--f-lo));background-size:220px 220px,auto;background-blend-mode:multiply,normal;box-shadow:0 1px 0 #ffffff59 inset,0 2px 3px #0000004d,0 30px 46px -26px #000000f2;transition:translate .45s var(--ease-paper),box-shadow .45s var(--ease-paper)}
+.deck-card.paper-black .deck-body{box-shadow:0 1px 0 #ffffff14 inset,0 0 0 1px #00000080,0 30px 46px -26px #000}
+.deck-card:hover .deck-body,.deck-card:focus-visible .deck-body{translate:0 -7px;box-shadow:0 1px 0 #ffffff59 inset,0 3px 5px #00000040,0 46px 56px -30px #000}
+.deck-card:hover .deck-tab,.deck-card:focus-visible .deck-tab{translate:0 -7px}
 
-.deck-card-top{position:absolute;top:17px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between;font-size:9px;letter-spacing:1.4px;color:#efe6da}
-.deck-card-top b{font-size:13px;font-weight:600;color:var(--pink)}
-.deck-card-top>span{text-align:right;max-width:62%}
+/* the thing filed inside: photo print or torn index card */
+.deck-item{position:absolute;z-index:1;left:9%;right:9%;top:6%;height:70%;display:block;rotate:var(--item-tilt,0deg);--fx-pull:-30px}
+.deck-photo,.deck-index{position:absolute;inset:0;display:block}
+.deck-photo{background:#ece4d8;padding:7px;border-radius:2px;box-shadow:0 1px 2px #0000004d,0 10px 18px -10px #000000b3}
+.deck-photo-frame{position:relative;display:block;height:100%;overflow:hidden;background:#2a2724}
+.deck-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:var(--focus,center 22%);filter:saturate(.92) contrast(1.04) sepia(.05)}
+.deck-card.paper-black .deck-photo{background:#e6dccf}
 
-.deck-card-foot{position:absolute;left:18px;right:18px;bottom:18px}
-.deck-card-foot h3{font-size:25px;font-weight:600;color:#fff;letter-spacing:.5px;line-height:1.2}
-.deck-card.kind-brand .deck-card-foot h3{letter-spacing:3px}
-.deck-card-foot p{font-size:10.5px;line-height:1.7;color:#e3d8ce;margin:7px 0 13px;max-width:92%}
-.deck-enter{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:1px;background:var(--pink);color:var(--ink);padding:7px 14px;border-radius:20px;transition:gap .25s,background .2s}
-.deck-enter i{font-size:14px;line-height:1}
-.deck-card:hover .deck-enter{gap:13px;background:#ffe6ed}
+.deck-item:has(.deck-index){filter:drop-shadow(0 1px 1px #0000004d) drop-shadow(0 10px 12px #0000005c)}
+.deck-index{--fx-torn-h:10px;overflow:hidden;background:repeating-linear-gradient(180deg,transparent 0 21px,#c58c992e 21px 22px) 0 34px/100% 100% no-repeat,linear-gradient(90deg,transparent 30px,#d78f9f66 30px 31px,transparent 31px),var(--paper-fibre),linear-gradient(178deg,#f2eadf,#e9dfd1);background-size:auto,auto,220px 220px,auto;background-blend-mode:normal,normal,multiply,normal}
+.deck-mono{position:absolute;left:42px;top:20px;font:700 12px/1 var(--font-mono);letter-spacing:3px;color:var(--pink-ink)}
+.deck-card.kind-tools .deck-mono{font-size:22px;top:14px}
+.deck-decor{position:absolute;right:14px;top:16px;width:34px;height:auto;opacity:.75;transition:rotate .45s var(--ease-paper)}
+.deck-sticker{position:absolute;left:50%;top:54%;width:auto;height:auto;max-width:74%;max-height:72%;translate:-50% -50%;rotate:-5deg;filter:drop-shadow(0 2px 1.5px #3a271f59) drop-shadow(0 8px 10px #3a271f40);transition:rotate .45s var(--ease-paper),scale .45s var(--ease-paper)}
+.deck-card.kind-tools .deck-sticker{rotate:6deg}
+.deck-card:hover .deck-sticker,.deck-card:focus-visible .deck-sticker{rotate:0deg;scale:1.05}
+.deck-card:hover .deck-decor,.deck-card:focus-visible .deck-decor{rotate:18deg}
 
+/* paperclip, rides with the item */
+.deck-clip{position:absolute;z-index:2;top:-18px;left:var(--clip-x,20%);width:16px;height:46px;rotate:-5deg;overflow:visible;filter:drop-shadow(1px 2px 1px #0000006b)}
+.deck-clip path{fill:none;stroke:#bdb6ae;stroke-width:1.9;stroke-linecap:round}
+.clip-pink .deck-clip path{stroke:#e2a3b3}
+.clip-ink .deck-clip path{stroke:#38322f}
+.deck-card.paper-black .clip-silver .deck-clip path{stroke:#d3ccc4}
+
+/* washi tape sealing the pocket corner */
+.deck-tape{top:calc(61% - 14px);left:-15px;width:70px;height:21px;rotate:-38deg;opacity:.9}
+.deck-card.tab-end .deck-tape,.deck-card.tab-center .deck-tape{left:auto;right:-15px;rotate:38deg}
+
+/* front pocket with a thumb notch; title + tag + file tag live here */
+.deck-pocket{position:absolute;z-index:2;left:-1px;right:-1px;bottom:-1px;height:39%;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 18px 16px;filter:drop-shadow(0 -3px 4px #0000002e)}
+.deck-pocket::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:0 0 4px 4px;border:1px solid var(--edge);background:var(--paper-fibre),linear-gradient(180deg,var(--p-hi),var(--p-lo));background-size:220px 220px,auto;background-blend-mode:multiply,normal;box-shadow:inset 0 1px 0 #ffffff66;-webkit-mask:radial-gradient(circle 21px at 50% 0,#0000 20px,#000 21px);mask:radial-gradient(circle 21px at 50% 0,#0000 20px,#000 21px)}
+.deck-card.paper-black .deck-pocket::before{box-shadow:inset 0 1px 0 #ffffff1a}
+.deck-pocket h3{font-size:28px;font-weight:800;line-height:1.08;letter-spacing:-.01em;color:var(--title)}
+.deck-card.kind-brand .deck-pocket h3{letter-spacing:.12em}
+.deck-pocket p{font-size:10.5px;line-height:1.6;color:var(--sub);margin:7px 0 12px;max-width:96%}
+
+/* "进入" = punched file tag, not a pill */
+.deck-enter{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 13px 6px 21px;background:var(--tag-bg);color:var(--tag-fg);font:700 10px/1 var(--font-mono);letter-spacing:2.4px;clip-path:polygon(9px 0,100% 0,100% 100%,9px 100%,0 50%);-webkit-mask:radial-gradient(circle 3px at 10px 50%,#0000 2.4px,#000 3px);mask:radial-gradient(circle 3px at 10px 50%,#0000 2.4px,#000 3px);transition:translate .3s var(--ease-paper),gap .3s var(--ease-paper)}
+.deck-enter i{font-style:normal;font-size:12px;transition:translate .3s var(--ease-paper)}
+.deck-card:hover .deck-enter,.deck-card:focus-visible .deck-enter{translate:3px 0;gap:11px}
+.deck-card:hover .deck-enter i,.deck-card:focus-visible .deck-enter i{translate:1px -2px}
+
+/* rubber stamp across the pocket seam */
+.deck-stamp{position:absolute;z-index:3;right:7%;bottom:calc(39% - 17px);display:grid;place-items:center;rotate:var(--stamp-rot,-8deg);color:var(--stamp-ink);mix-blend-mode:multiply;opacity:.9;font:700 11.5px/1.05 var(--font-mono);letter-spacing:2.2px;text-align:center;pointer-events:none}
+.deck-stamp--rect{bottom:calc(39% - 24px);padding:7px 10px 6px 12px;border:3px double currentColor;border-radius:3px}
+.deck-stamp--round{width:68px;height:68px;padding:9px;border-radius:50%;border:2.5px solid currentColor;outline:1px solid currentColor;outline-offset:-7px;font-size:10px;letter-spacing:1.4px}
+.deck-card.paper-black .deck-stamp{mix-blend-mode:normal;opacity:.8}
+/* stamp sits on the side the tape is not on */
+.deck-card.tab-center .deck-stamp,.deck-card.tab-end .deck-stamp{right:auto;left:7%}
+
+/* ---------- small screens ---------- */
 @media(max-width:760px){
-.module-deck{padding:40px 5% 44px}
-.module-deck .deck-head{margin-bottom:24px}
-.module-deck h2{font-size:28px}
+.module-deck{padding:40px 5% 40px}
+.module-deck h2{font-size:30px}
 .deck-controls{display:none}
-.deck-track{gap:13px;margin:0 -5%;padding-left:5%;padding-right:5%;scroll-padding-left:5%}
-.deck-card{flex-basis:70vw;max-width:290px}
-.deck-card-foot h3{font-size:23px}
+.deck-track{gap:16px;margin:0 -5%;padding:40px 5% 28px;scroll-padding-left:5%}
+.deck-card{flex-basis:72vw;max-width:292px}
+.deck-pocket h3{font-size:25px}
 }
-@media(prefers-reduced-motion:reduce){.deck-card{animation:none}.deck-card-media img,.deck-card{transition:none}}
+@media(prefers-reduced-motion:reduce){
+.deck-card{animation:none}
+.deck-card,.deck-body,.deck-tab,.deck-enter,.deck-enter i,.deck-sticker,.deck-decor,.deck-controls button{transition:none}
+}

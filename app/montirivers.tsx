@@ -1,3 +1,5 @@
+import { assetPath } from "./asset-path";
+
 const reportUrl = "https://gcn0sluri72f.feishu.cn/docx/Apo4dK2l8oVlA4xaOL5ciDAbnag";
 
 type Account = {
@@ -64,13 +66,15 @@ const totalEngage = accounts.reduce((sum, a) => sum + a.engage, 0);
 const topTwoShare = (accounts[0].followers + accounts[1].followers) / totalFollowers * 100;
 
 export function Montirivers() {
-  return <section className="monti" id="montirivers" aria-labelledby="monti-title">
+  return <section className="monti dossier dossier--manila" id="montirivers" aria-labelledby="monti-title">
+    <span className="dossier-tab monti-tab" aria-hidden="true"><b>FILE 05</b>山河集</span>
+    <img className="monti-sticker" src={assetPath("/stickers/st-mountain-ring.webp")} alt="" aria-hidden="true" loading="lazy" decoding="async"/>
     <div className="monti-meta"><span>MONTIRIVERS / 山河集</span><span>服务的品牌 · 珠宝首饰</span></div>
 
     <header className="monti-head">
       <div className="monti-head-copy">
         <p className="monti-script" aria-hidden="true">Shan He Ji</p>
-        <h4 id="monti-title">MontiRivers 山河集<span>以足金、18K 与钻石为语言的珠宝品牌</span></h4>
+        <h4 id="monti-title">MontiRivers <span className="marker">山河集</span><span className="monti-sub">以足金、18K 与钻石为语言的珠宝品牌</span></h4>
         <p className="monti-lede">我为山河集管理过一组门店顾问的小红书账号，围绕系列内容与到店咨询做运营。下面是我对这个矩阵做的核查与判断。</p>
       </div>
       <dl className="monti-brandcard">
@@ -91,9 +95,10 @@ export function Montirivers() {
 
     <div className="monti-overview">
       <div className="monti-chart-head"><h5>店员号矩阵总览</h5><span>6 个账号 · 粉丝、互动与日常表现</span></div>
-      <ol className="monti-accounts">{accounts.map((a, i) => <li key={a.name}>
+      <ol className="monti-accounts">{accounts.map((a, i) => <li key={a.name} className={i < 2 ? "is-lead" : undefined}>
+        <span className="monti-badge-head" aria-hidden="true"><span>MONTIRIVERS · STAFF</span><span>NO.0{i + 1}</span></span>
         <div className="monti-acc-top">
-          <span className="monti-acc-mono" aria-hidden="true">{a.name[0]}</span>
+          <span className="monti-acc-mono fx-ink" aria-hidden="true">{a.name[0]}</span>
           <a href={a.url} target="_blank" rel="noopener noreferrer"><b>{a.name}</b><span>{a.handle} ↗</span></a>
           {i < 2
             ? <span className="monti-acc-pos lead">{i === 0 ? "矩阵第一 ·" : "矩阵第二 ·"} {a.position}</span>

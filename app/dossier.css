@@ -1,0 +1,47 @@
+/* ============================================================
+   Dossier system — "darkroom desk + cream paper files" (2026-11-01)
+   One source of truth for every module so nothing reads as a flat
+   white web card again. Rules:
+   - No surface lighter than --paper-hi. Never #fff / #fffaf3 / #fff5f8.
+   - Big module panels = manila folder on a black desk (.dossier).
+   - Inner cards = index cards / receipts / polaroids (.index-card, .polaroid).
+   - Headings: pink heavy on black, ink heavy on paper (+ .marker highlight).
+   - Labels: mono, tiny, tracked (.file-label).
+   ============================================================ */
+:root{
+  --paper:#eee5d9;--paper-hi:#f3ebdf;--paper-lo:#e2d7c6;--manila:#e8dbc4;--kraft:#c7b193;
+  --paper-edge:#cbbcaa;--ink-soft:#5b5049;--label:#7c6e64;
+  --pink-ink:#b47d8c;--pink-paper:#f1c3ce;--pink-deep:#e2a3b3;
+  --desk:#141312;
+  --shadow-folder:0 1px 0 #ffffffb3 inset,0 2px 3px #0000004d,0 34px 60px -30px #000000f2;
+  --shadow-card:0 1px 0 #ffffffa6 inset,0 1px 2px #3a271f33,0 14px 24px -16px #3a271f99;
+  --shadow-photo:0 1px 2px #0000004d,0 12px 22px -12px #000000b3;
+  --ease-paper:cubic-bezier(.2,.7,.2,1);
+  --font-mono:"Courier New","PingFang SC",monospace;
+  --radius-paper:3px;--radius-folder:4px;--radius-tab:16px 16px 0 0;
+  --paper-fibre:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .34 0 0 0 0 .27 0 0 0 .3 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+/* Manila folder panel on the black desk. Add a .dossier-tab child for the tab. */
+.dossier{position:relative;isolation:isolate;color:var(--ink);border-radius:var(--radius-folder);border:1px solid var(--paper-edge);box-shadow:var(--shadow-folder);background:var(--paper-fibre),linear-gradient(172deg,var(--paper-hi),var(--paper) 40%,var(--paper-lo));background-size:220px 220px,auto;background-blend-mode:multiply,normal}
+.dossier--manila{background:var(--paper-fibre),linear-gradient(172deg,#f0e6d4,var(--manila) 55%,#ddcdb2);background-size:220px 220px,auto;background-blend-mode:multiply,normal}
+.dossier--pink{background:var(--paper-fibre),linear-gradient(172deg,#f6d3db,var(--pink-paper) 55%,#e8b3c0);background-size:220px 220px,auto;background-blend-mode:multiply,normal}
+.dossier-tab{position:absolute;bottom:100%;left:28px;display:inline-flex;align-items:center;gap:14px;padding:9px 22px 7px;border-radius:var(--radius-tab);background:inherit;border:1px solid var(--paper-edge);border-bottom:0;font:700 12px/1.2 Arial,"PingFang SC",sans-serif;letter-spacing:1px;color:var(--ink)}
+.dossier-tab b{font:700 9px/1 var(--font-mono);letter-spacing:1.6px;color:var(--pink-ink)}
+
+/* Index card / receipt inside a folder. Alternate tilt with :nth-child in modules. */
+.index-card{position:relative;background:var(--paper-fibre),linear-gradient(178deg,#f5eee4,#ece3d6);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border-radius:var(--radius-paper);border:1px solid #d8ccbb;box-shadow:var(--shadow-card);color:var(--ink);transition:transform .35s var(--ease-paper),box-shadow .35s}
+.index-card--ruled{background:repeating-linear-gradient(180deg,transparent 0 23px,#c58c9926 23px 24px),var(--paper-fibre),linear-gradient(178deg,#f5eee4,#ece3d6);background-size:auto,220px 220px,auto}
+.index-card--dark{background:linear-gradient(170deg,#262321,#1b1918);border-color:#3d3835;color:var(--cream);box-shadow:0 1px 0 #ffffff12 inset,0 18px 30px -18px #000}
+
+/* Polaroid frame for photos. */
+.polaroid{background:#efe7dc;padding:8px 8px 30px;border-radius:2px;box-shadow:var(--shadow-photo)}
+
+/* Typography helpers */
+.file-label{font:400 9px/1.4 var(--font-mono);letter-spacing:1.8px;text-transform:uppercase;color:var(--label)}
+.marker{background:linear-gradient(transparent 58%,#f3c4cfcc 58%,#f3c4cfcc 88%,transparent 88%);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pink-display{color:var(--pink);font-weight:800;letter-spacing:-.02em;line-height:1.08}
+
+/* Punched binder holes along the left edge of a .dossier. */
+.punch-holes{position:absolute;left:14px;top:60px;bottom:60px;display:flex;flex-direction:column;justify-content:space-around;pointer-events:none}
+.punch-holes i{width:14px;height:14px;border-radius:50%;background:var(--desk);box-shadow:inset 2px 2px 3px #000c,0 1px 0 #ffffff80}

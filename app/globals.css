@@ -14,3 +14,49 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 
 .portrait-image{aspect-ratio:1;overflow:hidden}.portrait-image img{width:100%;height:100%;transform:none;filter:none}
+
+/* ============================================================
+   Shared archival primitives (visual rework 2026-11-01)
+   Reusable "darkroom + paper file" texture/sticker helpers so
+   every module stops reading as a flat white/cream card.
+   Drop these as class names; all respect prefers-reduced-motion.
+   ============================================================ */
+
+/* Film-grain / paper-fibre overlay. Put <span class="grain"/> (optionally
+   grain--soft on dark, grain--paper on cream) inside a position:relative box. */
+.grain{position:absolute;inset:0;pointer-events:none;z-index:1;border-radius:inherit;opacity:.085;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23g)'/%3E%3C/svg%3E");background-size:150px 150px}
+.grain--soft{opacity:.14}
+.grain--paper{opacity:.12}
+
+/* Washi masking-tape sticker. Default pink; add tape--cream / tape--rose.
+   Position it with inline top/left/transform in the module, size overridable. */
+.tape{position:absolute;z-index:5;width:94px;height:27px;opacity:.86;border-radius:1px;box-shadow:0 3px 7px #0000001f,inset 0 1px 0 #ffffff55;background:linear-gradient(180deg,#ffffff38,#0000000f),repeating-linear-gradient(135deg,#f4c6d1,#f4c6d1 7px,#ecb4c2 7px,#ecb4c2 14px);-webkit-mask:linear-gradient(90deg,#0000,#000 5px,#000 calc(100% - 5px),#0000);mask:linear-gradient(90deg,#0000,#000 5px,#000 calc(100% - 5px),#0000)}
+.tape--cream{background:linear-gradient(180deg,#ffffff4d,#0000000f),repeating-linear-gradient(135deg,#efe7db,#efe7db 7px,#e2d8ca 7px,#e2d8ca 14px)}
+.tape--rose{background:linear-gradient(180deg,#ffffff33,#0000001a),repeating-linear-gradient(135deg,#d7a7b2,#d7a7b2 7px,#c892a0 7px,#c892a0 14px)}
+
+/* Rubber-stamp label — outlined, rotated, worn ink colour. Use on <span>. */
+.stamp{display:inline-flex;align-items:center;gap:5px;font:700 9.5px/1 Arial,"PingFang SC",sans-serif;letter-spacing:2px;text-transform:uppercase;color:#b47d8c;border:2px solid #b47d8c;border-radius:5px;padding:5px 9px;transform:rotate(-7deg);opacity:.72;box-shadow:inset 0 0 0 1px #b47d8c22}
+.stamp--ink{color:#8a6f64;border-color:#8a6f64;box-shadow:inset 0 0 0 1px #8a6f6422}
+.stamp--cream{color:#e7d6c8;border-color:#e7d6c8aa}
+
+/* Film-strip sprocket edges — add to a photo wrapper (position:relative).
+   Gives the darkroom/contact-sheet feel on dark cover media. */
+.film-perf::before,.film-perf::after{content:"";position:absolute;left:0;right:0;height:9px;z-index:3;pointer-events:none;background:repeating-linear-gradient(90deg,#0000 0,#0000 7px,#e9ddcf 7px,#e9ddcf 12px);opacity:.55}
+.film-perf::before{top:5px}.film-perf::after{bottom:5px}
+
+/* Frosted-glass chip — for floating labels/badges over imagery. */
+.glass-chip{background:rgba(22,20,19,.38);-webkit-backdrop-filter:blur(9px) saturate(1.1);backdrop-filter:blur(9px) saturate(1.1);border:1px solid #ffffff26;box-shadow:inset 0 1px 0 #ffffff2e,0 4px 14px #0000002e}
+.glass-chip--light{background:rgba(245,238,228,.5);border-color:#ffffff66;color:var(--ink)}
+
+/* Spotlight glow on hover — for dark cards. Parent needs position+isolation. */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+.glow-hover{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .3s}
+.glow-hover::after{content:"";position:absolute;inset:-1px;z-index:2;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .4s;background:radial-gradient(60% 55% at 50% 12%,#f3c4cf3a,transparent 70%);box-shadow:inset 0 0 0 1px #f3c4cf4d}
+.glow-hover:hover{transform:translateY(-6px);box-shadow:0 20px 40px -14px #000a}
+.glow-hover:hover::after{opacity:1}
+/* Peel / lift on hover with a curling corner. Parent position:relative. */
+.peel-hover{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.peel-hover::before{content:"";position:absolute;right:0;bottom:0;z-index:4;width:0;height:0;border-style:solid;border-width:0 0 20px 20px;border-color:transparent transparent #0003 transparent;opacity:0;transition:opacity .3s,border-width .3s}
+.peel-hover:hover{transform:translateY(-5px) rotate(-.6deg);box-shadow:7px 12px 0 #0a080826,0 18px 30px -16px #0007}
+.peel-hover:hover::before{opacity:1;border-width:0 0 26px 26px}
+}
