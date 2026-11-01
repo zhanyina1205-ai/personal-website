@@ -1,4 +1,5 @@
 import { DocumentMedia } from "./document-media";
+import { assetPath } from "./asset-path";
 
 const source = "https://mcn7qru2e05g.feishu.cn/docx/YL4fdfN1oo4EowxKLo1cYe0Gnod";
 const regions = [{ name: "广东", value: 15.7 }, { name: "福建", value: 10.3 }, { name: "浙江", value: 7.0 }, { name: "江苏", value: 6.6 }, { name: "四川", value: 5.9 }];
@@ -30,7 +31,7 @@ export function YenaiOriginStory() {
   return <section className="yenai-origin" id="yenai-origin" aria-labelledby="yenai-origin-title">
     <div className="yenai-section-meta"><span>YENAI / STARTED FROM MY ROOM</span><span>02 / 从零起号</span></div>
     <div className="yenai-origin-top"><div className="yenai-origin-copy"><p className="yenai-script" aria-hidden="true">My first account.</p><h4 id="yenai-origin-title">从一面宿舍穿衣镜，<br/>到被更多人看见。</h4><div className="yenai-growth"><span>0</span><i aria-hidden="true">↗</i><span>4<small>万粉</small></span></div><p>2023 年大三开始做穿搭号。<br/>从选题、出镜到拍摄剪辑、商务对接，独立完成。</p><span className="yenai-growth-date">截至 2024.10 进入 MCN 实习时</span></div>
-      <div className="yenai-story-photos"><figure><DocumentMedia src="/yenai-story/autumn-collection.jpg" alt="2023年10月：艺术生早秋9套辣妹穿搭合集，九宫格展示完整造型"/><figcaption><span>01 / 换季系列 · 2023.10</span>早秋 9 套，把单套整理成系列</figcaption></figure><figure><DocumentMedia src="/note-covers/note-1.jpg" alt="2024年8月：艺术生云南8天旅游穿搭合集，户外实景九宫格封面"/><figcaption><span>02 / 旅行场景 · 2024.08</span>云南 8 天，让穿搭走进旅行</figcaption></figure><span className="yenai-photo-note" aria-hidden="true">From campus to Yunnan.</span></div>
+      <div className="yenai-story-photos"><figure><a className="document-media" href="https://xhslink.cn/o/AMX4gDLpkzf" target="_blank" rel="noopener noreferrer" aria-label="在小红书打开：9套look春日早八韩系学院风套装合集"><img src={assetPath("/note-covers/note-3.jpg")} alt="春日早八韩系学院风9套穿搭合集，蓝白色系校园造型" loading="lazy"/><span className="media-enlarge" aria-hidden="true">↗</span></a><figcaption><span>01 / 校园场景 · 春日穿搭</span>早八 9 套，让搭配更有使用场景</figcaption></figure><figure><DocumentMedia src="/note-covers/note-1.jpg" alt="2024年8月：艺术生云南8天旅游穿搭合集，户外实景九宫格封面"/><figcaption><span>02 / 旅行场景 · 2024.08</span>云南 8 天，让穿搭走进旅行</figcaption></figure><span className="yenai-photo-note" aria-hidden="true">From campus to Yunnan.</span></div>
     </div>
     <ol className="yenai-timeline">{milestones.map((item, i) => <li key={item.date}><div className="yenai-time-number"><span>0{i + 1}</span><time>{item.date}</time></div><h5>{item.title}</h5><p>{item.text}</p><span className="yenai-time-label">{item.label}</span></li>)}</ol>
     <div className="yenai-origin-bottom"><p>我留下的方法：<b>先让人记住我，再让穿搭对她有用。</b></p><a href="#selected-notes">看我的代表内容 ↗</a></div>
