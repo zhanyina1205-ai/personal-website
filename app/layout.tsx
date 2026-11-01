@@ -11,12 +11,13 @@ import "./ip-selected-work.css";
 import "./ip-case-study.css";
 import "./yenai-account-story.css";
 import "./brand-and-shop.css";
+import "./module-pages.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {
   icons: { icon: assetPath("/favicon.svg") },
   title: "詹依娜 · 个人作品集",
-  description: "詹依娜的个人作品集：IP 穿搭账号商务对接、选品搭配和剪辑经历，个人穿搭账号「椰奶没喝饱_」以及饰品店铺「摇滚椰奶冻」。内容来自新版个人文档。",
+  description: "詹依娜的个人作品集：IP 穿搭账号商务对接、选品搭配和剪辑经历，个人穿搭账号「椰奶没喝饱_」以及饰品店铺「摇滚椰奶冻」。品牌账号「MontiRivers 山河集」与独立开发的小工具。",
 };
 
 export default function RootLayout({

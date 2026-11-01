@@ -1,22 +1,25 @@
-import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
-import test from "node:test";
-
-test("GitHub Pages exports the biography and every referenced local asset", async () => {
-  const html = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
-  assert.match(html, /<title>詹依娜 · 个人作品集<\/title>/);
-  assert.match(html, /广州美术学院/);
-  assert.match(html, /是亮亮/);
-  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  const assets = new Set([...html.matchAll(/(?:src|href)="(\/[^"#]+)"/g)].map(match => match[1]));
-  assert.ok(assets.size >= 6, "Photos, styles and hydration scripts must be exported");
-  for (const asset of assets) {
-    assert.ok(asset.startsWith(`${prefix}/`), `Incorrect Pages path: ${asset}`);
-    const localPath = asset.slice(prefix.length).split("?")[0];
-    await access(new URL(`../dist/client${localPath}`, import.meta.url));
+import assert from 'node:assert/strict';
+import {access,readFile} from 'node:fs/promises';
+import test from 'node:test';
+const routes=['/','/about/','/liangliang/','/accounts/','/montirivers/','/tools/'];
+test('all six Pages routes export with valid base-prefixed links, anchors and local assets',async()=>{
+ const prefix=process.env.NEXT_PUBLIC_BASE_PATH||'';
+ const pages=new Map();
+ for(const route of routes)pages.set(route,await readFile(new URL(`../dist/client${route}index.html`,import.meta.url),'utf8'));
+ for(const [route,html] of pages){
+  assert.match(html,/<h1\b/);
+  for(const [,href]of html.matchAll(/\bhref="([/#][^"]*)"/g)){
+   const url=new URL(href,`https://example.com${prefix}${route}`);
+   assert.ok(url.pathname.startsWith(`${prefix}/`),`Wrong prefix ${href}`);
+   const local=url.pathname.slice(prefix.length);
+   if(pages.has(local)){
+    if(url.hash)assert.ok(pages.get(local).includes(`id="${url.hash.slice(1)}"`),`Missing anchor ${href}`);
+   }else await access(new URL(`../dist/client${local}`,import.meta.url));
   }
-  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
-  for (const [, target] of html.matchAll(/\bhref="#([^"]+)"/g)) {
-    assert.ok(ids.has(target), `Missing navigation target: ${target}`);
+  for(const [,src]of html.matchAll(/\bsrc="(\/[^"?]+)"/g)){
+   assert.ok(src.startsWith(`${prefix}/`),`Wrong asset prefix ${src}`);
+   await access(new URL(`../dist/client${src.slice(prefix.length)}`,import.meta.url));
   }
+ }
+ assert.equal([...pages.get('/').matchAll(/class="directory-card /g)].length,5);
 });

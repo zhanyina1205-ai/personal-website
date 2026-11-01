@@ -2,15 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const chapters = [
-  { id: "about", label: "关于我" },
-  { id: "projects", label: "我的作品" },
-  { id: "workflow", label: "创作流程" },
-  { id: "tools", label: "小工具" },
-  { id: "contact", label: "联系我" },
-];
-
-export function PortfolioInteractions() {
+type Chapter = { id: string; label: string };
+export function PortfolioInteractions({ chapters, dock = true }: { chapters: Chapter[]; dock?: boolean }) {
   const [active, setActive] = useState("");
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -55,7 +48,7 @@ export function PortfolioInteractions() {
     window.addEventListener("resize", queueReadingUpdate, { passive: true, signal: listeners.signal });
     updateReading();
 
-    const revealSelector = ".section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-work-heading,.ip-fashion-collage,.ip-work-note-wrap,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.yenai-audience,.yenai-origin,.lookbook,.notes-heading,.note-card-grid>a,.rock-case,.monti-page,.workflow-list article,.support-intro,.support-cards article,.toolbox-heading,.toolbox-shelf-label,.tool-card,.toolbox-footnote,.contact-layout,.footer-line";
+    const revealSelector = ".directory-card,.section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-work-heading,.ip-fashion-collage,.ip-work-note-wrap,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.yenai-audience,.yenai-origin,.lookbook,.notes-heading,.note-card-grid>a,.rock-case,.monti-page,.workflow-list article,.support-intro,.support-cards article,.toolbox-heading,.toolbox-shelf-label,.tool-card,.toolbox-footnote,.contact-layout,.footer-line";
     // Reveal independent blocks, never both a block and its descendants.
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(revealSelector))
       .filter(element => !element.parentElement?.closest(revealSelector));
@@ -162,11 +155,11 @@ export function PortfolioInteractions() {
         else link.removeAttribute("aria-current");
       });
     };
-  }, []);
+  }, [chapters]);
 
   return <>
     <div className="reading-progress" role="progressbar" aria-label="网页阅读进度" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}><span style={{ transform: `scaleX(${progress / 100})` }}/></div>
-    <nav className="reading-dock" aria-label="栏目快捷导航" hidden={!visible}>
+    <nav className="reading-dock" aria-label="栏目快捷导航" hidden={!visible || !dock}>
       {chapters.map((chapter, index) => <a href={`#${chapter.id}`} key={chapter.id} aria-current={active === chapter.id ? "location" : undefined}><span aria-hidden="true">0{index + 1}</span>{chapter.label}</a>)}
       <a className="reading-back-top" href="#top" aria-label="返回顶部" title={`阅读进度 ${progress}% · 返回顶部`} onClick={() => document.querySelector<HTMLAnchorElement>(".wordmark")?.focus({ preventScroll: true })}>↑</a>
     </nav>
