@@ -4,6 +4,7 @@ import { DocumentMedia } from "./document-media";
 import { Toolbox } from "./toolbox";
 import { NoteCards } from "./note-cards";
 import { Lookbook } from "./lookbook";
+import { YenaiAudience, YenaiOriginStory } from "./yenai-account-story";
 import { AccountCollage } from "./account-collage";
 import { IpCaseContext } from "./ip-case-context";
 import { IpNotebook } from "./ip-notebook";
@@ -44,7 +45,9 @@ export default function Home(){return <>
     <IpCaseContext/>
 
 
-    <article className="own-project"><div className="own-project-copy"><p className="eyebrow">02 / MY OWN ACCOUNT</p><h3>椰奶没喝饱_<span>小红书穿搭账号</span></h3><div className="style-journey"><div><span>学生时期</span><h4>美式甜心辣妹</h4><p>以学生党人设为主。</p></div><span className="journey-arrow" aria-hidden="true">↘</span><div><span>毕业之后</span><h4>姐系通勤感</h4><p>面向刚步入社会的女生，提升穿衣质感。</p></div></div><dl className="account-stats"><div><dt>粉丝</dt><dd>5.2<span>万</span></dd></div><div><dt>获赞与收藏</dt><dd>92.4<span>万</span></dd></div></dl><p className="source-note">以上为新文档所附主页截图中的数据。</p><a className="pink-button" href="https://xhslink.cn/o/ArBwd7GjccM" target="_blank" rel="noopener noreferrer">打开我的穿搭账号 <span>↗</span></a></div><AccountCollage/></article>
+    <article className="own-project"><div className="own-project-copy"><p className="eyebrow">02 / MY OWN ACCOUNT</p><h3>椰奶没喝饱_<span>小红书穿搭账号</span></h3><div className="style-journey"><div><span>学生时期</span><h4>美式甜心辣妹</h4><p>以学生党人设为主。</p></div><span className="journey-arrow" aria-hidden="true">↘</span><div><span>毕业之后</span><h4>姐系通勤感</h4><p>面向刚步入社会的女生，提升穿衣质感。</p></div></div><dl className="account-stats"><div><dt>粉丝</dt><dd>5.17<span>万</span></dd></div><div><dt>获赞与收藏</dt><dd>92.4<span>万</span></dd></div></dl><p className="source-note">2026.11.01 资料快照：粉丝 51,667，获赞与收藏 924,324，非实时。</p><a className="pink-button" href="https://xhslink.cn/o/ArBwd7GjccM" target="_blank" rel="noopener noreferrer">打开我的穿搭账号 <span>↗</span></a><nav className="yenai-account-links" aria-label="个人账号内容"><a href="#yenai-audience">我的受众 ↗</a><a href="#yenai-origin">从零起号 ↗</a></nav></div><AccountCollage/></article>
+    <YenaiAudience/>
+    <YenaiOriginStory/>
     <Lookbook/>
     <NoteCards/>
 

@@ -56,3 +56,21 @@ test("IP cases keep three source-linked notes and distinguish comment samples fr
   assert.equal(images.size, 11);
   for (const source of images) await access(new URL(`../public${source}`, import.meta.url));
 });
+
+test("personal account research preserves sample limits and the original lookbook", async () => {
+  const html = await render();
+  const audience = html.indexOf('id="yenai-audience"');
+  const origin = html.indexOf('id="yenai-origin"');
+  const looks = html.indexOf('id="lookbook"');
+  assert.ok(audience > html.indexOf('id="my-account"'));
+  assert.ok(origin > audience && looks > origin);
+  assert.match(html, /互动用户样本 ≠ 全部粉丝画像/);
+  assert.match(html, /并非去重用户或后台粉丝地域分布/);
+  assert.match(html, /15 位已标年龄的评论者/);
+  assert.match(html, /2024.10 进入 MCN 实习时/);
+  assert.match(html, /51,667/);
+  assert.equal([...html.matchAll(/class="note-card"/g)].length, 5);
+  for (const file of ['first-collection.jpg', 'price-outfit.jpg']) {
+    await access(new URL(`../public/yenai-story/${file}`, import.meta.url));
+  }
+});
