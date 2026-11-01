@@ -54,7 +54,7 @@
 /* ---------- 5. Highlighter sweep ----------
    .fx-highlight on an inline <span>/<mark> of text: pink marker band under the lower half.
    Sweeps in left->right on view with <FxInView/>; static band otherwise. Colour: --fx-hl. */
-.fx-highlight{background:linear-gradient(transparent 56%,var(--fx-hl,#f3c4cfcc) 56% 88%,transparent 88%) no-repeat 0 0/100% 100%;padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;color:inherit}
+.fx-highlight{background:linear-gradient(transparent 56%,var(--fx-hl,#c58c9980) 56% 88%,transparent 88%) no-repeat 0 0/100% 100%;padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;color:inherit}
 .fx-highlight[data-fx=wait]{background-size:0% 100%}
 .fx-highlight[data-fx=in]{animation:fx-highlight .8s var(--fx-delay,.15s) var(--fx-ease) both}
 @keyframes fx-highlight{from{background-size:0% 100%}to{background-size:100% 100%}}
@@ -95,7 +95,7 @@
 :where(.fx-curl){position:relative}
 .fx-curl::before,.fx-curl::after{content:"";position:absolute;right:0;bottom:0;z-index:4;width:0;height:0;pointer-events:none;transition:width .35s var(--fx-ease),height .35s var(--fx-ease)}
 .fx-curl::before{right:-1px;bottom:-1px;background:linear-gradient(to top left,var(--fx-curl-desk,#181818) 50%,#0000 50.5%)}
-.fx-curl::after{background:linear-gradient(to top left,#0000 50%,color-mix(in srgb,var(--fx-curl-back,#e2d7c6) 82%,#000) 50.5%,var(--fx-curl-back,#e2d7c6) 78%);filter:drop-shadow(-2px -2px 2px #0000002e)}
+.fx-curl::after{background:linear-gradient(to top left,#0000 50%,color-mix(in srgb,var(--fx-curl-back,#3a3532) 82%,#000) 50.5%,var(--fx-curl-back,#3a3532) 78%);filter:drop-shadow(-2px -2px 2px #0000002e)}
 .fx-curl:hover::before,.fx-curl:hover::after,.fx-curl:focus-visible::before,.fx-curl:focus-visible::after{width:var(--fx-curl-size,28px);height:var(--fx-curl-size,28px)}
 
 @media (prefers-reduced-motion:reduce){

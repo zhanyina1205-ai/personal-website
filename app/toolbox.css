@@ -1,7 +1,7 @@
 /* Toolbox — FILE 06 (visual rework 2026-11-01, see dossier.css)
-   Manila folder on the black desk; each tool is a taped polaroid with a die-cut sticker
-   on a darkroom print, the line sketch kept underneath as a chalk draft.
-   The upcoming tool is a sheet of tracing paper stamped COMING SOON. */
+   Charcoal folder on the black desk; each tool is a taped charcoal print with a die-cut
+   sticker on a darkroom photo, the line sketch kept underneath as a chalk draft.
+   The upcoming tool is a sheet of smoky vellum stamped COMING SOON. */
 .toolbox-section{padding-top:12px;padding-bottom:70px}
 .toolbox-heading{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-bottom:30px}
 .toolbox-heading .display-title{margin-bottom:23px;font-weight:800;letter-spacing:-.02em}
@@ -9,21 +9,21 @@
 .toolbox-script{font-family:NotebookScript,cursive;font-size:clamp(48px,5.4vw,76px);line-height:1.2;color:var(--rose);transform:rotate(-7deg);position:relative;margin-right:20px;white-space:nowrap}
 .toolbox-script>span{position:absolute;top:-33px;right:7px;font:32px Arial,sans-serif;transform:rotate(12deg);color:var(--pink)}
 
-.toolbox-shelf{--tb-hole:#c9b69a;margin-top:70px;padding:28px 36px 24px}
+.toolbox-shelf{--tb-hole:#1f1c1a;margin-top:70px;padding:28px 36px 24px}
 .toolbox-shelf>.dossier-tab{left:36px}
 .toolbox-bow{position:absolute;z-index:6;top:-44px;right:52px;width:104px;height:auto;transform:rotate(11deg);filter:drop-shadow(0 8px 10px #0006);pointer-events:none}
-.toolbox-shelf-label{display:flex;justify-content:space-between;align-items:baseline;gap:15px;margin:0 140px 38px 0;padding-bottom:12px;border-bottom:1px dashed #b6a385;font:400 9.5px/1.4 var(--font-mono);letter-spacing:1.8px;color:var(--label)}
-.toolbox-shelf-label>span:first-child{font:800 15px/1.4 Arial,"PingFang SC",sans-serif;letter-spacing:0;color:var(--ink);background:linear-gradient(transparent 58%,#f3c4cfcc 58%,#f3c4cfcc 90%,transparent 90%);padding:0 .14em}
+.toolbox-shelf-label{display:flex;justify-content:space-between;align-items:baseline;gap:15px;margin:0 140px 38px 0;padding-bottom:12px;border-bottom:1px dashed var(--d-edge-hi);font:400 9.5px/1.4 var(--font-mono);letter-spacing:1.8px;color:var(--label)}
+.toolbox-shelf-label>span:first-child{font:800 15px/1.4 Arial,"PingFang SC",sans-serif;letter-spacing:0;color:var(--pink);background:linear-gradient(transparent 62%,#c58c9959 62%,#c58c9959 92%,transparent 92%);padding:0 .14em}
 
 .toolbox-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;align-items:start;padding:4px 14px 10px}
-.tool-card{--tilt:-2deg;min-width:0;position:relative;display:flex;flex-direction:column;padding:12px 12px 16px;color:var(--ink);background:var(--paper-fibre),linear-gradient(178deg,#f2eadf,#e7dccb);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid #d6c8b5;border-radius:2px;box-shadow:var(--shadow-photo);transform:rotate(var(--tilt));transition:transform .38s var(--ease-paper),box-shadow .38s}
-.tool-card:nth-child(2){--tilt:1.6deg;margin-top:28px;background:var(--paper-fibre),linear-gradient(172deg,#f6d3db,var(--pink-paper) 55%,#e8b3c0);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border-color:#e0aab7}
+.tool-card{--tilt:-2deg;min-width:0;position:relative;display:flex;flex-direction:column;padding:12px 12px 16px;color:var(--d-text);background:var(--paper-fibre-dark),linear-gradient(178deg,var(--d-card-hi),var(--d-card));background-size:220px 220px,auto;border:1px solid var(--d-edge-hi);border-radius:2px;box-shadow:var(--shadow-card-dark);transform:rotate(var(--tilt));transition:transform .38s var(--ease-paper),box-shadow .38s}
+.tool-card:nth-child(2){--tilt:1.6deg;margin-top:28px;background:var(--paper-fibre-dark),radial-gradient(90% 60% at 100% 0,#f3c4cf14,transparent 60%),linear-gradient(172deg,#2d2326,#231c1e 55%,#1d1719);background-size:220px 220px,auto,auto;border-color:#4a363c}
 .tool-card:nth-child(3){--tilt:-.9deg;margin-top:10px}
 .tool-card>.tape{top:-12px;left:50%;width:84px;height:24px;margin-left:-42px;transform:rotate(-4deg);transition:transform .38s var(--ease-paper)}
 .tool-card:nth-child(2)>.tape{transform:rotate(5deg)}
 /* corner curl = .fx-curl (scrapbook-fx.css); desk colour = folder manila, back = paper back */
-.tool-card.fx-curl{--fx-curl-desk:var(--tb-hole);--fx-curl-back:#e2d7c6;--fx-curl-size:30px}
-.tool-card.fx-curl:nth-child(2){--fx-curl-back:#e6aebb}
+.tool-card.fx-curl{--fx-curl-desk:var(--tb-hole);--fx-curl-back:#3a3532;--fx-curl-size:30px}
+.tool-card.fx-curl:nth-child(2){--fx-curl-back:#4a353b}
 
 /* visual order: print, label row, caption, stub */
 .tool-artwork{order:0;position:relative;aspect-ratio:4/3.15;display:grid;place-items:center;overflow:hidden;border-radius:1px;background:radial-gradient(120% 95% at 50% 28%,#3a3430,#1c1917 78%);box-shadow:inset 0 0 0 1px #0006,inset 0 0 46px #000b}
@@ -33,28 +33,28 @@
 .tool-sketch-tab{position:absolute;top:10px;left:12px;z-index:3;font:400 8px/1 var(--font-mono);letter-spacing:1.8px;color:#d6c1bd;opacity:.6}
 .tool-artwork-number{position:absolute;right:12px;bottom:6px;z-index:1;font-family:Georgia,serif;font-size:54px;font-style:italic;line-height:1;color:var(--pink);opacity:.2}
 .tool-card-meta{order:1;display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 4px 0;font:400 9px/1 var(--font-mono);letter-spacing:1.8px;color:var(--label)}
-.tool-card:nth-child(2) .tool-card-meta{color:#8f5566}
-.tool-card-meta .stamp{transform:rotate(-6deg);padding:4px 8px;font-size:9px;letter-spacing:1.6px;opacity:.82}
+.tool-card:nth-child(2) .tool-card-meta{color:var(--d-pink-ink)}
+.tool-card-meta .stamp{transform:rotate(-6deg);padding:4px 8px;font-size:9px;letter-spacing:1.6px;opacity:.9;color:var(--d-pink-ink);border-color:currentColor}
 .tool-card-copy{order:2;flex:1;padding:10px 4px 0}
-.tool-card-copy h3{font-size:24px;font-weight:800;letter-spacing:-.01em;margin:0 0 8px;color:var(--ink)}
+.tool-card-copy h3{font-size:24px;font-weight:800;letter-spacing:-.01em;margin:0 0 8px;color:var(--pink)}
 .tool-card-copy p{font-size:13px;line-height:1.75;color:var(--ink-soft)}
-.tool-card-bottom{order:3;position:relative;display:flex;justify-content:space-between;align-items:center;margin:18px -12px 0;padding:12px 16px 0;border-top:1.5px dashed #b9a68c;font:700 9.5px/1 var(--font-mono);letter-spacing:1.6px;color:var(--ink)}
-.tool-card:nth-child(2) .tool-card-bottom{border-top-color:#c88d9c}
-.tool-card-bottom::before,.tool-card-bottom::after{content:"";position:absolute;top:-8px;width:14px;height:14px;border-radius:50%;background:var(--tb-hole);box-shadow:inset 0 1px 2px #3a271f40}
+.tool-card-bottom{order:3;position:relative;display:flex;justify-content:space-between;align-items:center;margin:18px -12px 0;padding:12px 16px 0;border-top:1.5px dashed var(--d-edge-hi);font:700 9.5px/1 var(--font-mono);letter-spacing:1.6px;color:var(--d-text)}
+.tool-card:nth-child(2) .tool-card-bottom{border-top-color:#6a4a53}
+.tool-card-bottom::before,.tool-card-bottom::after{content:"";position:absolute;top:-8px;width:14px;height:14px;border-radius:50%;background:var(--tb-hole);box-shadow:inset 0 1px 2px #000c}
 .tool-card-bottom::before{left:-8px}.tool-card-bottom::after{right:-8px}
 .tool-card-bottom>span:last-child{font:400 22px/1 Arial,sans-serif;color:var(--pink-ink)}
 
 /* tracing paper: the tool that is still on the drawing board */
-.tool-card.is-soon{background:linear-gradient(172deg,#f4ece08c,#ebe1d273);-webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px);border:1px solid #f3ebdf73;box-shadow:0 1px 0 #ffffff4d inset,0 10px 20px -14px #3a271f80}
-.tool-card.is-soon .tool-artwork{background:repeating-linear-gradient(0deg,transparent 0 17px,#b47d8c1f 17px 18px),repeating-linear-gradient(90deg,transparent 0 17px,#b47d8c1f 17px 18px);box-shadow:inset 0 0 0 1.5px #b47d8c55}
+.tool-card.is-soon{background:linear-gradient(172deg,#ffffff12,#ffffff06);-webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px);border:1px dashed #ffffff2e;box-shadow:0 1px 0 #ffffff14 inset,0 10px 20px -14px #000c}
+.tool-card.is-soon .tool-artwork{background:repeating-linear-gradient(0deg,transparent 0 17px,#f3c4cf14 17px 18px),repeating-linear-gradient(90deg,transparent 0 17px,#f3c4cf14 17px 18px);box-shadow:inset 0 0 0 1.5px #dba0b04d}
 .tool-card.is-soon .tool-artwork>svg{color:var(--pink-ink);opacity:.5}
-.tool-card.is-soon .tool-sticker{width:40%;opacity:.5;filter:grayscale(.35) drop-shadow(0 4px 6px #3a271f40)}
+.tool-card.is-soon .tool-sticker{width:40%;opacity:.5;filter:grayscale(.35) drop-shadow(0 4px 6px #0008)}
 .tool-card.is-soon .tool-sketch-tab{color:var(--pink-ink)}
 .tool-card.is-soon .tool-artwork-number{color:var(--pink-ink);opacity:.35}
 .tool-card.is-soon .tool-card-bottom::before,.tool-card.is-soon .tool-card-bottom::after{display:none}
-.tool-soon-stamp{position:absolute;z-index:4;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-13deg);white-space:nowrap;font:800 17px/1 Arial,sans-serif;letter-spacing:4px;color:#a8566b;border:3px double currentColor;border-radius:4px;padding:9px 14px 8px;opacity:.82;mix-blend-mode:multiply}
+.tool-soon-stamp{position:absolute;z-index:4;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-13deg);white-space:nowrap;font:800 17px/1 Arial,sans-serif;letter-spacing:4px;color:var(--d-pink-ink);border:3px double currentColor;border-radius:4px;padding:9px 14px 8px;opacity:.88}
 
-.toolbox-footnote{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:34px;padding-top:12px;border-top:1px dashed #b6a385;font:400 9.5px/1.4 var(--font-mono);letter-spacing:1.4px;color:var(--label)}
+.toolbox-footnote{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:34px;padding-top:12px;border-top:1px dashed var(--d-edge-hi);font:400 9.5px/1.4 var(--font-mono);letter-spacing:1.4px;color:var(--label)}
 .toolbox-footnote>span:last-child{font-family:NotebookScript,cursive;font-size:26px;letter-spacing:0;color:var(--pink-ink)}
 
 /* hover: lift off the folder, tape loosens, sticker straightens, corner curls */
@@ -62,7 +62,7 @@
 .tool-card:hover>.tape{transform:translateY(-3px) rotate(-9deg)}
 .tool-card:nth-child(2):hover>.tape{transform:translateY(-3px) rotate(10deg)}
 .tool-card:hover .tool-sticker{transform:rotate(0deg) scale(1.07)}
-.tool-card.is-soon:hover{transform:translateY(-4px) rotate(var(--tilt));box-shadow:0 1px 0 #ffffff4d inset,0 18px 26px -16px #3a271f99}
+.tool-card.is-soon:hover{transform:translateY(-4px) rotate(var(--tilt));box-shadow:0 1px 0 #ffffff14 inset,0 18px 26px -16px #000d}
 .tool-card.is-soon:hover .tool-sticker{transform:rotate(var(--st-rot))}
 a.tool-card:focus-visible{outline:3px solid var(--pink-ink);outline-offset:6px}
 

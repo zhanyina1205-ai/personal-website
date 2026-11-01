@@ -20,19 +20,19 @@ const modules: Module[] = [
 
 // Art direction per folder (decoration only — the module data above is the content).
 type Look = {
-  paper: "manila" | "pink" | "cream" | "black" | "kraft" | "rose";
+  paper: "char" | "wine" | "graphite" | "black" | "umber" | "plum";
   tilt: number; itemTilt: number; tab: "start" | "center" | "end";
   clip: "silver" | "pink" | "ink"; clipX: string; tape: "pink" | "rose" | "cream";
   stamp: string; stampShape: "rect" | "round"; stampRot: number; focus?: string; sticker?: string;
 };
 
 const looks: Record<string, Look> = {
-  about: { paper: "manila", tilt: -1.2, itemTilt: 1.4, tab: "start", clip: "silver", clipX: "16%", tape: "pink", stamp: "PROFILE", stampShape: "rect", stampRot: -9, focus: "center 16%" },
-  liangliang: { paper: "pink", tilt: 0.8, itemTilt: -1.5, tab: "center", clip: "ink", clipX: "72%", tape: "cream", stamp: "IP CASE", stampShape: "round", stampRot: 10, focus: "center 30%" },
-  yenai: { paper: "cream", tilt: -0.5, itemTilt: 1, tab: "end", clip: "pink", clipX: "20%", tape: "rose", stamp: "SELF-MADE", stampShape: "rect", stampRot: -6, focus: "center 40%" },
+  about: { paper: "char", tilt: -1.2, itemTilt: 1.4, tab: "start", clip: "silver", clipX: "16%", tape: "pink", stamp: "PROFILE", stampShape: "rect", stampRot: -9, focus: "center 16%" },
+  liangliang: { paper: "wine", tilt: 0.8, itemTilt: -1.5, tab: "center", clip: "ink", clipX: "72%", tape: "cream", stamp: "IP CASE", stampShape: "round", stampRot: 10, focus: "center 30%" },
+  yenai: { paper: "graphite", tilt: -0.5, itemTilt: 1, tab: "end", clip: "pink", clipX: "20%", tape: "rose", stamp: "SELF-MADE", stampShape: "rect", stampRot: -6, focus: "center 40%" },
   rock: { paper: "black", tilt: 1.3, itemTilt: -1.2, tab: "start", clip: "silver", clipX: "68%", tape: "pink", stamp: "ROCK ON", stampShape: "round", stampRot: -11, focus: "center 34%" },
-  montirivers: { paper: "kraft", tilt: -0.9, itemTilt: 1.6, tab: "center", clip: "ink", clipX: "18%", tape: "cream", stamp: "BRAND", stampShape: "rect", stampRot: 7, sticker: "/stickers/st-mountain-ring.webp" },
-  tools: { paper: "rose", tilt: 1.1, itemTilt: -1.3, tab: "end", clip: "silver", clipX: "70%", tape: "pink", stamp: "HANDY", stampShape: "round", stampRot: -8, sticker: "/stickers/st-hanger.webp" },
+  montirivers: { paper: "umber", tilt: -0.9, itemTilt: 1.6, tab: "center", clip: "ink", clipX: "18%", tape: "cream", stamp: "BRAND", stampShape: "rect", stampRot: 7, sticker: "/stickers/st-mountain-ring.webp" },
+  tools: { paper: "plum", tilt: 1.1, itemTilt: -1.3, tab: "end", clip: "silver", clipX: "70%", tape: "pink", stamp: "HANDY", stampShape: "round", stampRot: -8, sticker: "/stickers/st-hanger.webp" },
 };
 
 function Paperclip() {

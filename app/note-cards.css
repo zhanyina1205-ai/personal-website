@@ -1,10 +1,11 @@
-/* FILE 03 · selected notes — five polaroid prints scattered on the black desk (see dossier.css) */
+/* FILE 03 · selected notes — five charcoal prints scattered on the black desk (see dossier.css).
+   Washi tape is the cream/pink accent; the prints themselves stay dark. */
 .selected-notes .notes-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin:64px 0 28px}
 .selected-notes .notes-heading h4{display:flex;align-items:center;gap:12px;font-size:clamp(24px,2.4vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--pink)}
 .selected-notes .notes-heading h4::before{content:"";width:24px;height:2px;background:var(--pink)}
 .selected-notes .notes-heading>span{font:400 9px/1.6 var(--font-mono);letter-spacing:1.4px;color:#a99a96}
 .note-card-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;align-items:start;padding:8px 4px 0}
-.note-card{--tilt:-1.6deg;display:block;min-width:0;position:relative;isolation:isolate;padding:9px 9px 11px;color:var(--ink);border-radius:2px;background:var(--paper-fibre),linear-gradient(178deg,#efe7dc,#e6dccd);background-size:220px 220px,auto;background-blend-mode:multiply,normal;box-shadow:var(--shadow-photo);transform:rotate(var(--tilt));transition:transform .35s var(--ease-paper),box-shadow .35s}
+.note-card{--tilt:-1.6deg;display:block;min-width:0;position:relative;isolation:isolate;padding:9px 9px 11px;color:var(--d-text);border-radius:2px;border:1px solid var(--d-edge-hi);background:var(--paper-fibre-dark),linear-gradient(178deg,var(--d-card-hi),var(--d-card));background-size:220px 220px,auto;box-shadow:var(--shadow-card-dark);transform:rotate(var(--tilt));transition:transform .35s var(--ease-paper),box-shadow .35s}
 .note-card:nth-child(2){--tilt:1.3deg;margin-top:14px}
 .note-card:nth-child(3){--tilt:-.7deg}
 .note-card:nth-child(4){--tilt:1.8deg;margin-top:18px}
@@ -16,13 +17,13 @@
 .note-video{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:25px;height:25px;border-radius:50%;font-size:11px;color:var(--cream)}
 .note-card-copy{padding:12px 3px 0}
 .note-card h5{font-size:13px;font-weight:800;line-height:1.55;min-height:61px;margin:0 0 10px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;overflow-wrap:anywhere}
-.note-card-stats{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;margin:0 0 10px;padding:8px 0;border-top:1px dashed #b9a99a;border-bottom:1px dashed #b9a99a;color:var(--ink-soft);font:400 10px/1.5 var(--font-mono);font-variant-numeric:tabular-nums}
+.note-card-stats{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;margin:0 0 10px;padding:8px 0;border-top:1px dashed var(--d-edge-hi);border-bottom:1px dashed var(--d-edge-hi);color:var(--d-text-soft);font:400 10px/1.5 var(--font-mono);font-variant-numeric:tabular-nums}
 .note-card-stats>span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
-.note-card-stats svg{width:13px;height:13px;flex:none;fill:none;stroke:var(--pink-ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
-.note-card-stats b{font-weight:700;color:var(--ink)}
+.note-card-stats svg{width:13px;height:13px;flex:none;fill:none;stroke:var(--d-pink-ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.note-card-stats b{font-weight:700;color:var(--d-text)}
 .notes-data-date{margin:22px 0 0;color:#b4a49c;font:400 9px/1.6 var(--font-mono);letter-spacing:.6px;text-align:right}
 .note-card-footer{display:flex;align-items:center;justify-content:space-between;gap:5px}
-.note-author{display:flex;align-items:center;gap:6px;min-width:0;color:var(--ink-soft);font-size:10px}
+.note-author{display:flex;align-items:center;gap:6px;min-width:0;color:var(--d-text-soft);font-size:10px}
 .note-author>img{flex:none;width:20px;height:20px;border-radius:50%;object-fit:cover;filter:none;box-shadow:0 0 0 1.5px #e2a3b3}
 .note-author>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .note-open{display:grid;place-items:center;flex:none;width:22px;height:22px;background:var(--pink);color:var(--ink);border-radius:3px;font-size:14px;transition:transform .3s var(--ease-paper)}

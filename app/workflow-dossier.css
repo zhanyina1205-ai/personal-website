@@ -1,22 +1,22 @@
 /* workflow-dossier — visual rework 2026-11-01 (see dossier.css)
-   #workflow sits on the black desk: the five steps are cream index cards with a pink
-   numbered tab, the four "what I did" items are pink label tags (3px, fibre, hole + tape),
-   the intro is a dark index card. Every selector is scoped to .workflow-section so it
+   #workflow sits on the black desk: the five steps are charcoal index cards with a small
+   pink numbered tab, the four "what I did" items are wine-black label tags (hole + cream
+   tape), the intro is a dark index card. Cream/pink only as tabs, tape and chips. Every selector is scoped to .workflow-section so it
    outranks globals.css (incl. its media queries); mobile rules are restated below. */
 .workflow-section .display-title{font-weight:800;letter-spacing:-.02em}
 
 /* steps: index cards with numbered tabs */
 .workflow-section .workflow-list{grid-template-columns:repeat(5,minmax(0,1fr));gap:30px;margin:20px 0 64px;padding-top:24px}
-.workflow-section .workflow-list article{--tilt:-.8deg;position:relative;display:block;border-top:0;padding:20px 18px 20px;background:var(--paper-fibre),linear-gradient(178deg,#f2eadf,#e7dccb);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid #d6c8b5;border-radius:0 var(--radius-paper) var(--radius-paper) var(--radius-paper);box-shadow:var(--shadow-photo);color:var(--ink);transform:rotate(var(--tilt));transition:transform .35s var(--ease-paper),box-shadow .35s}
+.workflow-section .workflow-list article{--tilt:-.8deg;position:relative;display:block;border-top:0;padding:20px 18px 20px;background:var(--paper-fibre-dark),linear-gradient(178deg,var(--d-card-hi),var(--d-card));background-size:220px 220px,auto;border:1px solid var(--d-edge-hi);border-radius:0 var(--radius-paper) var(--radius-paper) var(--radius-paper);box-shadow:var(--shadow-card-dark);color:var(--d-text);transform:rotate(var(--tilt));transition:transform .35s var(--ease-paper),box-shadow .35s}
 .workflow-section .workflow-list article:nth-child(even){--tilt:.7deg;margin-top:12px}
 .workflow-section .workflow-list article:nth-child(3){--tilt:-.3deg}
 .workflow-section .workflow-list article:hover{transform:translateY(-5px) rotate(0deg);box-shadow:0 2px 3px #0000004d,0 26px 34px -18px #000000d9}
 .workflow-section .step-number{position:absolute;bottom:100%;left:-1px;padding:7px 14px 5px;border-radius:6px 6px 0 0;background:var(--pink-paper);border:1px solid #e0aab7;border-bottom:0;font:700 10px/1 var(--font-mono);letter-spacing:1.6px;color:#5d3a45}
 .workflow-section .workflow-list article:nth-child(even) .step-number{left:auto;right:-1px;background:#e2a3b3}
 .workflow-section .workflow-list article:nth-child(even){border-radius:var(--radius-paper) 0 var(--radius-paper) var(--radius-paper)}
-.workflow-section .workflow-list h3{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.3;margin:0 0 10px;color:var(--ink)}
+.workflow-section .workflow-list h3{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.3;margin:0 0 10px;color:var(--pink)}
 .workflow-section .workflow-list h3::after{content:"";display:block;width:34px;height:3px;margin-top:9px;border-radius:2px;background:var(--rose);opacity:.7}
-.workflow-section .workflow-list p{font-size:13px;line-height:1.75;color:var(--ink-soft);max-width:none}
+.workflow-section .workflow-list p{font-size:13px;line-height:1.75;color:var(--d-text-soft);max-width:none}
 .workflow-section .step-arrow{position:absolute;z-index:2;top:50%;right:-27px;left:auto;margin-top:-14px;font-size:24px;line-height:1;color:var(--pink);transform:rotate(calc(var(--tilt) * -1));text-shadow:0 2px 6px #000}
 
 /* what I actually did */
@@ -32,19 +32,19 @@
 .workflow-section .support-intro>a:focus-visible{outline:2px solid var(--pink);outline-offset:5px}
 
 .workflow-section .support-cards{grid-template-columns:1fr 1fr;gap:22px 20px;padding:8px 4px 0}
-.workflow-section .support-cards article{--tilt:-1.2deg;position:relative;min-height:176px;padding:22px 22px 20px;justify-content:flex-end;border-radius:var(--radius-paper);background:var(--paper-fibre),linear-gradient(172deg,#f6d3db,var(--pink-paper) 55%,#e8b3c0);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border:1px solid #e0aab7;box-shadow:var(--shadow-card),0 18px 26px -18px #000000b3;transform:rotate(var(--tilt));transition:transform .35s var(--ease-paper),box-shadow .35s}
+.workflow-section .support-cards article{--tilt:-1.2deg;position:relative;min-height:176px;padding:22px 22px 20px;justify-content:flex-end;border-radius:var(--radius-paper);background:var(--paper-fibre-dark),radial-gradient(90% 70% at 100% 0,#f3c4cf14,transparent 60%),linear-gradient(172deg,#2d2326,#231c1e 55%,#1d1719);background-size:220px 220px,auto,auto;border:1px solid #4a363c;box-shadow:var(--shadow-card-dark),0 18px 26px -18px #000000b3;color:var(--d-text);transform:rotate(var(--tilt));transition:transform .35s var(--ease-paper),box-shadow .35s}
 .workflow-section .support-cards article:nth-child(2){--tilt:1deg}
 .workflow-section .support-cards article:nth-child(3){--tilt:.8deg}
 .workflow-section .support-cards article:nth-child(4){--tilt:-.7deg}
-.workflow-section .support-cards article:hover{transform:translateY(-5px) rotate(0deg);box-shadow:var(--shadow-card),0 28px 34px -18px #000000d9}
+.workflow-section .support-cards article:hover{transform:translateY(-5px) rotate(0deg);box-shadow:var(--shadow-card-dark),0 28px 34px -18px #000000d9}
 /* label-tag hole with a brass eyelet */
-.workflow-section .support-cards article::before{content:"";position:absolute;top:16px;right:18px;width:14px;height:14px;border-radius:50%;background:var(--black);border:2.5px solid #c8a46e;box-shadow:inset 1px 1px 2px #000c,0 1px 0 #fff6}
+.workflow-section .support-cards article::before{content:"";position:absolute;top:16px;right:18px;width:14px;height:14px;border-radius:50%;background:#0e0d0c;border:2.5px solid #c8a46e;box-shadow:inset 1px 1px 2px #000c,0 1px 0 #ffffff26}
 /* washi tape on the outer two */
 .workflow-section .support-cards article:nth-child(1)::after,.workflow-section .support-cards article:nth-child(4)::after{content:"";position:absolute;top:-11px;left:22px;width:70px;height:22px;transform:rotate(-6deg);opacity:.85;background:linear-gradient(180deg,#ffffff4d,#0000000f),repeating-linear-gradient(135deg,#efe7db 0 7px,#e2d8ca 7px 14px);-webkit-mask:linear-gradient(90deg,#0000,#000 4px,#000 calc(100% - 4px),#0000);mask:linear-gradient(90deg,#0000,#000 4px,#000 calc(100% - 4px),#0000)}
 .workflow-section .support-cards article:nth-child(4)::after{left:auto;right:46px;transform:rotate(5deg)}
-.workflow-section .support-cards article>span{align-self:flex-start;margin-bottom:auto;padding:5px 8px 4px;border-radius:2px;background:var(--ink);color:var(--pink);font:700 9.5px/1 var(--font-mono);letter-spacing:1.6px}
-.workflow-section .support-cards h3{width:fit-content;margin:18px 0 8px;font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.35;color:var(--ink);text-decoration:none;background:linear-gradient(transparent 60%,#e2a3b3 60%,#e2a3b3 92%,transparent 92%);padding:0 .12em}
-.workflow-section .support-cards p{font-size:13px;line-height:1.65;color:#5b4049}
+.workflow-section .support-cards article>span{align-self:flex-start;margin-bottom:auto;padding:5px 8px 4px;border-radius:2px;background:var(--pink);color:var(--ink);font:700 9.5px/1 var(--font-mono);letter-spacing:1.6px}
+.workflow-section .support-cards h3{width:fit-content;margin:18px 0 8px;font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.35;color:var(--pink);text-decoration:none;background:linear-gradient(transparent 62%,#c58c9959 62%,#c58c9959 92%,transparent 92%);padding:0 .12em}
+.workflow-section .support-cards p{font-size:13px;line-height:1.65;color:var(--d-text-soft)}
 
 @media(max-width:1100px){.workflow-section .workflow-list{gap:24px}.workflow-section .step-arrow{right:-24px}.workflow-section .workflow-list article{padding:18px 14px}.workflow-section .workflow-list h3{font-size:18px}.workflow-section .workflow-list p{font-size:12px}}
 @media(max-width:900px){.workflow-section .workflow-list{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:46px}.workflow-section .workflow-list article:nth-child(3) .step-arrow{display:none}.workflow-section .support-grid{grid-template-columns:1fr}}
