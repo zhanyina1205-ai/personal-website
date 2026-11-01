@@ -12,6 +12,7 @@ import "./ip-case-study.css";
 import "./yenai-account-story.css";
 import "./brand-and-shop.css";
 import "./module-pages.css";
+import "./compact-layout.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {
