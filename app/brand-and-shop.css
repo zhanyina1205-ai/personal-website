@@ -86,3 +86,12 @@
  .monti-backstage-photos h5{font-size:16px;}
  .monti-backstage-photos figcaption p{font-size:10px;}
 }
+
+/* Script entry follows the three video notes. */
+.monti-script-link{display:flex;align-items:center;gap:12px;padding:12px 16px;margin-top:14px;background:#efd5dc;border:1px solid #c58c9966;border-radius:3px;color:#211e1c;transition:background .2s;}
+.monti-script-link:hover{background:#f3c4cf;}
+.monti-script-icon{display:grid;place-items:center;flex-shrink:0;width:29px;height:35px;border:1px solid #a77686;border-radius:2px;font-size:24px;line-height:1;color:#936377;}
+.monti-script-link strong{display:block;font-size:14px;font-weight:500;line-height:1.5;}
+.monti-script-link small{display:block;margin-top:2px;font-size:10px;color:#785d66;}
+.monti-script-arrow{margin-left:auto;font-size:27px;line-height:1;}
+.monti-script-link:focus-visible{outline:2px solid #936377;outline-offset:3px;}
