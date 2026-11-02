@@ -51,6 +51,16 @@ return <article className="monti-case" id="montirivers" aria-labelledby="monti-t
     <div className="monti-learning"><div><b>12,037<span>赞</span></b><b>1,643<span>藏</span></b><small>33 篇内容累计表现*</small></div><p><strong>我的复盘：</strong>品牌片获得更多互动；系列与选购内容，让“好看”更接近“想戴”。</p></div>
     <details className="case-source"><summary>工作范围、数据与完整复盘 ↗</summary><p>职责依据个人复盘：2026 年 6—9 月在深圳市山河集文化有限公司负责内容策划与账号运营；不据此认定全部影像均为本人独立拍摄。33 篇内容累计赞藏统计于 2026.11.01；三条卡片数据核对于 2026.11.02。发布期另有 KOC 与快闪活动，不能把全部增长归因于单一内容动作。未获取曝光、投放、私信与成交数据。</p><a href={brandSource} {...external}>阅读起号与脚本复盘 ↗</a></details>
   </section>
+  <section className="monti-page monti-backstage" id="montirivers-backstage" aria-labelledby="monti-backstage-title">
+    <div className="case-meta"><span>BEHIND THE SCENES / MONTIRIVERS</span><span>镜头背后 · 品牌现场</span></div>
+    <div className="monti-backstage-layout">
+      <header className="monti-backstage-heading"><p className="case-script">Behind the scenes.</p><h4 id="monti-backstage-title">拍摄花絮<span>与品牌现场</span></h4><p>从自然里的影像，<br/>到门店里的一杯下午茶。</p><span className="monti-backstage-mark" aria-hidden="true">✳</span><small>点击相片，查看大图 ↗</small></header>
+      <div className="monti-backstage-photos">
+        <figure><DocumentMedia src="/montirivers/behind-scenes/meadow-shoot.jpg" alt="山河集外景拍摄花絮：模特与摄影师，原片经 AI 扩图调整构图" label="放大相片"/><figcaption><span>01 / ON LOCATION</span><h5>拍摄花絮</h5><p>自然场景里的品牌影像</p><small>原片经 AI 扩图 · 3:4 构图</small></figcaption></figure>
+        <figure><DocumentMedia src="/montirivers/behind-scenes/tangsuo-afternoon-tea.jpg" alt="达人探店时品牌合作的瑭所下午茶" label="放大相片"/><figcaption><span>02 / BRAND COLLABORATION</span><h5>瑭所下午茶</h5><p>达人探店时的品牌合作</p></figcaption></figure>
+      </div>
+    </div>
+  </section>
   <section className="monti-page monti-matrix" id="montirivers-matrix">
     <div className="case-meta"><span>ONE BRAND / SIX VOICES</span><span>我管理过的店员账号</span></div>
     <header className="monti-heading"><div><p className="case-script">Closer to people.</p><h4>让品牌，有人回应。</h4></div><p>官方号建立审美，顾问号补充实戴与选购。<br/>把内容与深圳门店连接起来。</p></header>

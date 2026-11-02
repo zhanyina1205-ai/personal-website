@@ -53,3 +53,36 @@
   .monti-matrix-bottom{margin-top:16px;padding-top:10px;}
   .monti-matrix .case-source{margin-top:10px;}
 }
+/* Two compact photo cards below the video case, with the original image colors. */
+.monti-case .monti-backstage{background:#efd5dc;padding:28px clamp(20px,3vw,44px);display:block;min-height:0;}
+.monti-backstage-layout{display:grid;grid-template-columns:.8fr 2fr;gap:clamp(22px,4vw,60px);align-items:center;margin:26px 0 12px;}
+.monti-backstage-heading .case-script{color:#a26b7f;font-size:clamp(30px,3.5vw,50px);line-height:1.15;margin:0 0 18px;}
+.monti-backstage-heading h4{font-size:clamp(24px,2.5vw,36px);font-weight:500;line-height:1.5;margin:0;}
+.monti-backstage-heading h4>span{display:block;}
+.monti-backstage-heading>p:not(.case-script){font-size:12px;color:#705a60;line-height:1.9;margin-top:18px;}
+.monti-backstage-mark{display:block;font-size:64px;color:#bc8495;margin:26px 0;line-height:1;}
+.monti-backstage-heading>small{font-size:10px;color:#705a60;}
+.monti-backstage-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;width:100%;max-width:min(100%,76svh,740px);justify-self:center;align-items:stretch;}
+.monti-backstage-photos figure{margin:0;padding:9px 9px 14px;background:#fff8ef;box-shadow:0 5px 18px #57323f12;}
+.monti-backstage-photos .document-media{display:block;width:100%;aspect-ratio:3/4;overflow:hidden;}
+.monti-backstage-photos .document-media>img{width:100%;height:100%;object-fit:cover;filter:none;}
+.monti-backstage-photos figcaption{padding:13px 8px 0;}
+.monti-backstage-photos figcaption>span{font-size:8px;letter-spacing:1.2px;color:#926976;}
+.monti-backstage-photos h5{font-size:18px;font-weight:500;margin:7px 0 4px;}
+.monti-backstage-photos figcaption p{font-size:11px;color:#705a60;line-height:1.6;margin:0;}
+.monti-backstage-photos figcaption small{display:block;font-size:9px;color:#927d80;margin-top:6px;}
+@media(max-width:700px){
+ .monti-case .monti-backstage{padding:22px 16px;}
+ .monti-backstage-layout{grid-template-columns:1fr;gap:22px;margin:20px 0 0;}
+ .monti-backstage-heading .case-script{font-size:36px;margin-bottom:8px;}
+ .monti-backstage-heading h4{font-size:24px;}
+ .monti-backstage-heading h4>span{display:inline;margin-left:8px;}
+ .monti-backstage-heading>p:not(.case-script),.monti-backstage-mark{display:none;}
+ .monti-backstage-heading>small{display:block;margin-top:10px;}
+ .monti-backstage-photos{max-width:100%;gap:12px;}
+ .monti-backstage-photos figure{padding:6px 6px 12px;}
+ .monti-backstage-photos figcaption{padding:10px 3px 0;}
+ .monti-backstage-photos figcaption>span{font-size:7px;letter-spacing:.5px;}
+ .monti-backstage-photos h5{font-size:16px;}
+ .monti-backstage-photos figcaption p{font-size:10px;}
+}
