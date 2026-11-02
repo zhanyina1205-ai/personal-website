@@ -30,8 +30,12 @@ export function IpCaseContext() {
     <IpSelectedWork/>
     <IpNoteBreakdown/>
     <section className="ip-editing-project" id="ip-editing-project" aria-labelledby="ip-editing-title">
-      <header><div><span>PROJECT FILE / 01</span><h4 id="ip-editing-title">第一条爆款视频 · 剪映工程文档</h4></div><p>素材、字幕与剪辑时间线<br/>点击截图，放大查看 ↗</p></header>
-      <figure><DocumentMedia src="/ip-case/jianying-project-01.png" alt="第一条爆款视频的剪映工程截图，展示穿搭素材、字幕分层与剪辑时间线" label="放大工程截图"/></figure>
+      <header><div><span>BEHIND THE CONTENT / 01</span><h4 id="ip-editing-title">第一条爆款视频 · 创作过程</h4></div><p>从搭配，到脚本，再到剪辑</p></header>
+      <div className="ip-process-grid">
+        <article className="ip-process-card"><div className="ip-process-label"><span>01</span><h5>搭配图片</h5></div><div className="ip-process-placeholder"><svg viewBox="0 0 64 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M27 13a5 5 0 1 1 9 3l-4 4v5L10 37a2 2 0 0 0 1 4h42a2 2 0 0 0 1-4L32 25"/></svg><span>待补充</span></div></article>
+        <article className="ip-process-card"><div className="ip-process-label"><span>02</span><h5>脚本</h5></div><div className="ip-process-placeholder"><svg viewBox="0 0 64 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M20 5h18l9 9v29H20zM38 5v9h9M26 22h15M26 28h15M26 34h10"/></svg><span>待补充</span></div></article>
+        <article className="ip-process-card"><div className="ip-process-label"><span>03</span><h5>剪映工程文档</h5></div><DocumentMedia src="/ip-case/jianying-project-01.png" alt="第一条爆款视频的剪映工程截图，展示穿搭素材、字幕分层与剪辑时间线" label="放大工程截图"/><p>点击截图，放大查看 ↗</p></article>
+      </div>
     </section>
     <section className="ip-review-spread" id="ip-review"><div className="ip-context-heading review-heading"><h4>我做的 IP 调研与复盘</h4><span>从项目观察，到内容判断</span></div>
     <div className="ip-review-grid">
