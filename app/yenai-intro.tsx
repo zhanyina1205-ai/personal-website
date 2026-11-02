@@ -4,7 +4,7 @@ import { assetPath } from "./asset-path";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 export function YenaiIntro() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const panel = useRef<HTMLElement>(null);
   const audio = useRef<HTMLAudioElement>(null);
   const exitTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -29,9 +29,11 @@ export function YenaiIntro() {
   }
 
   useEffect(() => {
-    // Chapter links open their destination directly; the intro belongs to the homepage.
-    if ((location.hash && location.hash !== "#top") || matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const frame = requestAnimationFrame(() => setVisible(false));
+    // Start the full timeline after hydration, including homepage directory links.
+    // Legacy chapter URLs still redirect directly to their destination.
+    const homepageEntry = !location.hash || ["#top", "#modules", "#contact"].includes(location.hash);
+    if (homepageEntry && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const frame = requestAnimationFrame(() => setVisible(true));
       return () => cancelAnimationFrame(frame);
     }
   }, []);
@@ -46,7 +48,7 @@ export function YenaiIntro() {
     panel.current?.focus({ preventScroll: true });
     exitTimer.current = setTimeout(() => setVisible(false), 5850);
     const sound = audio.current;
-    if (sound && !(location.hash && location.hash !== "#top") && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (sound && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
       sound.volume = .75;
       void sound.play().catch(() => {}); // Browser autoplay policy: offer the explicit replay button.
     }
@@ -74,7 +76,7 @@ export function YenaiIntro() {
       preference.removeEventListener("change", reduce);
       if (canvas) canvas.inert = previousInert;
       document.documentElement.style.overflow = previousOverflow;
-      document.querySelector<HTMLAnchorElement>(".site-header .wordmark")?.focus({ preventScroll: true });
+      document.querySelector<HTMLAnchorElement>(".portfolio-header .wordmark, .site-header .wordmark")?.focus({ preventScroll: true });
     };
   }, [visible]);
 
