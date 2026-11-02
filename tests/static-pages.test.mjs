@@ -23,3 +23,9 @@ test('all six Pages routes export with valid base-prefixed links, anchors and lo
  }
  assert.equal([...pages.get('/').matchAll(/class="deck-card /g)].length,6);
 });
+test('homepage module deck links each folder to its base-prefixed module page',async()=>{
+ const prefix=process.env.NEXT_PUBLIC_BASE_PATH||'';
+ const html=await readFile(new URL('../dist/client/index.html',import.meta.url),'utf8');
+ const cards=[...html.matchAll(/<a\b[^>]*\bclass="deck-card [^"]*"[^>]*>/g)].map(([tag])=>tag.match(/\bhref="([^"]*)"/)?.[1]);
+ assert.deepEqual(cards,['about','liangliang','accounts','accounts','montirivers','tools'].map(slug=>`${prefix}/${slug}/`));
+});

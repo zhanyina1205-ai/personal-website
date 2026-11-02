@@ -5,17 +5,17 @@ import { assetPath } from "./asset-path";
 import { Scribble, useFxInView, useSpotlight } from "./scrapbook-fx";
 
 type Module = {
-  id: string; index: string; name: string; en: string; tag: string;
+  id: string; href: string; index: string; name: string; en: string; tag: string;
   img?: string; kind: "photo" | "brand" | "tools"; mono?: string; decor?: string;
 };
 
 const modules: Module[] = [
-  { id: "about", index: "01", name: "基本信息", en: "ABOUT ME", tag: "23 · 广美产品设计 · 也叫椰奶", img: "/new-document/portrait-cover-clean.png", kind: "photo" },
-  { id: "liangliang", index: "02", name: "是亮亮", en: "服务的 IP · @涂芷靓", tag: "穿搭 IP 账号分析与爆款拆解", img: "/ip-showcase/avatar.jpg", kind: "photo" },
-  { id: "yenai", index: "03", name: "椰奶没喝饱", en: "我的穿搭账号", tag: "5.17 万粉 · 从零起号与受众分析", img: "/note-covers/avatar.jpg", kind: "photo" },
-  { id: "rock", index: "04", name: "摇滚椰奶冻", en: "我的饰品店铺", tag: "平价项链 · 高转化带货笔记", img: "/rock-notes/8MASvhj1rwe.webp", kind: "photo" },
-  { id: "montirivers", index: "05", name: "山河集", en: "服务的珠宝品牌", tag: "MontiRivers · 店员号矩阵运营", kind: "brand", mono: "SHJ", decor: "/decor/star-doodle.svg" },
-  { id: "tools", index: "06", name: "小工具", en: "LITTLE HELPERS", tag: "穿搭衣橱 · 养宠日记", kind: "tools", mono: "✳", decor: "/decor/sparkle.svg" },
+  { id: "about", href: "/about/", index: "01", name: "基本信息", en: "ABOUT ME", tag: "23 · 广美产品设计 · 也叫椰奶", img: "/new-document/portrait-cover-clean.png", kind: "photo" },
+  { id: "liangliang", href: "/liangliang/", index: "02", name: "是亮亮", en: "服务的 IP · @涂芷靓", tag: "穿搭 IP 账号分析与爆款拆解", img: "/ip-showcase/avatar.jpg", kind: "photo" },
+  { id: "yenai", href: "/accounts/", index: "03", name: "椰奶没喝饱", en: "我的穿搭账号", tag: "5.17 万粉 · 从零起号与受众分析", img: "/note-covers/avatar.jpg", kind: "photo" },
+  { id: "rock", href: "/accounts/", index: "04", name: "摇滚椰奶冻", en: "我的饰品店铺", tag: "平价项链 · 高转化带货笔记", img: "/rock-notes/8MASvhj1rwe.webp", kind: "photo" },
+  { id: "montirivers", href: "/montirivers/", index: "05", name: "山河集", en: "服务的珠宝品牌", tag: "MontiRivers · 店员号矩阵运营", kind: "brand", mono: "SHJ", decor: "/decor/star-doodle.svg" },
+  { id: "tools", href: "/tools/", index: "06", name: "小工具", en: "LITTLE HELPERS", tag: "穿搭衣橱 · 养宠日记", kind: "tools", mono: "✳", decor: "/decor/sparkle.svg" },
 ];
 
 // Art direction per folder (decoration only — the module data above is the content).
@@ -178,7 +178,7 @@ export function ModuleDeck() {
         return <a
           key={module.id}
           className={`deck-card fx-pull kind-${module.kind} paper-${look.paper} tab-${look.tab}`}
-          href={`#${module.id}`}
+          href={assetPath(module.href)}
           aria-label={`进入模块：${module.name}，${module.tag}`}
           style={style}
         >

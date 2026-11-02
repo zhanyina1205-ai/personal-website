@@ -6,7 +6,8 @@
    (cream stock, fibre, sheen, pocket shade) or torn index card, clipped with a
    two-tone paperclip and taped at the opposite corner / front pocket with a shallow
    thumb notch and a lit mouth edge / rubber stamp on the pocket face / punched
-   "进入" tag. Hover: folder rises (spring), photo is pulled out (fx-pull), tag swings.
+   "进入" tag. Each folder links to its module page. Hover: folder rises (spring),
+   photo is pulled out (fx-pull), tag swings. Press: folder settles, tag is punched in.
    Track: edge fades that follow the scroll position, hairline progress rail with
    a pink thumb + per-card ticks + "01 / 06" counter (decorative, aria-hidden). */
 
@@ -136,11 +137,17 @@
 .deck-pocket p{margin:8px 0 14px;font-size:11.5px;line-height:1.55;letter-spacing:.01em;color:var(--sub)}
 
 /* "进入" = punched file tag with a reinforced eyelet; swings on the eyelet on hover */
-.deck-enter{position:relative;isolation:isolate;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 22px;color:var(--tag-fg);font:700 var(--fs-label)/1 var(--font-mono);letter-spacing:.2em;filter:drop-shadow(0 1px 0 #00000080) drop-shadow(0 4px 5px #00000059);transform-origin:11px 50%;transition:translate var(--dur) var(--ease-spring),rotate var(--dur) var(--ease-spring),gap var(--dur) var(--ease-out)}
+.deck-enter{position:relative;isolation:isolate;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 22px;color:var(--tag-fg);font:700 var(--fs-label)/1 var(--font-mono);letter-spacing:.2em;filter:drop-shadow(0 1px 0 #00000080) drop-shadow(0 4px 5px #00000059);transform-origin:11px 50%;transition:translate var(--dur) var(--ease-spring),rotate var(--dur) var(--ease-spring),scale var(--dur) var(--ease-spring),gap var(--dur) var(--ease-out)}
 .deck-enter::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 11px 50%,#0000 3.3px,#ffffff8c 3.5px 4.4px,#a8707f40 4.6px 5.1px,#0000 5.3px),linear-gradient(180deg,#ffffff4d,#ffffff00 52%),linear-gradient(180deg,#f7d3dc,#eab0be);box-shadow:inset 0 -1px 0 #7a3f4f33;clip-path:polygon(7px 0,100% 0,100% 100%,7px 100%,0 calc(100% - 7px),0 7px);-webkit-mask:radial-gradient(circle at 11px 50%,#0000 2.7px,#000 3.3px);mask:radial-gradient(circle at 11px 50%,#0000 2.7px,#000 3.3px)}
 .deck-enter i{font-style:normal;font-size:12px;transition:translate var(--dur) var(--ease-spring)}
 .deck-card:hover .deck-enter,.deck-card:focus-visible .deck-enter{translate:3px 0;rotate:-2.5deg;gap:11px}
 .deck-card:hover .deck-enter i,.deck-card:focus-visible .deck-enter i{translate:1px -2px}
+
+/* press: the folder settles back toward the desk and the tag is punched in, then both
+   spring back up on release (the hover transitions above carry the return) */
+.deck-card:active .deck-folder{translate:0 -2px;transition:translate var(--dur-fast) var(--ease-out)}
+.deck-card:active::before{opacity:.9;scale:1.02 1.04;translate:0 2px;transition-duration:var(--dur-fast)}
+.deck-card:active .deck-enter{translate:2px 1px;rotate:-1deg;scale:.95;transition-duration:var(--dur-fast)}
 
 /* rubber stamp on the pocket face, top-right — beside the title, never on it */
 .deck-stamp{position:absolute;z-index:3;right:15px;top:calc(61% + 13px);display:grid;place-items:center;rotate:var(--stamp-rot,-8deg);color:var(--stamp-ink);opacity:.72;font:700 10.5px/1.05 var(--font-mono);letter-spacing:.16em;text-align:center;text-shadow:0 0 .6px currentColor;pointer-events:none}
@@ -174,4 +181,6 @@
 .deck-card:hover,.deck-card:focus-visible{rotate:var(--tilt,0deg)}
 .deck-card:hover .deck-folder,.deck-card:focus-visible .deck-folder,.deck-card:hover::before,.deck-card:focus-visible::before,.deck-card:hover .deck-enter,.deck-card:focus-visible .deck-enter,.deck-card:hover .deck-enter i,.deck-card:focus-visible .deck-enter i,.deck-controls button:hover,.deck-controls button:hover svg{translate:none;rotate:none;scale:none}
 .deck-card:hover .deck-item,.deck-card:focus-visible .deck-item{rotate:var(--item-tilt,0deg)}
+.deck-card:active .deck-folder,.deck-card:active::before,.deck-card:active .deck-enter{translate:none;rotate:none;scale:none}
+.deck-card:active .deck-folder{filter:brightness(.88)}
 }
