@@ -1,3 +1,4 @@
+import { DocumentMedia } from "./document-media";
 import { IpAudience } from "./ip-audience";
 import { IpNoteBreakdown } from "./ip-note-breakdown";
 import { IpSelectedWork } from "./ip-selected-work";
@@ -28,6 +29,10 @@ export function IpCaseContext() {
     <IpAudience/>
     <IpSelectedWork/>
     <IpNoteBreakdown/>
+    <section className="ip-editing-project" id="ip-editing-project" aria-labelledby="ip-editing-title">
+      <header><div><span>PROJECT FILE / 01</span><h4 id="ip-editing-title">第一条爆款视频 · 剪映工程文档</h4></div><p>素材、字幕与剪辑时间线<br/>点击截图，放大查看 ↗</p></header>
+      <figure><DocumentMedia src="/ip-case/jianying-project-01.png" alt="第一条爆款视频的剪映工程截图，展示穿搭素材、字幕分层与剪辑时间线" label="放大工程截图"/></figure>
+    </section>
     <section className="ip-review-spread" id="ip-review"><div className="ip-context-heading review-heading"><h4>我做的 IP 调研与复盘</h4><span>从项目观察，到内容判断</span></div>
     <div className="ip-review-grid">
       <article><span>01 / 内容定位</span><h5>把选题变成具体需求</h5><p>从眼镜党、新手、特定妆效等人群与场景出发，检查标题承诺是否有画面支撑；穿搭则通过固定视角和整体造型形成辨识度。</p></article>
