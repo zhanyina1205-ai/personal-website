@@ -10,7 +10,7 @@ const milestones = [
 ];
 
 export function YenaiAudience() {
-  return <section className="yenai-audience dossier" id="yenai-audience" aria-labelledby="yenai-audience-title">
+  return <section className="yenai-audience dossier fx-reveal" id="yenai-audience" aria-labelledby="yenai-audience-title">
     <span className="dossier-tab" aria-hidden="true"><b>FILE 03 · A</b>我的受众</span>
     <span className="punch-holes" aria-hidden="true"><i/><i/><i/></span>
     <div className="yenai-section-meta"><span>YENAI / AUDIENCE NOTES</span><span>01 / 我的受众</span></div>
@@ -29,7 +29,7 @@ export function YenaiAudience() {
 }
 
 export function YenaiOriginStory() {
-  return <section className="yenai-origin dossier dossier--pink" id="yenai-origin" aria-labelledby="yenai-origin-title">
+  return <section className="yenai-origin dossier dossier--pink fx-reveal" id="yenai-origin" aria-labelledby="yenai-origin-title">
     <span className="dossier-tab" aria-hidden="true"><b>FILE 03 · B</b>从零起号</span>
     <span className="punch-holes" aria-hidden="true"><i/><i/><i/></span>
     <div className="yenai-section-meta"><span>YENAI / STARTED FROM MY ROOM</span><span>02 / 从零起号</span></div>

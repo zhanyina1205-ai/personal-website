@@ -1,0 +1,111 @@
+/* site-polish — rev 3 polish pass (2026-11-01), loaded last (see layout.tsx).
+   Owns only the page shell: header, hero desk, display titles, contact postcard,
+   footer and the image lightbox. Module looks live in their own files.
+   Light model and tokens: dossier.css :root (one overhead lamp, lit top edges,
+   layered desk shadows, 10px type floor, --satin for display pink). */
+
+/* ---------- page edge: tilted tape / stickers may hang past a phone screen; clip, never side-scroll ---------- */
+html,body{overflow-x:clip}
+
+/* ---------- header ---------- */
+.site-header{border-bottom-color:#ffffff17}
+.wordmark{font-weight:800;letter-spacing:.06em}
+.wordmark span{font:500 var(--fs-micro)/1 var(--font-mono);letter-spacing:var(--track-micro);color:var(--d-label);border-left-color:#ffffff24}
+.site-header nav{font-size:12.5px;letter-spacing:.04em}
+.site-header nav a:not(.contact-pill){color:#d9cfc5}
+.contact-pill{background:var(--satin);color:var(--ink);font-weight:700;box-shadow:inset 0 1px 0 #ffffffa6,inset 0 -1px 0 #0000001f,0 0 0 1px #00000059,0 6px 14px -8px #f3c4cf80;transition:translate var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast)}
+nav .contact-pill:hover{background:var(--satin);translate:0 -1px;box-shadow:inset 0 1px 0 #ffffffb3,inset 0 -1px 0 #0000001f,0 0 0 1px #00000059,0 10px 20px -8px #f3c4cfa6}
+
+/* ---------- display titles: satin pink ---------- */
+.display-title,.contact h2{background:var(--satin);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 0 #00000073) drop-shadow(0 6px 10px #00000047)}
+.section-kicker{color:#a99e95}
+
+/* ---------- hero: the file under the desk lamp ---------- */
+.hero{background:radial-gradient(46% 52% at 50% 62%,#f3c4cf12,#f3c4cf05 46%,transparent 72%),radial-gradient(120% 70% at 50% -10%,#1d1a19,transparent 62%),radial-gradient(140% 90% at 50% 110%,#070606,transparent 60%),var(--black-deep)}
+.hero::after{content:"";position:absolute;left:50%;bottom:30px;z-index:1;width:min(720px,84%);height:120px;translate:-50% 0;pointer-events:none;background:radial-gradient(50% 50% at 50% 50%,#000000b3,transparent 70%);filter:blur(6px)}
+.hero-label{font:500 var(--fs-micro)/1.4 var(--font-mono);letter-spacing:var(--track-micro);color:var(--d-label)}
+.hero h1{font-weight:700;letter-spacing:-.06em;background:var(--satin);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 0 #0000008c) drop-shadow(0 18px 30px #000000b3)}
+
+.paper-layer{background:var(--sheen-soft),var(--paper-fibre-dark),linear-gradient(105deg,#242120,#2e2a27 30%,#211e1c);background-size:auto,220px 220px,auto;border-color:#45403b #35312d #221e1b;box-shadow:inset 0 1px 0 #ffffff12,0 0 0 1px #00000080,0 14px 26px -10px #000000d9}
+.front-sheet{background:var(--sheen),var(--paper-fibre-dark),linear-gradient(100deg,#232120,#2c2926 34%,#211f1d);background-size:auto,220px 220px,auto;border-color:#4d4742 #3a3531 #241f1c;box-shadow:var(--edge-lit),var(--ring),0 3px 6px -2px #000000cc,0 30px 50px -24px #000000f2,0 70px 100px -60px #000}
+.front-sheet:after{background:linear-gradient(180deg,#f3c4cf00,#f3c4cf4d 12%,#f3c4cf3d 88%,#f3c4cf00)}
+.sheet-index{font:500 var(--fs-micro)/1.4 var(--font-mono);letter-spacing:var(--track-micro);color:var(--d-label)}
+
+.portrait-card{background:var(--paper-fibre),var(--print-paper);background-size:220px 220px,auto;background-blend-mode:multiply,normal;box-shadow:var(--shadow-photo)}
+.portrait-image{position:relative;overflow:hidden}
+.portrait-image::after{content:"";position:absolute;inset:0;pointer-events:none;background:var(--print-sheen);box-shadow:inset 0 0 0 1px #0000002e,inset 0 0 26px #00000038}
+.portrait-image img{filter:saturate(.94) contrast(1.03)}
+.portrait-card figcaption{font-weight:800;letter-spacing:.18em}
+.portrait-card figcaption>span{font:500 var(--fs-micro)/1 var(--font-mono);letter-spacing:.06em;color:#6d6158}
+.paperclip{border-color:#8e8a85;box-shadow:1px 2px 2px #0000008c,inset 1px 1px 0 #ffffffa6,inset -1px -1px 0 #0000004d}
+.paperclip:after{border-color:#b7b2ab}
+
+.sheet-copy>p{font-size:21px;font-weight:800;letter-spacing:.01em}
+.sheet-copy>span{font-family:var(--font-mono);font-size:var(--fs-label);letter-spacing:.04em;color:var(--d-text-soft)}
+.sheet-rule{background:linear-gradient(90deg,#f3c4cf66,#f3c4cf14)}
+.sheet-copy small{font:500 var(--fs-micro)/1.5 var(--font-mono);letter-spacing:.12em;color:var(--d-label)}
+
+.hero-footer{font-weight:800;letter-spacing:.06em}
+.hero-footer small{font:500 var(--fs-micro)/1.6 var(--font-mono);letter-spacing:var(--track-micro);color:var(--d-label)}
+.scroll-prompt{font:600 var(--fs-micro)/1 var(--font-mono);letter-spacing:var(--track-micro)}
+.scroll-prompt span{animation:hero-nudge 2.4s var(--ease-out) infinite}
+@keyframes hero-nudge{0%,60%,100%{translate:0 0}30%{translate:0 5px}}
+
+/* ---------- contact: the last page is a postcard ---------- */
+.contact h2{font-weight:800;letter-spacing:-.03em;line-height:1.28}
+.email-link{position:relative;color:var(--d-text);font-size:20px;letter-spacing:.01em;border-bottom:0;padding:16px 0}
+.email-link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,#f3c4cf99,#f3c4cf26 70%,#f3c4cf00)}
+.email-link::before{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform var(--dur) var(--ease-out)}
+.email-link:hover::before{transform:scaleX(1)}
+.email-link>span{color:var(--pink)}
+.copy-email{border-color:#ffffff24;background:#ffffff05;box-shadow:inset 0 1px 0 #ffffff12;font-size:var(--fs-micro);letter-spacing:.06em}
+
+.contact-mark{isolation:isolate;--pc-w:330px;--pc-h:220px}
+/* postcard */
+.contact-mark::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:var(--pc-w);height:var(--pc-h);translate:-50% -50%;rotate:-4deg;border-radius:3px;border:1px solid;border-color:#4b4540 #3b3632 #2a2522;background:var(--sheen),var(--paper-fibre-dark),linear-gradient(176deg,#2b2725,#211e1c);background-size:auto,220px 220px,auto;box-shadow:var(--shadow-card-dark)}
+/* postmark: wavy cancel lines running off the stamp */
+.contact-mark::after{content:"";position:absolute;z-index:2;left:calc(50% + var(--pc-w) / 2 - 150px);top:calc(50% - var(--pc-h) / 2 + 26px);width:120px;height:36px;rotate:-4deg;opacity:.5;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='36' fill='none' stroke='%23f3c4cf' stroke-width='1.4'%3E%3Cpath d='M0 6q7.5-5 15 0t15 0 15 0 15 0 15 0 15 0 15 0 15 0M0 18q7.5-5 15 0t15 0 15 0 15 0 15 0 15 0 15 0 15 0M0 30q7.5-5 15 0t15 0 15 0 15 0 15 0 15 0 15 0 15 0'/%3E%3C/svg%3E") 0 0/120px 36px no-repeat;-webkit-mask:linear-gradient(90deg,#0000,#000 30%,#000 70%,#0000);mask:linear-gradient(90deg,#0000,#000 30%,#000 70%,#0000)}
+/* postage stamp = the portrait with perforated edges */
+.contact-stamp{position:absolute;z-index:1;left:calc(50% + var(--pc-w) / 2 - 76px);top:calc(50% - var(--pc-h) / 2 + 12px);width:56px;height:66px;padding:5px;rotate:3deg;background:var(--paper-fibre),var(--print-paper);background-size:220px 220px,auto;background-blend-mode:multiply,normal;filter:drop-shadow(0 1px 1px #00000080) drop-shadow(0 4px 6px #00000066);-webkit-mask:linear-gradient(#000 0 0) center/calc(100% - 6px) calc(100% - 6px) no-repeat,radial-gradient(circle,#0000 1.7px,#000 2.1px) -3px -3px/6px 6px;mask:linear-gradient(#000 0 0) center/calc(100% - 6px) calc(100% - 6px) no-repeat,radial-gradient(circle,#0000 1.7px,#000 2.1px) -3px -3px/6px 6px}
+.contact-stamp img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:grayscale(.35) sepia(.25) contrast(1.05)}
+/* a kiss on the corner of the card */
+.contact-kiss{position:absolute;z-index:3;left:calc(50% - var(--pc-w) / 2 - 30px);top:calc(50% + var(--pc-h) / 2 - 64px);width:92px;height:auto;rotate:-16deg;filter:var(--sticker-shadow)}
+.contact-mark>span:first-child{background:var(--satin);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-weight:800;font-size:150px;filter:drop-shadow(0 2px 0 #0000008c) drop-shadow(0 10px 14px #00000080)}
+/* the ✦ is no longer :last-child (stamp + kiss follow it), so restate globals.css here */
+.contact-mark>span:nth-of-type(2){line-height:1;margin-left:5px;margin-top:45px;transform:rotate(10deg);color:var(--rose);font-size:82px;filter:drop-shadow(0 6px 10px #0000008c);animation:contact-twinkle 6s var(--ease-out) infinite}
+@keyframes contact-twinkle{0%,100%{scale:1;opacity:.92}50%{scale:1.08;opacity:1}}
+
+.footer-line{border-top-color:#ffffff17;font:500 var(--fs-micro)/1.4 var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--d-label)}
+.footer-line a{transition:color var(--dur-fast)}
+.footer-line a:hover{color:var(--pink)}
+
+/* ---------- lightbox: dark mat instead of a cream sheet ---------- */
+.image-dialog{background:var(--sheen-soft),var(--paper-fibre-dark),linear-gradient(176deg,#24211f,#1a1817);background-size:auto,220px 220px,auto;color:var(--d-text);border:1px solid;border-color:#4b4540 #3b3632 #2a2522;border-radius:4px;padding:16px;box-shadow:var(--ring),0 40px 80px -30px #000}
+.image-dialog::backdrop{background:#050404e6;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.image-dialog img{box-shadow:0 0 0 1px #0000004d}
+.image-dialog p{font:500 var(--fs-micro)/1.6 var(--font-mono);letter-spacing:.12em;color:var(--d-text-soft)}
+.dialog-close{background:var(--satin);box-shadow:inset 0 1px 0 #ffffffa6,0 6px 14px -6px #000}
+
+/* ---------- small screens: restate floors (globals.css goes down to 5–7px) ---------- */
+@media(max-width:760px){
+.wordmark span{font-size:var(--fs-micro)}
+.site-header nav{font-size:11px}
+.hero-label{font-size:var(--fs-micro);letter-spacing:.14em}
+.sheet-index{font-size:var(--fs-micro);letter-spacing:.12em;margin-bottom:12px}
+.portrait-card figcaption>span{font-size:var(--fs-micro);letter-spacing:0}
+.sheet-copy>span{font-size:var(--fs-micro)}
+.sheet-copy small{font-size:var(--fs-micro);letter-spacing:.04em}
+.hero-footer{font-size:11px}
+.hero-footer small{font-size:var(--fs-micro);letter-spacing:.12em}
+.scroll-prompt{font-size:var(--fs-micro);letter-spacing:.14em}
+.hero::after{bottom:60px;height:80px}
+.contact-mark{--pc-w:262px;--pc-h:176px;height:220px;justify-content:center;padding-right:0}
+.contact-mark>span:first-child{font-size:112px}
+.contact-mark>span:nth-of-type(2){font-size:60px;margin-top:25px}
+.contact-kiss{width:74px;left:calc(50% - var(--pc-w) / 2 - 18px)}
+.contact-mark::after{left:calc(50% + var(--pc-w) / 2 - 136px)}
+.email-link{font-size:17px}
+.footer-line{font-size:var(--fs-micro);letter-spacing:.08em;flex-direction:column;gap:8px;text-align:center}
+}
+@media(max-width:380px){.footer-line{font-size:var(--fs-micro)}}
+@media(prefers-reduced-motion:reduce){.scroll-prompt span,.contact-mark>span:nth-of-type(2){animation:none}.email-link::before,.contact-pill{transition:none}}

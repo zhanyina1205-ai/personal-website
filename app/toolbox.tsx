@@ -19,7 +19,7 @@ const toolStickers = ["st-hanger", "st-paw-diary", "st-starburst"];
 const toolTapes = ["", "tape--cream", "tape--rose"];
 
 function ToolArtwork({ index, soon }: { index: number; soon: boolean }) {
-  return <div className={`tool-artwork tool-artwork-${index}`} aria-hidden="true">
+  return <div className={`tool-artwork tool-artwork-${index} fx-sheen`} aria-hidden="true">
     <span className="tool-sketch-tab">SKETCH</span>
     <svg viewBox="0 0 200 150" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
       {index === 0
@@ -37,8 +37,8 @@ function ToolArtwork({ index, soon }: { index: number; soon: boolean }) {
 export function Toolbox() {
   return <section className="toolbox-section section-pad" id="tools" aria-labelledby="tools-title">
     <div className="section-kicker"><span>04 / MY LITTLE TOOLBOX</span><span>小工具 · 持续更新中</span></div>
-    <div className="toolbox-heading"><div><h2 className="display-title" id="tools-title">我的小工具<span>MAKE ROOM FOR IDEAS</span></h2><p>为创作和生活，做一点好用的小东西。<br/>收好灵感，也记下日常。</p></div><span className="toolbox-script" aria-hidden="true">Little helpers.<span>✳</span></span></div>
-    <div className="toolbox-shelf dossier dossier--manila">
+    <div className="toolbox-heading fx-reveal"><div><h2 className="display-title" id="tools-title">我的小工具<span>MAKE ROOM FOR IDEAS</span></h2><p>为创作和生活，做一点好用的小东西。<br/>收好灵感，也记下日常。</p></div><span className="toolbox-script" aria-hidden="true">Little helpers.<span>✳</span></span></div>
+    <div className="toolbox-shelf dossier dossier--manila fx-reveal">
       <span className="dossier-tab" aria-hidden="true"><b>FILE 06</b>小工具</span>
       <img className="toolbox-bow" src={assetPath("/stickers/st-bow.webp")} alt="" aria-hidden="true" loading="lazy" decoding="async"/>
       <div className="toolbox-shelf-label"><span>收藏一些小小的好用。</span><span>THE USEFUL LITTLE THINGS</span></div>

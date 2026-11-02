@@ -28,7 +28,7 @@ export function Lookbook() {
     setAtStart(element.scrollLeft <= 2);
     setAtEnd(element.scrollLeft + element.clientWidth >= element.scrollWidth - 2);
   }
-  return <section className="lookbook dossier dossier--manila" id="lookbook" aria-labelledby="lookbook-title">
+  return <section className="lookbook dossier dossier--manila fx-reveal" id="lookbook" aria-labelledby="lookbook-title">
     <span className="dossier-tab" aria-hidden="true"><b>FILE 03 · C</b>穿搭选集</span>
     <span className="lookbook-sticker" aria-hidden="true"/>
     <svg className="lookbook-filter-defs" aria-hidden="true" width="0" height="0" focusable="false">

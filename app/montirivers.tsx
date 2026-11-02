@@ -71,7 +71,7 @@ export function Montirivers() {
     <img className="monti-sticker" src={assetPath("/stickers/st-mountain-ring.webp")} alt="" aria-hidden="true" loading="lazy" decoding="async"/>
     <div className="monti-meta"><span>MONTIRIVERS / 山河集</span><span>服务的品牌 · 珠宝首饰</span></div>
 
-    <header className="monti-head">
+    <header className="monti-head fx-reveal">
       <div className="monti-head-copy">
         <p className="monti-script" aria-hidden="true">Shan He Ji</p>
         <h4 id="monti-title">MontiRivers <span className="marker">山河集</span><span className="monti-sub">以足金、18K 与钻石为语言的珠宝品牌</span></h4>
@@ -84,7 +84,7 @@ export function Montirivers() {
       </dl>
     </header>
 
-    <div className="monti-role">
+    <div className="monti-role fx-reveal">
       <span className="monti-role-label">MY ROLE / 我做的工作</span>
       <ul>
         <li><b>店员号矩阵运营</b><small>管理 6 个门店顾问账号的内容方向与分工。</small></li>
@@ -93,12 +93,12 @@ export function Montirivers() {
       </ul>
     </div>
 
-    <div className="monti-overview">
+    <div className="monti-overview fx-reveal">
       <div className="monti-chart-head"><h5>店员号矩阵总览</h5><span>6 个账号 · 粉丝、互动与日常表现</span></div>
       <ol className="monti-accounts">{accounts.map((a, i) => <li key={a.name} className={i < 2 ? "is-lead" : undefined}>
         <span className="monti-badge-head" aria-hidden="true"><span>MONTIRIVERS · STAFF</span><span>NO.0{i + 1}</span></span>
         <div className="monti-acc-top">
-          <span className="monti-acc-mono fx-ink" aria-hidden="true">{a.name[0]}</span>
+          <span className="monti-acc-mono" aria-hidden="true">{a.name[0]}</span>
           <a href={a.url} target="_blank" rel="noopener noreferrer"><b>{a.name}</b><span>{a.handle} ↗</span></a>
           {i < 2
             ? <span className="monti-acc-pos lead">{i === 0 ? "矩阵第一 ·" : "矩阵第二 ·"} {a.position}</span>
@@ -118,7 +118,7 @@ export function Montirivers() {
       </li>)}</ol>
     </div>
 
-    <div className="monti-insight">
+    <div className="monti-insight fx-reveal">
       <article className="monti-concentration">
         <span className="monti-insight-kicker">粉丝集中度</span>
         <h5>两个账号，占了近八成粉丝</h5>
@@ -130,6 +130,7 @@ export function Montirivers() {
         <p>六号粉丝简单加总为 <b>{totalFollowers.toLocaleString()}</b>，获赞与收藏加总 <b>{totalEngage.toLocaleString()}</b>。Carrie 与 Jenny 合计 {accounts[0].followers + accounts[1].followers} 粉，占 <b>{topTwoShare.toFixed(1)}%</b>。其余四号仍在早期。</p>
       </article>
       <article className="monti-honest">
+        <span className="tape tape--rose" aria-hidden="true"/>
         <span className="monti-insight-kicker">一个要诚实说明的差距</span>
         <h5>置顶高光 ≠ 日常表现</h5>
         <div className="monti-gap">
@@ -141,9 +142,10 @@ export function Montirivers() {
       </article>
     </div>
 
-    <div className="monti-signals">
+    <div className="monti-signals fx-reveal">
       <div className="monti-chart-head"><h5>内容带来的真实咨询信号</h5><span>取自主页公开评论 · 非后台数据</span></div>
       <ul className="monti-signal-list">{signals.map(s => <li key={s.from}>
+        <span className="tape tape--cream" aria-hidden="true"/>
         <span className="monti-signal-tag">{s.tag}</span>
         <p>{s.quote}</p>
         <span className="monti-signal-from">{s.from}</span>
@@ -151,7 +153,7 @@ export function Montirivers() {
       <p className="monti-signal-foot">价格、购买方式、足金 / 18K 材质、到店意向都已在评论里出现——说明内容触发了进一步了解的动作。但本次未取后台私信、预约与成交数据，不据此计算转化率。</p>
     </div>
 
-    <div className="monti-division">
+    <div className="monti-division fx-reveal">
       <div className="monti-chart-head"><h5>矩阵怎么分工</h5><span>待测试方案 · 不代表已验证有效</span></div>
       <ol className="monti-division-list">{division.map((d, i) => <li key={d.name}>
         <span className="monti-div-index">0{i + 1}</span>

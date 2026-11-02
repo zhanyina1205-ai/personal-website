@@ -2,7 +2,7 @@ import { DocumentMedia } from "./document-media";
 import { assetPath } from "./asset-path";
 
 export function AccountCollage() {
- return <div className="account-collage-wrap" id="my-account">
+ return <div className="account-collage-wrap fx-reveal" id="my-account">
   <p className="account-collage-kicker">MY STYLE, MY STORY.</p>
   <div className="account-collage dossier dossier--pink">
    <span className="dossier-tab collage-tab" aria-hidden="true"><b>FILE 03</b>椰奶没喝饱</span>

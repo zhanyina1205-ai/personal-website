@@ -46,3 +46,84 @@
  .ip-sticker--camera{width:62px;left:auto;right:30%;top:-14px}
  .star-two{top:auto;right:auto}
 }
+
+/* ===== rev 3 polish (2026-11-01): a real wire-bound notebook under the lamp =====
+   laminated cover with a gloss + lit top edge, chromed coils casting shadows into
+   punched holes, a stack of page edges under the book, print-paper polaroids with
+   a sheen, foil script, satin title; type floor 10px. Rules that portfolio-interactions.css
+   (loaded after this file) also sets are scoped with .ip-notebook to win. */
+.ip-notebook-case{isolation:isolate}
+.ip-notebook-case::before{content:"";position:absolute;inset:-30px -60px 0;z-index:-1;pointer-events:none;background:var(--lamp)}
+.ip-file-tab{font-size:13px;background:var(--sheen-soft),var(--paper-fibre-dark),linear-gradient(176deg,#382b30,#2b2225);background-size:auto,220px 220px,auto;border:1px solid;border-color:#5c454d #47343a transparent;border-bottom:0;box-shadow:inset 0 1px 0 #ffffff1a,0 -6px 14px -8px #00000099}
+.ip-file-tab b{font:600 var(--fs-micro)/1 var(--font-mono);letter-spacing:var(--track-micro);color:var(--d-label)}
+.ip-notebook-case>.ip-sticker{filter:var(--sticker-shadow)}
+.ip-sticker--camera{width:108px;right:20%;top:8px;transform:rotate(9deg)}
+
+/* the book: lit top edge, dark bottom edge, then three page edges stacked under it */
+.ip-notebook{border:1px solid;border-color:#5c454d #47343a #2a1f23;background:var(--sheen),var(--paper-fibre-dark),radial-gradient(80% 50% at 100% 100%,#f3c4cf12,transparent 60%),linear-gradient(172deg,#2b2225,#211a1c 55%,#1a1517);background-size:auto,220px 220px,auto,auto;box-shadow:inset 0 -1px 0 #00000059,0 2px 0 -1px #47393e,0 3px 0 -1px #0e0b0c,0 5px 0 -2px #3e3236,0 6px 0 -2px #0d0a0b,0 8px 0 -3px #352b2f,0 9px 0 -3px #0b090a,var(--ring),0 4px 6px -2px #000000b3,0 26px 38px -18px #000000e6,0 64px 90px -50px #000}
+
+/* cover: laminated photo — gloss sweep, lit top edge, soft vignette toward the binding */
+.notebook-cover-photo img{filter:saturate(.94) contrast(1.03)}
+.notebook-cover:after{background:var(--print-sheen),linear-gradient(90deg,#00000059,transparent 37%),linear-gradient(0deg,#00000066,transparent 32%),linear-gradient(180deg,#00000026,transparent 18%);box-shadow:inset 0 1px 0 #ffffff2e,inset 0 0 0 1px #0000004d,inset 0 -18px 22px -14px #0000008c}
+.notebook-cover-label .glass-chip{font:600 var(--fs-micro)/1 var(--font-mono);letter-spacing:.16em;padding:7px 12px;color:#f4ebe3;border-radius:30px}
+.notebook-cover-word{padding:.12em .3em;margin:0 0 -.12em -.3em;color:#f6efe9;background:linear-gradient(174deg,#fffaf6 18%,#f1e4dc 52%,#d8c3ba 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 1px 0 #00000059) drop-shadow(0 6px 14px #00000073)}
+.notebook-cover .media-enlarge{box-shadow:inset 0 1px 0 #ffffffb3,0 2px 8px #00000059}
+
+/* small polaroid on the cover: print paper + photo sheen */
+.notebook-inset{border:0;padding:8px 8px 0;border-radius:2px;background:var(--paper-fibre),var(--print-paper);background-size:220px 220px,auto;background-blend-mode:multiply,normal;box-shadow:var(--shadow-photo)}
+.notebook-inset .document-media{border-radius:1px;overflow:hidden}
+.notebook-inset .document-media img,.notebook-contact-sheet .document-media img{filter:saturate(.94) contrast(1.03)}
+.notebook-inset .document-media::after,.notebook-contact-sheet .document-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--print-sheen);box-shadow:inset 0 0 0 1px #00000038,inset 0 0 18px #00000033}
+.notebook-inset .media-enlarge,.notebook-contact-sheet .media-enlarge{z-index:2}
+.notebook-inset>span{color:#4a3a41;padding:6px 0 4px}
+.notebook-inset>.tape{top:-12px;left:22px;width:64px;transform:rotate(-8deg)}
+
+/* chromed coils: highlight down the middle, ends dipping into the holes, cast shadow on the page */
+.notebook-binding i{width:7px;height:42px;border-radius:4px;transform:rotate(3deg);background:linear-gradient(180deg,#000000a6,#00000026 22%,#0000 34%,#0000 66%,#00000026 78%,#000000b3),linear-gradient(90deg,#46413c,#c9c3b8 24%,#fffaf2 42%,#d4cec4 56%,#8d877e 78%,#4a4540);box-shadow:0 0 0 .5px #00000099,3px 6px 4px -2px #000000b3}
+.notebook-binding i:before,.notebook-binding i:after{left:-3px;width:13px;height:12px;border-radius:50%;background:radial-gradient(ellipse at 50% 30%,#000 0 46%,#0c0909 70%,#231a1d);box-shadow:inset 0 2px 2px #000,0 1px 0 #ffffff2e,0 -1px 0 #00000080}
+.notebook-binding i:before{top:-3px}.notebook-binding i:after{bottom:-3px}
+
+/* page */
+.notebook-project-index,.notebook-role-label{font:500 var(--fs-micro)/1.4 var(--font-mono);letter-spacing:var(--track-micro);text-transform:uppercase;color:var(--d-label)}
+.notebook-star{background:var(--sheen-soft),var(--paper-fibre-dark),linear-gradient(160deg,#f3c4cf33,#c58c9914);background-size:auto,220px 220px,auto}
+.notebook-script{color:#dba6b4;opacity:.92;text-shadow:0 1px 0 #00000080,0 6px 14px #0009}
+.notebook-title-block h3{padding:0 .06em;background:var(--satin) 0 0/100% 1.3em no-repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 0 #00000080) drop-shadow(0 8px 16px #00000080)}
+.notebook-title-block h3>span{-webkit-text-fill-color:var(--d-text-soft);font-size:var(--fs-small);letter-spacing:.06em}
+.notebook-contact-sheet{padding:6px 6px 8px;background:var(--paper-fibre),var(--print-paper);background-size:220px 220px,auto;background-blend-mode:multiply,normal;box-shadow:var(--shadow-photo)}
+.notebook-contact-sheet .document-media{border-radius:1px;overflow:hidden}
+.notebook-contact-sheet>span{font-size:12px;color:#7a5565}
+.notebook-role>p:not(.notebook-role-label){font-size:var(--fs-body);line-height:1.8;color:var(--d-text-soft)}
+.notebook-role ul{margin:22px 0 24px;border-top:1px solid #f3c4cf38}
+.notebook-role li{display:grid;grid-template-columns:30px 1fr;gap:0 14px;align-items:baseline;padding:13px 0 12px;border-bottom:1px solid #ffffff12}
+.notebook-role li>span{font:600 var(--fs-micro)/1 var(--font-mono);letter-spacing:.12em;color:var(--d-pink-ink);font-variant-numeric:tabular-nums}
+.notebook-role b{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em;line-height:1.4;color:var(--d-text)}
+.notebook-role small{font-size:var(--fs-small);line-height:1.7;margin-top:3px;color:var(--d-text-soft)}
+.ip-notebook .notebook-work-link{padding:12px 16px;border:1px solid #f3c4cf59;border-radius:var(--radius-paper);background:linear-gradient(180deg,#f3c4cf17,#f3c4cf06),#261e21;box-shadow:inset 0 1px 0 #ffffff17,var(--ring),0 10px 18px -12px #000;color:var(--pink);font-size:var(--fs-small);font-weight:700;letter-spacing:.04em;transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out),border-color var(--dur-fast)}
+.ip-notebook .notebook-work-link:hover{background:var(--pink);border-color:var(--pink);color:var(--ink);box-shadow:inset 0 1px 0 #ffffff99,var(--ring),0 16px 24px -12px #000}
+.ip-notebook .notebook-work-link>span{font-size:20px;transition:transform var(--dur-fast) var(--ease-spring)}
+.page-flourish{opacity:.12;right:-46px;bottom:-24px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .ip-notebook .notebook-inset:hover{box-shadow:0 0 0 1px #00000038,0 2px 3px #00000066,0 14px 20px -8px #000000a6,0 34px 44px -24px #000000e6}
+}
+
+@media(max-width:1100px) and (min-width:761px){.ip-sticker--camera{width:90px;right:18%;top:12px}}
+@media(max-width:760px){
+ .ip-file-tab{font-size:12px}
+ .ip-file-tab b{font-size:var(--fs-micro);letter-spacing:.14em}
+ .ip-sticker--camera{width:70px;left:auto;right:26%;top:8px}
+ .notebook-cover-label{flex-direction:column;align-items:flex-start;gap:6px}
+ .notebook-cover-label .glass-chip{font-size:var(--fs-micro);letter-spacing:.08em;padding:5px 9px}
+ .notebook-inset{padding:5px 5px 0}
+ .notebook-inset>span{font-size:12px;padding:4px 0 3px}
+ .notebook-inset>.tape{width:52px;left:14px;top:-10px}
+ .notebook-binding i{width:6px;height:31px}
+ .notebook-binding i:before,.notebook-binding i:after{width:10px;height:9px;left:-2px}
+ .notebook-title-block h3>span{font-size:var(--fs-label);letter-spacing:.04em}
+ .notebook-contact-sheet>span{font-size:var(--fs-micro)}
+ .notebook-role>p:not(.notebook-role-label){font-size:13px}
+ .notebook-role li{grid-template-columns:26px 1fr;gap:0 10px}
+ .notebook-role b{font-size:14px}
+ .notebook-role small{font-size:var(--fs-label)}
+ .page-flourish{opacity:.1}
+}
+@media(prefers-reduced-motion:reduce){.ip-notebook .notebook-work-link,.ip-notebook .notebook-work-link>span{transition:none}}

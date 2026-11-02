@@ -19,6 +19,7 @@ import "./about-dossier.css";
 import "./projects-dossier.css";
 import "./workflow-dossier.css";
 import "./hero-decor.css";
+import "./site-polish.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {
