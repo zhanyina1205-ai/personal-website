@@ -188,7 +188,7 @@
   .ip-work-heading{margin:14px 0 6px}
   .ip-work-heading h4{font-size:45px}
   .ip-work-layout{grid-template-columns:1.1fr 1fr;gap:20px;align-items:center}
-  .ip-fashion-collage{aspect-ratio:1/1.08;height:auto;max-width:100%;width:min(100%,52svh);justify-self:center;margin:6px 0 12px}
+  .ip-fashion-collage{aspect-ratio:1/1.08;height:auto;max-width:100%;width:min(100%,62svh);justify-self:center;margin:2px 0 8px}
   .ip-work-note-wrap{padding-left:18px;margin:8px 0 12px}
   .ip-work-notes{gap:8px}
   .ip-work-notes .ip-work-note{grid-template-columns:30% 1fr;border-radius:9px}
