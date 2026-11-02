@@ -29,13 +29,17 @@ export function YenaiIntro() {
   }
 
   useEffect(() => {
-    // Start the full timeline after hydration, including homepage directory links.
-    // Legacy chapter URLs still redirect directly to their destination.
+    // Mount each playback after hydration so loading cannot consume its timeline.
+    const start = () => {
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) setVisible(true);
+    };
     const homepageEntry = !location.hash || ["#top", "#modules", "#contact"].includes(location.hash);
-    if (homepageEntry && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const frame = requestAnimationFrame(() => setVisible(true));
-      return () => cancelAnimationFrame(frame);
-    }
+    const frame = homepageEntry ? requestAnimationFrame(start) : null;
+    window.addEventListener("yenai:replay", start);
+    return () => {
+      if (frame !== null) cancelAnimationFrame(frame);
+      window.removeEventListener("yenai:replay", start);
+    };
   }, []);
 
   useEffect(() => {

@@ -1,3 +1,4 @@
+import { IntroReplayLink } from './intro-replay-link';
 import { YenaiIntro } from "./yenai-intro";
 import { assetPath } from "./asset-path";
 import { DocumentMedia } from "./document-media";
@@ -22,7 +23,7 @@ export default function Home(){return <>
  <PortfolioInteractions chapters={[{id:"about",label:"关于我"},{id:"projects",label:"我的作品"},{id:"workflow",label:"创作流程"},{id:"tools",label:"小工具"},{id:"contact",label:"联系我"}]}/>
  <a className="skip-link" href="#main">跳到主要内容</a>
  <div className="site-canvas" id="top">
-  <header className="site-header"><a href="#top" className="wordmark">詹依娜<span>YINA ZHAN</span></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#projects">我的作品</a><a href="#workflow">创作流程</a><a href="#tools">小工具</a><a href={assetPath("/?intro=1#top")}>重播开屏 ↗</a><a href="#contact" className="contact-pill">联系我 ↗</a></nav></header>
+  <header className="site-header"><a href="#top" className="wordmark">詹依娜<span>YINA ZHAN</span></a><nav aria-label="主导航"><a href="#about">关于我</a><a href="#projects">我的作品</a><a href="#workflow">创作流程</a><a href="#tools">小工具</a><IntroReplayLink/><a href="#contact" className="contact-pill">联系我 ↗</a></nav></header>
   <main id="main">
    <section className="hero" aria-labelledby="hero-title">
     <div className="hero-label"><span>PERSONAL PORTFOLIO</span><span>CONTENT / STYLE / IP</span></div>
