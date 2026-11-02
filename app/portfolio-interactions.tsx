@@ -48,7 +48,7 @@ export function PortfolioInteractions({ chapters, dock = true }: { chapters: Cha
     window.addEventListener("resize", queueReadingUpdate, { passive: true, signal: listeners.signal });
     updateReading();
 
-    const revealSelector = ".directory-card,.section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-work-heading,.ip-fashion-collage,.ip-work-note-wrap,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.yenai-audience,.yenai-origin,.lookbook,.notes-heading,.note-card-grid>a,.rock-case,.monti-page,.workflow-list article,.support-intro,.support-cards article,.toolbox-heading,.toolbox-shelf-label,.tool-card,.toolbox-footnote,.contact-layout,.footer-line";
+    const revealSelector = ".directory-card,.section-kicker,.display-title,.about-grid,.ip-notebook-case,.ip-positioning,.ip-account-matrix article,.ip-work-heading,.ip-fashion-collage,.ip-work-note-wrap,.ip-review-grid article,.own-project-copy,.account-collage-wrap,.yenai-audience,.yenai-origin,.lookbook,.notes-heading,.note-card-grid>a,.rock-case,.shop-project,.monti-page,.workflow-list article,.support-intro,.support-cards article,.toolbox-heading,.toolbox-shelf-label,.tool-card,.toolbox-footnote,.contact-layout,.footer-line";
     // Reveal independent blocks, never both a block and its descendants.
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>(revealSelector))
       .filter(element => !element.parentElement?.closest(revealSelector));

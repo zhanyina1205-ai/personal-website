@@ -1,0 +1,102 @@
+/* FILE 04 · rock notes — continues the punk folder opened by .shop-project (projects-dossier.css).
+   Cards = film frames with sprocket holes + dangling charcoal price tags; workflow = a
+   charcoal shop receipt. Cream/pink stay as tape, label-maker chips and stamps only. */
+.rock-notes{position:relative;isolation:isolate;margin-top:0;padding:42px 52px 64px;border:1px solid #3d3835;border-top:0;border-radius:0 0 var(--radius-folder) var(--radius-folder);color:var(--cream);background:radial-gradient(60% 40% at 10% 100%,#f3c4cf0f,transparent 70%),linear-gradient(178deg,#232120,#1e1c1b);box-shadow:0 34px 60px -30px #000000f2;scroll-margin-top:30px}
+.rock-notes::before{content:"";position:absolute;left:52px;right:52px;top:0;border-top:1px dashed #4f4843}
+.rock-notes::after{content:"";position:absolute;z-index:0;left:-1px;right:-1px;bottom:16px;height:16px;pointer-events:none;background:radial-gradient(circle at 42% 38%,#f2efe9 0 1px,#c9c4bc 1.6px,#7b766f 4px,#2e2b28 5px,#0000 5.6px) 6px 50%/26px 16px repeat-x,linear-gradient(180deg,#151312,#0e0d0c);box-shadow:0 1px 0 #ffffff12,0 3px 5px #0007}
+.rock-notes-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.rock-notes .eyebrow{font:400 10px/1.4 var(--font-mono);letter-spacing:1.8px;color:#b0a29a;margin:0}
+.rock-notes-head h4{font-size:clamp(26px,2.6vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:12px 0 0;color:var(--pink)}
+/* label-maker tape */
+.rock-notes-tag{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+.rock-notes-tag span{font:700 10px/1 var(--font-mono);letter-spacing:1.6px;color:#e9ddd0;background:linear-gradient(180deg,#151312,#0b0a09);padding:7px 11px 6px;border-radius:2px;box-shadow:inset 0 1px 0 #ffffff1f,0 2px 0 #000a;text-shadow:0 -1px 0 #000,0 1px 0 #ffffff1a;transform:rotate(-1.5deg)}
+.rock-notes-tag span:nth-child(2){background:var(--pink);color:var(--ink);text-shadow:0 1px 0 #ffffff66;transform:rotate(1.2deg)}
+.rock-notes-tag span:nth-child(3){transform:rotate(-.4deg)}
+.rock-agg{display:flex;gap:34px;margin:0}
+.rock-agg div{display:flex;flex-direction:column;text-align:right}
+.rock-agg dt{font:400 9px/1.4 var(--font-mono);color:#b0a29a;letter-spacing:1.4px}
+.rock-agg dd{margin:6px 0 0;font-size:44px;font-weight:800;color:var(--pink);letter-spacing:-.03em;line-height:1.05}
+
+/* film frames */
+.rock-note-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px;padding:4px 4px 0}
+.rock-note-card{--tilt:-1.6deg;--swing:2.6deg;display:flex;flex-direction:column;position:relative;isolation:isolate;min-width:0;transform:rotate(var(--tilt));transition:transform .35s var(--ease-paper)}
+.rock-note-card:nth-child(2){--tilt:1.2deg;--swing:-2.2deg;margin-top:14px}
+.rock-note-card:nth-child(3){--tilt:-.8deg;--swing:1.6deg;margin-top:4px}
+.rock-note-card:nth-child(4){--tilt:1.7deg;--swing:-2.8deg;margin-top:18px}
+.rock-note-cover{position:relative;padding:22px 10px;background:linear-gradient(180deg,#0d0c0b,#151311);border-radius:2px;box-shadow:0 0 0 1px #2f2b28,var(--shadow-photo)}
+.rock-note-cover img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:1px}
+.rock-note-cover>.grain{z-index:1}
+.rock-note-rank{position:absolute;z-index:3;right:18px;top:32px;font:700 11px/1 var(--font-mono);letter-spacing:1.2px;color:var(--pink);border:2px solid var(--pink);border-radius:3px;padding:5px 7px 4px;background:#0d0c0bb3;box-shadow:inset 0 0 0 1px #f3c4cf33;transform:rotate(-9deg)}
+.rock-note-video{position:absolute;z-index:3;left:18px;top:32px;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;color:var(--cream);font-size:11px;padding-left:2px}
+.rock-note-open{position:absolute;z-index:3;right:18px;bottom:32px;width:26px;height:26px;display:grid;place-items:center;border-radius:3px;background:var(--pink);color:var(--ink);font-size:15px;opacity:0;transition:opacity .25s,transform .3s var(--ease-paper)}
+.rock-note-sticker{position:absolute;z-index:4;left:-26px;bottom:34px;width:78px;aspect-ratio:1;background:url(/stickers/st-lips.webp) center/contain no-repeat;transform:rotate(-18deg);filter:drop-shadow(0 6px 8px #000a);pointer-events:none}
+
+/* dangling price tag */
+.rock-note-body{position:relative;isolation:isolate;z-index:2;width:88%;margin:16px auto 0;padding:32px 14px 13px;display:flex;flex-direction:column;gap:9px;color:var(--d-text);transform:rotate(var(--swing));transform-origin:50% 0;filter:drop-shadow(0 10px 9px #000b);transition:transform .4s var(--ease-paper)}
+.rock-note-body::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:2px;background:radial-gradient(circle at 50% 16px,#0000 5px,#cfcac2 5.5px,#7d7871 7.5px,#0000 8px),var(--paper-fibre-dark),linear-gradient(172deg,#36312e,#2a2624);background-size:auto,220px 220px,auto;clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%,0 18px);-webkit-mask:radial-gradient(circle 5px at 50% 16px,#0000 96%,#000);mask:radial-gradient(circle 5px at 50% 16px,#0000 96%,#000)}
+.rock-note-card:nth-child(4n+2) .rock-note-body::before,.rock-note-card:nth-child(4n+4) .rock-note-body::before{background:radial-gradient(circle at 50% 16px,#0000 5px,#cfcac2 5.5px,#7d7871 7.5px,#0000 8px),var(--paper-fibre-dark),radial-gradient(90% 60% at 50% 0,#f3c4cf1f,transparent 70%),linear-gradient(172deg,#382b2f,#2a2023);background-size:auto,220px 220px,auto,auto}
+.rock-note-card:nth-child(4n+3) .rock-note-body::before{background:radial-gradient(circle at 50% 16px,#0000 5px,#cfcac2 5.5px,#7d7871 7.5px,#0000 8px),var(--paper-fibre-dark),linear-gradient(172deg,#33302d,#262321);background-size:auto,220px 220px,auto}
+.rock-note-body::after{content:"";position:absolute;z-index:-2;left:50%;top:-24px;width:2px;height:42px;margin-left:-1px;border-radius:2px;background:linear-gradient(180deg,#8d817b,#d6c8bf)}
+.rock-note-body h5{font-size:12.5px;font-weight:800;line-height:1.5;margin:0;color:var(--d-text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:37px}
+.rock-note-bars{display:flex;flex-direction:column;gap:7px}
+.rock-note-bars div{display:grid;grid-template-columns:1fr;gap:4px}
+.rock-note-bars span{font:400 9px/1.3 var(--font-mono);letter-spacing:1px;color:var(--d-text-soft)}
+.rock-note-bars b{font:800 13px/1 Arial,"PingFang SC",sans-serif;color:var(--pink);margin-left:4px;letter-spacing:-.01em}
+.rock-note-bars i{display:block;height:6px;background:#ffffff14;border-radius:1px;overflow:hidden}
+.rock-note-bars i em{display:block;height:100%;background:var(--d-text);border-radius:1px}
+.rock-note-bars i.save em{background:var(--rose)}
+.rock-note-comments{font:400 9px/1 var(--font-mono);letter-spacing:1px;color:var(--d-text-soft);padding-top:8px;border-top:1px dashed #ffffff26}
+.rock-note-card:focus-visible{outline:2px solid var(--pink);outline-offset:6px}
+
+/* workflow → shop receipt */
+.rock-flow{margin:52px 0 0;padding:0;border:0;transform:rotate(-.5deg);filter:drop-shadow(0 18px 16px #000b)}
+.rock-receipt{position:relative;padding:32px 30px 30px;color:var(--d-text);background:var(--paper-fibre-dark),linear-gradient(178deg,#302c29,#282523 60%,#221f1d);background-size:220px 220px,auto;-webkit-mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/14px 51% repeat-x,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 51% repeat-x;mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/14px 51% repeat-x,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 51% repeat-x}
+.rock-flow-label{display:block;text-align:center;font:700 10px/1.4 var(--font-mono);letter-spacing:2px;color:var(--pink);padding-bottom:13px;border-bottom:1px dashed #ffffff2e}
+.rock-flow ol{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.rock-flow li{position:relative;padding:2px 26px 2px 22px}
+.rock-flow li:first-child{padding-left:4px}
+.rock-flow li+li{border-left:1px dashed #ffffff24}
+.rock-flow-step{display:inline-block;font:700 10px/1 var(--font-mono);letter-spacing:1px;color:var(--pink);border:1.5px solid var(--d-pink-ink);border-radius:3px;padding:4px 6px 3px;transform:rotate(-6deg)}
+.rock-flow li b{display:block;font-size:15px;font-weight:800;color:var(--d-text);margin:12px 0 6px}
+.rock-flow li p{font-size:12px;line-height:1.75;color:var(--d-text-soft);margin:0}
+.rock-flow-arrow{position:absolute;z-index:1;right:-9px;top:0;font-size:14px;line-height:1;padding:3px 1px;color:var(--pink);background:#2b2826}
+.rock-note-source{margin-top:26px;font-family:var(--font-mono);letter-spacing:.4px}
+
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .rock-note-card:hover{transform:rotate(0) translateY(-8px)}
+ .rock-note-card:hover .rock-note-body{transform:rotate(calc(var(--swing) * -1.4))}
+ .rock-note-card:hover .rock-note-open{opacity:1}
+}
+.rock-note-card:focus-visible .rock-note-open{opacity:1}
+@media(prefers-reduced-motion:reduce){.rock-note-card,.rock-note-body,.rock-note-open{transition:none}}
+@media(min-width:1600px){.rock-note-grid{gap:34px}.rock-note-body h5{font-size:13.5px}.rock-flow li p{font-size:13px}}
+@media(max-width:1050px){.rock-notes{padding:40px 36px 60px}.rock-notes::before{left:36px;right:36px}.rock-note-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 30px}.rock-note-card:nth-child(n){margin-top:0}.rock-flow ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 0}.rock-flow li:nth-child(3){border-left:0;padding-left:4px}.rock-flow li:nth-child(2n) .rock-flow-arrow{display:none}}
+@media(max-width:620px){
+ .rock-notes{padding:34px 18px 58px}
+ .rock-notes::before{left:18px;right:18px}
+ .rock-notes-head{margin-bottom:28px}
+ .rock-notes-head h4{font-size:24px}
+ .rock-notes-tag span{font-size:9px;letter-spacing:1px;padding:6px 8px 5px}
+ .rock-agg{gap:22px}
+ .rock-agg dd{font-size:32px}
+ .rock-note-grid{gap:26px 14px;padding:0}
+ .rock-note-card:nth-child(even){margin-top:12px}
+ .rock-note-cover{padding:17px 6px}
+ .rock-note-cover.film-perf::before{top:3px;height:7px}
+ .rock-note-cover.film-perf::after{bottom:3px;height:7px}
+ .rock-note-rank{right:11px;top:24px;font-size:9px;padding:4px 5px 3px}
+ .rock-note-video{left:11px;top:24px;width:22px;height:22px;font-size:9px}
+ .rock-note-open{right:11px;bottom:24px;width:22px;height:22px}
+ .rock-note-sticker{width:58px;left:-14px;bottom:24px}
+ .rock-note-body{width:94%;padding:28px 10px 11px;gap:7px}
+ .rock-note-body h5{font-size:11.5px;min-height:34px}
+ .rock-note-bars b{font-size:12px}
+ .rock-flow{margin-top:40px;transform:rotate(-.8deg)}
+ .rock-receipt{padding:28px 20px 26px}
+ .rock-flow-label{font-size:9px;letter-spacing:1px}
+ .rock-flow ol{grid-template-columns:1fr;gap:0;margin-top:14px}
+ .rock-flow li,.rock-flow li:first-child,.rock-flow li:nth-child(3){padding:14px 0;border-left:0}
+ .rock-flow li+li{border-left:0;border-top:1px dashed #ffffff24}
+ .rock-flow-arrow{display:none}
+ .rock-note-source{font-size:8px}
+}

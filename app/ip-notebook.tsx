@@ -1,3 +1,4 @@
+import { assetPath } from "./asset-path";
 import { DocumentMedia } from "./document-media";
 
 function Flourish({className=""}:{className?:string}) {
@@ -12,12 +13,15 @@ function Flourish({className=""}:{className?:string}) {
 
 export function IpNotebook() {
  return <div className="ip-notebook-case" id="liangliang">
+  <span className="dossier-tab ip-file-tab" aria-hidden="true"><b>FILE 02</b>是亮亮</span>
+  <img className="ip-sticker ip-sticker--camera" src={assetPath("/stickers/st-camera.webp")} alt="" aria-hidden="true" loading="lazy"/>
   <article className="ip-notebook" aria-labelledby="ip-notebook-title">
    <div className="notebook-cover">
     <DocumentMedia src="/new-document/ip-cover.png" alt="是亮亮的户外人像照片" className="notebook-cover-photo"/>
-    <div className="notebook-cover-label"><span>LIANGLIANG / IP PROJECT 01</span><span>BEAUTY · STYLE · LIFE</span></div>
+    <span className="grain grain--soft" aria-hidden="true"/>
+    <div className="notebook-cover-label"><span className="glass-chip">LIANGLIANG / IP PROJECT 01</span><span className="glass-chip">BEAUTY · STYLE · LIFE</span></div>
     <p className="notebook-cover-word" aria-hidden="true">Liangliang</p>
-    <div className="notebook-inset"><DocumentMedia src="/new-document/ip-portrait.png" alt="是亮亮手持落叶的户外人物照片"/><span>another side of her.</span></div>
+    <div className="notebook-inset"><span className="tape tape--cream" aria-hidden="true"/><DocumentMedia src="/new-document/ip-portrait.png" alt="是亮亮手持落叶的户外人物照片"/><span>another side of her.</span></div>
    </div>
    <div className="notebook-binding" aria-hidden="true">{Array.from({length:24},(_,i)=><i key={i}/>)}</div>
    <div className="notebook-page">

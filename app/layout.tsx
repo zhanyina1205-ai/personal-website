@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./dossier.css";
 import "./yenai-intro.css";
 import "./ip-notebook.css";
 import "./portfolio-interactions.css";
@@ -15,6 +16,15 @@ import "./module-pages.css";
 import "./compact-layout.css";
 import "./toolbox-visual.css";
 import "./module-archive.css";
+import "./rock-notes.css";
+import "./montirivers.css";
+import "./module-deck.css";
+import "./scrapbook-fx.css";
+import "./about-dossier.css";
+import "./projects-dossier.css";
+import "./workflow-dossier.css";
+import "./hero-decor.css";
+import "./site-polish.css";
 import { assetPath } from "./asset-path";
 
 export const metadata: Metadata = {

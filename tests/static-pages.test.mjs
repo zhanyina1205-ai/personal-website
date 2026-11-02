@@ -21,5 +21,5 @@ test('all six Pages routes export with valid base-prefixed links, anchors and lo
    await access(new URL(`../dist/client${src.slice(prefix.length)}`,import.meta.url));
   }
  }
- assert.equal([...pages.get('/').matchAll(/class="directory-card /g)].length,5);
+ assert.equal([...pages.get('/').matchAll(/class="deck-card /g)].length,6);
 });

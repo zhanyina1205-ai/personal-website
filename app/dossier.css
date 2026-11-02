@@ -1,0 +1,92 @@
+/* ============================================================
+   Dossier system — "black desk + charcoal files" (2026-11-01, rev 2)
+   Feedback: the cream/manila panels read as too much white. The base
+   is now black / deep charcoal paper; cream is an accent only.
+   Rules:
+   - Big panels (.dossier, folders, section cards) = charcoal paper (--d-*).
+     Never a cream/pink/white surface bigger than a sticky note.
+   - Text on charcoal: --d-text / --d-text-soft / --d-label. Headings pink.
+   - Cream (--paper*) only for small accents: polaroid frames, tape,
+     stamps, chips, one sticky note per section at most.
+   - Labels: mono, tiny, tracked (.file-label).
+   rev 3 (polish): one overhead lamp -> --sheen on every sheet, --edge-color
+   (lit top / dark bottom), layered desk shadows, --sticker-shadow, --print-sheen
+   on photo prints, type floor 10px (--fs-micro), --satin for display pink.
+   ============================================================ */
+:root{
+  --paper:#eee5d9;--paper-hi:#f3ebdf;--paper-lo:#e2d7c6;--manila:#e8dbc4;--kraft:#c7b193;
+  --paper-edge:#cbbcaa;--ink-soft:#5b5049;--label:#7c6e64;
+  --pink-ink:#b47d8c;--pink-paper:#f1c3ce;--pink-deep:#e2a3b3;
+  --desk:#0d0c0c;
+  /* charcoal paper (the base) */
+  --d-hi:#292624;--d:#211f1d;--d-lo:#1a1817;
+  --d-card-hi:#2e2a28;--d-card:#262321;--d-card-lo:#211e1c;
+  --d-edge:#3b3632;--d-edge-hi:#4b4540;--d-rule:#f3c4cf24;
+  --d-text:#ebe2d8;--d-text-soft:#b9ada3;--d-label:#978b81;--d-pink-ink:#dba0b0;
+
+  /* ---- rev 3 polish (2026-11-01): light, edges, type, motion ----
+     Light comes from one overhead lamp, slightly left of centre: every sheet
+     gets a sheen at its top-left, a lit top edge, a darker bottom edge,
+     a hairline contact ring and a soft two-stage desk shadow. */
+  --sheen:linear-gradient(162deg,#ffffff0f 0%,#ffffff06 24%,#ffffff00 48%,#00000000 72%,#0000002e 100%);
+  --sheen-soft:linear-gradient(162deg,#ffffff0a 0%,#ffffff00 40%,#00000000 70%,#00000024 100%);
+  --edge-color:#4a443f #3a3531 #241f1c;
+  --edge-lit:inset 0 1px 0 #ffffff17,inset 0 -1px 0 #00000052;
+  --ring:0 0 0 1px #000000a6;
+  --shadow-folder-dark:var(--edge-lit),var(--ring),0 2px 3px -1px #000000c7,0 22px 34px -18px #000000e6,0 60px 90px -50px #000;
+  --shadow-card-dark:var(--edge-lit),var(--ring),0 1px 2px #00000080,0 12px 20px -12px #000000d9,0 30px 44px -30px #000000b3;
+  --shadow-card-lift:inset 0 1px 0 #ffffff1f,inset 0 -1px 0 #00000052,var(--ring),0 2px 4px #00000080,0 22px 30px -14px #000000e6,0 50px 70px -40px #000;
+  --shadow-photo:0 0 0 1px #00000038,0 1px 1px #00000059,0 6px 10px -4px #00000080,0 22px 30px -18px #000000cc;
+  --sticker-shadow:drop-shadow(0 1px .5px #000000a6) drop-shadow(0 5px 6px #00000066) drop-shadow(0 18px 18px #00000052);
+  --print-sheen:linear-gradient(128deg,#ffffff2b 0%,#ffffff0d 16%,#ffffff00 34%,#ffffff00 68%,#ffffff0f 84%,#ffffff00 100%);
+  --print-paper:linear-gradient(172deg,#f1e9de,#e6dccf 60%,#ddd2c3);
+  --lamp:radial-gradient(70% 55% at 46% 0%,#f3c4cf0d,#ffffff05 38%,transparent 70%);
+
+  /* type scale: floor is 10px; labels are mono, uppercase, tracked */
+  --font-mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,"PingFang SC",monospace;
+  --fs-micro:10px;--fs-label:11px;--fs-small:12.5px;--fs-body:14px;--fs-lead:16px;
+  --track-label:.18em;--track-micro:.22em;
+  --satin:linear-gradient(176deg,#fde6ec 6%,#f3c4cf 40%,#de9fb0 80%,#c9899a 100%);
+
+  /* motion */
+  --ease-paper:cubic-bezier(.2,.7,.2,1);
+  --ease-out:cubic-bezier(.22,.8,.24,1);
+  --ease-spring:cubic-bezier(.34,1.36,.64,1);
+  --dur-fast:.22s;--dur:.42s;--dur-slow:.7s;
+
+  --shadow-folder:0 1px 0 #ffffffb3 inset,0 2px 3px #0000004d,0 34px 60px -30px #000000f2;
+  --shadow-card:0 1px 0 #ffffffa6 inset,0 1px 2px #3a271f33,0 14px 24px -16px #3a271f99;
+  --paper-fibre-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .94 0 0 0 0 .9 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23p)'/%3E%3C/svg%3E");
+  --radius-paper:3px;--radius-folder:4px;--radius-tab:16px 16px 0 0;
+  --paper-fibre:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .34 0 0 0 0 .27 0 0 0 .3 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+/* Charcoal folder panel on the black desk. Add a .dossier-tab child for the tab.
+   Re-points the paper text tokens so module text inherits light-on-dark. */
+.dossier,.on-dark{--ink-soft:var(--d-text-soft);--label:var(--d-label);--paper-edge:var(--d-edge);--pink-ink:var(--d-pink-ink)}
+.dossier{position:relative;isolation:isolate;color:var(--d-text);border-radius:var(--radius-folder);border:1px solid;border-color:var(--edge-color);box-shadow:var(--shadow-folder-dark);background:var(--sheen),var(--paper-fibre-dark),linear-gradient(172deg,var(--d-hi),var(--d) 45%,var(--d-lo));background-size:auto,220px 220px,auto}
+.dossier--manila{background:var(--sheen),var(--paper-fibre-dark),linear-gradient(172deg,#2b2724,#221f1c 55%,#1b1917);background-size:auto,220px 220px,auto}
+.dossier--pink{border-color:#56404a #43333a #2a1f23;background:var(--sheen),var(--paper-fibre-dark),radial-gradient(90% 60% at 100% 0,#f3c4cf14,transparent 60%),linear-gradient(172deg,#2b2225,#211a1c 55%,#1a1517);background-size:auto,220px 220px,auto,auto}
+.dossier-tab{position:absolute;bottom:100%;left:28px;display:inline-flex;align-items:center;gap:14px;padding:10px 22px 8px;border-radius:var(--radius-tab);background:inherit;border:1px solid;border-color:#4d4742 #3a3531 transparent;border-bottom:0;box-shadow:inset 0 1px 0 #ffffff14;font:800 13px/1.2 Arial,"PingFang SC",sans-serif;letter-spacing:.04em;color:var(--pink)}
+.dossier-tab b{font:600 var(--fs-micro)/1 var(--font-mono);letter-spacing:var(--track-micro);color:var(--d-label)}
+
+/* Index card inside a folder: a slightly lighter charcoal sheet.
+   .index-card--cream is the (rare) cream accent version. */
+.index-card{position:relative;background:var(--sheen-soft),var(--paper-fibre-dark),linear-gradient(178deg,var(--d-card-hi),var(--d-card));background-size:auto,220px 220px,auto;border-radius:var(--radius-paper);border:1px solid;border-color:#4b4540 #3b3632 #2a2522;box-shadow:var(--shadow-card-dark);color:var(--d-text);transition:transform .35s var(--ease-paper),box-shadow .35s}
+.index-card--ruled{background:var(--sheen-soft),repeating-linear-gradient(180deg,transparent 0 23px,var(--d-rule) 23px 24px),var(--paper-fibre-dark),linear-gradient(178deg,var(--d-card-hi),var(--d-card));background-size:auto,auto,220px 220px,auto}
+.index-card--dark{background:var(--sheen-soft),linear-gradient(170deg,#1e1c1b,#161514);border-color:#3a3632 #2f2c29 #1f1d1b;color:var(--cream);box-shadow:var(--shadow-card-dark)}
+.index-card--cream{background:var(--paper-fibre),linear-gradient(178deg,#f2eadf,#e7ddcf);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border-color:#d8ccbb;color:var(--ink);box-shadow:var(--shadow-card)}
+
+/* Polaroid frame for photos — one of the allowed cream accents. */
+.polaroid{background:var(--paper-fibre),var(--print-paper);background-size:220px 220px,auto;background-blend-mode:multiply,normal;padding:8px 8px 30px;border-radius:2px;box-shadow:var(--shadow-photo)}
+
+/* Typography helpers */
+.file-label{font:500 var(--fs-micro)/1.4 var(--font-mono);letter-spacing:var(--track-micro);text-transform:uppercase;color:var(--label)}
+.marker{background:linear-gradient(transparent 60%,#c58c9973 60%,#c58c9973 90%,transparent 90%);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pink-display{color:var(--pink);font-weight:800;letter-spacing:-.02em;line-height:1.08}
+/* Satin pink for big display type: gradient fill + soft lift (no text-shadow, it would paint over the fill). */
+.satin-text{background:var(--satin);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 0 #00000080) drop-shadow(0 10px 18px #0000008c)}
+
+/* Punched binder holes along the left edge of a .dossier. */
+.punch-holes{position:absolute;left:14px;top:60px;bottom:60px;display:flex;flex-direction:column;justify-content:space-around;pointer-events:none}
+.punch-holes i{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#050505,#0d0c0c 70%);box-shadow:inset 1.5px 2px 3px #000,inset -1px -1px 0 #ffffff0a,0 1px 0 #ffffff1c,0 -1px 0 #00000059}

@@ -1,3 +1,5 @@
+/* Scoped to module subpages so the black-first homepage dossier is not overridden. */
+.module-page{
 /* Shared paper-and-rose language for the analysis spreads. */
 .ip-audience,.yenai-audience,.monti-overview,.monti-matrix{background:var(--cream);border-radius:6px 28px 6px 6px}
 .ip-gender-panel,.ip-region-panel,.yenai-portrait-data,.yenai-regions{background:#faf4ec;border:1px solid #d9c6bd;border-radius:16px;padding:20px}
@@ -414,4 +416,5 @@
 }
 @media(min-width:1000px) and (min-height:600px){
   .monti-hero h3>span{display:inline-block;vertical-align:middle;margin:0 0 0 15px;font-size:20px;letter-spacing:.16em}
+}
 }

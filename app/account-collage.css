@@ -1,6 +1,105 @@
-.account-collage-wrap{width:100%;max-width:450px;justify-self:center}.account-collage-kicker{text-align:center;font-size:8px;letter-spacing:1.5px;color:#b4a6a6;margin-bottom:17px}.account-collage{height:568px;position:relative;isolation:isolate;background:var(--pink);color:var(--ink);border:1px solid #ddb2bc;border-radius:24px;padding:0 18px;box-shadow:7px 9px 0 #c58c9918}.collage-topline{position:absolute;top:20px;left:21px;right:21px;display:flex;justify-content:space-between;gap:8px;font-size:6px;letter-spacing:1px;border-bottom:1px solid #a3758155;padding-bottom:8px;color:#88636e}.collage-account-bar{position:absolute;top:54px;left:18px;right:18px;min-height:49px;display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--cream);border:1px solid #4e3d4466;border-radius:28px;font-size:11px;font-weight:500;z-index:1}.collage-avatar{display:grid;place-items:center;flex-shrink:0;width:28px;height:28px;border:1px solid #b29491;background:#d4acb6;border-radius:50%;font-family:Georgia,serif;font-style:italic;font-size:20px}.collage-account-bar small{display:block;font-size:6px;font-weight:400;color:#907b70;letter-spacing:1px}.collage-bar-arrow{margin-left:auto;display:grid;place-items:center;width:24px;height:24px;border:1px solid #a58d89;border-radius:50%;background:var(--pink);font-size:17px}.collage-style-note{position:absolute;top:130px;left:18px;width:56%;height:197px;background:var(--cream);border:1px solid #4e3d4466;border-radius:19px 3px 19px 19px;padding:17px 14px}.collage-style-note>span{font-size:6px;letter-spacing:1px;color:#8a746b}.collage-style-note p{font-size:25px;line-height:1.1;margin:17px 0 11px;letter-spacing:-.6px}.collage-style-note em{font-family:NotebookScript,cursive;font-size:40px;color:#a46d80;font-weight:400}.collage-style-note small{font-size:7px;color:#84756c}.collage-note-rule{height:1px;background:#bba79d;margin:14px 0 7px}.collage-photo-note{position:absolute;top:138px;right:17px;width:27%;padding:5px 5px 10px;background:var(--cream);border:1px solid #7e5c6a88;transform:rotate(6deg);box-shadow:3px 4px 0 #996b7933;z-index:2}.collage-photo-note img{aspect-ratio:3/4;object-fit:cover;object-position:60% 15%;filter:none}.collage-photo-note figcaption{font-family:NotebookScript,cursive;font-size:15px;text-align:center;line-height:1;margin-top:7px;color:#9b6f7c}.account-collage .collage-person{position:absolute;z-index:3;top:53px;bottom:auto;left:45%;width:72%;height:465px;transform:translateX(-50%);background:none}.account-collage .collage-person>img{position:absolute;left:50%;bottom:0;transform:translateX(-50%);height:100%;width:auto;max-width:none;pointer-events:none;object-fit:contain;filter:none;transition:filter .25s}.account-collage .collage-person>.media-enlarge{right:auto;left:36%;bottom:15px;width:24px;height:24px;font-size:16px;background:var(--cream);border:1px solid #bb8e9a;opacity:0;transition:opacity .2s}.collage-person:hover>.media-enlarge,.collage-person:focus-visible>.media-enlarge{opacity:1}.collage-style-badge{position:absolute;left:18px;bottom:103px;z-index:4;width:64px;height:83px;border:1px solid #7e5c6a88;border-radius:30px;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-direction:column;transform:rotate(-6deg);box-shadow:2px 3px 0 #996b7920}.collage-style-badge>span{font-size:7px;letter-spacing:.7px}.collage-style-badge>b{font-size:11px;letter-spacing:.4px;font-weight:500;line-height:1.9}.collage-profile-card{position:absolute;right:17px;bottom:85px;width:31%;background:var(--cream);border:1px solid #7e5c6a88;border-radius:16px 16px 3px 16px;padding:9px;z-index:4;transform:rotate(3deg);box-shadow:3px 4px 0 #996b7922}.collage-profile-card>p{display:flex;justify-content:space-between;font-size:8px;margin-bottom:5px;color:#6f535b}.account-collage .collage-profile{height:96px;overflow:hidden;border-radius:7px;background:#252323}.account-collage .collage-profile>img{height:100%;object-fit:cover;object-position:center 15%}.account-collage .collage-profile>.media-enlarge{bottom:5px;right:5px;width:20px;height:20px;font-size:14px}.collage-bottom-bar{position:absolute;bottom:21px;left:18px;right:18px;min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--cream);border:1px solid #4e3d4466;border-radius:25px;padding:7px 13px;font-size:8px;letter-spacing:.3px;z-index:4}.collage-bottom-bar>span:last-child{width:21px;height:21px;display:grid;place-items:center;border-radius:50%;background:var(--pink);font-size:16px}.account-collage-caption{font-size:7px;line-height:1.7;color:#b4a6a6;text-align:center;margin-top:17px;letter-spacing:.2px}.collage-account-bar,.collage-bottom-bar{transition:background .2s}.collage-account-bar:hover,.collage-bottom-bar:hover{background:#fff3eb}.account-collage .image-dialog{transform:none;background:var(--cream)}.account-collage .image-dialog img{filter:none;object-fit:contain}
-@media(hover:hover) and (prefers-reduced-motion:no-preference){.collage-person:hover>img{filter:none}}
-@media(max-width:1000px) and (min-width:761px){.account-collage{height:520px}.account-collage .collage-person{height:410px}.collage-style-note p{font-size:22px}.collage-style-note em{font-size:34px}.collage-photo-note figcaption{font-size:12px}.collage-profile-card{padding:7px}.account-collage .collage-profile{height:80px}.collage-style-badge{width:54px;height:74px}}
-@media(max-width:760px){.account-collage-wrap{max-width:400px;margin-top:12px}.account-collage{height:540px;border-radius:22px}.account-collage-kicker{font-size:7px;margin-bottom:14px}.account-collage .collage-person{height:441px}.account-collage-caption{font-size:7px;margin-top:15px}.account-collage .collage-person>.media-enlarge{opacity:1}.collage-style-note{height:184px}.collage-style-note p{font-size:24px}.collage-style-note em{font-size:36px}}
-@media(max-width:360px){.account-collage{height:491px;padding:0 13px}.collage-topline{left:16px;right:16px;font-size:5px}.collage-account-bar,.collage-bottom-bar{left:13px;right:13px}.collage-style-note{left:13px;top:123px;padding:14px 10px;height:171px}.collage-style-note p{font-size:21px;margin:12px 0 8px}.collage-style-note em{font-size:32px}.collage-style-note>span{font-size:5px}.collage-note-rule{margin:11px 0 7px}.account-collage .collage-person{top:54px;height:398px;width:78%;left:44%}.collage-photo-note{right:13px;top:129px}.collage-photo-note figcaption{font-size:12px}.collage-style-badge{left:13px;bottom:87px;width:50px;height:70px}.collage-profile-card{right:13px;bottom:76px;width:33%;padding:7px}.account-collage .collage-profile{height:77px}.collage-profile-card>p{font-size:7px}.collage-bottom-bar{bottom:17px;font-size:7px;padding:7px 10px}.account-collage-caption{font-size:6px}}
-@media(prefers-reduced-motion:reduce){.account-collage .collage-person>img,.account-collage .collage-person>.media-enlarge,.collage-account-bar,.collage-bottom-bar{transition:none}}
+/* FILE 03 cover — the account collage is a wine-black folder on the desk (see dossier.css).
+   Cream accents only: the ruled "dress my way" note + the polaroid.
+   rev 3 polish: lamp glow behind the folder, lit edges + sheen on every strip, print paper +
+   sheen on the polaroid and the profile shot, 10px type floor, sticker kept off the text. */
+.account-collage-wrap{position:relative;isolation:isolate;width:100%;max-width:450px;justify-self:center;--fx-reveal-shift:40px}
+.account-collage-wrap::before{content:"";position:absolute;z-index:-1;inset:-60px -90px -40px;pointer-events:none;background:radial-gradient(52% 46% at 50% 42%,#f3c4cf12,#ffffff05 48%,transparent 72%)}
+.account-collage-kicker{text-align:right;font:500 var(--fs-micro)/1.6 var(--font-mono);letter-spacing:var(--track-micro);color:var(--d-label);margin:0 96px 20px 0}
+.account-collage{height:568px;padding:0 18px;transform:rotate(.6deg)}
+.collage-tab.dossier-tab{bottom:calc(100% - 1px);left:20px;z-index:1;background:var(--sheen-soft),var(--paper-fibre-dark),#2b2225;background-size:auto,220px 220px,auto;border-color:#56404a #43333a transparent}
+.collage-tab.dossier-tab b{color:var(--d-pink-ink)}
+/* sticker on the top-right corner, ~40% off the folder; the topline's right label steps aside for it */
+.collage-sticker{position:absolute;z-index:7;top:-44px;right:-38px;width:104px;aspect-ratio:1;background:url(/stickers/st-coconut-milk.webp) center/contain no-repeat;transform:rotate(11deg);filter:var(--sticker-shadow);pointer-events:none}
+.collage-topline{position:absolute;top:20px;left:21px;right:21px;display:flex;justify-content:space-between;gap:8px;font:500 var(--fs-micro)/1.4 var(--font-mono);letter-spacing:.16em;border-bottom:1px solid #f3c4cf1f;padding-bottom:9px;color:var(--d-label)}
+.collage-topline>span:last-child{margin-right:58px}
+
+/* charcoal label strips (top + bottom links) */
+.collage-account-bar,.collage-bottom-bar{position:absolute;left:18px;right:18px;display:flex;align-items:center;z-index:4;color:var(--d-text);border:1px solid;border-color:var(--edge-color);border-radius:var(--radius-paper);background:var(--sheen-soft),var(--paper-fibre-dark),linear-gradient(178deg,var(--d-card-hi),var(--d-card));background-size:auto,220px 220px,auto;box-shadow:var(--shadow-card-dark);transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out)}
+.collage-account-bar{top:52px;min-height:50px;gap:10px;padding:8px 11px;font-size:12.5px;font-weight:800;z-index:1;transform:rotate(-.6deg)}
+.collage-avatar{display:grid;place-items:center;flex-shrink:0;width:30px;height:30px;border:1px solid #c993a1;background:var(--paper-fibre),linear-gradient(160deg,#f8dce3,var(--pink-paper));background-size:220px 220px,auto;background-blend-mode:multiply,normal;border-radius:50%;box-shadow:inset 0 1px 0 #ffffffb3,0 1px 2px #00000099;font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:19px;color:var(--ink)}
+.collage-account-bar small{display:block;margin-top:2px;font:400 var(--fs-micro)/1.5 var(--font-mono);color:var(--d-label);letter-spacing:.06em}
+.collage-bar-arrow,.collage-bottom-bar>span:last-child{margin-left:auto;display:grid;place-items:center;flex:none;width:26px;height:26px;border-radius:3px;background:linear-gradient(180deg,#f8dce3,var(--pink) 60%,#e8b3c0);border:1px solid #c993a1;box-shadow:inset 0 1px 0 #ffffffa6,0 1px 2px #00000099;color:var(--ink);font-size:15px;font-weight:400;transition:transform var(--dur-fast) var(--ease-out)}
+.collage-account-bar:focus-visible,.collage-bottom-bar:focus-visible{outline:2px solid var(--pink);outline-offset:4px}
+
+/* ruled index card — the one cream sticky note in this folder (restores paper ink tokens) */
+.collage-style-note{--ink-soft:#5b5049;--label:#7c6e64;--pink-ink:#b47d8c;position:absolute;top:130px;left:18px;width:56%;min-height:197px;padding:17px 14px 15px;color:var(--ink);border:1px solid;border-color:#f3ece2 #d8ccbb #b9ab98;border-radius:var(--radius-paper);background:linear-gradient(162deg,#ffffff47,#fff0 40%,#0000 70%,#0000001c),repeating-linear-gradient(180deg,transparent 0 23px,#c58c9926 23px 24px),var(--paper-fibre),linear-gradient(178deg,#f1eae0,#e7ddd0);background-size:auto,auto,220px 220px,auto;background-blend-mode:normal,normal,multiply,normal;box-shadow:var(--shadow-photo);transform:rotate(-1.8deg)}
+.collage-style-note::before{content:"";position:absolute;top:-9px;left:18px;width:60px;height:18px;opacity:.92;transform:rotate(-5deg);background:var(--yn-tape-cream);-webkit-mask:var(--yn-tape-mask);mask:var(--yn-tape-mask)}
+.collage-style-note>span{display:block;font:500 var(--fs-micro)/1.4 var(--font-mono);letter-spacing:.14em;color:var(--label)}
+.collage-style-note p{font-size:26px;font-weight:800;line-height:1.05;margin:14px 0 10px;letter-spacing:-.02em}
+.collage-style-note em{font-family:NotebookScript,cursive;font-size:40px;color:#a46d80;font-weight:400;letter-spacing:0}
+.collage-style-note small{font-size:11px;color:var(--ink-soft)}
+.collage-note-rule{height:0;border-top:1px dashed #a8938299;margin:12px 0 7px}
+
+/* polaroid: print paper + sheen over the photo window */
+.collage-photo-note{--ink-soft:#5b5049;--label:#7c6e64;--pink-ink:#b47d8c;position:absolute;top:136px;right:17px;width:27%;padding:6px 6px 10px;background:var(--paper-fibre),var(--print-paper);background-size:220px 220px,auto;background-blend-mode:multiply,normal;border-radius:2px;transform:rotate(6deg);box-shadow:var(--shadow-photo);z-index:2}
+.collage-photo-note::before{content:"";position:absolute;z-index:2;top:-9px;left:50%;width:50px;height:17px;margin-left:-25px;opacity:.92;transform:rotate(-8deg);background:var(--yn-tape-rose);-webkit-mask:var(--yn-tape-mask);mask:var(--yn-tape-mask)}
+.collage-photo-note::after{content:"";position:absolute;z-index:1;left:6px;right:6px;top:6px;aspect-ratio:3/4;pointer-events:none;background:var(--print-sheen);box-shadow:inset 0 0 0 1px #0000002e,inset 0 0 18px #00000033}
+.collage-photo-note img{aspect-ratio:3/4;object-fit:cover;object-position:60% 15%;filter:var(--yn-print)}
+.collage-photo-note figcaption{font-family:NotebookScript,cursive;font-size:15px;text-align:center;line-height:1;margin-top:7px;color:#9b6f7c}
+
+.account-collage .collage-person{position:absolute;z-index:3;top:53px;bottom:auto;left:45%;width:72%;height:465px;transform:translateX(-50%);background:none}
+.account-collage .collage-person>img{position:absolute;left:50%;bottom:0;transform:translateX(-50%);height:100%;width:auto;max-width:none;pointer-events:none;object-fit:contain;filter:saturate(.96) drop-shadow(0 2px 2px #00000073) drop-shadow(0 16px 18px #000000a6);transition:filter var(--dur) var(--ease-out)}
+.account-collage .collage-person>.media-enlarge{right:auto;left:36%;bottom:15px;width:26px;height:26px;font-size:15px;border-radius:3px;background:linear-gradient(180deg,#f7f1e8,#e9dfd2);border:1px solid #c9b9a8;box-shadow:inset 0 1px 0 #fff,0 1px 3px #00000099;color:var(--ink);opacity:0;transition:opacity var(--dur-fast)}
+.collage-person:hover>.media-enlarge,.collage-person:focus-visible>.media-enlarge{opacity:1}
+
+/* rubber stamp — pink ink on the dark folder */
+.collage-style-badge{position:absolute;left:18px;bottom:100px;z-index:4;width:82px;height:82px;border-radius:50%;border:2px solid var(--d-pink-ink);background:radial-gradient(circle,#231b1ef2 60%,#1d1719f2);box-shadow:inset 0 0 0 3px #231b1e,inset 0 0 0 4.5px #dba0b0b3,0 6px 12px -6px #000;color:var(--d-pink-ink);display:flex;align-items:center;justify-content:center;flex-direction:column;transform:rotate(-12deg)}
+.collage-style-badge>span{font:500 var(--fs-micro)/1.3 var(--font-mono);letter-spacing:.1em}
+.collage-style-badge>b{font-size:13px;letter-spacing:.08em;font-weight:800;line-height:1.4}
+
+/* clipped index card with the profile screenshot */
+.collage-profile-card{position:absolute;right:17px;bottom:84px;width:31%;padding:10px 9px 9px;z-index:4;border:1px solid;border-color:var(--edge-color);border-radius:var(--radius-paper);background:var(--sheen-soft),var(--paper-fibre-dark),linear-gradient(178deg,var(--d-card-hi),var(--d-card));background-size:auto,220px 220px,auto;box-shadow:var(--shadow-card-dark);transform:rotate(3deg)}
+.collage-profile-card::before{content:"";position:absolute;z-index:2;top:-12px;left:16px;width:10px;height:30px;border:2px solid #c4beb6;border-radius:6px;filter:drop-shadow(1px 2px 1px #00000080)}
+.collage-profile-card::after{content:"";position:absolute;z-index:2;top:-6px;left:19px;width:4px;height:20px;border:2px solid #c4beb6;border-top:0;border-radius:0 0 4px 4px}
+.collage-profile-card>p{display:flex;justify-content:space-between;align-items:center;font:700 11px/1.4 Arial,"PingFang SC",sans-serif;margin:0 0 7px 18px;color:var(--d-text)}
+.account-collage .collage-profile{height:96px;overflow:hidden;border-radius:2px;background:#252323}
+.account-collage .collage-profile::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;background:var(--print-sheen);box-shadow:inset 0 0 0 1px #0000004d,inset 0 0 14px #00000040}
+.account-collage .collage-profile>img{height:100%;object-fit:cover;object-position:center 15%;filter:var(--yn-print) brightness(.94)}
+.account-collage .collage-profile>.media-enlarge{z-index:2;bottom:5px;right:5px;width:20px;height:20px;font-size:13px;border-radius:3px;box-shadow:inset 0 1px 0 #ffffff99,0 1px 2px #00000099}
+
+.collage-bottom-bar{bottom:20px;min-height:40px;justify-content:space-between;gap:10px;padding:7px 11px 7px 14px;font-size:11px;font-weight:700;letter-spacing:.06em;transform:rotate(.5deg)}
+.account-collage-caption{font:400 var(--fs-micro)/1.7 var(--font-mono);letter-spacing:.06em;color:var(--d-label);text-align:center;margin-top:18px}
+.account-collage .image-dialog{transform:none;background:var(--cream)}
+.account-collage .image-dialog img{filter:none;object-fit:contain}
+
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .collage-account-bar:hover,.collage-bottom-bar:hover{transform:rotate(0) translateY(-4px);box-shadow:var(--shadow-card-lift)}
+ .collage-account-bar:hover .collage-bar-arrow,.collage-bottom-bar:hover>span:last-child{transform:translate(2px,-2px)}
+ .collage-person:hover>img{filter:saturate(.96) drop-shadow(0 3px 3px #00000080) drop-shadow(0 24px 24px #000000c7)}
+}
+@media(max-width:1000px) and (min-width:761px){.account-collage{height:520px}.account-collage .collage-person{height:410px}.collage-style-note{min-height:180px}.collage-style-note p{font-size:22px}.collage-style-note em{font-size:34px}.collage-photo-note figcaption{font-size:12px}.collage-profile-card{padding:8px 7px 7px}.account-collage .collage-profile{height:80px}.collage-style-badge{width:68px;height:68px}.collage-topline{letter-spacing:.08em}}
+@media(max-width:760px){
+ .account-collage-wrap{display:flex;flex-direction:column;max-width:400px;margin-top:18px}
+ .account-collage-kicker{order:2;text-align:center;margin:18px 0 0}
+ .account-collage-caption{order:3;margin-top:12px}
+ .account-collage{height:560px;margin-top:44px;transform:none}
+ .collage-sticker{width:84px;top:-38px;right:-10px}
+ .collage-topline{letter-spacing:.08em}
+ .collage-topline>span:last-child{margin-right:52px}
+ .account-collage .collage-person{top:104px;left:60%;width:70%;height:400px}
+ .account-collage .collage-person>.media-enlarge{opacity:1;left:auto;right:24%;bottom:70px}
+ .collage-style-note{top:118px;width:50%;min-height:0;padding:15px 12px 13px}
+ .collage-style-note p{font-size:22px;margin:12px 0 8px}
+ .collage-style-note em{font-size:33px}
+ .collage-style-note>span{letter-spacing:.1em}
+ .collage-photo-note{top:122px;width:26%}
+ .collage-style-badge{bottom:92px;width:72px;height:72px}
+}
+@media(max-width:360px){
+ .account-collage{height:520px;padding:0 13px}
+ .collage-topline{left:16px;right:16px;letter-spacing:.04em}
+ .collage-topline>span:last-child{margin-right:44px}
+ .collage-account-bar,.collage-bottom-bar{left:13px;right:13px}
+ .collage-style-note{left:13px;padding:13px 10px 11px}
+ .collage-style-note p{font-size:20px}
+ .collage-style-note em{font-size:30px}
+ .account-collage .collage-person{height:370px}
+ .collage-photo-note{right:13px}
+ .collage-photo-note figcaption{font-size:12px}
+ .collage-style-badge{left:13px;bottom:84px;width:64px;height:64px}
+ .collage-profile-card{right:13px;bottom:76px;width:34%;padding:8px 7px 7px}
+ .account-collage .collage-profile{height:77px}
+ .collage-profile-card>p{font-size:10px;margin-left:16px}
+ .collage-bottom-bar{bottom:17px;font-size:10px;padding:7px 10px}
+}
+@media(prefers-reduced-motion:reduce){.account-collage .collage-person>img,.account-collage .collage-person>.media-enlarge,.collage-account-bar,.collage-bottom-bar,.collage-bar-arrow,.collage-bottom-bar>span:last-child{transition:none}}

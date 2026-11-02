@@ -1,0 +1,8 @@
+/* Cover stickers — Codex-generated risograph die-cuts on the hero paper stack. */
+.hero-sticker{position:absolute;z-index:7;height:auto;pointer-events:none;filter:var(--sticker-shadow)}
+.hero-sticker--burst{width:112px;right:-72px;top:10px;transform:rotate(14deg);animation:hero-sticker-sway 6s ease-in-out infinite}
+.hero-sticker--milk{width:96px;left:-52px;bottom:34px;transform:rotate(-12deg)}
+.hero-sticker--bow{width:70px;right:-38px;top:26px;transform:rotate(16deg)}
+@keyframes hero-sticker-sway{0%,100%{transform:rotate(14deg) scale(1)}50%{transform:rotate(22deg) scale(1.04)}}
+@media(max-width:760px){.hero-sticker--burst{width:72px;right:-10px;top:auto;bottom:-22px}.hero-sticker--milk{width:66px;left:-10px;bottom:20px}.hero-sticker--bow{width:48px;right:-24px;top:20px}}
+@media(prefers-reduced-motion:reduce){.hero-sticker--burst{animation:none}}

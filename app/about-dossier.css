@@ -1,0 +1,149 @@
+/* about-dossier — visual rework 2026-11-01 (see dossier.css)
+   #about = FILE 01: a charcoal folder lying on the black desk (rev 2:
+   black-first — cream only on the polaroid). Tabs = charcoal index tabs,
+   body = dark fibre paper, facts = ruled charcoal card, tags = stamps.
+   rev 3 (polish): the lit tab grows out of the folder (flared corners, no seam),
+   back tabs sit in shadow; sheen + lit-top edges on every sheet; inked stamps
+   (--about-ink wears the ink); polaroid on real print paper with a gloss; type
+   floor 10px. */
+
+.about-file{padding-bottom:64px;color:var(--d-text);background:var(--lamp),var(--black-deep);--ink-soft:var(--d-text-soft);--label:var(--d-label);--paper-edge:var(--d-edge);--pink-ink:var(--d-pink-ink);
+ --about-body-top:#302d2a;--about-tab-foot:#3a3734;--about-edge-top:#4f4843;--about-edge-curve:#48413c;
+ --about-ink:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3.4 0 0 0 2.85'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---- index tabs: the front (lit) tab is cut from the folder itself; the others belong to folders filed behind ---- */
+.folder-tabs{gap:10px;padding-right:2px}
+.folder-tabs a{border:1px solid;border-color:#37322e #2c2825 transparent;border-bottom:0;border-radius:14px 14px 0 0;background:linear-gradient(180deg,#ffffff06,#0000 40%,#00000038),var(--paper-fibre-dark),linear-gradient(180deg,#1f1d1b,#181615);background-size:auto,220px 220px,auto;color:#8c8178;font-weight:800;letter-spacing:-.01em;box-shadow:inset 0 1px 0 #ffffff0a,inset 0 -12px 14px -12px #000000d9;transition:padding var(--dur) var(--ease-out),color var(--dur-fast) var(--ease-out),border-color var(--dur-fast),background-color var(--dur-fast)}
+.folder-tabs a span{font:600 var(--fs-micro)/1 var(--font-mono);letter-spacing:var(--track-micro);color:#6f665f;transition:color var(--dur-fast)}
+.folder-tabs a[aria-current]{z-index:2;margin-bottom:-2px;padding-bottom:16px;border-color:var(--about-edge-top) #403a36 transparent;color:var(--pink);background:radial-gradient(90% 120% at 26% 0,#ffffff12,#ffffff00 62%),var(--paper-fibre-dark),linear-gradient(180deg,#46423e,var(--about-tab-foot) 72%);background-size:auto,220px 220px,auto;box-shadow:inset 0 1px 0 #ffffff1f,0 -8px 18px -10px #00000080}
+.folder-tabs a[aria-current] span{color:var(--d-pink-ink)}
+/* flared foot: the tab's edge curves out into the folder's top edge */
+.folder-tabs a[aria-current]::before,.folder-tabs a[aria-current]::after{content:"";position:absolute;bottom:0;width:12px;height:12px;pointer-events:none}
+.folder-tabs a[aria-current]::after{left:calc(100% - 1px);background:radial-gradient(circle at 100% 0,#0000 11px,var(--about-edge-curve) 11.5px 12.4px,var(--about-tab-foot) 13px)}
+.folder-tabs a[aria-current]::before{right:calc(100% - 1px);background:radial-gradient(circle at 0 0,#0000 11px,var(--about-edge-curve) 11.5px 12.4px,var(--about-tab-foot) 13px)}
+.folder-tabs a[aria-current]:first-child::before{display:none}
+.folder-tabs a[aria-current]:first-child{border-left-color:var(--about-edge-top)}
+.folder-tabs a:not([aria-current]):hover{padding-top:21px;color:var(--d-text);border-color:#4a433f #37322e transparent;background-color:#262321}
+.folder-tabs a:not([aria-current]):hover span{color:var(--d-pink-ink)}
+
+/* ---- folder body ---- */
+.folder-body{position:relative;isolation:isolate;background:var(--sheen),var(--paper-fibre-dark),linear-gradient(180deg,var(--about-body-top),var(--d) 38%,var(--d-lo));background-size:auto,220px 220px,auto;border:1px solid;border-color:var(--about-edge-top) #3a3531 #221e1b;border-radius:0 var(--radius-folder) var(--radius-folder) var(--radius-folder);box-shadow:inset 0 -1px 0 #00000052,var(--ring),0 2px 3px -1px #000000c7,0 22px 34px -18px #000000e6,0 60px 90px -50px #000;padding-left:58px}
+.folder-body>.punch-holes{top:80px;bottom:80px;left:19px}
+.file-heading{align-items:center;border-bottom:1px solid #ffffff12;padding-bottom:15px}
+.file-heading span{font:500 var(--fs-micro)/1.4 var(--font-mono);letter-spacing:var(--track-micro);text-transform:uppercase;color:var(--d-label)}
+.file-heading span:first-child::before{content:"";display:inline-block;width:5px;height:5px;margin:0 10px 1px 0;border-radius:50%;background:var(--pink);box-shadow:0 0 0 2px #f3c4cf1f,0 0 8px #f3c4cf80;vertical-align:middle}
+.file-heading span:last-child{letter-spacing:var(--track-label)}
+
+/* ---- portrait = polaroid on print paper, binder clip on top, puppy sticker on the corner ---- */
+.about-portrait{background:var(--paper-fibre),var(--print-paper);background-size:220px 220px,auto;background-blend-mode:multiply,normal;padding:11px 11px 0;border-radius:2px;box-shadow:var(--shadow-photo)}
+.about-portrait .document-media{border-radius:1px;overflow:hidden;background:#1d1b1a}
+.about-portrait .document-media img{filter:saturate(.94) contrast(1.03) brightness(.97)}
+.about-portrait .document-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--print-sheen);box-shadow:inset 0 0 0 1px #00000038,inset 0 0 26px #00000038}
+.about-portrait .media-enlarge{z-index:2;background:var(--pink);color:var(--ink);box-shadow:0 1px 0 #ffffff80 inset,0 2px 6px #00000059;transition:transform var(--dur-fast) var(--ease-spring)}
+.about-portrait .document-media:hover .media-enlarge{transform:translate(2px,-2px)}
+.about-portrait figcaption{padding:15px 4px 18px;font:700 11px/1.3 Arial,"PingFang SC",sans-serif;letter-spacing:.2em;color:#3e3530}
+.about-photo-hint{font:500 var(--fs-micro)/1 var(--font-mono);letter-spacing:.06em;color:#7b6d63;opacity:1}
+.about-portrait>.tape{top:-12px;left:-18px;width:76px;transform:rotate(-38deg);z-index:3}
+.about-portrait>.binder-clip{right:40px;top:-13px;width:52px;height:21px;z-index:4;border-radius:2px 2px 4px 4px;transform:rotate(5deg);background:linear-gradient(180deg,#ffffff73 0 1px,#0000 1px),linear-gradient(90deg,#00000014,#0000 18%,#0000 82%,#0000001f),linear-gradient(180deg,#f4c6d1,#e1a2b2 52%,#bf7d8e);box-shadow:inset 0 -3px 0 #00000026,inset 0 0 0 1px #7a465426,0 1px 1px #00000059,0 5px 7px -3px #000000a6}
+.about-portrait>.binder-clip::before,.about-portrait>.binder-clip::after{content:"";position:absolute;bottom:calc(100% - 3px);background:none;border:2px solid;border-bottom:0;box-shadow:none}
+.about-portrait>.binder-clip::before{left:9px;width:34px;height:20px;border-radius:9px 9px 0 0;border-color:#f1ede6 #a7a198 transparent #d9d3ca;filter:drop-shadow(0 1px 0 #0000004d)}
+.about-portrait>.binder-clip::after{left:13px;width:26px;height:13px;border-radius:7px 7px 0 0;border-color:#c3bdb4 #8f8980 transparent #b2aca3;z-index:-1}
+.about-sticker{position:absolute;z-index:4;pointer-events:none;user-select:none;height:auto;filter:var(--sticker-shadow)}
+.about-sticker--puppy{width:104px;left:-30px;top:-36px;transform:rotate(-12deg);transition:scale var(--dur) var(--ease-spring)}
+.about-sticker--star{width:60px;right:-22px;top:38%;transform:rotate(12deg)}
+
+/* ---- copy side ---- */
+.about-copy{position:relative}
+.about-copy .eyebrow{font:500 var(--fs-label)/1.6 var(--font-mono);letter-spacing:var(--track-label);color:var(--d-label)}
+.about-copy h2{position:relative;isolation:isolate;width:fit-content;font-size:46px;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:16px 0 20px;color:var(--pink);background:var(--satin) 0 0/100% 1.1em no-repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.about-copy h2:before{content:"";position:absolute;z-index:-1;left:-.1em;top:.6em;width:3.25em;height:.4em;background:linear-gradient(90deg,#c58c9930,#c58c994d 30%,#c58c9940 85%,#c58c9914);border-radius:2px 7px 3px 8px;transform:rotate(-1.2deg)}
+.about-copy h2>span{font:500 var(--fs-label)/1.4 var(--font-mono);letter-spacing:var(--track-label);color:var(--d-label);-webkit-text-fill-color:var(--d-label);margin-top:14px}
+.about-stamp{position:absolute;top:-4px;right:6px;width:92px;height:92px;background:url(/decor/stamp-approved.svg) center/contain no-repeat;transform:rotate(-14deg);opacity:.62;pointer-events:none;-webkit-mask:var(--about-ink) 37px 11px/150px 150px;mask:var(--about-ink) 37px 11px/150px 150px}
+
+/* facts = index card: one pink header rule, faint writing lines the values sit on */
+.personal-facts{position:relative;gap:20px;padding:16px 22px 12px;border:1px solid;border-color:var(--edge-color);border-radius:var(--radius-paper);background:var(--sheen-soft),linear-gradient(#dba0b057,#dba0b057) 0 38px/100% 1px no-repeat,repeating-linear-gradient(180deg,#0000 0 25px,#ffffff0c 25px 26px) 0 38px/100% calc(100% - 38px) no-repeat,var(--paper-fibre-dark) 0 0/220px 220px,linear-gradient(178deg,var(--d-card-hi),var(--d-card));box-shadow:var(--shadow-card-dark);transform:rotate(.4deg)}
+.personal-facts dt{font:500 var(--fs-micro)/14px var(--font-mono);letter-spacing:.16em;color:var(--d-label);margin-bottom:12px}
+.personal-facts dd{font-size:var(--fs-body);line-height:26px;font-weight:700;color:var(--d-text);font-variant-numeric:tabular-nums}
+.personal-facts dd span{font-weight:400;color:var(--d-text-soft);font-size:var(--fs-small)}
+
+/* tags = rubber stamps: inked border + faint inner line, worn ink */
+.personal-tags{gap:12px 14px;margin:24px 0 22px}
+.personal-tags span{border:1.5px solid currentColor;border-radius:2px;padding:6px 11px;font:700 var(--fs-label)/1.3 Arial,"PingFang SC",sans-serif;letter-spacing:.08em;color:var(--d-pink-ink);background:#f3c4cf0a;outline:1px solid color-mix(in srgb,currentColor 32%,transparent);outline-offset:-4px;transform:rotate(-1.8deg);-webkit-mask:var(--about-ink) 0 0/150px 150px;mask:var(--about-ink) 0 0/150px 150px}
+.personal-tags span:nth-child(2){color:var(--d-text-soft);background:#ffffff05;transform:rotate(1.1deg);-webkit-mask-position:61px 23px;mask-position:61px 23px}
+.personal-tags span:nth-child(3){transform:rotate(-.6deg);-webkit-mask-position:17px 88px;mask-position:17px 88px}
+
+.about-summary{font-size:var(--fs-body);line-height:1.85;color:var(--d-text-soft)}
+.about-copy .underlined-link{display:inline-block;font:700 var(--fs-small)/1.4 Arial,"PingFang SC",sans-serif;letter-spacing:.04em;color:var(--pink);border-bottom:0;padding:4px 5px 6px;background:linear-gradient(var(--pink),var(--pink)) 0 100%/100% 1.5px no-repeat;border-radius:1px;transition:background-size var(--dur) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.about-copy .underlined-link::after{display:none}
+.about-copy .underlined-link:hover{opacity:1;background-size:100% 100%;color:var(--ink)}
+
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .personal-facts{transition:transform var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out)}
+ .personal-facts:hover{transform:rotate(0) translateY(-4px);box-shadow:var(--shadow-card-lift)}
+ .personal-tags span{transition:transform var(--dur) var(--ease-spring)}
+ .personal-tags span:hover{transform:rotate(0) scale(1.05)}
+ .about-portrait:hover{box-shadow:0 0 0 1px #00000038,0 2px 3px #00000066,0 16px 22px -8px #000000a6,0 40px 50px -26px #000000e6}
+ .about-portrait:hover .about-sticker--puppy{scale:1.06}
+}
+/* scroll reveal (same declaration as .fx-reveal; page.tsx markup is not ours, so the grid gets it here) */
+@supports (animation-timeline:view()){
+ @media(prefers-reduced-motion:no-preference){
+  .about-grid{animation:fx-reveal linear both;animation-timeline:view();animation-range:entry 0px entry 240px}
+ }
+}
+
+@media(max-width:1100px) and (min-width:761px){
+ .folder-body{padding-left:50px}
+ .folder-body>.punch-holes{left:16px}
+ .about-sticker--puppy{width:88px;left:-32px;top:-30px}
+ .about-copy h2{font-size:38px}
+}
+
+@media(max-width:760px){
+ .about-file{padding-bottom:40px}
+ .folder-tabs{gap:6px}
+ .folder-tabs a{font-size:13px;border-radius:12px 12px 0 0}
+ .folder-tabs a span{font-size:var(--fs-micro);letter-spacing:.08em}
+ .folder-tabs a[aria-current]{padding-bottom:12px}
+ .folder-tabs a[aria-current]::before,.folder-tabs a[aria-current]::after{width:9px;height:9px}
+ .folder-tabs a[aria-current]::after{background:radial-gradient(circle at 100% 0,#0000 8px,var(--about-edge-curve) 8.5px 9.4px,var(--about-tab-foot) 10px)}
+ .folder-tabs a[aria-current]::before{background:radial-gradient(circle at 0 0,#0000 8px,var(--about-edge-curve) 8.5px 9.4px,var(--about-tab-foot) 10px)}
+ .folder-tabs a:not([aria-current]):hover{padding-top:15px}
+ .folder-body{padding-left:30px}
+ .folder-body>.punch-holes{left:8px;top:60px;bottom:60px}
+ .folder-body>.punch-holes i{width:10px;height:10px}
+ .file-heading span{font-size:var(--fs-micro);letter-spacing:.14em}
+ .file-heading span:first-child::before{margin-right:8px}
+ .about-portrait{padding:8px 8px 0}
+ .about-portrait figcaption{padding:11px 2px 13px;font-size:var(--fs-micro);letter-spacing:.12em}
+ .about-photo-hint{font-size:var(--fs-micro);letter-spacing:0}
+ .about-portrait>.tape{width:60px;left:-14px;top:-8px}
+ .about-portrait>.binder-clip{right:28px;top:-11px;width:42px;height:17px}
+ .about-portrait>.binder-clip::before{left:7px;width:28px;height:16px}
+ .about-portrait>.binder-clip::after{left:10px;width:22px;height:10px}
+ .about-sticker--puppy{width:76px;left:-24px;top:-24px}
+ .about-sticker--star{width:44px;right:-16px}
+ .about-copy .eyebrow{font-size:var(--fs-micro)}
+ .about-copy h2{font-size:34px;margin:12px 0 18px}
+ .about-copy h2>span{font-size:var(--fs-micro);margin-top:10px}
+ .about-stamp{width:70px;height:70px;top:-2px;right:0;-webkit-mask-size:120px 120px;mask-size:120px 120px}
+ .personal-facts{gap:10px;padding:14px 12px 10px;transform:rotate(.3deg);background:var(--sheen-soft),linear-gradient(#dba0b057,#dba0b057) 0 35px/100% 1px no-repeat,repeating-linear-gradient(180deg,#0000 0 23px,#ffffff0c 23px 24px) 0 35px/100% calc(100% - 35px) no-repeat,var(--paper-fibre-dark) 0 0/220px 220px,linear-gradient(178deg,var(--d-card-hi),var(--d-card))}
+ .personal-facts dt{font-size:var(--fs-micro);letter-spacing:.08em;margin-bottom:11px}
+ .personal-facts dd{font-size:13px;line-height:24px}
+ .personal-facts dd span{font-size:var(--fs-label)}
+ .personal-tags{gap:10px}
+ .personal-tags span{font-size:var(--fs-label);padding:5px 9px}
+ .about-summary{font-size:13px;line-height:1.8}
+ .about-copy .underlined-link{font-size:var(--fs-small)}
+}
+
+@media(max-width:380px){
+ .folder-body{padding-left:26px}
+ .folder-tabs a{font-size:12px}
+ .personal-facts dd{font-size:12px}
+ .about-summary{font-size:12.5px}
+}
+
+@media(prefers-reduced-motion:reduce){
+ .folder-tabs a,.folder-tabs a span,.about-copy .underlined-link,.personal-facts,.personal-tags span,.about-sticker--puppy,.about-portrait .media-enlarge{transition:none}
+}
